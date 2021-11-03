@@ -5,23 +5,15 @@ import {
   NoEthereumProviderError,
   UserRejectedRequestError as UserRejectedRequestErrorInjected
 } from '@web3-react/injected-connector'
-import { UserRejectedRequestError as UserRejectedRequestErrorWalletConnect } from '@web3-react/walletconnect-connector'
+import { Connectors } from '../connectors'
+// import { UserRejectedRequestError as UserRejectedRequestErrorWalletConnect } from '@web3-react/walletconnect-connector'
 import { Web3Provider } from '@ethersproject/providers'
 
 import Header from '../components/Header'
-import Spinner from '../components/Spinner'
+import ConnectProviders from '../components/Providers'
 
 import { useEagerConnect, useInactiveListener } from '../hooks'
-import {
-  injected,
-  network,
-  walletconnect,
-} from '../connectors'
-import { InjectedConnector } from '@web3-react/injected-connector'
-import { NetworkConnector } from '@web3-react/network-connector'
-import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 
-import logo from '../assets/svg/logo.svg'
 import './App.css'
 
 function getErrorMessage(error: Error) {
@@ -30,8 +22,8 @@ function getErrorMessage(error: Error) {
   } else if (error instanceof UnsupportedChainIdError) {
     return "You're connected to an unsupported network."
   } else if (
-    error instanceof UserRejectedRequestErrorInjected ||
-    error instanceof UserRejectedRequestErrorWalletConnect
+    error instanceof UserRejectedRequestErrorInjected
+    // || error instanceof UserRejectedRequestErrorWalletConnect
   ) {
     return 'Please authorize this website to access your Ethereum account.'
   } else {
@@ -40,28 +32,9 @@ function getErrorMessage(error: Error) {
   }
 }
 
-type Connectors = InjectedConnector | NetworkConnector | WalletConnectConnector
-
-type ConnectorNames = 'Injected' | 'Network' | 'WalletConnect'
-
-enum EConnectorNames {
-  Injected = 'Injected',
-  Network = 'Network',
-  WalletConnect = 'WalletConnect',
-}
-
-const connectorsByName: {[connectorName in EConnectorNames]: Connectors} = {
-  [EConnectorNames.Injected]: injected,
-  [EConnectorNames.Network]: network,
-  [EConnectorNames.WalletConnect]: walletconnect,
-}
-
-
 function App() {
   const context = useWeb3React<Web3Provider>()
-  const { connector, library, chainId, account, activate, deactivate, active, error } = context
-
-  console.log('library, chainId, account, activate, deactivate, active, error', library, chainId, account, activate, deactivate, active, error)
+  const { connector, error } = context
 
   // handle logic to recognize the connector currently being activated
   const [activatingConnector, setActivatingConnector] = useState<Connectors>()
@@ -80,69 +53,13 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Header />
-        {!!error && <h4 style={{ marginTop: '1rem', marginBottom: '0' }}>{getErrorMessage(error)}</h4>}
-        {Object.keys(connectorsByName).map(name => {
-          const connectorName = name as ConnectorNames
-          const currentConnector = connectorsByName[connectorName]
-          const activating = currentConnector === activatingConnector
-          const connected = currentConnector === connector
-          const disabled = !triedEager || !!activatingConnector || connected || !!error
-
-          return (
-            <button
-              style={{
-                height: '3rem',
-                borderRadius: '1rem',
-                borderColor: activating ? 'orange' : connected ? 'green' : 'unset',
-                cursor: disabled ? 'unset' : 'pointer',
-                position: 'relative'
-              }}
-              disabled={disabled}
-              key={name}
-              onClick={() => {
-                setActivatingConnector(currentConnector)
-                activate(connectorsByName[connectorName])
-              }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '0',
-                  left: '0',
-                  height: '100%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  color: 'black',
-                  margin: '0 0 0 1rem'
-                }}
-              >
-                {activating && <Spinner color={'black'} style={{ height: '25%', marginLeft: '-1rem' }} />}
-                {connected && (
-                  <span role="img" aria-label="check">
-                    ✅
-                  </span>
-                )}
-              </div>
-              {name}
-            </button>
-          )
-        })}
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <br/>
-      </header>
+      <Header />
+      {!!error && <h4 style={{ marginTop: '1rem', marginBottom: '1rem', color: 'white' }}>{getErrorMessage(error)}</h4>}
+      <ConnectProviders
+        activatingConnector={activatingConnector}
+        triedEager={triedEager}
+        setActivatingConnector={setActivatingConnector}
+      />
     </div>
   )
 }

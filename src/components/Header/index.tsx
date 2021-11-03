@@ -8,13 +8,15 @@ function ChainId() {
   const { chainId } = useWeb3React()
 
   return (
-    <>
-      <span>Chain Id</span>
+    <span>
       <span role="img" aria-label="chain">
         ⛓
       </span>
-      <span>{chainId ?? ''}</span>
-    </>
+      {' '}
+      Chain Id
+      {' '}
+      {chainId ?? ''}
+    </span>
   )
 }
 
@@ -53,13 +55,15 @@ function BlockNumber() {
   }, [library, chainId]) // ensures refresh if referential identity of library doesn't change across chainIds
 
   return (
-    <>
-      <span>Block Number</span>
+    <span>
       <span role="img" aria-label="numbers">
         🔢
       </span>
-      <span>{blockNumber === 'null' ? 'Error' : blockNumber ?? ''}</span>
-    </>
+      {' '}
+      Block Number
+      {' '}
+      {blockNumber === 'null' ? 'Error' : blockNumber ?? ''}
+    </span>
   )
 }
 
@@ -67,19 +71,19 @@ function Account() {
   const { account } = useWeb3React()
 
   return (
-    <>
-      <span>Account</span>
+    <span>
       <span role="img" aria-label="robot">
         🤖
       </span>
-      <span>
-        {account === null
-          ? '-'
-          : account
-          ? `${account.substring(0, 6)}...${account.substring(account.length - 4)}`
-          : ''}
-      </span>
-    </>
+      {' '}
+      Account
+      {' '}
+      {account === null
+        ? '-'
+        : account
+        ? `${account.substring(0, 6)}...${account.substring(account.length - 4)}`
+        : ''}
+    </span>
   )
 }
 
@@ -112,13 +116,15 @@ function Balance() {
   }, [account, library, chainId]) // ensures refresh if referential identity of library doesn't change across chainIds
 
   return (
-    <>
-      <span>Balance</span>
+    <span>
       <span role="img" aria-label="gold">
         💰
       </span>
-      <span>{balance === 'null' ? 'Error' : balance ? `Ξ${formatEther(balance)}` : ''}</span>
-    </>
+      {' '}
+      Balance
+      {' '}
+      {balance === 'null' ? 'Error' : balance ? `Ξ${formatEther(balance)}` : ''}
+    </span>
   )
 }
 
@@ -126,24 +132,26 @@ function Header() {
   const { active, error } = useWeb3React()
 
   return (
-    <>
+
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        fontSize: 'calc(10px + 2vmin)',
+        color: 'white',
+        marginBottom: '2rem',
+        maxWidth: '50%'
+      }}
+    >
       <h1 style={{ margin: '1rem', textAlign: 'right' }}>{active ? '🟢' : error ? '🔴' : '🟠'}</h1>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          maxWidth: '20rem',
-          lineHeight: '2rem',
-          margin: 'auto'
-        }}
-      >
-        <ChainId />
-        <BlockNumber />
-        <Account />
-        <Balance />
-      </div>
-    </>
+      <ChainId />
+      <BlockNumber />
+      <Account />
+      <Balance />
+    </div>
   )
 }
 
