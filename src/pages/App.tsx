@@ -1,22 +1,19 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch } from "react-router-dom";
 
-import ConnectProviders from "../components/Providers";
+import Account from "./Account";
+import Proposal from "./Proposal";
 
 import "./App.css";
 
 function App() {
-
   return (
     <div className="App">
       <Switch>
-        <Route component={ConnectProviders} />
+        <Route exact strict path="/proposal/:proposalId" component={Proposal} />
+        <Route component={Account} />
       </Switch>
     </div>
   );
 }
 
-export default function () {
-  return (
-      <App />
-  );
-}
+export default App;

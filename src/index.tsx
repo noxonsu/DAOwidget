@@ -4,9 +4,9 @@ import "./index.css";
 import App from "./pages/App";
 import reportWebVitals from "./reportWebVitals";
 
-import { HashRouter } from 'react-router-dom'
+import { HashRouter } from "react-router-dom";
 import { Web3ReactProvider } from "@web3-react/core";
-import { getLibrary } from './utils/getLibrary'
+import { getLibrary } from "./utils/getLibrary";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -6,12 +6,7 @@ import {
   Connectors,
 } from "../../connectors";
 
-import AccountInfo from "../AccountInfo";
-
-import {
-  useWeb3React,
-  UnsupportedChainIdError,
-} from "@web3-react/core";
+import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
 import {
   NoEthereumProviderError,
   UserRejectedRequestError as UserRejectedRequestErrorInjected,
@@ -54,7 +49,6 @@ function getErrorMessage(error: Error) {
 }
 
 function ConnectProviders() {
-
   const context = useWeb3React<Web3Provider>();
   const { connector, activate, error } = context;
 
@@ -74,7 +68,6 @@ function ConnectProviders() {
 
   return (
     <>
-      <AccountInfo />
       {!!error && (
         <h4 style={{ marginTop: "1rem", marginBottom: "1rem", color: "white" }}>
           {getErrorMessage(error)}
