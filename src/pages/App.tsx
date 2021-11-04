@@ -9,7 +9,8 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact strict path="/proposal/:proposalId" component={Proposal} />
+        <Route exact strict path="/proposal/:proposalId" component={Proposal}>
+        </Route>
         <Route component={Account} />
       </Switch>
     </div>
