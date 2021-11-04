@@ -6,6 +6,7 @@ import {
   Connectors,
 } from "../../connectors";
 
+import AccountInfo from "../AccountInfo";
 
 import {
   useWeb3React,
@@ -73,6 +74,7 @@ function ConnectProviders() {
 
   return (
     <>
+      <AccountInfo />
       {!!error && (
         <h4 style={{ marginTop: "1rem", marginBottom: "1rem", color: "white" }}>
           {getErrorMessage(error)}
