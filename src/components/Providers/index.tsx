@@ -18,6 +18,8 @@ import { useEagerConnect, useInactiveListener } from "../../hooks";
 
 import Spinner from "../Spinner";
 
+import "./index.css";
+
 type ConnectorNames = "Injected" | "Network"; // | 'WalletConnect'
 
 enum EConnectorNames {
@@ -68,11 +70,7 @@ function ConnectProviders() {
 
   return (
     <>
-      {!!error && (
-        <h4 style={{ marginTop: "1rem", marginBottom: "1rem", color: "white" }}>
-          {getErrorMessage(error)}
-        </h4>
-      )}
+      {!!error && <h4 className="error">{getErrorMessage(error)}</h4>}
       {Object.keys(connectorsByName).map((name) => {
         const connectorName = name as ConnectorNames;
         const currentConnector = connectorsByName[connectorName];
@@ -83,18 +81,10 @@ function ConnectProviders() {
 
         return (
           <button
-            style={{
-              height: "3rem",
-              borderRadius: "1rem",
-              borderColor: activating
-                ? "orange"
-                : connected
-                ? "green"
-                : "unset",
-              cursor: disabled ? "unset" : "pointer",
-              position: "relative",
-              color: disabled ? "white" : "black",
-            }}
+            className={`connect-button
+              ${disabled ? "connect-button__disable" : ""}
+              ${activating ? "connect-button__activating" : ""}
+              ${connected ? "connect-button__connected" : ""}`}
             disabled={disabled}
             key={name}
             onClick={() => {
@@ -102,18 +92,7 @@ function ConnectProviders() {
               activate(connectorsByName[connectorName]);
             }}
           >
-            <div
-              style={{
-                position: "absolute",
-                top: "0",
-                left: "0",
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                color: "white",
-                margin: "0 0 0 -2rem",
-              }}
-            >
+            <div className="connect-button__icon">
               {activating && (
                 <Spinner color={"white"} style={{ height: "25%" }} />
               )}

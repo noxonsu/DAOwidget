@@ -1,0 +1,27 @@
+.header {
+  margin-top: 20px;
+  display: flex;
+}
+
+.header__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.header-logo {
+  display: block;
+  max-width: 10rem;
+  max-height: 4rem;
+  outline: none;
+  margin-right: 1rem;
+}
+
+.header__navbar {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 1 rem;
+}

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { formatEther } from "@ethersproject/units";
 
+import "./index.css";
+
 function ChainId() {
   const { chainId } = useWeb3React();
 
@@ -122,20 +124,8 @@ function Header() {
   const { active, error } = useWeb3React();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        flexWrap: "wrap",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        fontSize: "calc(10px + 2vmin)",
-        color: "white",
-        marginBottom: "2rem",
-        maxWidth: "50%",
-      }}
-    >
-      <h1 style={{ margin: "1rem", textAlign: "right" }}>
+    <div className="account-info">
+      <h1 className="account-info__status">
         {active ? "🟢" : error ? "🔴" : "🟠"}
       </h1>
       <ChainId />

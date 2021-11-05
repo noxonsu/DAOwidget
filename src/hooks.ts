@@ -4,7 +4,7 @@ import { gql, request } from "graphql-request";
 
 import { injected } from "./connectors";
 
-const OFFCHAIN_HUB_API = "https://hub.snapshot.org/graphql"
+const OFFCHAIN_HUB_API = "https://hub.snapshot.org/graphql";
 
 export type ProposalType = {
   title: string;
@@ -32,7 +32,6 @@ export enum ProposalState {
   Expired,
   Executed,
 }
-
 
 export function useEagerConnect() {
   const { activate, active } = useWeb3React();
@@ -106,7 +105,7 @@ export const useProposal = (id: string) => {
   const [data, setData] = useState<ProposalType>({} as any);
   useEffect(() => {
     const _fetchData = async () => {
-      const proposal = await fetchOffChainProposal(id) as ProposalType;
+      const proposal = (await fetchOffChainProposal(id)) as ProposalType;
       if (proposal) {
         setData(proposal);
       }
@@ -160,7 +159,6 @@ export const fetchOffChainData = async () => {
   const offChainData = await request(OFFCHAIN_HUB_API, q);
   return offChainData;
 };
-
 
 export const fetchOffChainProposal = async (id: string) => {
   const q = gql`
