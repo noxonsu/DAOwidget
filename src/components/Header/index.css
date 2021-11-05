@@ -1,7 +1,7 @@
 .header {
-  margin-top: 1.25rem;
   display: flex;
   justify-content: space-between;
+  padding: 1rem;
 }
 
 .header__logo {
@@ -15,12 +15,4 @@
   max-width: 10rem;
   max-height: 4rem;
   outline: none;
-}
-
-.header__navbar {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-right: 1 rem;
 }

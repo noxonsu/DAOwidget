@@ -1,15 +1,22 @@
 .navbar {
   display: flex;
-  flex-direction: row;
+  position: absolute;
+  top: 3rem;
+  left: 50%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+      transform: translate(-50%,-50%);
 }
 
 .navbar-item {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 2rem;
+  padding: 1rem;
   color: inherit;
   text-decoration: inherit;
-  text-transform: uppercase;
   outline: none;
 }
