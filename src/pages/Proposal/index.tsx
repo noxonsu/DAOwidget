@@ -1,4 +1,4 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useProposal } from "../../hooks";
 
 import marked from "marked";
@@ -9,7 +9,6 @@ type ParamsProps = {
 
 function ProposalDetail() {
   const { proposalId = "" } = useParams() as ParamsProps;
-  const history = useHistory();
 
   const proposal = useProposal(proposalId);
 
@@ -25,8 +24,7 @@ function ProposalDetail() {
   }
 
   return (
-    <div>
-      <button onClick={() => history.push(`/`)}>Go to home</button>
+    <div style={{ padding: "2rem" }}>
       {/* <div
         dangerouslySetInnerHTML={{
           __html: marked(description || body || ""),
