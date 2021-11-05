@@ -1,11 +1,12 @@
-import Navbar from "../Navbar";
+import Navbar from "./Navbar";
+import ConnectWallet from "./ConnectWallet";
 
 import "./index.css";
 
 function Header() {
   return (
-    <section className="header">
-      <section className="header__logo">
+    <div className="header">
+      <div className="header__logo">
         <a href="/">
           <img
             src="https://wallet.wpmix.net/wp-content/uploads/2020/07/yourlogohere.png"
@@ -13,9 +14,10 @@ function Header() {
             alt="logo"
           />
         </a>
-      </section>
+      </div>
       <Navbar />
-    </section>
+      <ConnectWallet />
+    </div>
   );
 }
 

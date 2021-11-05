@@ -2,7 +2,7 @@ import "./index.css";
 
 function Navbar() {
   return (
-    <section className="navbar">
+    <div className="navbar">
       <a href="/" className="navbar-item">
         Proposals
       </a>
@@ -12,7 +12,7 @@ function Navbar() {
       <a href="/proposal/create" className="navbar-item">
         New proposal
       </a>
-    </section>
+    </div>
   );
 }
 

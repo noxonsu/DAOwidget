@@ -1,13 +1,13 @@
 .header {
-  margin-top: 20px;
+  margin-top: 1.25rem;
   display: flex;
+  justify-content: space-between;
 }
 
 .header__logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
 }
 
 .header-logo {
@@ -15,7 +15,6 @@
   max-width: 10rem;
   max-height: 4rem;
   outline: none;
-  margin-right: 1rem;
 }
 
 .header__navbar {
