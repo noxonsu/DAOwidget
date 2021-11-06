@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useProposal } from "src/helpers/hooks";
-
-import marked from "marked";
+import MarkdownElement from "src/components/MarkdownElement";
 
 type ParamsProps = {
   proposalId?: string;
@@ -25,13 +24,8 @@ function ProposalDetail() {
 
   return (
     <div style={{ padding: "2rem" }}>
-      {/* <div
-        dangerouslySetInnerHTML={{
-          __html: marked(description || body || ""),
-        }}
-      /> */}
       <h1>{title}</h1>
-      <p>{description || body || ""}</p>
+      <MarkdownElement text={description || body || ""} />
     </div>
   );
 }

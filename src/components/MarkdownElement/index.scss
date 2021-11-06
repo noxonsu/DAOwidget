@@ -1,0 +1,91 @@
+.markdown-body {
+  :first-child {
+    margin-top: 0 !important;
+  }
+
+  .markdown-body > *:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  h1,
+  h2 {
+    font-size: 1.75rem;
+    border-bottom: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    line-height: 1.4 !important;
+  }
+
+  p,
+  blockquote,
+  ul,
+  ol,
+  dl,
+  table,
+  pre {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #97a0ab;
+    a {
+      color: white;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    box-sizing: content-box;
+    background-color: #fff;
+    border-radius: 0.5rem;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    color: #97a0ab;
+    a {
+      color: white;
+    }
+  }
+
+  table thead tr,
+  table tbody tr:nth-child(2n) {
+    background-color: transparent;
+    border-top: 1px solid #c6cbd1;
+  }
+
+  table th {
+    font-weight: 600;
+  }
+
+  table th,
+  table td {
+    padding: 6px 13px;
+    border: 1px solid #424242;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ul,
+  ol {
+    padding-left: 2em;
+  }
+
+  li {
+    word-wrap: break-all;
+  }
+}

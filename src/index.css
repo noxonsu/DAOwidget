@@ -37,3 +37,16 @@ a {
   color: inherit; /* blue colors for links too */
   text-decoration: inherit; /* no underline */
 }
+
+table {
+  text-indent: 0;
+  border-color: inherit;
+  border-collapse: collapse;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

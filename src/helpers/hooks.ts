@@ -35,13 +35,13 @@ export enum ProposalState {
 }
 
 type FetchOffChainProposalListParams = {
-  first?: number
-  skip?: number
-  state?: string
-  space?: string
-  space_in: string[]
-  author_in?: string[]
-}
+  first?: number;
+  skip?: number;
+  state?: string;
+  space?: string;
+  space_in: string[];
+  author_in?: string[];
+};
 
 export function useEagerConnect() {
   const { activate, active } = useWeb3React();
@@ -144,14 +144,19 @@ export const useProposalList = (params: FetchOffChainProposalListParams) => {
   return offChainProposalList;
 };
 
-export const fetchOffChainProposalList = async (params: FetchOffChainProposalListParams) => {
-
-  const offChainProposalList = await request(OFFCHAIN_HUB_API, PROPOSALS_QUERY, {
-    first: 6,
-    skip: 0,
-    state: 'all',
-    ...params
-  });
+export const fetchOffChainProposalList = async (
+  params: FetchOffChainProposalListParams
+) => {
+  const offChainProposalList = await request(
+    OFFCHAIN_HUB_API,
+    PROPOSALS_QUERY,
+    {
+      first: 6,
+      skip: 0,
+      state: "all",
+      ...params,
+    }
+  );
   console.log("offChainProposalList", offChainProposalList);
   return offChainProposalList.proposals;
 };

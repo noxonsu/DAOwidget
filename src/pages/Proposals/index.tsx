@@ -2,38 +2,39 @@ import { useProposalList } from "src/helpers/hooks";
 import { Link } from "react-router-dom";
 import removeMD from "remove-markdown";
 
-import './index.scss'
+import "./index.scss";
 
 function Proposals() {
   if (!window?.ENS_DOMAIN) window.ENS_DOMAIN = "aave.eth";
 
-  const proposals = useProposalList({space_in: [window.ENS_DOMAIN]});
+  const proposals = useProposalList({ space_in: [window.ENS_DOMAIN] });
 
-  const shortenText = (str = '', numberOfLetters = 7) => {
-    return str?.length > numberOfLetters + 3 ? str.substring(0, numberOfLetters).trim() + "..." : str;
-  }
+  const shortenText = (str = "", numberOfLetters = 7) => {
+    return str?.length > numberOfLetters + 3
+      ? str.substring(0, numberOfLetters).trim() + "..."
+      : str;
+  };
 
-  const renderedProposalList = proposals.map(({ author, body, title, state, id }, index) => {
-    const preparedBody = shortenText(removeMD(body), 140)
+  const renderedProposalList = proposals.map(
+    ({ author, body, title, state, id }, index) => {
+      const preparedBody = shortenText(removeMD(body), 140);
 
-    return (
-      <div
-        key={index}
-        className="proposal-row"
-      >
-        <Link to={`/proposal/${id}`}>
-          <div className="proposal-header">
-            <span>{`Created by ${author}`}</span>
-            <span>{state}</span>
-          </div>
-          <div className="proposal-body">
-            <h2>{title}</h2>
-            <p className="body-description">{preparedBody}</p>
-          </div>
-        </Link>
-      </div>
-    );
-  });
+      return (
+        <div key={index} className="proposal-row">
+          <Link to={`/proposal/${id}`}>
+            <div className="proposal-header">
+              <span>{`Created by ${author}`}</span>
+              <span>{state}</span>
+            </div>
+            <div className="proposal-body">
+              <h2>{title}</h2>
+              <p className="body-description">{preparedBody}</p>
+            </div>
+          </Link>
+        </div>
+      );
+    }
+  );
 
   return (
     <div className="proposals">

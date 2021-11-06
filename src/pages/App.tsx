@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div className='content-wrapper'>
+      <div className="content-wrapper">
         <Switch>
           <Route exact strict path="/account" component={Account} />
           <Route exact strict path="/about" component={About} />
@@ -24,7 +24,12 @@ function App() {
             path="/proposal/create"
             component={CreateProposal}
           />
-          <Route exact strict path="/proposal/:proposalId" component={Proposal} />
+          <Route
+            exact
+            strict
+            path="/proposal/:proposalId"
+            component={Proposal}
+          />
           <Route component={Proposals} />
         </Switch>
       </div>
