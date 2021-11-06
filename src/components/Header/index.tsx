@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 import ConnectWallet from "./ConnectWallet";
 
-import "./index.css";
+import "./index.scss";
 
 function Header() {
   return (

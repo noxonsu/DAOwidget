@@ -18,7 +18,7 @@ import { useEagerConnect, useInactiveListener } from "src/helpers/hooks";
 
 import Spinner from "src/components/Spinner";
 
-import "./index.css";
+import "./index.scss";
 
 type ConnectorNames = "Injected" | "Network"; // | 'WalletConnect'
 

@@ -1,8 +1,10 @@
 .proposals {
     display: flex;
     flex-direction: column;
-    align-self: center;
-    text-align: center;
+
+    .proposals-header {
+        width: 100%;
+    }
 }
 
 .proposal-row {
@@ -11,20 +13,22 @@
     border: 1px solid #424242;
     border-radius: 1rem;
     margin-bottom: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
     width: 100%;
 
-    .header {
+    .proposal-header {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        color: #8b949e;
     }
 
-    .body {
+    .proposal-body {
         display: flex;
         flex-direction: column;
 
-        .description {
+        .body-description {
             color: #8b949e;
+            font-size: 1.25rem;
         }
     }
 }
@@ -32,8 +36,12 @@
 .proposal-row:hover {
     border-color: white;
 
-    .body {
-        .description {
+    .proposal-header {
+        color: white;
+    }
+
+    .proposal-body {
+        .body-description {
             color: white;
         }
     }

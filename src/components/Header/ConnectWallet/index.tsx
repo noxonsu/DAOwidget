@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import "./index.css";
+import "./index.scss";
 
 function ConnectWallet() {
   const history = useHistory();

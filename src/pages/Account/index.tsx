@@ -1,7 +1,7 @@
 import AccountInfo from "./AccountInfo";
 import Providers from "./Providers";
 
-import "./index.css";
+import "./index.scss";
 
 export default function Account() {
   return (

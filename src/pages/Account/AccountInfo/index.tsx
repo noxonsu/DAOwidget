@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { formatEther } from "@ethersproject/units";
 
-import "./index.css";
+import "./index.scss";
 
 function ChainId() {
   const { chainId } = useWeb3React();
