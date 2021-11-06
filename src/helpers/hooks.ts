@@ -21,7 +21,6 @@ export type ProposalType = {
   state: string;
   end: number;
   body: string;
-  ipfs: string;
 };
 
 export enum ProposalState {

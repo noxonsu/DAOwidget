@@ -13,7 +13,7 @@ function Proposals() {
     return str?.length > numberOfLetters + 3 ? str.substring(0, numberOfLetters).trim() + "..." : str;
   }
 
-  const renderedProposalList = proposals.map(({ author, body, title, state, ipfs }, index) => {
+  const renderedProposalList = proposals.map(({ author, body, title, state, id }, index) => {
     const preparedBody = shortenText(removeMD(body), 140)
 
     return (
@@ -21,7 +21,7 @@ function Proposals() {
         key={index}
         className="proposal-row"
       >
-        <Link to={`/proposal/${ipfs}`}>
+        <Link to={`/proposal/${id}`}>
           <div className="proposal-header">
             <span>{`Created by ${author}`}</span>
             <span>{state}</span>
