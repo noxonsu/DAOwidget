@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useProposal } from "../../hooks";
+import { useProposal } from "src/helpers/hooks";
 
 import marked from "marked";
 

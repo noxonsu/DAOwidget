@@ -1,0 +1,43 @@
+.proposals {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    text-align: center;
+}
+
+.proposal-row {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #424242;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    width: 100%;
+
+    .header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .body {
+        display: flex;
+        flex-direction: column;
+
+        .description {
+            color: #8b949e;
+        }
+    }
+}
+
+.proposal-row:hover {
+    border-color: white;
+
+    .body {
+        .description {
+            color: white;
+        }
+    }
+}
+
+
+

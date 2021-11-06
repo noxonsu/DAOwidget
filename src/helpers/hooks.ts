@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { gql, request } from "graphql-request";
 
-import { injected } from "./connectors";
+import { injected } from "src/connectors";
+import { PROPOSAL_QUERY, PROPOSALS_QUERY } from "./queries";
 
 const OFFCHAIN_HUB_API = "https://hub.snapshot.org/graphql";
 
@@ -20,6 +21,7 @@ export type ProposalType = {
   state: string;
   end: number;
   body: string;
+  ipfs: string;
 };
 
 export enum ProposalState {
@@ -31,6 +33,15 @@ export enum ProposalState {
   Queued,
   Expired,
   Executed,
+}
+
+type FetchOffChainProposalListParams = {
+  first?: number
+  skip?: number
+  state?: string
+  space?: string
+  space_in: string[]
+  author_in?: string[]
 }
 
 export function useEagerConnect() {
@@ -116,79 +127,39 @@ export const useProposal = (id: string) => {
   return data || {};
 };
 
-export const useProposalList = () => {
-  const [offChainData, setOffChainData] = useState<ProposalType[]>([]);
+export const useProposalList = (params: FetchOffChainProposalListParams) => {
+  const [offChainProposalList, setOffChainProposalList] = useState<
+    ProposalType[]
+  >([]);
 
   useEffect(() => {
     const _fetchData = async () => {
-      const offChain = await fetchOffChainData();
-      setOffChainData(offChain.proposals);
+      const proposals = (await fetchOffChainProposalList(
+        params
+      )) as ProposalType[];
+      setOffChainProposalList(proposals);
     };
     _fetchData();
   }, []);
 
-  return offChainData;
+  return offChainProposalList;
 };
 
-export const fetchOffChainData = async () => {
-  const q = gql`
-    query Proposals {
-      proposals(
-        first: 100
-        skip: 0
-        where: { space_in: ["aave.eth"] }
-        orderBy: "created"
-        orderDirection: desc
-      ) {
-        id
-        title
-        body
-        choices
-        start
-        end
-        snapshot
-        state
-        author
-        space {
-          id
-          name
-        }
-      }
-    }
-  `;
-  const offChainData = await request(OFFCHAIN_HUB_API, q);
-  return offChainData;
+export const fetchOffChainProposalList = async (params: FetchOffChainProposalListParams) => {
+
+  const offChainProposalList = await request(OFFCHAIN_HUB_API, PROPOSALS_QUERY, {
+    first: 6,
+    skip: 0,
+    state: 'all',
+    ...params
+  });
+  console.log("offChainProposalList", offChainProposalList);
+  return offChainProposalList.proposals;
 };
 
 export const fetchOffChainProposal = async (id: string) => {
-  const q = gql`
-    query ($id: String!) {
-      proposal(id: $id) {
-        id
-        title
-        body
-        choices
-        start
-        end
-        snapshot
-        state
-        author
-        created
-        plugins
-        network
-        strategies {
-          name
-          params
-        }
-        space {
-          id
-          name
-        }
-      }
-    }
-  `;
-  const offChainData = await request(OFFCHAIN_HUB_API, q, {
+  const offChainData = await request(OFFCHAIN_HUB_API, PROPOSAL_QUERY, {
     id,
   });
-  return offChainData.proposal || "Have not proposal";
+  return offChainData.proposal;
 };

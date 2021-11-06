@@ -4,7 +4,7 @@ import {
   network,
   // walletconnect,
   Connectors,
-} from "../../../connectors";
+} from "src/connectors";
 
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
 import {
@@ -14,9 +14,9 @@ import {
 // import { UserRejectedRequestError as UserRejectedRequestErrorWalletConnect } from '@web3-react/walletconnect-connector'
 import { Web3Provider } from "@ethersproject/providers";
 
-import { useEagerConnect, useInactiveListener } from "../../../hooks";
+import { useEagerConnect, useInactiveListener } from "src/helpers/hooks";
 
-import Spinner from "../../../components/Spinner";
+import Spinner from "src/components/Spinner";
 
 import "./index.css";
 
