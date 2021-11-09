@@ -2,18 +2,14 @@ import { useProposalList } from "src/helpers/hooks";
 import { Link } from "react-router-dom";
 import removeMD from "remove-markdown";
 
+import { shortenText } from "src/helpers/utils";
+
 import "./index.scss";
 
 function Proposals() {
-  if (!window?.ENS_DOMAIN) window.ENS_DOMAIN = "aave.eth";
+  if (!window?.ENS_DOMAIN) window.ENS_DOMAIN = "sushigov.eth";
 
   const proposals = useProposalList({ space_in: [window.ENS_DOMAIN] });
-
-  const shortenText = (str = "", numberOfLetters = 7) => {
-    return str?.length > numberOfLetters + 3
-      ? str.substring(0, numberOfLetters).trim() + "..."
-      : str;
-  };
 
   const renderedProposalList = proposals.map(
     ({ author, body, title, state, id }, index) => {

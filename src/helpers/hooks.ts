@@ -51,7 +51,7 @@ export type Space = {
   members: string[];
   strategies: {
     name: string;
-    params: any
+    params: any;
   }[];
   voting: {
     delay: number;
@@ -62,7 +62,7 @@ export type Space = {
   filter: {
     minScore: number;
     onlyMembers: boolean;
-  }
+  };
   plugins: any;
 };
 
@@ -164,7 +164,6 @@ export const fetchOffChainProposal = async (id: string) => {
   });
   return offChainData.proposal;
 };
-
 
 export const useProposalList = (params: FetchOffChainProposalListParams) => {
   const [offChainProposalList, setOffChainProposalList] = useState<
