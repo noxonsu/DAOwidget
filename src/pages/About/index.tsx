@@ -1,4 +1,4 @@
-import { useSpaceList } from "src/helpers/hooks";
+import { useSpaceList } from "src/hooks/useSpaces";
 import { shortenText } from "src/helpers/utils";
 
 import { ReactComponent as ExternalLinkSvg } from "src/assets/svg/external-link.svg";
@@ -21,16 +21,37 @@ function About() {
     );
   }
 
-  const { name, about, domain, symbol, network, terms, strategies } = spaceData;
+  const {
+    name,
+    about,
+    domain,
+    symbol,
+    network,
+    terms,
+    strategies,
+    admins,
+    members,
+  } = spaceData;
 
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>About Page</h1>
+      <button
+        style={{
+          border: "1px solid white",
+          padding: "0.5rem",
+        }}
+        onClick={() => {}}
+      >
+        Join
+      </button>
       <div>
         {name && (
           <>
             <h3>Name</h3>
-            <p>{name} {symbol && `(${symbol})`}</p>
+            <p>
+              {name} {symbol && `(${symbol})`}
+            </p>
           </>
         )}
         {about && (
@@ -64,12 +85,29 @@ function About() {
         {strategies.length && (
           <>
             <h3>Strategie(s)</h3>
-            {strategies.map((strategy) => (
-              <p>{strategy.name}</p>
+            {strategies.map((strategy, index) => (
+              <p key={index}>{strategy.name}</p>
             ))}
           </>
         )}
       </div>
+      {admins.length && (
+        <div>
+          <h3>Admins</h3>
+          {admins.map((admin, index) => (
+            <p key={index}>{admin}</p>
+          ))}
+        </div>
+      )}
+
+      {members.length && (
+        <div>
+          <h3>Authors</h3>
+          {members.map((members, index) => (
+            <p key={index}>{members}</p>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useProposal } from "src/helpers/hooks";
+
+import { useProposal } from "src/hooks/useProposals";
 import MarkdownElement from "src/components/MarkdownElement";
 
 type ParamsProps = {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   injected,
   network,
@@ -14,7 +14,7 @@ import {
 // import { UserRejectedRequestError as UserRejectedRequestErrorWalletConnect } from '@web3-react/walletconnect-connector'
 import { Web3Provider } from "@ethersproject/providers";
 
-import { useEagerConnect, useInactiveListener } from "src/helpers/hooks";
+import { useEagerConnect, useInactiveListener } from "src/hooks/useWeb3Connect";
 
 import Spinner from "src/components/Spinner";
 

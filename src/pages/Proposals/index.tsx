@@ -1,4 +1,4 @@
-import { useProposalList } from "src/helpers/hooks";
+import { useProposalList } from "src/hooks/useProposals";
 import { Link } from "react-router-dom";
 import removeMD from "remove-markdown";
 
