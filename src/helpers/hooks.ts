@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useWeb3React } from "@web3-react/core";
-import { gql, request } from "graphql-request";
+import { request } from "graphql-request";
 
 import { injected } from "src/connectors";
-import { PROPOSAL_QUERY, PROPOSALS_QUERY } from "./queries";
+import { PROPOSAL_QUERY, PROPOSALS_QUERY, SPACES_QUERY } from "./queries";
 
 const OFFCHAIN_HUB_API = "https://hub.snapshot.org/graphql";
 
@@ -33,6 +33,38 @@ export enum ProposalState {
   Expired,
   Executed,
 }
+
+export type Space = {
+  about: string;
+  avatar: string;
+  domain: string;
+  id: string;
+  name: string;
+  network: string;
+  skin: string;
+  symbol: string;
+  terms: string;
+  github: string;
+  twitter: string;
+  private: boolean;
+  admins: string[];
+  members: string[];
+  strategies: {
+    name: string;
+    params: any
+  }[];
+  voting: {
+    delay: number;
+    period: number;
+    type: string;
+    quorum: number;
+  };
+  filter: {
+    minScore: number;
+    onlyMembers: boolean;
+  }
+  plugins: any;
+};
 
 type FetchOffChainProposalListParams = {
   first?: number;
@@ -126,6 +158,14 @@ export const useProposal = (id: string) => {
   return data || {};
 };
 
+export const fetchOffChainProposal = async (id: string) => {
+  const offChainData = await request(OFFCHAIN_HUB_API, PROPOSAL_QUERY, {
+    id,
+  });
+  return offChainData.proposal;
+};
+
+
 export const useProposalList = (params: FetchOffChainProposalListParams) => {
   const [offChainProposalList, setOffChainProposalList] = useState<
     ProposalType[]
@@ -161,9 +201,24 @@ export const fetchOffChainProposalList = async (
   return offChainProposalList.proposals;
 };
 
-export const fetchOffChainProposal = async (id: string) => {
-  const offChainData = await request(OFFCHAIN_HUB_API, PROPOSAL_QUERY, {
-    id,
+export const useSpaceList = (id_in: string[]) => {
+  const [spacesData, setSpacesData] = useState<Space[]>([]);
+  useEffect(() => {
+    const _fetchData = async () => {
+      const spaces = (await fetchSpaces(id_in)) as Space[];
+      if (spaces) {
+        setSpacesData(spaces);
+      }
+    };
+    _fetchData();
+  }, []);
+
+  return spacesData;
+};
+
+export const fetchSpaces = async (id_in: string[]) => {
+  const spacesData = await request(OFFCHAIN_HUB_API, SPACES_QUERY, {
+    id_in,
   });
-  return offChainData.proposal;
+  return spacesData.spaces;
 };

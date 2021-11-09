@@ -156,7 +156,6 @@ export const SPACES_QUERY = gql`
       about
       network
       symbol
-      network
       terms
       skin
       avatar
