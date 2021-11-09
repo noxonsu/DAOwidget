@@ -10,22 +10,15 @@ type ParamsProps = {
 function ProposalDetail() {
   const { proposalId = "" } = useParams() as ParamsProps;
 
-  const proposal = useProposal(proposalId);
+  const { proposalData, isLoading, error} = useProposal(proposalId);
 
-  const { title, description, body } = proposal;
-
-  if (!title) {
-    return (
-      <p>
-        Have not proposal or not proposal's title. Please, try use another
-        proposal.
-      </p>
-    );
-  }
+  const { title, description, body } = proposalData;
 
   return (
     <div style={{ padding: "2rem" }}>
-      <h1>{title}</h1>
+      {isLoading && <h3>Loading...</h3>}
+      {error && <h3>{error.message}</h3>}
+      {title && <h1>{title}</h1>}
       <MarkdownElement text={description || body || ""} />
     </div>
   );

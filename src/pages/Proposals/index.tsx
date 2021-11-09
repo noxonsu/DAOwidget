@@ -9,7 +9,7 @@ import "./index.scss";
 function Proposals() {
   if (!window?.ENS_DOMAIN) window.ENS_DOMAIN = "sushigov.eth";
 
-  const proposals = useProposalList({ space_in: [window.ENS_DOMAIN] });
+  const { offChainProposalList: proposals, isLoading, error } = useProposalList({ space_in: [window.ENS_DOMAIN] });
 
   const renderedProposalList = proposals.map(
     ({ author, body, title, state, id }, index) => {
@@ -37,7 +37,9 @@ function Proposals() {
       <div className="proposals-header">
         <h1>Proposals</h1>
       </div>
-      {proposals.length && renderedProposalList}
+      {isLoading && <h3>Loading...</h3>}
+      {error && <h3>{error.message}</h3>}
+      {!!proposals.length && renderedProposalList}
     </div>
   );
 }

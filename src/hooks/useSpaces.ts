@@ -37,18 +37,31 @@ export type Space = {
 };
 
 export const useSpaceList = (id_in: string[]) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<false | Error>(false);
   const [spacesData, setSpacesData] = useState<Space[]>([]);
+
   useEffect(() => {
     const _fetchData = async () => {
-      const spaces = (await fetchSpaces(id_in)) as Space[];
-      if (spaces) {
-        setSpacesData(spaces);
+      setIsLoading(true);
+      try {
+        const spaces = (await fetchSpaces(id_in)) as Space[];
+        if (spaces) {
+          setSpacesData(spaces);
+          setIsLoading(false);
+        }
+      } catch (err) {
+        setError(new Error("Error: can't fetch space list"))
       }
     };
     _fetchData();
   }, []);
 
-  return spacesData;
+  return {
+    spacesData,
+    isLoading,
+    error,
+  };
 };
 
 export const fetchSpaces = async (id_in: string[]) => {

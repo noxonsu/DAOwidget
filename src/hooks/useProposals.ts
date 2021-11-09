@@ -41,18 +41,31 @@ type FetchOffChainProposalListParams = {
 };
 
 export const useProposal = (id: string) => {
-  const [data, setData] = useState<ProposalType>({} as any);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<false | Error>(false);
+  const [proposalData, setProposalData] = useState<ProposalType>({} as any);
+
   useEffect(() => {
     const _fetchData = async () => {
-      const proposal = (await fetchOffChainProposal(id)) as ProposalType;
-      if (proposal) {
-        setData(proposal);
-      }
+      try {
+        setIsLoading(true);
+        const proposal = (await fetchOffChainProposal(id)) as ProposalType;
+
+        setProposalData(proposal)
+        setIsLoading(false)
+      } catch (err) {
+        setError(new Error("Can't fetch proposal"))
+        setIsLoading(false)
+      };
     };
     _fetchData();
   }, []);
 
-  return data || {};
+  return {
+    isLoading,
+    error,
+    proposalData,
+  };
 };
 
 export const fetchOffChainProposal = async (id: string) => {
@@ -63,21 +76,34 @@ export const fetchOffChainProposal = async (id: string) => {
 };
 
 export const useProposalList = (params: FetchOffChainProposalListParams) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<false | Error>(false);
   const [offChainProposalList, setOffChainProposalList] = useState<
     ProposalType[]
   >([]);
 
   useEffect(() => {
     const _fetchData = async () => {
-      const proposals = (await fetchOffChainProposalList(
-        params
-      )) as ProposalType[];
-      setOffChainProposalList(proposals);
+      try {
+        setIsLoading(true);
+        const proposals = (await fetchOffChainProposalList(
+          params
+        )) as ProposalType[];
+        setOffChainProposalList(proposals);
+        setIsLoading(false);
+      } catch (err) {
+        setError(new Error("Can't fetch proposals"))
+        setIsLoading(false)
+      };
     };
     _fetchData();
   }, []);
 
-  return offChainProposalList;
+  return {
+    offChainProposalList,
+    isLoading,
+    error,
+  };
 };
 
 export const fetchOffChainProposalList = async (
