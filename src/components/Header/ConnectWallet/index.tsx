@@ -1,14 +1,15 @@
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import "./index.scss";
 
 function ConnectWallet() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <div className="connect-wallet">
       <button
         className="connect-wallet__button button"
-        onClick={() => history.push(`/account`)}
+        onClick={() => navigate(`/account`)}
       >
         Connect Wallet
       </button>

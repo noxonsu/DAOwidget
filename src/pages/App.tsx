@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Account from "./Account";
 import Proposal from "./Proposal";
@@ -12,28 +12,22 @@ import "./App.scss";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <div className="content-wrapper">
-        <Switch>
-          <Route exact strict path="/account" component={Account} />
-          <Route exact strict path="/about" component={About} />
-          <Route
-            exact
-            strict
-            path="/proposal/create"
-            component={CreateProposal}
-          />
-          <Route
-            exact
-            strict
-            path="/proposal/:proposalId"
-            component={Proposal}
-          />
-          <Route component={Proposals} />
-        </Switch>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <div className="content-wrapper">
+          <Routes>
+            <Route path="/" element={<Proposals />} />
+            <Route path="account" element={<Account />} />
+            <Route path="about" element={<About />} />
+            <Route path="proposal">
+              <Route path="create" element={<CreateProposal />} />
+              <Route path=":proposalId" element={<Proposal />} />
+            </Route>
+          </Routes>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
