@@ -10,7 +10,7 @@ type ParamsProps = {
 function ProposalDetail() {
   const { proposalId = "" } = useParams() as ParamsProps;
 
-  const { proposalData, isLoading, error} = useProposal(proposalId);
+  const { proposalData, isLoading, error } = useProposal(proposalId);
 
   const { title, description, body } = proposalData;
 

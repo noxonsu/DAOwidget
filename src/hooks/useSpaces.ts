@@ -43,15 +43,15 @@ export const useSpaceList = (id_in: string[]) => {
 
   useEffect(() => {
     const _fetchData = async () => {
-      setIsLoading(true);
       try {
+        setIsLoading(true);
+
         const spaces = (await fetchSpaces(id_in)) as Space[];
-        if (spaces) {
-          setSpacesData(spaces);
-          setIsLoading(false);
-        }
+        setSpacesData(spaces);
       } catch (err) {
-        setError(new Error("Error: can't fetch space list"))
+        setError(new Error("Error: can't fetch space list"));
+      } finally {
+        setIsLoading(false);
       }
     };
     _fetchData();

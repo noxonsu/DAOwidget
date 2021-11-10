@@ -49,14 +49,14 @@ export const useProposal = (id: string) => {
     const _fetchData = async () => {
       try {
         setIsLoading(true);
-        const proposal = (await fetchOffChainProposal(id)) as ProposalType;
 
-        setProposalData(proposal)
-        setIsLoading(false)
+        const proposal = (await fetchOffChainProposal(id)) as ProposalType;
+        setProposalData(proposal);
       } catch (err) {
-        setError(new Error("Can't fetch proposal"))
-        setIsLoading(false)
-      };
+        setError(new Error("Can't fetch proposal"));
+      } finally {
+        setIsLoading(false);
+      }
     };
     _fetchData();
   }, []);
@@ -86,15 +86,16 @@ export const useProposalList = (params: FetchOffChainProposalListParams) => {
     const _fetchData = async () => {
       try {
         setIsLoading(true);
+
         const proposals = (await fetchOffChainProposalList(
           params
         )) as ProposalType[];
         setOffChainProposalList(proposals);
-        setIsLoading(false);
       } catch (err) {
-        setError(new Error("Can't fetch proposals"))
-        setIsLoading(false)
-      };
+        setError(new Error("Can't fetch proposals"));
+      } finally {
+        setIsLoading(false);
+      }
     };
     _fetchData();
   }, []);

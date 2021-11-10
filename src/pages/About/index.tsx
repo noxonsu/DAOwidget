@@ -8,30 +8,24 @@ function About() {
 
   const { spacesData, isLoading, error } = useSpaceList([window.ENS_DOMAIN]);
 
-  const spaceData = spacesData[0]
+  const spaceData = spacesData[0];
 
-  console.groupCollapsed('useSpaceList states')
-  console.log('isLoading', isLoading)
-  console.log('error', error)
+  console.groupCollapsed("useSpaceList states");
+  console.log("isLoading", isLoading);
+  console.log("error", error);
   console.log("spaceData", spaceData);
-  console.groupEnd()
+  console.groupEnd();
 
   if (isLoading) {
-    return (
-      <h1>Loading...</h1>
-    )
+    return <h1>Loading...</h1>;
   }
 
   if (!isLoading && spacesData.length === 0) {
-    return (
-      <h1>Have not any space data.</h1>
-    )
+    return <h1>Have not any space data.</h1>;
   }
 
   if (!spaceData) {
-    return (
-      <h1>Please, try use another space or try reloar.</h1>
-    );
+    return <h1>Please, try use another space or try reloar.</h1>;
   }
 
   const {
