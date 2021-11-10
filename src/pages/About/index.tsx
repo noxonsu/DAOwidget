@@ -1,6 +1,8 @@
 import { useSpaceList } from "src/hooks/useSpaces";
 import { shortenText } from "src/helpers/utils";
 
+import FollowButton from "./FollowButton";
+
 import { ReactComponent as ExternalLinkSvg } from "src/assets/svg/external-link.svg";
 
 function About() {
@@ -43,15 +45,7 @@ function About() {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>About Page</h1>
-      <button
-        style={{
-          border: "1px solid white",
-          padding: "0.5rem",
-        }}
-        onClick={() => {}}
-      >
-        Join
-      </button>
+      <FollowButton />
       <div>
         {name && (
           <>
