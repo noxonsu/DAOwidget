@@ -18,7 +18,7 @@ function About() {
   console.log("spaceData", spaceData);
   console.groupEnd();
 
-  if (isLoading) {
+  if (isLoading && !spaceData) {
     return <h1>Loading...</h1>;
   }
 
@@ -45,7 +45,7 @@ function About() {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>About Page</h1>
-      <FollowButton />
+      <FollowButton spaceObj={spaceData} />
       <div>
         {name && (
           <>
