@@ -1,7 +1,7 @@
 import { useWeb3React } from "@web3-react/core";
-import { Space } from 'src/hooks/useSpaces'
+import { Space } from "src/hooks/useSpaces";
 import client from "src/helpers/clientEIP712";
-import { Web3Provider } from "@ethersproject/providers"
+import { Web3Provider } from "@ethersproject/providers";
 import { useAliasAction } from "src/hooks/useAliasAction";
 
 interface FollowButtonProps {
@@ -15,13 +15,13 @@ function FollowButton(props: FollowButtonProps) {
 
   const { setAlias, aliasWallet, isValidAlias, checkAlias } = useAliasAction();
 
-  console.log('spaceObj', spaceObj)
+  console.log("spaceObj", spaceObj);
 
   const follow = async (space: string) => {
-    console.log('space', space)
+    console.log("space", space);
 
-    console.log('web3', web3)
-    const account = web3.account || ''
+    console.log("web3", web3);
+    const account = web3.account || "";
 
     const isFollowing = false;
     try {
@@ -45,7 +45,7 @@ function FollowButton(props: FollowButtonProps) {
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
   return (
     <button

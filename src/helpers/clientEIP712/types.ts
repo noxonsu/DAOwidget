@@ -69,159 +69,166 @@ export interface Alias {
   timestamp?: number;
 }
 
-
-export type Message = Space | Proposal | CancelProposal | Vote | Follow | Unfollow | Subscribe | Unsubscribe | Alias;
+export type Message =
+  | Space
+  | Proposal
+  | CancelProposal
+  | Vote
+  | Follow
+  | Unfollow
+  | Subscribe
+  | Unsubscribe
+  | Alias;
 
 export const spaceTypes = {
   Space: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' },
-    { name: 'timestamp', type: 'uint64' },
-    { name: 'settings', type: 'string' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+    { name: "timestamp", type: "uint64" },
+    { name: "settings", type: "string" },
+  ],
 };
 
 export const proposalTypes = {
   Proposal: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' },
-    { name: 'timestamp', type: 'uint64' },
-    { name: 'type', type: 'string' },
-    { name: 'title', type: 'string' },
-    { name: 'body', type: 'string' },
-    { name: 'choices', type: 'string[]' },
-    { name: 'start', type: 'uint64' },
-    { name: 'end', type: 'uint64' },
-    { name: 'snapshot', type: 'uint64' },
-    { name: 'network', type: 'string' },
-    { name: 'strategies', type: 'string' },
-    { name: 'plugins', type: 'string' },
-    { name: 'metadata', type: 'string' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+    { name: "timestamp", type: "uint64" },
+    { name: "type", type: "string" },
+    { name: "title", type: "string" },
+    { name: "body", type: "string" },
+    { name: "choices", type: "string[]" },
+    { name: "start", type: "uint64" },
+    { name: "end", type: "uint64" },
+    { name: "snapshot", type: "uint64" },
+    { name: "network", type: "string" },
+    { name: "strategies", type: "string" },
+    { name: "plugins", type: "string" },
+    { name: "metadata", type: "string" },
+  ],
 };
 
 export const cancelProposalTypes = {
   CancelProposal: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' },
-    { name: 'timestamp', type: 'uint64' },
-    { name: 'proposal', type: 'string' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+    { name: "timestamp", type: "uint64" },
+    { name: "proposal", type: "string" },
+  ],
 };
 
 export const cancelProposal2Types = {
   CancelProposal: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' },
-    { name: 'timestamp', type: 'uint64' },
-    { name: 'proposal', type: 'bytes32' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+    { name: "timestamp", type: "uint64" },
+    { name: "proposal", type: "bytes32" },
+  ],
 };
 
 export const voteTypes = {
   Vote: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' },
-    { name: 'timestamp', type: 'uint64' },
-    { name: 'proposal', type: 'string' },
-    { name: 'choice', type: 'uint32' },
-    { name: 'metadata', type: 'string' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+    { name: "timestamp", type: "uint64" },
+    { name: "proposal", type: "string" },
+    { name: "choice", type: "uint32" },
+    { name: "metadata", type: "string" },
+  ],
 };
 
 export const voteArrayTypes = {
   Vote: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' },
-    { name: 'timestamp', type: 'uint64' },
-    { name: 'proposal', type: 'string' },
-    { name: 'choice', type: 'uint32[]' },
-    { name: 'metadata', type: 'string' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+    { name: "timestamp", type: "uint64" },
+    { name: "proposal", type: "string" },
+    { name: "choice", type: "uint32[]" },
+    { name: "metadata", type: "string" },
+  ],
 };
 
 export const voteStringTypes = {
   Vote: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' },
-    { name: 'timestamp', type: 'uint64' },
-    { name: 'proposal', type: 'string' },
-    { name: 'choice', type: 'string' },
-    { name: 'metadata', type: 'string' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+    { name: "timestamp", type: "uint64" },
+    { name: "proposal", type: "string" },
+    { name: "choice", type: "string" },
+    { name: "metadata", type: "string" },
+  ],
 };
 
 export const vote2Types = {
   Vote: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' },
-    { name: 'timestamp', type: 'uint64' },
-    { name: 'proposal', type: 'bytes32' },
-    { name: 'choice', type: 'uint32' },
-    { name: 'metadata', type: 'string' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+    { name: "timestamp", type: "uint64" },
+    { name: "proposal", type: "bytes32" },
+    { name: "choice", type: "uint32" },
+    { name: "metadata", type: "string" },
+  ],
 };
 
 export const voteArray2Types = {
   Vote: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' },
-    { name: 'timestamp', type: 'uint64' },
-    { name: 'proposal', type: 'bytes32' },
-    { name: 'choice', type: 'uint32[]' },
-    { name: 'metadata', type: 'string' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+    { name: "timestamp", type: "uint64" },
+    { name: "proposal", type: "bytes32" },
+    { name: "choice", type: "uint32[]" },
+    { name: "metadata", type: "string" },
+  ],
 };
 
 export const voteString2Types = {
   Vote: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' },
-    { name: 'timestamp', type: 'uint64' },
-    { name: 'proposal', type: 'bytes32' },
-    { name: 'choice', type: 'string' },
-    { name: 'metadata', type: 'string' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+    { name: "timestamp", type: "uint64" },
+    { name: "proposal", type: "bytes32" },
+    { name: "choice", type: "string" },
+    { name: "metadata", type: "string" },
+  ],
 };
 
 export const followTypes = {
   Follow: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+  ],
 };
 
 export const unfollowTypes = {
   Unfollow: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+  ],
 };
 
 export const subscribeTypes = {
   Subscribe: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+  ],
 };
 
 export const unsubscribeTypes = {
   Unsubscribe: [
-    { name: 'from', type: 'address' },
-    { name: 'space', type: 'string' }
-  ]
+    { name: "from", type: "address" },
+    { name: "space", type: "string" },
+  ],
 };
 
 export const aliasTypes = {
   Alias: [
-    { name: 'from', type: 'address' },
-    { name: 'alias', type: 'address' }
-  ]
+    { name: "from", type: "address" },
+    { name: "alias", type: "address" },
+  ],
 };
 
-
 export type Types =
-  typeof aliasTypes
+  | typeof aliasTypes
   | typeof unsubscribeTypes
   | typeof subscribeTypes
   | typeof unfollowTypes
@@ -243,11 +250,11 @@ export type Domain = {
 };
 
 export type Envelop = {
-  address: string,
-  sig: string,
+  address: string;
+  sig: string;
   data: {
     domain: Domain;
     types: Types;
     message: Message;
-  }
-}
+  };
+};

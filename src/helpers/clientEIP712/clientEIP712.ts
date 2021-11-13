@@ -1,6 +1,6 @@
-import fetch from 'cross-fetch';
-import { Web3Provider } from '@ethersproject/providers';
-import { Wallet } from '@ethersproject/wallet';
+import fetch from "cross-fetch";
+import { Web3Provider } from "@ethersproject/providers";
+import { Wallet } from "@ethersproject/wallet";
 import { OFFCHAIN_HUB_LINK, NAME, VERSION } from "../constants";
 import {
   Space,
@@ -30,11 +30,11 @@ import {
   aliasTypes,
   Types,
   Envelop,
-} from './types';
+} from "./types";
 
 export const domain = {
   name: NAME,
-  version: VERSION
+  version: VERSION,
 };
 
 export class Client {
@@ -44,17 +44,23 @@ export class Client {
     this.address = address;
   }
 
-  async sign(web3: Web3Provider | Wallet, address: string, message: Message, types: Types) {
+  async sign(
+    web3: Web3Provider | Wallet,
+    address: string,
+    message: Message,
+    types: Types
+  ) {
     let signer;
     if (web3 instanceof Wallet) signer = web3;
     if (web3 instanceof Web3Provider) signer = web3.getSigner();
     if (!message.from) message.from = address;
-    if (!message.timestamp) message.timestamp = parseInt((Date.now() / 1e3).toFixed());
+    if (!message.timestamp)
+      message.timestamp = parseInt((Date.now() / 1e3).toFixed());
     const data = { domain, types, message };
 
     if (signer) {
       const sig = await signer._signTypedData(domain, data.types, message);
-      console.log('Sign', { address, sig, data });
+      console.log("Sign", { address, sig, data });
       return await this.send({ address, sig, data });
     }
   }
@@ -62,12 +68,12 @@ export class Client {
   async send(envelop: Envelop) {
     const url = `${this.address}/api/msg`;
     const init = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(envelop)
+      body: JSON.stringify(envelop),
     };
     return new Promise((resolve, reject) => {
       fetch(url, init)
@@ -96,7 +102,7 @@ export class Client {
     address: string,
     message: CancelProposal
   ) {
-    const type2 = message.proposal.startsWith('0x');
+    const type2 = message.proposal.startsWith("0x");
     return await this.sign(
       web3,
       address,
@@ -106,11 +112,11 @@ export class Client {
   }
 
   async vote(web3: Web3Provider | Wallet, address: string, message: Vote) {
-    const type2 = message.proposal.startsWith('0x');
+    const type2 = message.proposal.startsWith("0x");
     let type = type2 ? vote2Types : voteTypes;
-    if (['approval', 'ranked-choice'].includes(message.type))
+    if (["approval", "ranked-choice"].includes(message.type))
       type = type2 ? voteArray2Types : voteArrayTypes;
-    if (['quadratic', 'weighted'].includes(message.type)) {
+    if (["quadratic", "weighted"].includes(message.type)) {
       type = type2 ? voteString2Types : voteStringTypes;
       message.choice = JSON.stringify(message.choice);
     }

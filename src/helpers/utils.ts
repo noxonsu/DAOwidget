@@ -1,4 +1,4 @@
-import pkg from 'src/../package.json';
+import pkg from "src/../package.json";
 
 export const shortenText = (str = "", numberOfLetters = 7) => {
   return str?.length > numberOfLetters + 3
@@ -20,7 +20,7 @@ export function lsRemove(key: string) {
 }
 
 export function jsonParse(input: any, fallback?: any) {
-  if (typeof input !== 'string') {
+  if (typeof input !== "string") {
     return fallback || {};
   }
   try {
@@ -34,7 +34,7 @@ const defaultObj = {
   shortenText,
   lsSet,
   lsGet,
-  lsRemove
+  lsRemove,
 };
 
 export default defaultObj;
