@@ -15,7 +15,7 @@ function FollowButton(props: FollowButtonProps) {
 
   const { setAlias, aliasWallet, isValidAlias, checkAlias } = useAliasAction();
 
-  console.log("spaceObj", spaceObj);
+  console.log("spaceObj", spaceObj, aliasWallet);
 
   const follow = async (space: string) => {
     console.log("space", space);
@@ -28,7 +28,7 @@ function FollowButton(props: FollowButtonProps) {
       await checkAlias();
       if (!aliasWallet || !isValidAlias.current) {
         await setAlias();
-        follow(space);
+        // follow(space);
       } else {
         if (isFollowing) {
           await client.unfollow(aliasWallet, aliasWallet.address, {
