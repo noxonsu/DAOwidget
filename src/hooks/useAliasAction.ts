@@ -20,19 +20,17 @@ export function useAliasAction() {
   const [userAlias, setUserAlias] = useState("");
   const [aliasWallet, setAliasWallet] = useState<Wallet | null>(null);
 
-  const web3 = useWeb3React<Web3Provider>();
+  const { account = "", library } = useWeb3React<Web3Provider>();
 
   useEffect(() => {
-    const { account = "", library } = web3;
-
     if (account) {
       setUserAlias(aliases.current?.[account]);
       setAliasWallet(userAlias ? new Wallet(userAlias, library) : null);
+      checkAlias();
     }
-  }, [aliases, userAlias, web3]);
+  }, [aliases, userAlias, account, library]);
 
   async function checkAlias() {
-    const account = web3.account || "";
     if (aliasWallet?.address && account) {
       const data = await request(OFFCHAIN_HUB_API, ALIASES_QUERY, {
         address: account,
@@ -50,10 +48,7 @@ export function useAliasAction() {
   async function setAlias() {
     const rndWallet = Wallet.createRandom();
 
-    const account = web3.account || "";
-    const provider = web3.library;
-
-    if (account && provider) {
+    if (account && library) {
       aliases.current = Object.assign(
         {
           [account]: rndWallet.privateKey,
@@ -65,11 +60,11 @@ export function useAliasAction() {
       const userAlias = aliases.current?.[account];
       setUserAlias(userAlias);
 
-      const aliasWallet = userAlias ? new Wallet(userAlias, provider) : null;
+      const aliasWallet = userAlias ? new Wallet(userAlias, library) : null;
       setAliasWallet(aliasWallet);
 
       if (aliasWallet?.address) {
-        await client.alias(provider, account, {
+        await client.alias(library, account, {
           alias: aliasWallet.address,
         });
       }

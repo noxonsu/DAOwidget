@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 
 import { Space } from "src/hooks/useSpaces";
@@ -12,26 +11,21 @@ interface FollowButtonProps {
 function FollowButton(props: FollowButtonProps) {
   const { spaceObj } = props;
 
-  const {
-    clickFollow,
-    loadFollows,
-    loadingFollow,
-    isFollowing
-  } = useFollowSpace(spaceObj.id)
-
+  const { clickFollow, loadFollows, loadingFollow, isFollowing } =
+    useFollowSpace(spaceObj.id);
 
   const [hoverRef, isHovered] = useHover<HTMLDivElement>();
 
   const buttonText = loadingFollow
-    ? 'Loading...'
+    ? "Loading..."
     : !isFollowing
       ? "Join"
       : isHovered
         ? "Leave"
-        : "Joined"
+        : "Joined";
 
   useEffect(() => {
-    loadFollows()
+    loadFollows();
   }, []);
 
   return (

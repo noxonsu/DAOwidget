@@ -2,25 +2,24 @@ import { useEffect, useState, useRef, MutableRefObject } from "react";
 
 export default function useHover<T>(
   handleMouseOverCallBack?: () => void,
-  handleMouseOutCallBack?: () => void,
+  handleMouseOutCallBack?: () => void
 ): [MutableRefObject<T>, boolean] {
-
   const [value, setValue] = useState<boolean>(false);
   const ref: any = useRef<T | null>(null);
 
   const handleMouseOver = (): void => {
-    setValue(true)
+    setValue(true);
     if (!!handleMouseOverCallBack) {
-      handleMouseOverCallBack()
+      handleMouseOverCallBack();
     }
   };
 
   const handleMouseOut = (): void => {
     setValue(false);
     if (!!handleMouseOutCallBack) {
-      handleMouseOutCallBack()
+      handleMouseOutCallBack();
     }
-  }
+  };
 
   useEffect(
     () => {

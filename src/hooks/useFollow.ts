@@ -9,32 +9,31 @@ import { OFFCHAIN_HUB_API } from "src/helpers/constants";
 import { useAliasAction } from "src/hooks/useAliasAction";
 import client from "src/helpers/clientEIP712";
 
-export function useFollowSpace(spaceId: string = '') {
-  const [following, setFollowing] = useState<IUniversalObj[]>([])
-  const [loadingFollow, setLoadingFollow] = useState(false)
+export function useFollowSpace(spaceId: string = "") {
+  const [following, setFollowing] = useState<IUniversalObj[]>([]);
+  const [loadingFollow, setLoadingFollow] = useState(false);
 
   const web3 = useWeb3React<Web3Provider>();
-  const account = web3.account || ""
+  const account = web3.account || "";
 
   const { setAlias, aliasWallet, isValidAlias, checkAlias } = useAliasAction();
 
   async function loadFollows() {
-    setLoadingFollow(true)
+    setLoadingFollow(true);
     try {
       Promise.all([
-        (account && setFollowing(await fetchFollowing([account], [spaceId]))),
+        account && setFollowing(await fetchFollowing([account], [spaceId])),
       ]);
     } catch (e) {
       console.error(e);
-    }
-    finally {
-      setLoadingFollow(false)
+    } finally {
+      setLoadingFollow(false);
     }
   }
 
   useEffect(() => {
-    loadFollows()
-  }, [account])
+    loadFollows();
+  }, [account]);
 
   function clickFollow() {
     web3.active && web3.account
@@ -46,15 +45,14 @@ export function useFollowSpace(spaceId: string = '') {
     const account = web3.account || "";
 
     const isFollowing = following.some(
-        (f: any) =>
-          f.space.id === spaceId && f.follower === web3.account
-      )
+      (f: any) => f.space.id === spaceId && f.follower === web3.account
+    );
 
     try {
       await checkAlias();
       if (!aliasWallet || !isValidAlias.current) {
         await setAlias();
-        follow(spaceId);
+        await follow(spaceId);
       } else {
         if (isFollowing) {
           await client.unfollow(aliasWallet, aliasWallet.address, {
@@ -66,8 +64,8 @@ export function useFollowSpace(spaceId: string = '') {
             from: account,
             space: spaceId,
           });
-        };
-        await loadFollows()
+        }
+        await loadFollows();
       }
     } catch (e) {
       console.error(e);
@@ -79,17 +77,18 @@ export function useFollowSpace(spaceId: string = '') {
     loadFollows,
     loadingFollow,
     isFollowing: following.some(
-        (f: any) =>
-          f.space.id === spaceId && f.follower === web3.account
-      ),
+      (f: any) => f.space.id === spaceId && f.follower === web3.account
+    ),
   };
-};
+}
 
-export const fetchFollowing = async (follower_in: string[], space_in: string[]) => {
+export const fetchFollowing = async (
+  follower_in: string[],
+  space_in: string[]
+) => {
   const followingData = await request(OFFCHAIN_HUB_API, FOLLOWS_QUERY, {
     follower_in,
-    space_in
+    space_in,
   });
   return followingData.follows;
 };
-
