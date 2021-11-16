@@ -1,118 +1,90 @@
-// import { computed, useRef } from "react";
-// import { useWeb3React } from "@web3-react/core";
-// import { useApolloQuery } from "@/composables/useApolloQuery";
-// import { getInstance } from "@snapshot-labs/lock/plugins/vue3";
-// import { FOLLOWS_QUERY } from "@/helpers/queries";
-// import { useAliasAction } from "@/composables/useAliasAction";
-// import client from "@/helpers/clientEIP712";
-// import { useSpaceSubscription } from "./useSpaceSubscription";
+import { useState } from "react";
+import { request } from "graphql-request";
+import { useWeb3React } from "@web3-react/core";
+import { Web3Provider } from "@ethersproject/providers";
 
-// export function useFollowSpace(spaceObj: any = {}) {
-//   const following = useRef([]);
-//   const loadingFollows = useRef(false);
+import { FOLLOWS_QUERY } from "src/helpers/queries";
+import { OFFCHAIN_HUB_API } from "src/helpers/constants";
 
-//   const { web3 } = useWeb3React();
-//   const { apolloQuery } = useApolloQuery();
-//   const { setAlias, aliasWallet, isValidAlias, checkAlias } = useAliasAction();
-//   const { toggleSubscription, isSubscribed } = useSpaceSubscription(
-//     spaceObj?.id
-//   );
+import { useAliasAction } from "src/hooks/useAliasAction";
+import client from "src/helpers/clientEIP712";
 
-//   const loadingFollow = useRef("");
-//   const hoverJoin = useRef("");
+export function useFollowSpace(spaceId: string = '') {
+  const [following, setFollowing] = useState<IUniversalObj[]>([])
+  const [loadingFollow, setLoadingFollow] = useState(false)
 
-//   const web3Account = computed(() => web3.value.account);
+  const web3 = useWeb3React<Web3Provider>();
+  const account = web3.account || ""
 
-//   const followingSpaces = computed(() =>
-//     following.current.map((f: any) => f.space.id)
-//   );
+  const { setAlias, aliasWallet, isValidAlias, checkAlias } = useAliasAction();
 
-//   const isFollowing = computed(() =>
-//     following.current.some(
-//       (f: any) =>
-//         f.space.id === spaceObj?.id && f.follower === web3Account.value
-//     )
-//   );
+  async function loadFollows() {
+    setLoadingFollow(true)
+    try {
+      Promise.all([
+        (account && setFollowing(await fetchFollowing([account], [spaceId]))),
+      ]);
+    } catch (e) {
+      console.error(e);
+    }
+    finally {
+      setLoadingFollow(false)
+    }
+  }
 
-//   async function loadFollows() {
-//     const { isAuthenticated } = getInstance();
+  function clickFollow() {
+    web3.active && web3.account
+      ? follow(spaceId)
+      : console.log("Please connect to wallet");
+  }
 
-//     if (!isAuthenticated.value) return;
+  const follow = async (spaceId: string) => {
+    const account = web3.account || "";
 
-//     loadingFollows.current = true;
-//     try {
-//       Promise.all([
-//         (following.current = await apolloQuery(
-//           {
-//             query: FOLLOWS_QUERY,
-//             variables: {
-//               follower_in: web3Account.value,
-//             },
-//           },
-//           "follows"
-//         )),
-//       ]);
-//       loadingFollows.value = false;
-//     } catch (e) {
-//       loadingFollows.value = false;
-//       console.error(e);
-//     }
-//   }
+    const isFollowing = following.some(
+        (f: any) =>
+          f.space.id === spaceId && f.follower === web3.account
+      )
 
-//   function clickFollow(space) {
-//     !web3.value.authLoading && web3Account.value
-//       ? follow(space)
-//       : console.log("Please connect to wallet");
-//   }
+    try {
+      await checkAlias();
+      if (!aliasWallet || !isValidAlias.current) {
+        await setAlias();
+        follow(spaceId);
+      } else {
+        if (isFollowing) {
+          await client.unfollow(aliasWallet, aliasWallet.address, {
+            from: account,
+            space: spaceId,
+          });
+        } else {
+          await client.follow(aliasWallet, aliasWallet.address, {
+            from: account,
+            space: spaceId,
+          });
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
-//   async function follow(space) {
-//     loadingFollow.value = spaceObj.id;
-//     try {
-//       await checkAlias();
-//       if (!aliasWallet.value || !isValidAlias.value) {
-//         await setAlias();
-//         follow(space);
-//       } else {
-//         if (isFollowing.value) {
-//           // Also unsubscribe to the notifications if the user leaves the space.
-//           if (isSubscribed.value) {
-//             await toggleSubscription();
-//           }
-//           await client.unfollow(aliasWallet.value, aliasWallet.value.address, {
-//             from: web3Account.value,
-//             space,
-//           });
-//         } else {
-//           await client.follow(aliasWallet.value, aliasWallet.value.address, {
-//             from: web3Account.value,
-//             space,
-//           });
-//         }
-//         await loadFollows();
-//         loadingFollow.value = "";
-//       }
-//     } catch (e) {
-//       loadingFollow.value = "";
-//       console.error(e);
-//     }
-//   }
+  return {
+    clickFollow,
+    loadFollows,
+    loadingFollow,
+    isFollowing: following.some(
+        (f: any) =>
+          f.space.id === spaceId && f.follower === web3.account
+      ),
+  };
+};
 
-//   // watchEffect(async () => {
-//   //   (isFollowing.value = (following.value ?? []).some(
-//   //     (f: any) =>
-//   //       f.space.id === spaceObj?.id && f.follower === web3Account.value
-//   //   )),
-//   //     { deep: true };
-//   // });
+export const fetchFollowing = async (follower_in: string[], space_in: string[]) => {
+  const followingData = await request(OFFCHAIN_HUB_API, FOLLOWS_QUERY, {
+    follower_in,
+    space_in
+  });
+  return followingData.follows;
+};
 
-//   return {
-//     clickFollow,
-//     loadFollows,
-//     loadingFollow: computed(() => loadingFollow.value),
-//     loadingFollows: computed(() => loadingFollows.value),
-//     isFollowing,
-//     followingSpaces,
-//     hoverJoin,
-//   };
-// }
-export {};

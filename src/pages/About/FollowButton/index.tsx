@@ -1,8 +1,7 @@
-import { useWeb3React } from "@web3-react/core";
+
+import { useEffect, useState, useRef, MutableRefObject } from "react";
 import { Space } from "src/hooks/useSpaces";
-import client from "src/helpers/clientEIP712";
-import { Web3Provider } from "@ethersproject/providers";
-import { useAliasAction } from "src/hooks/useAliasAction";
+import { useFollowSpace } from "src/hooks/useFollow";
 
 interface FollowButtonProps {
   spaceObj: Space;
@@ -11,41 +10,19 @@ interface FollowButtonProps {
 function FollowButton(props: FollowButtonProps) {
   const { spaceObj } = props;
 
-  const web3 = useWeb3React<Web3Provider>();
+  const {
+    clickFollow,
+    loadFollows,
+    loadingFollow,
+    isFollowing
+  } = useFollowSpace(spaceObj.id)
 
-  const { setAlias, aliasWallet, isValidAlias, checkAlias } = useAliasAction();
 
-  console.log("spaceObj", spaceObj, aliasWallet);
+  const [hoverRef, isHovered] = useHover<HTMLDivElement>();
 
-  const follow = async (space: string) => {
-    console.log("space", space);
-
-    console.log("web3", web3);
-    const account = web3.account || "";
-
-    const isFollowing = false;
-    try {
-      await checkAlias();
-      if (!aliasWallet || !isValidAlias.current) {
-        await setAlias();
-        // follow(space);
-      } else {
-        if (isFollowing) {
-          await client.unfollow(aliasWallet, aliasWallet.address, {
-            from: account,
-            space,
-          });
-        } else {
-          await client.follow(aliasWallet, aliasWallet.address, {
-            from: account,
-            space,
-          });
-        }
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  };
+  useEffect(() => {
+    loadFollows()
+  }, []);
 
   return (
     <button
@@ -53,11 +30,33 @@ function FollowButton(props: FollowButtonProps) {
         border: "1px solid white",
         padding: "0.5rem",
       }}
-      onClick={() => follow(spaceObj.id)}
+      onClick={() => clickFollow()}
     >
-      Join
+      <div ref={hoverRef}>{!isFollowing ? "Join" : isHovered ? "Leave" : !"Joined" }</div>
+      {}
     </button>
   );
 }
 
+function useHover<T>(): [MutableRefObject<T>, boolean] {
+  const [value, setValue] = useState<boolean>(false);
+  const ref: any = useRef<T | null>(null);
+  const handleMouseOver = (): void => setValue(true);
+  const handleMouseOut = (): void => setValue(false);
+  useEffect(
+    () => {
+      const node: any = ref.current;
+      if (node) {
+        node.addEventListener("mouseover", handleMouseOver);
+        node.addEventListener("mouseout", handleMouseOut);
+        return () => {
+          node.removeEventListener("mouseover", handleMouseOver);
+          node.removeEventListener("mouseout", handleMouseOut);
+        };
+      }
+    },
+    [ref.current] // Recall only if ref changes
+  );
+  return [ref, value];
+}
 export default FollowButton;
