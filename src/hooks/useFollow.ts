@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { request } from "graphql-request";
 import { useWeb3React } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
@@ -32,6 +32,10 @@ export function useFollowSpace(spaceId: string = '') {
     }
   }
 
+  useEffect(() => {
+    loadFollows()
+  }, [account])
+
   function clickFollow() {
     web3.active && web3.account
       ? follow(spaceId)
@@ -62,7 +66,8 @@ export function useFollowSpace(spaceId: string = '') {
             from: account,
             space: spaceId,
           });
-        }
+        };
+        await loadFollows()
       }
     } catch (e) {
       console.error(e);
