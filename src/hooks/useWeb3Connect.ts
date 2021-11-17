@@ -1,6 +1,15 @@
 import { useState, useEffect } from "react";
 import { useWeb3React } from "@web3-react/core";
+import { Web3Provider } from '@ethersproject/providers'
 import { injected } from "src/connectors";
+
+const NetworkContextName = 'NETWORK'
+
+export function useActiveWeb3React() {
+  const context = useWeb3React<Web3Provider>()
+  const contextNetwork = useWeb3React<Web3Provider>(NetworkContextName)
+  return context.active ? context : contextNetwork
+}
 
 export function useEagerConnect() {
   const { activate, active } = useWeb3React();

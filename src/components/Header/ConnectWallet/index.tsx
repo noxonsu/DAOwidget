@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import { useActiveWeb3React } from "src/hooks/useWeb3Connect";
+import { shortEVMAddress } from "src/helpers/utils";
 
 import "./index.scss";
 
 function ConnectWallet() {
+  const { account, chainId } = useActiveWeb3React()
   const navigate = useNavigate();
 
   return (
@@ -11,7 +14,7 @@ function ConnectWallet() {
         className="connect-wallet__button button"
         onClick={() => navigate(`/account`)}
       >
-        Connect Wallet
+        {account ? shortEVMAddress(account) : "Connect Wallet" }
       </button>
     </div>
   );
