@@ -11,7 +11,9 @@ import client from "src/helpers/clientEIP712";
 
 export function useFollowSpace(spaceId: string = "") {
   const [following, setFollowing] = useState<IUniversalObj[]>([]);
-  const [loadingFollow, setLoadingFollow] = useState(false);
+  const [isLoadingFollows, setIsLoadingFollows] = useState(false);
+  const [isFollowing, setIsFolowing] = useState(false)
+  const [isLoadingFollow, setIsLoadingFollow] = useState(false)
 
   const web3 = useWeb3React<Web3Provider>();
   const account = web3.account || "";
@@ -19,7 +21,7 @@ export function useFollowSpace(spaceId: string = "") {
   const { setAlias, aliasWallet, isValidAlias, checkAlias } = useAliasAction();
 
   async function loadFollows() {
-    setLoadingFollow(true);
+    setIsLoadingFollows(true);
     try {
       Promise.all([
         account && setFollowing(await fetchFollowing([account], [spaceId])),
@@ -27,13 +29,19 @@ export function useFollowSpace(spaceId: string = "") {
     } catch (e) {
       console.error(e);
     } finally {
-      setLoadingFollow(false);
+      setIsLoadingFollows(false);
     }
   }
 
   useEffect(() => {
     loadFollows();
   }, [account]);
+
+  useEffect(() => {
+    setIsFolowing(following.some(
+      (f: any) => f.space.id === spaceId && f.follower === web3.account
+    ));
+  }, [following]);
 
   function clickFollow() {
     web3.active && web3.account
@@ -44,23 +52,21 @@ export function useFollowSpace(spaceId: string = "") {
   const follow = async (spaceId: string) => {
     const account = web3.account || "";
 
-    const isFollowing = following.some(
-      (f: any) => f.space.id === spaceId && f.follower === web3.account
-    );
-
     try {
+      setIsLoadingFollow(true);
+
       await checkAlias();
-      if (!aliasWallet || !isValidAlias.current) {
+      if (!aliasWallet.current || !isValidAlias.current) {
         await setAlias();
         await follow(spaceId);
       } else {
         if (isFollowing) {
-          await client.unfollow(aliasWallet, aliasWallet.address, {
+          await client.unfollow(aliasWallet.current, aliasWallet.current.address, {
             from: account,
             space: spaceId,
           });
         } else {
-          await client.follow(aliasWallet, aliasWallet.address, {
+          await client.follow(aliasWallet.current, aliasWallet.current.address, {
             from: account,
             space: spaceId,
           });
@@ -69,16 +75,17 @@ export function useFollowSpace(spaceId: string = "") {
       }
     } catch (e) {
       console.error(e);
+    } finally {
+      setIsLoadingFollow(false)
     }
   };
 
   return {
     clickFollow,
     loadFollows,
-    loadingFollow,
-    isFollowing: following.some(
-      (f: any) => f.space.id === spaceId && f.follower === web3.account
-    ),
+    isLoadingFollows,
+    isLoadingFollow,
+    isFollowing,
   };
 }
 

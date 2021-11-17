@@ -17,31 +17,32 @@ export function useAliasAction() {
   const aliases = useRef(lsGet("aliases") || {});
   const isValidAlias = useRef(false);
 
-  const [userAlias, setUserAlias] = useState("");
-  const [aliasWallet, setAliasWallet] = useState<Wallet | null>(null);
-
   const { account = "", library } = useWeb3React<Web3Provider>();
+
+  const userAlias = useRef(aliases.current?.[account || ''] || '')
+  const aliasWallet = useRef<Wallet | null>(null)
+
 
   useEffect(() => {
     if (account) {
-      setUserAlias(aliases.current?.[account]);
-      setAliasWallet(userAlias ? new Wallet(userAlias, library) : null);
+      userAlias.current = aliases.current?.[account];
+      aliasWallet.current = userAlias.current ? new Wallet(userAlias.current, library) : null;
       checkAlias();
     }
-  }, [aliases, userAlias, account, library]);
+  }, [aliases.current, userAlias.current, account, library]);
 
   async function checkAlias() {
-    if (aliasWallet?.address && account) {
+    if (aliasWallet.current?.address && account) {
       const data = await request(OFFCHAIN_HUB_API, ALIASES_QUERY, {
         address: account,
-        alias: aliasWallet.address,
+        alias: aliasWallet.current.address,
       });
 
       const alias = data.aliases;
 
       isValidAlias.current =
         alias[0]?.address === account &&
-        alias[0]?.alias === aliasWallet.address;
+        alias[0]?.alias === aliasWallet.current.address;
     }
   }
 
@@ -57,15 +58,13 @@ export function useAliasAction() {
       );
       lsSet("aliases", aliases.current);
 
-      const userAlias = aliases.current?.[account];
-      setUserAlias(userAlias);
+      userAlias.current = aliases.current?.[account];
 
-      const aliasWallet = userAlias ? new Wallet(userAlias, library) : null;
-      setAliasWallet(aliasWallet);
+      aliasWallet.current = userAlias.current ? new Wallet(userAlias.current, library) : null;
 
-      if (aliasWallet?.address) {
+      if (aliasWallet.current?.address) {
         await client.alias(library, account, {
-          alias: aliasWallet.address,
+          alias: aliasWallet.current.address,
         });
       }
       await checkAlias();
