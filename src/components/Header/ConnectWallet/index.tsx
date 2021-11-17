@@ -5,7 +5,7 @@ import { shortEVMAddress } from "src/helpers/utils";
 import "./index.scss";
 
 function ConnectWallet() {
-  const { account } = useActiveWeb3React()
+  const { account } = useActiveWeb3React();
   const navigate = useNavigate();
 
   return (
@@ -14,7 +14,7 @@ function ConnectWallet() {
         className="connect-wallet__button button"
         onClick={() => navigate(`/account`)}
       >
-        {account ? shortEVMAddress(account) : "Connect Wallet" }
+        {account ? shortEVMAddress(account) : "Connect Wallet"}
       </button>
     </div>
   );

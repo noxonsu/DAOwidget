@@ -30,10 +30,10 @@ export function jsonParse(input: any, fallback?: any) {
   }
 }
 
-export function shortEVMAddress (account: string) {
+export function shortEVMAddress(account: string) {
   return `${account.substring(0, 6)}...${account.substring(
     account.length - 4
-  )}`
+  )}`;
 }
 
 const defaultObj = {

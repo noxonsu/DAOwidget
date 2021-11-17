@@ -9,7 +9,7 @@ import { getLibrary } from "./utils/getLibrary";
 
 import { NetworkContextName } from "src/helpers/constants";
 
-const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName)
+const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 
 ReactDOM.render(
   <React.StrictMode>

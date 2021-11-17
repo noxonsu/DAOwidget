@@ -12,8 +12,8 @@ import client from "src/helpers/clientEIP712";
 export function useFollowSpace(spaceId: string = "") {
   const [following, setFollowing] = useState<IUniversalObj[]>([]);
   const [isLoadingFollows, setIsLoadingFollows] = useState(false);
-  const [isFollowing, setIsFolowing] = useState(false)
-  const [isLoadingFollow, setIsLoadingFollow] = useState(false)
+  const [isFollowing, setIsFolowing] = useState(false);
+  const [isLoadingFollow, setIsLoadingFollow] = useState(false);
 
   const web3 = useWeb3React<Web3Provider>();
   const account = web3.account || "";
@@ -38,9 +38,11 @@ export function useFollowSpace(spaceId: string = "") {
   }, [account]);
 
   useEffect(() => {
-    setIsFolowing(following.some(
-      (f: any) => f.space.id === spaceId && f.follower === web3.account
-    ));
+    setIsFolowing(
+      following.some(
+        (f: any) => f.space.id === spaceId && f.follower === web3.account
+      )
+    );
   }, [following]);
 
   function clickFollow() {
@@ -61,22 +63,30 @@ export function useFollowSpace(spaceId: string = "") {
         await follow(spaceId);
       } else {
         if (isFollowing) {
-          await client.unfollow(aliasWallet.current, aliasWallet.current.address, {
-            from: account,
-            space: spaceId,
-          });
+          await client.unfollow(
+            aliasWallet.current,
+            aliasWallet.current.address,
+            {
+              from: account,
+              space: spaceId,
+            }
+          );
         } else {
-          await client.follow(aliasWallet.current, aliasWallet.current.address, {
-            from: account,
-            space: spaceId,
-          });
+          await client.follow(
+            aliasWallet.current,
+            aliasWallet.current.address,
+            {
+              from: account,
+              space: spaceId,
+            }
+          );
         }
         await loadFollows();
       }
     } catch (e) {
       console.error(e);
     } finally {
-      setIsLoadingFollow(false)
+      setIsLoadingFollow(false);
     }
   };
 

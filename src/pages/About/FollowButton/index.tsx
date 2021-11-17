@@ -11,18 +11,24 @@ interface FollowButtonProps {
 function FollowButton(props: FollowButtonProps) {
   const { spaceObj } = props;
 
-  const { clickFollow, loadFollows, isLoadingFollow, isLoadingFollows, isFollowing } =
-    useFollowSpace(spaceObj.id);
+  const {
+    clickFollow,
+    loadFollows,
+    isLoadingFollow,
+    isLoadingFollows,
+    isFollowing,
+  } = useFollowSpace(spaceObj.id);
 
   const [hoverRef, isHovered] = useHover<HTMLDivElement>();
 
-  const buttonText = isLoadingFollows || isLoadingFollow
-    ? "Loading..."
-    : !isFollowing
-      ? "Join"
-      : isHovered
-        ? "Leave"
-        : "Joined";
+  const buttonText =
+    isLoadingFollows || isLoadingFollow
+      ? "Loading..."
+      : !isFollowing
+        ? "Join"
+        : isHovered
+          ? "Leave"
+          : "Joined";
 
   useEffect(() => {
     loadFollows();

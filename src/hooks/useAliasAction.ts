@@ -19,14 +19,15 @@ export function useAliasAction() {
 
   const { account = "", library } = useWeb3React<Web3Provider>();
 
-  const userAlias = useRef(aliases.current?.[account || ''] || '')
-  const aliasWallet = useRef<Wallet | null>(null)
-
+  const userAlias = useRef(aliases.current?.[account || ""] || "");
+  const aliasWallet = useRef<Wallet | null>(null);
 
   useEffect(() => {
     if (account) {
       userAlias.current = aliases.current?.[account];
-      aliasWallet.current = userAlias.current ? new Wallet(userAlias.current, library) : null;
+      aliasWallet.current = userAlias.current
+        ? new Wallet(userAlias.current, library)
+        : null;
       checkAlias();
     }
   }, [aliases.current, userAlias.current, account, library]);
@@ -60,7 +61,9 @@ export function useAliasAction() {
 
       userAlias.current = aliases.current?.[account];
 
-      aliasWallet.current = userAlias.current ? new Wallet(userAlias.current, library) : null;
+      aliasWallet.current = userAlias.current
+        ? new Wallet(userAlias.current, library)
+        : null;
 
       if (aliasWallet.current?.address) {
         await client.alias(library, account, {

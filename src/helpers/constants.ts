@@ -5,7 +5,8 @@ export const VERSION = "0.1.4";
 
 export const NetworkContextName = "NETWORK";
 
-export const INFURA_KEY = process.env.INFURA_KEY || '5ffc47f65c4042ce847ef66a3fa70d4c';
+export const INFURA_KEY =
+  process.env.INFURA_KEY || "5ffc47f65c4042ce847ef66a3fa70d4c";
 
 export enum SupportedChainId {
   MAINNET = 1,
@@ -39,7 +40,7 @@ export const ALL_SUPPORTED_CHAIN_IDS: SupportedChainId[] = [
   SupportedChainId.ARBITRUM_RINKEBY,
   SupportedChainId.OPTIMISM,
   SupportedChainId.OPTIMISTIC_KOVAN,
-]
+];
 
 export const L1_CHAIN_IDS = [
   SupportedChainId.MAINNET,
@@ -49,9 +50,9 @@ export const L1_CHAIN_IDS = [
   SupportedChainId.KOVAN,
   SupportedChainId.BINANCE_SMART_CHAIN,
   SupportedChainId.BINANCE_SMART_CHAIN_TESTNET,
-] as const
+] as const;
 
-export type SupportedL1ChainId = typeof L1_CHAIN_IDS[number]
+export type SupportedL1ChainId = typeof L1_CHAIN_IDS[number];
 
 export const L2_CHAIN_IDS = [
   SupportedChainId.POLYGON,
@@ -60,7 +61,6 @@ export const L2_CHAIN_IDS = [
   SupportedChainId.ARBITRUM_RINKEBY,
   SupportedChainId.OPTIMISM,
   SupportedChainId.OPTIMISTIC_KOVAN,
-] as const
+] as const;
 
-export type SupportedL2ChainId = typeof L2_CHAIN_IDS[number]
-
+export type SupportedL2ChainId = typeof L2_CHAIN_IDS[number];
