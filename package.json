@@ -2,6 +2,17 @@
   "name": "daofactory",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prettier": "npx prettier src/* --write",
+    "webpack": "webpack",
+    "webpack-dev-server": "webpack-dev-server",
+    "dev": "npm run webpack-dev-server -- --env mode=development",
+    "prod": "npm run webpack -- --env mode=production"
+  },
   "dependencies": {
     "@ethersproject/providers": "^5.5.0",
     "@ethersproject/units": "^5.5.0",
@@ -18,13 +29,6 @@
     "remarkable": "^2.0.1",
     "remove-markdown": "^0.3.0",
     "web-vitals": "^1.1.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "prettier": "npx prettier src/* --write"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +49,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -54,8 +61,22 @@
     "@types/react-dom": "^17.0.10",
     "@types/remarkable": "^2.0.3",
     "@types/remove-markdown": "^0.3.1",
-    "typescript": "^4.4.4",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "css-loader": "^6.5.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "node-sass": "^6.0.1",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "svg-url-loader": "^7.1.1",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
   }
 }
