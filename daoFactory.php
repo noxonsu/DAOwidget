@@ -2,7 +2,7 @@
 /**
 Plugin Name: Dao Factory
 Description: Governance for crypto projects is easy
-Author: Vitaly Vitaliy
+Author: Vitaliy Shulik
 Requires PHP: 7.1
 Text Domain: daofactory
 Domain Path: /lang
@@ -20,9 +20,9 @@ define( 'DAOFACTORY_URL', plugin_dir_url( __FILE__ ) );
 
 function daofactory_main_shortcode() {
   ob_start(); ?>
-  js свой сюда вставляй 
+  js свой сюда вставляй
   йа креведко <script>alert('azaza')</script>
   <?
-	return ob_get_clean(); 
+	return ob_get_clean();
 }
 add_shortcode( 'daofactoryInit', 'daofactory_main_shortcode' );
