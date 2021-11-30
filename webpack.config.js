@@ -1,73 +1,65 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
+const { merge } = require("webpack-merge");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const modeConfiguration = (env) => require(`./build-utils/webpack.${env}`)(env);
 
 module.exports = ({ mode } = { mode: "production" }) => {
   console.log(`mode is: ${mode}`);
-  const isProduction = mode === "production";
 
-  return {
-    mode,
-    entry: "./src/index.tsx",
-    output: {
-      publicPath: "/",
-      path: path.resolve(__dirname, "build"),
-      filename: "bundle.js",
-    },
-    module: {
-      rules: [
-        {
-          test: /\.(ts|tsx)?$/,
-          include: path.resolve(__dirname, "src"),
-          use: [
-            {
-              loader: "ts-loader",
-            },
-          ],
+  return merge(
+    {
+      mode,
+      entry: "./src/index",
+      devServer: {
+        open: true,
+        hot: true,
+      },
+      output: {
+        publicPath: "/",
+        path: path.resolve(__dirname, "build"),
+        filename: "bundle.js",
+      },
+      resolve: {
+        extensions: [".ts", ".tsx", ".js", ".jsx"],
+        alias: {
+          src: path.resolve(__dirname, "src/"),
         },
-        {
-          test: /\.jpe?g|png$/,
-          exclude: /node_modules/,
-          use: ["url-loader", "file-loader"],
-        },
-        {
-          test: /\.svg$/,
-          use: [
-            {
-              loader: "svg-url-loader",
-              options: {
-                limit: 10000,
+      },
+      module: {
+        rules: [
+          {
+            test: /\.(j|t)s(x)?$/,
+            exclude: /node_modules/,
+            loader: "babel-loader",
+          },
+          {
+            test: /\.jpe?g|png$/,
+            exclude: /node_modules/,
+            use: ["url-loader", "file-loader"],
+          },
+          {
+            test: /\.svg$/,
+            use: [
+              {
+                loader: "svg-url-loader",
+                options: {
+                  limit: 10000,
+                },
               },
-            },
-          ],
-        },
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: ["babel-loader"],
-        },
-        {
-          test: /\.css$/i,
-          use: ["style-loader", "css-loader"],
-        },
-        {
-          test: /\.s[ac]ss$/i,
-          use: ["style-loader", "css-loader", "sass-loader"],
-        },
+            ],
+          },
+        ],
+      },
+      plugins: [
+        new HtmlWebpackPlugin({
+          template: "./public/index.html",
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        new ForkTsCheckerWebpackPlugin(),
       ],
     },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: "./public/index.html",
-      }),
-    ],
-    resolve: {
-      extensions: [".ts", ".tsx", ".js"],
-      alias: {
-        src: path.resolve(__dirname, "src/"),
-      },
-    },
-    devServer: {
-      open: !isProduction,
-    },
-  };
+    modeConfiguration(mode)
+  );
 };

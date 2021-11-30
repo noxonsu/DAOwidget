@@ -5,8 +5,7 @@ export const VERSION = "0.1.4";
 
 export const NetworkContextName = "NETWORK";
 
-export const INFURA_KEY =
-  process.env.INFURA_KEY || "5ffc47f65c4042ce847ef66a3fa70d4c";
+export const INFURA_KEY = "5ffc47f65c4042ce847ef66a3fa70d4c";
 
 export enum SupportedChainId {
   MAINNET = 1,
