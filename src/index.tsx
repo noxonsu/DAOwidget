@@ -19,7 +19,7 @@ ReactDOM.render(
       </Web3ProviderNetwork>
     </Web3ReactProvider>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById("daofactory_app")
 );
 
 // If you want to start measuring performance in your app, pass a function
