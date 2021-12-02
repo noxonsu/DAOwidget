@@ -5,6 +5,7 @@ import Proposal from "./Proposal";
 import Proposals from "./Proposals";
 import About from "./About";
 import CreateProposal from "./CreateProposal";
+import NotFound from "./NotFound";
 
 import Web3ReactManager from "src/components/Web3ReactManager";
 import Header from "../components/Header";
@@ -26,6 +27,7 @@ function App() {
                 <Route path="create" element={<CreateProposal />} />
                 <Route path=":proposalId" element={<Proposal />} />
               </Route>
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
         </div>
