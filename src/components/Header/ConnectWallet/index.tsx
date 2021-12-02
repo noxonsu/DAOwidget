@@ -11,7 +11,7 @@ function ConnectWallet() {
   return (
     <div className="connect-wallet">
       <button
-        className="connect-wallet__button button"
+        className="connect-wallet__button"
         onClick={() => navigate(`/account`)}
       >
         {account ? shortEVMAddress(account) : "Connect Wallet"}
