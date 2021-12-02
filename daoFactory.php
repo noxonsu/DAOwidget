@@ -1,7 +1,7 @@
 <?php
 /**
 Plugin Name: Dao Factory
-Description: Go to Pages -> Add new, enter title "DAO" and put "[daofactoryInit]" in the textarea. Open this page in new window and enjoy
+Description: Go to Pages -> Add new, enter title "DAO" and put "[daofactory_app]" in the textarea. Open this page in new window and enjoy
 Author: Vitaliy Shulik
 Requires PHP: 7.1
 Text Domain: daofactory
