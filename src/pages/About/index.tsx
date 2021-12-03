@@ -2,8 +2,7 @@ import { useSpaceList } from "src/hooks/useSpaces";
 import { shortenText } from "src/helpers/utils";
 
 import FollowButton from "./FollowButton";
-
-import { ReactComponent as ExternalLinkSvg } from "src/assets/svg/external-link.svg";
+import ExternalLink from "src/components/ExternalLink";
 
 function About() {
   const { spacesData, isLoading, error } = useSpaceList([
@@ -64,9 +63,7 @@ function About() {
         {domain && (
           <>
             <h3>Domain</h3>
-            <a href={`https://${domain}`} target="_blank">
-              {domain} <ExternalLinkSvg fill="white" />
-            </a>
+            <ExternalLink link={`https://${domain}`} children={domain} />
           </>
         )}
         {network && (
@@ -78,9 +75,7 @@ function About() {
         {terms && (
           <>
             <h3>Terms</h3>
-            <a href={terms} target="_blank">
-              {shortenText(terms, 35)} <ExternalLinkSvg fill="white" />
-            </a>
+            <ExternalLink link={terms} children={shortenText(terms, 35)} />
           </>
         )}
         {strategies.length && (

@@ -13,7 +13,7 @@ function ProposalDetail() {
 
   const { proposalData, isLoading, error } = useProposal(proposalId);
 
-  const { title, body, strategies } = proposalData;
+  const { title, body } = proposalData;
 
   return (
     <div style={{ paddingBottom: "2rem" }}>

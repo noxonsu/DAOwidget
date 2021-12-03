@@ -1,4 +1,9 @@
+import { NETWORK_EXPLORER_URLS, SupportedChainId } from "src/helpers/constants";
 import { ProposalType } from "src/hooks/useProposals";
+
+import { ReactComponent as ExternalLinkSvg } from "src/assets/svg/external-link.svg";
+import { shortEVMAddress, shortIPFS } from "src/helpers/utils";
+import ExternalLink from "src/components/ExternalLink";
 
 type ProposalInfoProps = {
   proposalData: ProposalType;
@@ -7,7 +12,10 @@ type ProposalInfoProps = {
 function ProposalInfo(props: ProposalInfoProps) {
   const { proposalData } = props;
 
-  const { strategies, author, ipfs, start, end, snapshot } = proposalData;
+  const { strategies, author, ipfs, start, end, snapshot, network } =
+    proposalData;
+
+  const networkId = +network as SupportedChainId;
 
   let tokenSymbol = "",
     tokenAddress = "";
@@ -40,19 +48,36 @@ function ProposalInfo(props: ProposalInfoProps) {
           {tokenAddress && (
             <p>
               <b>Token address: </b>
-              {`${tokenAddress}`}
+              {network ? (
+                <ExternalLink
+                  link={`${NETWORK_EXPLORER_URLS[networkId]}address/${tokenAddress}`}
+                  children={shortEVMAddress(tokenAddress)}
+                />
+              ) : (
+                tokenAddress
+              )}
             </p>
           )}
           {author && (
             <p>
               <b>Author: </b>
-              {`${author}`}
+              {network ? (
+                <ExternalLink
+                  link={`${NETWORK_EXPLORER_URLS[networkId]}address/${author}`}
+                  children={shortEVMAddress(author)}
+                />
+              ) : (
+                author
+              )}
             </p>
           )}
           {ipfs && (
             <p>
               <b>IPFS: </b>
-              {`${ipfs}`}
+              <ExternalLink
+                link={`https://cloudflare-ipfs.com/ipfs/${ipfs}`}
+                children={shortIPFS(ipfs)}
+              />
             </p>
           )}
           {start && (
@@ -70,7 +95,14 @@ function ProposalInfo(props: ProposalInfoProps) {
           {snapshot && (
             <p>
               <b>Snapshot: </b>
-              {`${snapshot}`}
+              {network ? (
+                <ExternalLink
+                  link={`${NETWORK_EXPLORER_URLS[networkId]}block/${snapshot}`}
+                  children={snapshot}
+                />
+              ) : (
+                snapshot
+              )}
             </p>
           )}
         </div>
