@@ -101,20 +101,21 @@ export const NETWORK_EXPLORER_URLS: { [key in SupportedChainId]: string } = {
   [SupportedChainId.ARBITRUM_RINKEBY]: `https://testnet.arbiscan.io/`,
 };
 
-export const NETWORK_EXPLORER_API_URLS: { [key in SupportedChainId]: string } = {
-  [SupportedChainId.MAINNET]: `https://api.etherscan.io/api`,
-  [SupportedChainId.RINKEBY]: `https://api-rinkeby.etherscan.io/api`,
-  [SupportedChainId.ROPSTEN]: `https://api-ropsten.etherscan.io/api`,
-  [SupportedChainId.GOERLI]: `https://api-goerli.etherscan.io/api`,
-  [SupportedChainId.KOVAN]: `https://api-kovan.etherscan.io/api`,
-  [SupportedChainId.BINANCE_SMART_CHAIN]: "https://api.bscscan.com/api",
-  [SupportedChainId.BINANCE_SMART_CHAIN_TESTNET]:
-    "https://api-testnet.bscscan.com/api",
+export const NETWORK_EXPLORER_API_URLS: { [key in SupportedChainId]: string } =
+  {
+    [SupportedChainId.MAINNET]: `https://api.etherscan.io/api`,
+    [SupportedChainId.RINKEBY]: `https://api-rinkeby.etherscan.io/api`,
+    [SupportedChainId.ROPSTEN]: `https://api-ropsten.etherscan.io/api`,
+    [SupportedChainId.GOERLI]: `https://api-goerli.etherscan.io/api`,
+    [SupportedChainId.KOVAN]: `https://api-kovan.etherscan.io/api`,
+    [SupportedChainId.BINANCE_SMART_CHAIN]: "https://api.bscscan.com/api",
+    [SupportedChainId.BINANCE_SMART_CHAIN_TESTNET]:
+      "https://api-testnet.bscscan.com/api",
 
-  [SupportedChainId.POLYGON]: `https://api.polygonscan.com/api`,
-  [SupportedChainId.POLYGON_MUMBAI]: `https://api-testnet.polygonscan.com/api`,
-  [SupportedChainId.OPTIMISM]: `https://api-optimistic.etherscan.io/api`,
-  [SupportedChainId.OPTIMISTIC_KOVAN]: `https://api-kovan-optimistic.etherscan.io/api`,
-  [SupportedChainId.ARBITRUM_ONE]: `https://api.arbiscan.io/api`,
-  [SupportedChainId.ARBITRUM_RINKEBY]: `https://api-testnet.arbiscan.io/api`,
-};
+    [SupportedChainId.POLYGON]: `https://api.polygonscan.com/api`,
+    [SupportedChainId.POLYGON_MUMBAI]: `https://api-testnet.polygonscan.com/api`,
+    [SupportedChainId.OPTIMISM]: `https://api-optimistic.etherscan.io/api`,
+    [SupportedChainId.OPTIMISTIC_KOVAN]: `https://api-kovan-optimistic.etherscan.io/api`,
+    [SupportedChainId.ARBITRUM_ONE]: `https://api.arbiscan.io/api`,
+    [SupportedChainId.ARBITRUM_RINKEBY]: `https://api-testnet.arbiscan.io/api`,
+  };

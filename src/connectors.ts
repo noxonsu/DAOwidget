@@ -4,7 +4,8 @@ import { NetworkConnector } from "@web3-react/network-connector";
 
 import {
   ALL_SUPPORTED_CHAIN_IDS,
-  NETWORK_RPC_URLS
+  NETWORK_RPC_URLS,
+  SupportedChainId,
 } from "src/helpers/constants";
 
 export type Connectors = InjectedConnector | NetworkConnector; // | WalletConnectConnector
@@ -15,7 +16,7 @@ export const injected = new InjectedConnector({
 
 export const network = new NetworkConnector({
   urls: NETWORK_RPC_URLS,
-  defaultChainId: 1,
+  defaultChainId: SupportedChainId.MAINNET,
 });
 
 // export const walletconnect = new WalletConnectConnector({

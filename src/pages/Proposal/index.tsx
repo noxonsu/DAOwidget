@@ -16,7 +16,7 @@ function ProposalDetail() {
   const { title, body, strategies } = proposalData;
 
   return (
-    <div style={{paddingBottom: "2rem"}}>
+    <div style={{ paddingBottom: "2rem" }}>
       {isLoading && <h3>Loading...</h3>}
       {error && <h3>{error.message}</h3>}
       <ProposalBody title={title} description={body || ""} />

@@ -6,7 +6,9 @@ import FollowButton from "./FollowButton";
 import { ReactComponent as ExternalLinkSvg } from "src/assets/svg/external-link.svg";
 
 function About() {
-  const { spacesData, isLoading, error } = useSpaceList([window.ENS_DOMAIN || "sushigov.eth"]);
+  const { spacesData, isLoading, error } = useSpaceList([
+    window.ENS_DOMAIN || "sushigov.eth",
+  ]);
 
   const spaceData = spacesData[0];
 

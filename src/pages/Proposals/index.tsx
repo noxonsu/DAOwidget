@@ -7,7 +7,6 @@ import { shortenText } from "src/helpers/utils";
 import "./index.scss";
 
 function Proposals() {
-
   const {
     offChainProposalList: proposals,
     isLoading,

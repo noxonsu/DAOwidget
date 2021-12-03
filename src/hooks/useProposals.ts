@@ -30,7 +30,7 @@ export type ProposalType = {
   space: {
     id: string;
     name: string;
-  }
+  };
 };
 
 export type ShortProposalType = {
