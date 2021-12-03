@@ -10,7 +10,9 @@ function ProposalBody(props: ProposalBodyProps) {
   const { description, title } = props
 
   return (
-    <div style={{ padding: "0" }}>
+    <div style={{
+      marginBottom: "1rem",
+    }}>
       {title && <h1>{title}</h1>}
       <MarkdownElement text={description} />
     </div>
