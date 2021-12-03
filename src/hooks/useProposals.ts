@@ -5,19 +5,50 @@ import { OFFCHAIN_HUB_API } from "src/helpers/constants";
 import { PROPOSAL_QUERY, PROPOSALS_QUERY } from "src/helpers/queries";
 
 export type ProposalType = {
-  title: string;
-  againstVotes: number;
-  forVotes: string;
-  proposalState: number;
-  basename: string;
-  status: string;
-  ipfsHash: string;
   id: number;
-  description: string;
-  author: string;
-  state: string;
-  end: number;
+  ipfs: string;
+  title: string;
   body: string;
+  choices: string[];
+  start: number;
+  end: number;
+  snapshot: string;
+  state: string;
+  author: string;
+  created: number;
+  plugins: IUniversalObj;
+  network: string;
+  type: string;
+  strategies: {
+    name: string;
+    params: {
+      address: string;
+      decimals: number;
+      symbol: string;
+    };
+  }[];
+  space: {
+    id: string;
+    name: string;
+  }
+};
+
+export type ShortProposalType = {
+  id: string;
+  ipfs: string;
+  title: string;
+  body: string;
+  start: number;
+  end: number;
+  state: string;
+  author: string;
+  created: number;
+  space: {
+    avatar: string;
+    id: string;
+    members: string[];
+    name: string;
+  };
 };
 
 export enum ProposalState {
@@ -79,7 +110,7 @@ export const useProposalList = (params: FetchOffChainProposalListParams) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<false | Error>(false);
   const [offChainProposalList, setOffChainProposalList] = useState<
-    ProposalType[]
+    ShortProposalType[]
   >([]);
 
   useEffect(() => {
@@ -89,7 +120,7 @@ export const useProposalList = (params: FetchOffChainProposalListParams) => {
 
         const proposals = (await fetchOffChainProposalList(
           params
-        )) as ProposalType[];
+        )) as ShortProposalType[];
         setOffChainProposalList(proposals);
       } catch (err) {
         setError(new Error("Can't fetch proposals"));
