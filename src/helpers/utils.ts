@@ -36,12 +36,17 @@ export function shortEVMAddress(account: string) {
   )}`;
 }
 
+export function shortIPFS(account: string) {
+  return `#${account.substring(0, 6)}`;
+}
+
 const defaultObj = {
   shortenText,
   lsSet,
   lsGet,
   lsRemove,
   shortEVMAddress,
+  shortIPFS,
 };
 
 export default defaultObj;
