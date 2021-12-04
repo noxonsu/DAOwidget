@@ -5,7 +5,7 @@ import { OFFCHAIN_HUB_API } from "src/helpers/constants";
 import { PROPOSAL_QUERY, PROPOSALS_QUERY } from "src/helpers/queries";
 
 export type ProposalType = {
-  id: number;
+  id: string;
   ipfs: string;
   title: string;
   body: string;
@@ -18,7 +18,7 @@ export type ProposalType = {
   created: number;
   plugins: IUniversalObj;
   network: string;
-  type: string;
+  type: "single-choice" | "basic";
   strategies: {
     name: string;
     params: {

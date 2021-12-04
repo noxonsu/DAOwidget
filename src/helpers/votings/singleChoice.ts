@@ -1,12 +1,13 @@
 import { ProposalType } from "src/hooks/useProposals";
 import { Space } from "src/hooks/useSpaces";
+import { VoteWithScores } from "src/hooks/useVoutes";
 
 export default class SingleChoiceVoting {
   public proposal;
   public votes;
   public strategies;
 
-  constructor(proposal: ProposalType, votes: any[], strategies: Space["strategies"]) {
+  constructor(proposal: ProposalType, votes: VoteWithScores[], strategies: Space["strategies"]) {
     this.proposal = proposal;
     this.votes = votes;
     this.strategies = strategies;

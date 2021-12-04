@@ -6,10 +6,10 @@ import weighted from './weighted';
 
 const Votings = {
   'single-choice': singleChoice,
-  approval,
-  quadratic,
-  'ranked-choice': rankedChoice,
-  weighted,
+  // approval,
+  // quadratic,
+  // 'ranked-choice': rankedChoice,
+  // weighted,
   basic: singleChoice
 }
 
