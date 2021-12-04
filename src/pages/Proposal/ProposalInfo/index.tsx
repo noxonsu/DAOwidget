@@ -1,7 +1,6 @@
 import { NETWORK_EXPLORER_URLS, SupportedChainId } from "src/helpers/constants";
 import { ProposalType } from "src/hooks/useProposals";
 
-import { ReactComponent as ExternalLinkSvg } from "src/assets/svg/external-link.svg";
 import { shortEVMAddress, shortIPFS } from "src/helpers/utils";
 import ExternalLink from "src/components/ExternalLink";
 
@@ -35,6 +34,8 @@ function ProposalInfo(props: ProposalInfoProps) {
             padding: "0 1rem",
             border: "solid 1px gray",
             borderRadius: "1rem",
+            width: "50%",
+            margin: "auto",
             marginBottom: "1rem",
           }}
         >
