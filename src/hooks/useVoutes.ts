@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { request } from "graphql-request";
 
-import { Space } from "src/hooks/useSpaces";
 import { ProposalType } from "src/hooks/useProposals";
 
 import { OFFCHAIN_HUB_API } from "src/helpers/constants";
@@ -21,11 +20,17 @@ export interface VoteWithScores extends Vote {
   scores: number[];
 }
 
+export type ResultData = {
+  resultsByVoteBalance: number[];
+  resultsByStrategyScore: number[][];
+  sumOfResultsBalance: number;
+}
+
 export const useVoutes = (proposal: ProposalType) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<false | Error>(false);
   const [voutesData, setVoutesData] = useState<VoteWithScores[]>([]);
-  const [resultData, setResultData] = useState<IUniversalObj>({})
+  const [resultData, setResultData] = useState<ResultData>()
 
   useEffect(() => {
     const _fetchData = async () => {
@@ -33,14 +38,11 @@ export const useVoutes = (proposal: ProposalType) => {
         setIsLoading(true);
 
         const voutes = (await fetchVotes(proposal.id)) as Vote[];
-        console.log('votes', voutes)
-        const { votesWithScores, results } = (await getResults(proposal, voutes)) as { votesWithScores: VoteWithScores[], results: IUniversalObj}
-        console.log('votesWithScores', votesWithScores)
-        console.log('results', results)
+        const { votesWithScores, results } = await getResults(proposal, voutes)
         setVoutesData(votesWithScores);
         setResultData({...results})
       } catch (err) {
-        setError(new Error("Error: can't fetch voutes"));
+        setError(new Error(`Error: Can't fetch voutes. Description: ${err}`));
       } finally {
         setIsLoading(false);
       }
@@ -86,7 +88,7 @@ export async function getResults(proposal: ProposalType, votes: Vote[]) {
 
     /* Get scores */
     if (state !== 'pending') {
-      console.time('getProposal.scores');
+      console.time('getResults');
       const scores = await getScores(
         spaceId,
         strategies,
@@ -94,8 +96,8 @@ export async function getResults(proposal: ProposalType, votes: Vote[]) {
         voters,
         parseInt(snapshot),
       ) as any[];
-      console.timeEnd('getProposal.scores');
-      console.log('Got scores', scores);
+      console.timeEnd('getResults');
+      console.log('Got scores');
 
       votesWithScores = votes
         .map((vote) => {
@@ -114,7 +116,7 @@ export async function getResults(proposal: ProposalType, votes: Vote[]) {
     /* Get results */
     const votingClass = new Votings[proposal.type](proposal, votesWithScores, strategies);
 
-    const results = {
+    const results: ResultData = {
       resultsByVoteBalance: votingClass.resultsByVoteBalance(),
       resultsByStrategyScore: votingClass.resultsByStrategyScore(),
       sumOfResultsBalance: votingClass.sumOfResultsBalance()
@@ -123,7 +125,7 @@ export async function getResults(proposal: ProposalType, votes: Vote[]) {
     return { votesWithScores, results };
   } catch (e) {
     console.log(e);
-    return e;
+    throw e;
   }
 }
 

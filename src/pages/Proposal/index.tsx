@@ -5,6 +5,7 @@ import { useVoutes } from "src/hooks/useVoutes";
 // import { useVoutes } from "src/hooks/useVoutes";
 import ProposalBody from "./ProposalBody";
 import ProposalInfo from "./ProposalInfo";
+import ProposalResults from "./ProposalResults";
 
 type ParamsProps = {
   proposalId?: string;
@@ -46,12 +47,19 @@ type ProposalVoutesContentProps = {
 function ProposalVoutesContent(props: ProposalVoutesContentProps) {
   const { proposalData } = props;
 
-  const { voutesData } = useVoutes(proposalData);
-  console.log('voutesData', voutesData)
+  const { voutesData, resultData, isLoading, error } = useVoutes(proposalData);
 
   return(
     <>
-
+      {error && <h3>{error.message}</h3>}
+      {isLoading
+        ? <h3>Loading votes...</h3>
+        : (
+          <>
+            {resultData && <ProposalResults strategies={proposalData.strategies} choices={proposalData.choices} results={resultData} />}
+          </>
+        )
+      }
     </>
   )
 }
