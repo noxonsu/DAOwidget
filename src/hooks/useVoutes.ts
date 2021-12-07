@@ -21,7 +21,7 @@ export interface VoteWithScores extends Vote {
   scores: number[];
 }
 
-export const useVoutes = (proposal: ProposalType, proposalId: string) => {
+export const useVoutes = (proposal: ProposalType) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<false | Error>(false);
   const [voutesData, setVoutesData] = useState<VoteWithScores[]>([]);
@@ -32,10 +32,12 @@ export const useVoutes = (proposal: ProposalType, proposalId: string) => {
       try {
         setIsLoading(true);
 
-        const voutes = (await fetchVotes(proposal.id || proposalId)) as Vote[];
+        const voutes = (await fetchVotes(proposal.id)) as Vote[];
         console.log('votes', voutes)
-        const { voutesWithScores, results } = (await getResults(proposal, voutes)) as { voutesWithScores: VoteWithScores[], results: IUniversalObj}
-        setVoutesData(voutesWithScores);
+        const { votesWithScores, results } = (await getResults(proposal, voutes)) as { votesWithScores: VoteWithScores[], results: IUniversalObj}
+        console.log('votesWithScores', votesWithScores)
+        console.log('results', results)
+        setVoutesData(votesWithScores);
         setResultData({...results})
       } catch (err) {
         setError(new Error("Error: can't fetch voutes"));
@@ -71,20 +73,29 @@ export const fetchVotes = async (id: ProposalType["id"], first = 20000) => {
 export async function getResults(proposal: ProposalType, votes: Vote[]) {
   try {
     const voters = votes.map((vote) => vote.voter);
-    const strategies = proposal.strategies;
+
+    const {
+      snapshot,
+      network,
+      strategies,
+      space: {id: spaceId},
+      state,
+    } = proposal;
+
     let votesWithScores: VoteWithScores[] = []
+
     /* Get scores */
-    if (proposal.state !== 'pending') {
+    if (state !== 'pending') {
       console.time('getProposal.scores');
       const scores = await getScores(
-        proposal.space.id,
+        spaceId,
         strategies,
-        proposal.network,
+        network,
         voters,
-        parseInt(proposal.snapshot),
+        parseInt(snapshot),
       ) as any[];
       console.timeEnd('getProposal.scores');
-      console.log('Got scores');
+      console.log('Got scores', scores);
 
       votesWithScores = votes
         .map((vote) => {
@@ -102,6 +113,7 @@ export async function getResults(proposal: ProposalType, votes: Vote[]) {
 
     /* Get results */
     const votingClass = new Votings[proposal.type](proposal, votesWithScores, strategies);
+
     const results = {
       resultsByVoteBalance: votingClass.resultsByVoteBalance(),
       resultsByStrategyScore: votingClass.resultsByStrategyScore(),

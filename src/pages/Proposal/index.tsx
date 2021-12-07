@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 
-import { useProposal } from "src/hooks/useProposals";
+import { ProposalType, useProposal } from "src/hooks/useProposals";
+import { useVoutes } from "src/hooks/useVoutes";
 // import { useVoutes } from "src/hooks/useVoutes";
 import ProposalBody from "./ProposalBody";
 import ProposalInfo from "./ProposalInfo";
@@ -13,11 +14,19 @@ function ProposalDetail() {
   const { proposalId = "" } = useParams() as ParamsProps;
 
   const { proposalData, isLoading, error } = useProposal(proposalId);
-  // const { voutesData } = useVoutes(proposalData, proposalId);
 
-  const { title, body } = proposalData;
+  const {
+    title,
+    body,
+    id,
+    space,
+    snapshot,
+    network,
+    strategies,
+    state,
+  } = proposalData;
 
-  // console.log('voutesData', voutesData)
+  const haveDataForFetchVoutes = !!(id && space?.id && snapshot && network && strategies?.length && state)
 
   return (
     <div style={{ paddingBottom: "2rem" }}>
@@ -25,8 +34,26 @@ function ProposalDetail() {
       {error && <h3>{error.message}</h3>}
       <ProposalBody title={title} description={body || ""} />
       <ProposalInfo proposalData={proposalData} />
+      {haveDataForFetchVoutes && <ProposalVoutesContent proposalData={proposalData} />}
     </div>
   );
+}
+
+type ProposalVoutesContentProps = {
+  proposalData: ProposalType
+}
+
+function ProposalVoutesContent(props: ProposalVoutesContentProps) {
+  const { proposalData } = props;
+
+  const { voutesData } = useVoutes(proposalData);
+  console.log('voutesData', voutesData)
+
+  return(
+    <>
+
+    </>
+  )
 }
 
 export default ProposalDetail;
