@@ -1,6 +1,6 @@
 import { ProposalType } from "src/hooks/useProposals";
 import { Space } from "src/hooks/useSpaces";
-import { VoteWithScores } from "src/hooks/useVoutes";
+import { VoteWithScores } from "src/hooks/useVotes";
 
 export default class SingleChoiceVoting {
   public proposal;

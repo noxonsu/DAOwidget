@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 
 import { ProposalType, useProposal } from "src/hooks/useProposals";
-import { useVoutes } from "src/hooks/useVoutes";
-// import { useVoutes } from "src/hooks/useVoutes";
+import { useVotes } from "src/hooks/useVotes";
 import ProposalBody from "./ProposalBody";
 import ProposalInfo from "./ProposalInfo";
 import ProposalResults from "./ProposalResults";
+import ProposalVotes from "./ProposalVotes";
 
 type ParamsProps = {
   proposalId?: string;
@@ -27,7 +27,7 @@ function ProposalDetail() {
     state,
   } = proposalData;
 
-  const haveDataForFetchVoutes = !!(id && space?.id && snapshot && network && strategies?.length && state)
+  const haveDataForFetchVotes = !!(id && space?.id && snapshot && network && strategies?.length && state)
 
   return (
     <div style={{ paddingBottom: "2rem" }}>
@@ -35,28 +35,34 @@ function ProposalDetail() {
       {error && <h3>{error.message}</h3>}
       <ProposalBody title={title} description={body || ""} />
       <ProposalInfo proposalData={proposalData} />
-      {haveDataForFetchVoutes && <ProposalVoutesContent proposalData={proposalData} />}
+      {haveDataForFetchVotes && <ProposalVotesContent proposalData={proposalData} />}
     </div>
   );
 }
 
-type ProposalVoutesContentProps = {
+type ProposalVotesContentProps = {
   proposalData: ProposalType
 }
 
-function ProposalVoutesContent(props: ProposalVoutesContentProps) {
+function ProposalVotesContent(props: ProposalVotesContentProps) {
   const { proposalData } = props;
 
-  const { voutesData, resultData, isLoading, error } = useVoutes(proposalData);
+  const { votesData, resultData, isLoading, error } = useVotes(proposalData);
 
   return(
     <>
       {error && <h3>{error.message}</h3>}
       {isLoading
         ? <h3>Loading votes...</h3>
-        : (
+        : votesData.length && (
           <>
             {resultData && <ProposalResults strategies={proposalData.strategies} choices={proposalData.choices} results={resultData} />}
+            <ProposalVotes
+              choices={proposalData.choices}
+              votes={votesData.slice(0,10)}
+              strategies={proposalData.strategies}
+              totalVotes={votesData.length}
+            />
           </>
         )
       }

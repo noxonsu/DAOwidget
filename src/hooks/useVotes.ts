@@ -26,10 +26,10 @@ export type ResultData = {
   sumOfResultsBalance: number;
 }
 
-export const useVoutes = (proposal: ProposalType) => {
+export const useVotes = (proposal: ProposalType) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<false | Error>(false);
-  const [voutesData, setVoutesData] = useState<VoteWithScores[]>([]);
+  const [votesData, setVotesData] = useState<VoteWithScores[]>([]);
   const [resultData, setResultData] = useState<ResultData>()
 
   useEffect(() => {
@@ -37,12 +37,12 @@ export const useVoutes = (proposal: ProposalType) => {
       try {
         setIsLoading(true);
 
-        const voutes = (await fetchVotes(proposal.id)) as Vote[];
-        const { votesWithScores, results } = await getResults(proposal, voutes)
-        setVoutesData(votesWithScores);
+        const votes = (await fetchVotes(proposal.id)) as Vote[];
+        const { votesWithScores, results } = await getResults(proposal, votes)
+        setVotesData(votesWithScores);
         setResultData({...results})
       } catch (err) {
-        setError(new Error(`Error: Can't fetch voutes. Description: ${err}`));
+        setError(new Error(`Error: Can't fetch votes. Description: ${err}`));
       } finally {
         setIsLoading(false);
       }
@@ -51,7 +51,7 @@ export const useVoutes = (proposal: ProposalType) => {
   }, []);
 
   return {
-    voutesData,
+    votesData,
     isLoading,
     error,
     resultData

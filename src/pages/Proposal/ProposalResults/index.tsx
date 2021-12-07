@@ -1,8 +1,8 @@
 import { ProposalType } from "src/hooks/useProposals";
-import { ResultData } from "src/hooks/useVoutes";
+import { ResultData } from "src/hooks/useVotes";
 
 type ProposalResultsProps = {
-  choices: string[];
+  choices: ProposalType["choices"];
   results: ResultData;
   strategies: ProposalType["strategies"]
 };
