@@ -6,6 +6,7 @@ import ProposalBody from "./ProposalBody";
 import ProposalInfo from "./ProposalInfo";
 import ProposalResults from "./ProposalResults";
 import ProposalVotes from "./ProposalVotes";
+import ProposalVoting from "./ProposalVoting";
 
 type ParamsProps = {
   proposalId?: string;
@@ -16,8 +17,17 @@ function ProposalDetail() {
 
   const { proposalData, isLoading, error } = useProposal(proposalId);
 
-  const { title, body, id, space, snapshot, network, strategies, state } =
-    proposalData;
+  const {
+    title,
+    body,
+    id,
+    space,
+    snapshot,
+    network,
+    strategies,
+    state,
+    choices,
+  } = proposalData;
 
   const haveDataForFetchVotes = !!(
     id &&
@@ -33,6 +43,7 @@ function ProposalDetail() {
       {isLoading && <h3>Loading...</h3>}
       {error && <h3>{error.message}</h3>}
       <ProposalBody title={title} description={body || ""} />
+      {choices && state !== "close" && <ProposalVoting choices={choices} />}
       <ProposalInfo proposalData={proposalData} />
       {haveDataForFetchVotes && (
         <ProposalVotesContent proposalData={proposalData} />

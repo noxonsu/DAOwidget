@@ -1,0 +1,14 @@
+.choiseButton {
+  display: flex;
+  justify-content: center;
+  border: solid 1px gray;
+  border-radius: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+  color: gray;
+
+  &.active {
+    border-color: white;
+    color: white;
+  }
+}
