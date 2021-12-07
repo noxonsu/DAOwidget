@@ -18,7 +18,11 @@ export default class QuadraticVoting {
   public votes;
   public strategies;
 
-  constructor(proposal: ProposalType, votes: any[], strategies: Space["strategies"]) {
+  constructor(
+    proposal: ProposalType,
+    votes: any[],
+    strategies: Space["strategies"]
+  ) {
     this.proposal = proposal;
     this.votes = votes;
     this.strategies = strategies;
@@ -52,7 +56,7 @@ export default class QuadraticVoting {
     return results.map((res, i) =>
       this.strategies
         .map((strategy, sI) => [
-          percentageOfTotal(0, results[i][sI], results.flat(2))
+          percentageOfTotal(0, results[i][sI], results.flat(2)),
         ])
         // @ts-ignore
         .map((p) => [(this.sumOfResultsBalance() / 100) * p])

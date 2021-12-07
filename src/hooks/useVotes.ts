@@ -5,7 +5,7 @@ import { ProposalType } from "src/hooks/useProposals";
 
 import { OFFCHAIN_HUB_API } from "src/helpers/constants";
 import { VOTES_QUERY } from "src/helpers/queries";
-import Votings from 'src/helpers/votings';
+import Votings from "src/helpers/votings";
 
 export interface Vote {
   id: string;
@@ -24,13 +24,13 @@ export type ResultData = {
   resultsByVoteBalance: number[];
   resultsByStrategyScore: number[][];
   sumOfResultsBalance: number;
-}
+};
 
 export const useVotes = (proposal: ProposalType) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<false | Error>(false);
   const [votesData, setVotesData] = useState<VoteWithScores[]>([]);
-  const [resultData, setResultData] = useState<ResultData>()
+  const [resultData, setResultData] = useState<ResultData>();
 
   useEffect(() => {
     const _fetchData = async () => {
@@ -38,9 +38,9 @@ export const useVotes = (proposal: ProposalType) => {
         setIsLoading(true);
 
         const votes = (await fetchVotes(proposal.id)) as Vote[];
-        const { votesWithScores, results } = await getResults(proposal, votes)
+        const { votesWithScores, results } = await getResults(proposal, votes);
         setVotesData(votesWithScores);
-        setResultData({...results})
+        setResultData(results);
       } catch (err) {
         setError(new Error(`Error: Can't fetch votes. Description: ${err}`));
       } finally {
@@ -54,23 +54,19 @@ export const useVotes = (proposal: ProposalType) => {
     votesData,
     isLoading,
     error,
-    resultData
+    resultData,
   };
 };
 
 export const fetchVotes = async (id: ProposalType["id"], first = 20000) => {
-    const response = await request(
-        OFFCHAIN_HUB_API,
-        VOTES_QUERY,
-        {
-          id,
-          orderBy: 'vp',
-          orderDirection: 'desc',
-          first
-    });
-    return response.votes;
+  const response = await request(OFFCHAIN_HUB_API, VOTES_QUERY, {
+    id,
+    orderBy: "vp",
+    orderDirection: "desc",
+    first,
+  });
+  return response.votes;
 };
-
 
 export async function getResults(proposal: ProposalType, votes: Vote[]) {
   try {
@@ -80,46 +76,57 @@ export async function getResults(proposal: ProposalType, votes: Vote[]) {
       snapshot,
       network,
       strategies,
-      space: {id: spaceId},
+      space: { id: spaceId },
       state,
     } = proposal;
 
-    let votesWithScores: VoteWithScores[] = []
+    let votesWithScores: VoteWithScores[] = [];
 
     /* Get scores */
-    if (state !== 'pending') {
-      console.time('getResults');
-      const scores = await getScores(
+    if (state !== "pending") {
+      console.time("getResults");
+      const scores = (await getScores(
         spaceId,
         strategies,
         network,
         voters,
-        parseInt(snapshot),
-      ) as any[];
-      console.timeEnd('getResults');
-      console.log('Got scores');
+        parseInt(snapshot)
+      )) as any[];
+      console.timeEnd("getResults");
+      console.log("Got scores");
 
       votesWithScores = votes
         .map((vote) => {
-          const voteWithScores: VoteWithScores = {...vote, scores: [], balance: 0 } as VoteWithScores
+          const voteWithScores: VoteWithScores = {
+            ...vote,
+            scores: [],
+            balance: 0,
+          } as VoteWithScores;
 
           voteWithScores.scores = strategies.map(
             (strategy, i) => scores[i][vote.voter] || 0
           );
-          voteWithScores.balance = voteWithScores.scores.reduce((a, b) => a + b, 0);
+          voteWithScores.balance = voteWithScores.scores.reduce(
+            (a, b) => a + b,
+            0
+          );
           return voteWithScores;
         })
         .sort((a, b) => b.balance - a.balance)
-        .filter((vote: { balance: number; }) => vote.balance > 0);
+        .filter((vote: { balance: number }) => vote.balance > 0);
     }
 
     /* Get results */
-    const votingClass = new Votings[proposal.type](proposal, votesWithScores, strategies);
+    const votingClass = new Votings[proposal.type](
+      proposal,
+      votesWithScores,
+      strategies
+    );
 
     const results: ResultData = {
       resultsByVoteBalance: votingClass.resultsByVoteBalance(),
       resultsByStrategyScore: votingClass.resultsByStrategyScore(),
-      sumOfResultsBalance: votingClass.sumOfResultsBalance()
+      sumOfResultsBalance: votingClass.sumOfResultsBalance(),
     };
 
     return { votesWithScores, results };
@@ -134,8 +141,8 @@ export async function getScores(
   strategies: any[],
   network: string,
   addresses: string[],
-  snapshot: number | string = 'latest',
-  scoreApiUrl = 'https://score.snapshot.org/api/scores'
+  snapshot: number | string = "latest",
+  scoreApiUrl = "https://score.snapshot.org/api/scores"
 ) {
   try {
     const params = {
@@ -143,12 +150,12 @@ export async function getScores(
       network,
       snapshot,
       strategies,
-      addresses
+      addresses,
     };
     const res = await fetch(scoreApiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ params })
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ params }),
     });
     const obj = await res.json();
     return obj.result.scores;

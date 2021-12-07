@@ -6,7 +6,11 @@ export default class ApprovalVoting {
   public votes;
   public strategies;
 
-  constructor(proposal: ProposalType, votes: any[], strategies: Space["strategies"]) {
+  constructor(
+    proposal: ProposalType,
+    votes: any[],
+    strategies: Space["strategies"]
+  ) {
     this.proposal = proposal;
     this.votes = votes;
     this.strategies = strategies;

@@ -7,7 +7,11 @@ export default class SingleChoiceVoting {
   public votes;
   public strategies;
 
-  constructor(proposal: ProposalType, votes: VoteWithScores[], strategies: Space["strategies"]) {
+  constructor(
+    proposal: ProposalType,
+    votes: VoteWithScores[],
+    strategies: Space["strategies"]
+  ) {
     this.proposal = proposal;
     this.votes = votes;
     this.strategies = strategies;

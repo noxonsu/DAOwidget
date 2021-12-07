@@ -1,5 +1,5 @@
-import { ProposalType } from 'src/hooks/useProposals';
-import { Space } from 'src/hooks/useSpaces';
+import { ProposalType } from "src/hooks/useProposals";
+import { Space } from "src/hooks/useSpaces";
 
 // @ts-ignore
 function irv(ballots: any[], rounds: any[]) {
@@ -21,11 +21,11 @@ function irv(ballots: any[], rounds: any[]) {
 
   const [topCand, topCount] = votesWithoutScore.reduce(
     ([n, m]: any[], [v, c]: any[]) => (c > m ? [v, c] : [n, m]),
-    ['?', -Infinity]
+    ["?", -Infinity]
   );
   const [bottomCand, bottomCount] = votesWithoutScore.reduce(
     ([n, m]: any, [v, c]: any) => (c < m ? [v, c] : [n, m]),
-    ['?', Infinity]
+    ["?", Infinity]
   );
 
   const sortedByHighest = votes.sort((a: any, b: any) => b[1][0] - a[1][0]);
@@ -36,7 +36,7 @@ function irv(ballots: any[], rounds: any[]) {
 
   rounds.push({
     round: rounds.length + 1,
-    sortedByHighest
+    sortedByHighest,
   });
 
   return topCount > totalPowerOfVotes / 2 || sortedByHighest.length < 3
@@ -46,7 +46,7 @@ function irv(ballots: any[], rounds: any[]) {
           .map((ballot) => [
             ballot[0].filter((c: any) => c != bottomCand),
             ballot[1],
-            ballot[2]
+            ballot[2],
           ])
           .filter((b) => b[0].length > 0),
         rounds
@@ -67,7 +67,11 @@ export default class RankedChoiceVoting {
   public votes;
   public strategies;
 
-  constructor(proposal: ProposalType, votes: any[], strategies: Space["strategies"]) {
+  constructor(
+    proposal: ProposalType,
+    votes: any[],
+    strategies: Space["strategies"]
+  ) {
     this.proposal = proposal;
     this.votes = votes;
     this.strategies = strategies;

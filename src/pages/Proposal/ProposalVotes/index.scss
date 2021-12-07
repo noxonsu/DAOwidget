@@ -1,11 +1,12 @@
-.header, .row {
+.header,
+.row {
   display: flex;
   border-top: solid 1px gray;
   padding: 1rem;
 
   :last-child {
     text-align: right;
-    border-bottom: 0px
+    border-bottom: 0px;
   }
 }
 

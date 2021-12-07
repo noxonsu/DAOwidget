@@ -16,18 +16,17 @@ function ProposalDetail() {
 
   const { proposalData, isLoading, error } = useProposal(proposalId);
 
-  const {
-    title,
-    body,
-    id,
-    space,
-    snapshot,
-    network,
-    strategies,
-    state,
-  } = proposalData;
+  const { title, body, id, space, snapshot, network, strategies, state } =
+    proposalData;
 
-  const haveDataForFetchVotes = !!(id && space?.id && snapshot && network && strategies?.length && state)
+  const haveDataForFetchVotes = !!(
+    id &&
+    space?.id &&
+    snapshot &&
+    network &&
+    strategies?.length &&
+    state
+  );
 
   return (
     <div style={{ paddingBottom: "2rem" }}>
@@ -35,39 +34,48 @@ function ProposalDetail() {
       {error && <h3>{error.message}</h3>}
       <ProposalBody title={title} description={body || ""} />
       <ProposalInfo proposalData={proposalData} />
-      {haveDataForFetchVotes && <ProposalVotesContent proposalData={proposalData} />}
+      {haveDataForFetchVotes && (
+        <ProposalVotesContent proposalData={proposalData} />
+      )}
     </div>
   );
 }
 
 type ProposalVotesContentProps = {
-  proposalData: ProposalType
-}
+  proposalData: ProposalType;
+};
 
 function ProposalVotesContent(props: ProposalVotesContentProps) {
   const { proposalData } = props;
 
   const { votesData, resultData, isLoading, error } = useVotes(proposalData);
 
-  return(
+  return (
     <>
       {error && <h3>{error.message}</h3>}
-      {isLoading
-        ? <h3>Loading votes...</h3>
-        : votesData.length && (
+      {isLoading ? (
+        <h3>Loading votes...</h3>
+      ) : (
+        votesData.length && (
           <>
-            {resultData && <ProposalResults strategies={proposalData.strategies} choices={proposalData.choices} results={resultData} />}
+            {resultData && (
+              <ProposalResults
+                strategies={proposalData.strategies}
+                choices={proposalData.choices}
+                results={resultData}
+              />
+            )}
             <ProposalVotes
               choices={proposalData.choices}
-              votes={votesData.slice(0,10)}
+              votes={votesData.slice(0, 10)}
               strategies={proposalData.strategies}
               totalVotes={votesData.length}
             />
           </>
         )
-      }
+      )}
     </>
-  )
+  );
 }
 
 export default ProposalDetail;
