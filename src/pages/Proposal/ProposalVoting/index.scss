@@ -1,14 +1,43 @@
 .choiseButton {
   display: flex;
   justify-content: center;
+  background-color: transparent;
   border: solid 1px gray;
   border-radius: 1rem;
-  margin: 1rem;
   padding: 1rem;
+  margin-bottom: 0.5rem;
   color: gray;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
 
   &.active {
     border-color: white;
     color: white;
   }
+
+}
+
+.voteButton {
+  display: flex;
+  justify-content: center;
+  background-color: #384aff;
+  border: 0px;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+
+  &.active {
+    color: white;
+  }
+
+  &:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
+
 }

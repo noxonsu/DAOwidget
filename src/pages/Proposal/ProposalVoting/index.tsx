@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { ProposalType } from "src/hooks/useProposals";
+import ChoiceButton from "./ChoiceButton";
 
 import './index.scss'
+import VoteButton from "./VoteButton";
 
 type ProposalVotesType = {
   choices: ProposalType["choices"];
@@ -25,38 +27,24 @@ function ProposalVoting(props: ProposalVotesType) {
       <div style={{ padding: "1rem", fontSize: "1.5em", fontWeight: "bold", borderBottom: "solid 1px gray" }}>
         Cast your vote
       </div>
-      <div>
-        {choices.map((choice, i) => {
-          return (
-            <ChoiceButton
-              key={i}
-              id={`choice-${i}`}
-              text={choice}
-              isActive={checkedChoice === i}
-              onClick={() => {
-                setCheckedChoice(i);
-              }}
-            />
-          );
-        })}
+      <div style={{ padding: "1rem"}}>
+        <div style={{ marginBottom: "1rem"}}>
+          {choices.map((choice, i) => {
+            return (
+              <ChoiceButton
+                key={i}
+                id={`choice-${i}`}
+                text={choice}
+                isActive={checkedChoice === i}
+                onClick={() => {
+                  setCheckedChoice(i);
+                }}
+              />
+            );
+          })}
+        </div>
+        <VoteButton />
       </div>
-    </div>
-  );
-}
-
-type ChoiceButtonsType = {
-  text: string;
-  id?: string;
-  isActive: boolean;
-  onClick: () => void;
-};
-
-function ChoiceButton(props: ChoiceButtonsType) {
-  const { isActive, id, text, onClick } = props;
-
-  return (
-    <div id={id} onClick={onClick} className={`choiseButton ${isActive ? "active" : ""}`}>
-      <span>{text}</span>
     </div>
   );
 }
