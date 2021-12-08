@@ -1,5 +1,7 @@
 import { useState } from "react";
+import ExternalLink from "src/components/ExternalLink";
 import Modal from "src/components/Modal";
+import { NETWORK_EXPLORER_URLS, SupportedChainId } from "src/helpers/constants";
 import { ProposalType } from "src/hooks/useProposals";
 import ChoiceButton from "./ChoiceButton";
 
@@ -7,38 +9,25 @@ import "./index.scss";
 import VoteButton from "./VoteButton";
 
 type ProposalVotesType = {
-  choices: ProposalType["choices"];
+  proposal: ProposalType;
 };
 
 function ProposalVoting(props: ProposalVotesType) {
-  const { choices } = props;
+  const { proposal } = props;
+
+  const { choices, network, snapshot } = proposal;
 
   const [checkedChoice, setCheckedChoice] = useState(-1);
   const [isVoteModalOpen, setIsVoteModalOpen] = useState(false)
 
   return (
     <>
-      <div
-        style={{
-          border: "solid 1px gray",
-          borderRadius: "1rem",
-          width: "80%",
-          margin: "auto",
-          marginBottom: "1rem",
-        }}
-      >
-        <div
-          style={{
-            padding: "1rem",
-            fontSize: "1.5em",
-            fontWeight: "bold",
-            borderBottom: "solid 1px gray",
-          }}
-        >
+      <div className="voting">
+        <div className="votingHeader">
           Cast your vote
         </div>
-        <div style={{ padding: "1rem" }}>
-          <div style={{ marginBottom: "1rem" }}>
+        <div className="p-1">
+          <div className="mb-1">
             {choices.map((choice, i) => {
               return (
                 <ChoiceButton
@@ -63,7 +52,7 @@ function ProposalVoting(props: ProposalVotesType) {
       {isVoteModalOpen &&
         <Modal
           headerContent={"Confirm vote"}
-          bodyContent={"Are you sure you want to vote?"}
+          bodyContent={<VotingModalContent proposal={proposal} checkedChoice={checkedChoice}/>}
           handleClose={() => {
             setIsVoteModalOpen(false)
           }}
@@ -71,6 +60,50 @@ function ProposalVoting(props: ProposalVotesType) {
       }
     </>
   );
+}
+
+type VotingModalContentProps = {
+  proposal: ProposalType;
+  checkedChoice: number;
+}
+
+function VotingModalContent(props: VotingModalContentProps) {
+  const { proposal, checkedChoice } = props;
+  const { network, choices, snapshot, strategies } = proposal
+  const tokenSymbol = strategies[0].params.symbol;
+
+  const networkId = +network as SupportedChainId;
+
+  return (
+    <>
+      <div className="modalBody">
+        <div className="textCenter boldText">
+          Are you sure you want to vote "{choices[checkedChoice]}"?
+          <br/>
+          This action cannot be undone.
+        </div>
+        <div className="border rounded-md m-1 p-1">
+          <div className="flex">
+            <span className="flexAuto textColor">Option(s)</span>
+            <span className="textRight">{choices[checkedChoice]}</span>
+          </div>
+          <div className="flex">
+            <span className="flexAuto textColor">Snapshot</span>
+            <ExternalLink
+              className="mr-1"
+              link={`${NETWORK_EXPLORER_URLS[networkId]}block/${snapshot}`}
+              children={snapshot}
+            />
+          </div>
+          <div className="flex">
+            <span className="flexAuto textColor">Your voting power</span>
+            <span className="textRight">0 {tokenSymbol}</span>
+          </div>
+        </div>
+      </div>
+      <div className="modalFooter"></div>
+    </>
+  )
 }
 
 export default ProposalVoting;

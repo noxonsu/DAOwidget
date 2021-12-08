@@ -1,3 +1,55 @@
 body {
   margin: 0;
 }
+
+.m-1 {
+  margin: 1rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mr-1 {
+  margin-right: 1rem;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.floatRight {
+  float: right;
+}
+
+.textColor {
+  color: #8b949e
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.textRight {
+  text-align: right;
+}
+
+.boldText {
+  font-weight: 600;
+}
+
+.flex {
+  display: flex;
+}
+
+.flexAuto {
+  flex: 1 1 auto;
+}
+
+.border {
+  border: solid 1px gray;
+}
+
+.rounded-md {
+  border-radius: 0.5rem;
+}

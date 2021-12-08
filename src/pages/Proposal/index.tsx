@@ -42,7 +42,7 @@ function ProposalDetail() {
     <div style={{ paddingBottom: "2rem" }}>
       {isLoading && <h3>Loading...</h3>}
       <ProposalBody title={title} description={body || ""} />
-      {choices && state !== "close" && <ProposalVoting choices={choices} />}
+      {choices && state !== "close" && <ProposalVoting proposal={proposalData} />}
       <ProposalInfo proposalData={proposalData} />
       {haveDataForFetchVotes && (
         <ProposalVotesContent proposalData={proposalData} />
