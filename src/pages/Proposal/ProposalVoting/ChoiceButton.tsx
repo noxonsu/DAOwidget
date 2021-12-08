@@ -1,4 +1,4 @@
-import './index.scss'
+import "./index.scss";
 
 type ChoiceButtonsType = {
   text: string;
@@ -11,7 +11,11 @@ function ChoiceButton(props: ChoiceButtonsType) {
   const { isActive, id, text, onClick } = props;
 
   return (
-    <button id={id} onClick={onClick} className={`choiseButton ${isActive ? "active" : ""}`}>
+    <button
+      id={id}
+      onClick={onClick}
+      className={`choiseButton ${isActive ? "active" : ""}`}
+    >
       <span>{text}</span>
     </button>
   );

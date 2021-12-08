@@ -24,6 +24,10 @@ export const PROPOSAL_QUERY = gql`
       end
       snapshot
       state
+      scores
+      scores_state
+      scores_by_strategy
+      scores_total
       author
       created
       plugins

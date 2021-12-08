@@ -7,10 +7,9 @@ import { shortenText } from "src/helpers/utils";
 import "./index.scss";
 
 function Proposals() {
-  const {
-    offChainProposalList: proposals,
-    isLoading,
-  } = useProposalList({ space_in: [window.ENS_DOMAIN || "sushigov.eth"] });
+  const { offChainProposalList: proposals, isLoading } = useProposalList({
+    space_in: [window.ENS_DOMAIN || "sushigov.eth"],
+  });
 
   const renderedProposalList = proposals.map(
     ({ author, body, title, state, id }, index) => {
