@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+## Enable trended feature for your ERC20 token - Governance and proposals 
+With a given value of tokens, anyone can create proposals. Another stakeholders can vote for proposals without spend money on gas. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Elements
+- Metamask supported
+- "Create proposal" form  
+- "Vote for proposal" (нужен скрин)
+- "List of votes" https://screenshots.wpmix.net/chrome_xKrom1ZT5ZxQdhRuReoDlya4G2E8P5mY.png 
+- Your tokenholders can create proposals and vote for free (without paying for gas)
+- All proposals have Voting Period (specified and adjusted by creator or tokenHolders) it could be specified by creator or by token holders through proposal.
+- We use snapshot.org API
+- you required ENS domain (100-200$ costs). but you can use shared domain by default (don't worry, only your proposals will showed in the list).  
+- MetaMask supported
+- ERC20, BEP20, and other EVM blochains are supported
 
-## Available Scripts
+## For whom: 
+- Community Collectives
+- Developer Collectives
+- Worker Collectives
+- Art Collectives
+- Social Media
+- Metaverses / Virtual Worlds
+- Asset Management
+- Venture Capital
+- Insurance
+- Trust Funds
+- Company / Project Fundraising
+- Fan Ownership
+- Freeholder / Co-Living / Nomad Communities
+- Media / Entertainment
+- Politics
 
-In the project directory, you can run:
+# Installation
 
-### `npm start`
+Put the code on your website 
+```
+<script src=''>
+<div class=''></div>
+```
+Or use shortcode ```[daofactory_app ens_space="ens.eth" template="light_template"]```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+if you have registered ens domain (https://ens.domains/), use this shortcode (firstly create your space at https://snapshot.org/#/setup)
+```
+[daofactory_app ens_space="yourdomain.eth"]
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+for dark theme use ```[daofactory_app ens_space="ens.eth" template="light_template"]```
