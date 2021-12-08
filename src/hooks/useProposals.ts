@@ -73,7 +73,6 @@ type FetchOffChainProposalListParams = {
 
 export const useProposal = (id: string) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<false | Error>(false);
   const [proposalData, setProposalData] = useState<ProposalType>({} as any);
 
   useEffect(() => {
@@ -84,7 +83,7 @@ export const useProposal = (id: string) => {
         const proposal = (await fetchOffChainProposal(id)) as ProposalType;
         setProposalData(proposal);
       } catch (err) {
-        setError(new Error("Can't fetch proposal"));
+        console.error(`Error: Can't fetch proposal. Description: ${err}`);
       } finally {
         setIsLoading(false);
       }
@@ -94,7 +93,6 @@ export const useProposal = (id: string) => {
 
   return {
     isLoading,
-    error,
     proposalData,
   };
 };
@@ -108,7 +106,6 @@ export const fetchOffChainProposal = async (id: string) => {
 
 export const useProposalList = (params: FetchOffChainProposalListParams) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<false | Error>(false);
   const [offChainProposalList, setOffChainProposalList] = useState<
     ShortProposalType[]
   >([]);
@@ -123,7 +120,7 @@ export const useProposalList = (params: FetchOffChainProposalListParams) => {
         )) as ShortProposalType[];
         setOffChainProposalList(proposals);
       } catch (err) {
-        setError(new Error("Can't fetch proposals"));
+        console.error(`Error: Can't fetch proposals. Description: ${err}`);
       } finally {
         setIsLoading(false);
       }
@@ -134,7 +131,6 @@ export const useProposalList = (params: FetchOffChainProposalListParams) => {
   return {
     offChainProposalList,
     isLoading,
-    error,
   };
 };
 

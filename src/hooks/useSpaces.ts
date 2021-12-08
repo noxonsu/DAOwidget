@@ -38,7 +38,6 @@ export type Space = {
 
 export const useSpaceList = (id_in: string[]) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<false | Error>(false);
   const [spacesData, setSpacesData] = useState<Space[]>([]);
 
   useEffect(() => {
@@ -49,7 +48,7 @@ export const useSpaceList = (id_in: string[]) => {
         const spaces = (await fetchSpaces(id_in)) as Space[];
         setSpacesData(spaces);
       } catch (err) {
-        setError(new Error("Error: can't fetch space list"));
+        console.error(`Error: Can't fetch space list. Description: ${err}`);
       } finally {
         setIsLoading(false);
       }
@@ -60,7 +59,6 @@ export const useSpaceList = (id_in: string[]) => {
   return {
     spacesData,
     isLoading,
-    error,
   };
 };
 

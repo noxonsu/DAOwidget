@@ -15,7 +15,7 @@ type ParamsProps = {
 function ProposalDetail() {
   const { proposalId = "" } = useParams() as ParamsProps;
 
-  const { proposalData, isLoading, error } = useProposal(proposalId);
+  const { proposalData, isLoading } = useProposal(proposalId);
 
   const {
     title,
@@ -41,7 +41,6 @@ function ProposalDetail() {
   return (
     <div style={{ paddingBottom: "2rem" }}>
       {isLoading && <h3>Loading...</h3>}
-      {error && <h3>{error.message}</h3>}
       <ProposalBody title={title} description={body || ""} />
       {choices && state !== "close" && <ProposalVoting choices={choices} />}
       <ProposalInfo proposalData={proposalData} />
@@ -59,11 +58,10 @@ type ProposalVotesContentProps = {
 function ProposalVotesContent(props: ProposalVotesContentProps) {
   const { proposalData } = props;
 
-  const { votesData, resultData, isLoading, error } = useVotes(proposalData);
+  const { votesData, resultData, isLoading } = useVotes(proposalData);
 
   return (
     <>
-      {error && <h3>{error.message}</h3>}
       {isLoading ? (
         <h3>Loading votes...</h3>
       ) : (

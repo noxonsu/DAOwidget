@@ -10,7 +10,6 @@ function Proposals() {
   const {
     offChainProposalList: proposals,
     isLoading,
-    error,
   } = useProposalList({ space_in: [window.ENS_DOMAIN || "sushigov.eth"] });
 
   const renderedProposalList = proposals.map(
@@ -40,7 +39,6 @@ function Proposals() {
         <h1>Proposals</h1>
       </div>
       {isLoading && <h3>Loading...</h3>}
-      {error && <h3>{error.message}</h3>}
       {!!proposals.length && renderedProposalList}
     </div>
   );

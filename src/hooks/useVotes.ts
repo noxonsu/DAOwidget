@@ -28,7 +28,6 @@ export type ResultData = {
 
 export const useVotes = (proposal: ProposalType) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<false | Error>(false);
   const [votesData, setVotesData] = useState<VoteWithScores[]>([]);
   const [resultData, setResultData] = useState<ResultData>();
 
@@ -42,7 +41,7 @@ export const useVotes = (proposal: ProposalType) => {
         setVotesData(votesWithScores);
         setResultData(results);
       } catch (err) {
-        setError(new Error(`Error: Can't fetch votes. Description: ${err}`));
+        console.error(`Error: Can't fetch votes. Description: ${err}`);
       } finally {
         setIsLoading(false);
       }
@@ -53,7 +52,6 @@ export const useVotes = (proposal: ProposalType) => {
   return {
     votesData,
     isLoading,
-    error,
     resultData,
   };
 };
