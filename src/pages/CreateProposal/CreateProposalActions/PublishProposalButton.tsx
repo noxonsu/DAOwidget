@@ -3,13 +3,13 @@ import { useState } from "react";
 import "./index.scss";
 
 type PublishProposalButtonProps = {
-
+  disable: boolean;
 };
 
 function PublishProposalButton(props: PublishProposalButtonProps) {
-  const {  } = props;
+  const { disable } = props;
 
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(disable);
 
   const onVoteClick = () => {
     console.log("click on publish");
@@ -17,8 +17,8 @@ function PublishProposalButton(props: PublishProposalButtonProps) {
 
   return (
     <button
-      className={`publishProposalButton ${isActive ? "active" : ""}`}
-      disabled={!isActive}
+      className={`publishProposalButton ${disable ? "active" : ""}`}
+      disabled={disable}
       onClick={onVoteClick}
     >
       <span>Publish</span>

@@ -1,6 +1,7 @@
 
-import { ChangeEvent, OptionHTMLAttributes, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
+import { useClient } from "src/hooks/useClient";
 import PublishProposalButton from "./PublishProposalButton";
 
 import "./index.scss";
@@ -13,6 +14,9 @@ function CreateProposalActions(props: CreateProposalActionsType) {
   const { } = props;
 
   const [selectedDuration, SetSelectedDuration] = useState(0)
+  const { send, clientLoading } = useClient();
+
+  console.log('clientLoading', clientLoading)
 
   const durationOptions = [
     {value: 0, text: "Duration:"},
@@ -28,6 +32,11 @@ function CreateProposalActions(props: CreateProposalActionsType) {
     SetSelectedDuration(parseInt(e.target.value))
   }
 
+  const handleSubmit = async () => {
+    //const result = await send(props.space, 'proposal', form.value);
+    //console.log('Result', result);
+  }
+
   return (
     <>
       <div className="createActions">
@@ -36,7 +45,7 @@ function CreateProposalActions(props: CreateProposalActionsType) {
           <div className="mb-1">
             <DropDown handleChange={handleDurationChange} selectedDuration={selectedDuration} options={durationOptions} />
           </div>
-          <PublishProposalButton />
+          <PublishProposalButton disable={selectedDuration === 0} />
         </div>
       </div>
     </>
