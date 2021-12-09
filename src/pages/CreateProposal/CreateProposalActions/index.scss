@@ -1,0 +1,56 @@
+.createActions {
+  border: solid 1px gray;
+  border-radius: 1rem;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.createActionsHeader {
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-bottom: solid 1px gray;
+}
+
+.actionDropdown {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  border: solid 1px gray;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    border-color: white;
+  }
+}
+
+.publishProposalButton {
+  display: flex;
+  justify-content: center;
+  background-color: #384aff;
+  border: 0px;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+
+  &.active {
+    color: white;
+  }
+
+  &:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
+}
+
