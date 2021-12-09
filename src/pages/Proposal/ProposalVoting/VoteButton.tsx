@@ -14,7 +14,7 @@ function VoteButton(props: VoteButtonProps) {
   const onVoteClick = () => {
     console.log("click on vote");
     setIsActive(!isActive);
-    openModal()
+    openModal();
   };
 
   return (

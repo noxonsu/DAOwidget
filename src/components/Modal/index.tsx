@@ -3,15 +3,11 @@ import "./index.scss";
 type ModalProps = {
   headerContent: any;
   bodyContent: any;
-  handleClose: () => void
+  handleClose: () => void;
 };
 
 function Modal(props: ModalProps) {
-  const {
-    headerContent,
-    bodyContent,
-    handleClose,
-  } = props;
+  const { headerContent, bodyContent, handleClose } = props;
 
   return (
     <div className="modalOverlay">
@@ -24,10 +20,14 @@ function Modal(props: ModalProps) {
       >
         <div className="modal">
           <div className="modalHeader">
-            <div className="headerContent">
-              {headerContent}
-            </div>
-            <button type="button" className="modalCloseButton" data-dismiss="modal" aria-label="Close" onClick={handleClose}>
+            <div className="headerContent">{headerContent}</div>
+            <button
+              type="button"
+              className="modalCloseButton"
+              data-dismiss="modal"
+              aria-label="Close"
+              onClick={handleClose}
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>

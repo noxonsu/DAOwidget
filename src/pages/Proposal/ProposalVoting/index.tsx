@@ -18,14 +18,12 @@ function ProposalVoting(props: ProposalVotesType) {
   const { choices, network, snapshot } = proposal;
 
   const [checkedChoice, setCheckedChoice] = useState(-1);
-  const [isVoteModalOpen, setIsVoteModalOpen] = useState(false)
+  const [isVoteModalOpen, setIsVoteModalOpen] = useState(false);
 
   return (
     <>
       <div className="voting">
-        <div className="votingHeader">
-          Cast your vote
-        </div>
+        <div className="votingHeader">Cast your vote</div>
         <div className="p-1">
           <div className="mb-1">
             {choices.map((choice, i) => {
@@ -44,20 +42,25 @@ function ProposalVoting(props: ProposalVotesType) {
           </div>
           <VoteButton
             openModal={() => {
-              setIsVoteModalOpen(true)
+              setIsVoteModalOpen(true);
             }}
           />
         </div>
       </div>
-      {isVoteModalOpen &&
+      {isVoteModalOpen && (
         <Modal
           headerContent={"Confirm vote"}
-          bodyContent={<VotingModalContent proposal={proposal} checkedChoice={checkedChoice}/>}
+          bodyContent={
+            <VotingModalContent
+              proposal={proposal}
+              checkedChoice={checkedChoice}
+            />
+          }
           handleClose={() => {
-            setIsVoteModalOpen(false)
+            setIsVoteModalOpen(false);
           }}
         />
-      }
+      )}
     </>
   );
 }
@@ -65,11 +68,11 @@ function ProposalVoting(props: ProposalVotesType) {
 type VotingModalContentProps = {
   proposal: ProposalType;
   checkedChoice: number;
-}
+};
 
 function VotingModalContent(props: VotingModalContentProps) {
   const { proposal, checkedChoice } = props;
-  const { network, choices, snapshot, strategies } = proposal
+  const { network, choices, snapshot, strategies } = proposal;
   const tokenSymbol = strategies[0].params.symbol;
 
   const networkId = +network as SupportedChainId;
@@ -79,7 +82,7 @@ function VotingModalContent(props: VotingModalContentProps) {
       <div className="modalBody">
         <div className="textCenter boldText">
           Are you sure you want to vote "{choices[checkedChoice]}"?
-          <br/>
+          <br />
           This action cannot be undone.
         </div>
         <div className="border rounded-md m-1 p-1">
@@ -103,7 +106,7 @@ function VotingModalContent(props: VotingModalContentProps) {
       </div>
       <div className="modalFooter"></div>
     </>
-  )
+  );
 }
 
 export default ProposalVoting;

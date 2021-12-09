@@ -11,7 +11,13 @@ function ExternalLink(props: ExternalLinkProps) {
   const { link, children, className, styles = {} } = props;
 
   return (
-    <a className={className || ""} href={link} target="_blank" rel="noreferrer" style={styles}>
+    <a
+      className={className || ""}
+      href={link}
+      target="_blank"
+      rel="noreferrer"
+      style={styles}
+    >
       {children}{" "}
       <ExternalLinkSvg
         fill="white"
