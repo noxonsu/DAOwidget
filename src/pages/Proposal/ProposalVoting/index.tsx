@@ -19,7 +19,7 @@ function ProposalVoting(props: ProposalVotesType) {
   const { proposal } = props;
 
   const { choices, network, snapshot } = proposal;
-  const { power, isPowerLoading } = usePower(proposal)
+  const { power, isPowerLoading } = usePower(proposal);
 
   const [checkedChoice, setCheckedChoice] = useState(-1);
   const [isVoteModalOpen, setIsVoteModalOpen] = useState(false);
@@ -86,12 +86,11 @@ function VotingModalContent(props: VotingModalContentProps) {
   const networkId = +network as SupportedChainId;
 
   const handleSubmit = async () => {
-
     const vote = {
       proposal,
       choice: checkedChoice + 1,
-      metadata: {}
-    }
+      metadata: {},
+    };
 
     const result = await send(proposal.space as Space, "vote", vote);
     console.log("Result", result);
@@ -120,12 +119,21 @@ function VotingModalContent(props: VotingModalContentProps) {
           </div>
           <div className="flex">
             <span className="flexAuto textColor">Your voting power</span>
-            <span className="textRight">{power} {tokenSymbol}</span>
+            <span className="textRight">
+              {power} {tokenSymbol}
+            </span>
           </div>
         </div>
       </div>
       <div className="textCenter p-1 border-t">
-        <button type="button" className="primaryButton" onClick={handleSubmit} disabled={power === 0}>Vote</button>
+        <button
+          type="button"
+          className="primaryButton"
+          onClick={handleSubmit}
+          disabled={power === 0}
+        >
+          Vote
+        </button>
       </div>
     </>
   );

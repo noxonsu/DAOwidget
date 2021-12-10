@@ -40,9 +40,9 @@ export function getProvider(network: string) {
   const url: string = networks[network].rpc[0];
   if (!providers[network]) providers[network] = new StaticJsonRpcProvider(url);
   return providers[network];
-};
+}
 
 export default {
   getBlockNumber,
   getProvider,
-}
+};

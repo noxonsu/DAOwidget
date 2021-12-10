@@ -47,10 +47,11 @@ function CreateProposalActions(props: CreateProposalActionsType) {
     const snapshot = await getBlockNumber(getProvider(network));
 
     const strategyParams = {
-      symbol: window.TOKEN_SYMBOL || "BNG",
-      address: window.TOKEN_ADDRESS || "0x6010e1a66934c4d053e8866acac720c4a093d956",
-      decimals: parseInt(window.TOKEN_DECIMALS || 18),
-    }
+      symbol: window.TOKEN_SYMBOL,
+      address:
+        window.TOKEN_ADDRESS,
+      decimals: parseInt(window.TOKEN_DECIMALS),
+    };
 
     const dateNow = parseInt((Date.now() / 1e3).toFixed());
 

@@ -9,7 +9,7 @@ import "./index.scss";
 function Proposals() {
   const { offChainProposalList: proposals, isLoading } = useProposalList({
     space_in: [window.ENS_DOMAIN || "onout.eth"],
-    tokenAddress: window.TOKEN_ADDRESS
+    tokenAddress: window.TOKEN_ADDRESS,
   });
 
   const renderedProposalList = proposals.map(
@@ -38,18 +38,18 @@ function Proposals() {
       <div className="proposals-header">
         <h1>Proposals</h1>
       </div>
-      {isLoading ? <h3>Loading...</h3>
-      : !!proposals.length
-        ? renderedProposalList
-        : <>
+      {isLoading ? (
+        <h3>Loading...</h3>
+      ) : !!proposals.length ? (
+        renderedProposalList
+      ) : (
+        <>
           <h3>Let's create your first proposal</h3>
           <Link to="proposal/create">
-            <button className="secondaryButton active">
-              Create proposal
-            </button>
+            <button className="secondaryButton active">Create proposal</button>
           </Link>
         </>
-      }
+      )}
     </div>
   );
 }
