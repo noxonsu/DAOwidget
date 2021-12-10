@@ -21,7 +21,7 @@ With a given value of tokens, anyone can create proposals. Another stakeholders 
       data-token-address="0xd9b064e78199598e9435f9158be1f28b4db422a3"
       data-token-symbol="XDCK"
       data-token-decimals="18"
-      data-color-template="light_template"
+      data-color-template="dark_template"
     ></div>
 
 <script src='https://noxonsu.github.io/DAOwidget/build/static/js/main.js'></script>
