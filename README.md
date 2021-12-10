@@ -1,10 +1,19 @@
-## Enable trended feature for your ERC20 token - Governance and proposals 
-With a given value of tokens, anyone can create proposals. Another stakeholders can vote for proposals without spend money on gas. You don't need ens domain registered, this is totally free and ready-to-go widget.
+- Project name: DAO_Widget
+- Submission link: (this)
 
+    - Pain: snapshot.org requires ens domain (200$ gas🥶)
+    - Target audience: newbies who just issued the erc20 token
+    - Solution: use shared ens space on snapshot.org, create usefull HTML widget  
 
-# Installation
+- Recorded video demo of the project and small pitch (max 5 mins): 
+- Date when team began working on the project (for fair assessment of projects): November 2021
+- Wallet(s) to send payment if the project wins: 0x873351e707257C28eC6fAB1ADbc850480f6e0633
+- Person of contact for the judges in case there are any questions
+    - Full Name: Aleksandr Ruin
+    - Email: i448539@gmail.com
 
-Put the HTML code on your website 
+## Add this HTML widget to your site to enable trended feature for your ERC20 token - Governance and proposals 
+With a given value of tokens, anyone can create proposals. Another stakeholders can vote for proposals without spend money on gas. Put the HTML code on your website 
 ```
 <div
       id="daofactory_app"
@@ -22,11 +31,11 @@ Put the HTML code on your website
 That's all, now open your page and create first proposal. 
 
 
-## Elements
+## Features
 - Metamask supported
 - "Create proposal" form  
-- "Vote for proposal" (нужен скрин)
-- "List of votes" https://screenshots.wpmix.net/chrome_xKrom1ZT5ZxQdhRuReoDlya4G2E8P5mY.png 
+- "Vote for proposal" 
+- "List of votes" 
 - Your tokenholders can create proposals and vote for free (without paying for gas)
 - All proposals have Voting Period (specified and adjusted by creator or tokenHolders) it could be specified by creator or by token holders through proposal.
 - We use snapshot.org API
