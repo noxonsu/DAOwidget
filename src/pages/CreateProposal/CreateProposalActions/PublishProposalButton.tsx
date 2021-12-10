@@ -4,15 +4,17 @@ import "./index.scss";
 
 type PublishProposalButtonProps = {
   disable: boolean;
+  onClick: () => void;
 };
 
 function PublishProposalButton(props: PublishProposalButtonProps) {
-  const { disable } = props;
+  const { disable, onClick } = props;
 
   const [isActive, setIsActive] = useState(disable);
 
   const onVoteClick = () => {
     console.log("click on publish");
+    onClick()
   };
 
   return (
