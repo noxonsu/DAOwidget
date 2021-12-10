@@ -1,0 +1,29 @@
+.createProposal {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  width: 100%;
+}
+
+@mixin reset-input {
+  outline: none;
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+
+.createTitleInput {
+  @include reset-input;
+
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 50px;
+}
+
+.createBodyTextArea {
+  @include reset-input;
+
+  resize: none;
+  overflow: hidden;
+  font-size: 22px;
+}

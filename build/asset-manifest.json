@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/app/plugins/daofactory_app/build/static/css/main.css",
+    "main.js": "/app/plugins/daofactory_app/build/static/js/main.js",
+    "main.js.map": "/app/plugins/daofactory_app/build/static/js/main.js.map",
+    "static/js/1.c3ebf75a.chunk.js": "/app/plugins/daofactory_app/build/static/js/1.c3ebf75a.chunk.js",
+    "static/js/1.c3ebf75a.chunk.js.map": "/app/plugins/daofactory_app/build/static/js/1.c3ebf75a.chunk.js.map",
+    "index.html": "/app/plugins/daofactory_app/build/index.html",
+    "static/css/main.css.map": "/app/plugins/daofactory_app/build/static/css/main.css.map",
+    "static/js/main.js.LICENSE.txt": "/app/plugins/daofactory_app/build/static/js/main.js.LICENSE.txt",
+    "static/media/external-link.54c826b3.svg": "/app/plugins/daofactory_app/build/static/media/external-link.54c826b3.svg"
+  },
+  "entrypoints": [
+    "static/css/main.css",
+    "static/js/main.js"
+  ]
+}

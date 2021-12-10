@@ -3,18 +3,25 @@ import { ReactComponent as ExternalLinkSvg } from "src/assets/svg/external-link.
 type ExternalLinkProps = {
   link: string;
   children: any;
+  className?: string;
   styles?: IUniversalObj;
 };
 
 function ExternalLink(props: ExternalLinkProps) {
-  const { link, children, styles = {} } = props;
+  const { link, children, className, styles = {} } = props;
 
   return (
-    <a href={link} target="_blank" rel="noreferrer" style={styles}>
+    <a
+      className={className || ""}
+      href={link}
+      target="_blank"
+      rel="noreferrer"
+      style={styles}
+    >
       {children}{" "}
       <ExternalLinkSvg
         fill="white"
-        style={{ position: "absolute", width: "1.5rem", height: "1rem" }}
+        style={{ position: "absolute", width: "1.2rem", height: "1rem" }}
       />
     </a>
   );

@@ -1,3 +1,113 @@
 body {
   margin: 0;
 }
+
+.m-1 {
+  margin: 1rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mr-1 {
+  margin-right: 1rem;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.floatRight {
+  float: right;
+}
+
+.floatLeft {
+  float: left;
+}
+
+.w-2\/4 {
+  width: 50%;
+}
+
+.textColor {
+  color: #8b949e;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.textRight {
+  text-align: right;
+}
+
+.boldText {
+  font-weight: 600;
+}
+
+.flex {
+  display: flex;
+}
+
+.flexAuto {
+  flex: 1 1 auto;
+}
+
+.border {
+  border: solid 1px gray;
+}
+
+.border-t {
+  border-top: solid 1px gray;
+}
+
+.rounded-md {
+  border-radius: 0.5rem;
+}
+
+.secondaryButton {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  border: solid 1px gray;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  color: gray;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+
+  &.active {
+    border-color: white;
+    color: white;
+  }
+}
+
+.primaryButton {
+  display: flex;
+  justify-content: center;
+  background-color: #384aff;
+  border: 0px;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+
+  &.active {
+    color: white;
+  }
+
+  &:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
+}

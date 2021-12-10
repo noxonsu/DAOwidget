@@ -5,7 +5,7 @@ import { OFFCHAIN_HUB_API } from "src/helpers/constants";
 import { PROPOSAL_QUERY, PROPOSALS_QUERY } from "src/helpers/queries";
 
 export type ProposalType = {
-  id: number;
+  id: string;
   ipfs: string;
   title: string;
   body: string;
@@ -18,7 +18,7 @@ export type ProposalType = {
   created: number;
   plugins: IUniversalObj;
   network: string;
-  type: string;
+  type: "single-choice" | "basic";
   strategies: {
     name: string;
     params: {
@@ -49,6 +49,14 @@ export type ShortProposalType = {
     members: string[];
     name: string;
   };
+  strategies: {
+    name: string;
+    params: {
+      address: string;
+      decimals: number;
+      symbol: string;
+    };
+  }[];
 };
 
 export enum ProposalState {
@@ -69,11 +77,11 @@ type FetchOffChainProposalListParams = {
   space?: string;
   space_in: string[];
   author_in?: string[];
+  tokenAddress: string;
 };
 
 export const useProposal = (id: string) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<false | Error>(false);
   const [proposalData, setProposalData] = useState<ProposalType>({} as any);
 
   useEffect(() => {
@@ -84,7 +92,7 @@ export const useProposal = (id: string) => {
         const proposal = (await fetchOffChainProposal(id)) as ProposalType;
         setProposalData(proposal);
       } catch (err) {
-        setError(new Error("Can't fetch proposal"));
+        console.error(`Error: Can't fetch proposal. Description: ${err}`);
       } finally {
         setIsLoading(false);
       }
@@ -94,7 +102,6 @@ export const useProposal = (id: string) => {
 
   return {
     isLoading,
-    error,
     proposalData,
   };
 };
@@ -108,7 +115,6 @@ export const fetchOffChainProposal = async (id: string) => {
 
 export const useProposalList = (params: FetchOffChainProposalListParams) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<false | Error>(false);
   const [offChainProposalList, setOffChainProposalList] = useState<
     ShortProposalType[]
   >([]);
@@ -118,12 +124,10 @@ export const useProposalList = (params: FetchOffChainProposalListParams) => {
       try {
         setIsLoading(true);
 
-        const proposals = (await fetchOffChainProposalList(
-          params
-        )) as ShortProposalType[];
+        const proposals = await fetchOffChainProposalList(params);
         setOffChainProposalList(proposals);
       } catch (err) {
-        setError(new Error("Can't fetch proposals"));
+        console.error(`Error: Can't fetch proposals. Description: ${err}`);
       } finally {
         setIsLoading(false);
       }
@@ -134,7 +138,6 @@ export const useProposalList = (params: FetchOffChainProposalListParams) => {
   return {
     offChainProposalList,
     isLoading,
-    error,
   };
 };
 
@@ -145,12 +148,23 @@ export const fetchOffChainProposalList = async (
     OFFCHAIN_HUB_API,
     PROPOSALS_QUERY,
     {
-      first: 6,
+      first: 10000,
       skip: 0,
       state: "all",
       ...params,
     }
   );
-  console.log("offChainProposalList", offChainProposalList);
-  return offChainProposalList.proposals;
+
+  let proposals = offChainProposalList.proposals as ShortProposalType[];
+
+  if (params.tokenAddress) {
+    proposals = proposals.filter((proposal) => {
+      const strategyAddress = proposal.strategies[0].params.address;
+      const isTokenStrategy = strategyAddress === params.tokenAddress;
+
+      return isTokenStrategy;
+    });
+  }
+
+  return proposals;
 };

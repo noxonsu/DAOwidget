@@ -8,7 +8,7 @@ import "./index.scss";
 function Header() {
   return (
     <div className="header">
-      <div className="header__logo">
+      {/* <div className="header__logo">
         <Link to={`/`}>
           <img
             src="https://wallet.wpmix.net/wp-content/uploads/2020/07/yourlogohere.png"
@@ -16,7 +16,7 @@ function Header() {
             alt="logo"
           />
         </Link>
-      </div>
+      </div> */}
       <Navbar />
       <ConnectWallet />
     </div>

@@ -5,15 +5,14 @@ import FollowButton from "./FollowButton";
 import ExternalLink from "src/components/ExternalLink";
 
 function About() {
-  const { spacesData, isLoading, error } = useSpaceList([
-    window.ENS_DOMAIN || "sushigov.eth",
+  const { spacesData, isLoading } = useSpaceList([
+    window.ENS_DOMAIN || "onout.eth",
   ]);
 
   const spaceData = spacesData[0];
 
   console.groupCollapsed("useSpaceList states");
   console.log("isLoading", isLoading);
-  console.log("error", error);
   console.log("spaceData", spaceData);
   console.groupEnd();
 
