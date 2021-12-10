@@ -1,4 +1,3 @@
-
 import { ChangeEvent, useState } from "react";
 
 import getProvider, { getBlockNumber } from "src/helpers/utils/web3";
@@ -14,47 +13,46 @@ type CreateProposalActionsType = {
 };
 
 function CreateProposalActions(props: CreateProposalActionsType) {
-
   const { spacesData, isLoading: isSpaceLoading } = useSpaceList([
     window.ENS_DOMAIN || "onout.eth",
   ]);
 
-  const [selectedDuration, SetSelectedDuration] = useState(0)
+  const [selectedDuration, SetSelectedDuration] = useState(0);
   const { send, clientLoading } = useClient();
 
-  console.groupCollapsed("CreateProposalActions")
-  console.log('clientLoading', clientLoading)
-  console.log('spacesData', spacesData, isSpaceLoading)
-  console.groupEnd()
+  console.groupCollapsed("CreateProposalActions");
+  console.log("clientLoading", clientLoading);
+  console.log("spacesData", spacesData, isSpaceLoading);
+  console.groupEnd();
 
   const durationOptions = [
-    {value: 0, text: "Duration:"},
-    {value: 86400, text: "1d"},
-    {value: 259200, text: "3d"},
-    {value: 432000, text: "5d"},
-    {value: 604800, text: "1w"},
-    {value: 1209600, text: "2w"},
-    {value: 2419200, text: "1m"},
-  ]
+    { value: 0, text: "Duration:" },
+    { value: 86400, text: "1d" },
+    { value: 259200, text: "3d" },
+    { value: 432000, text: "5d" },
+    { value: 604800, text: "1w" },
+    { value: 1209600, text: "2w" },
+    { value: 2419200, text: "1m" },
+  ];
 
   const handleDurationChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    SetSelectedDuration(parseInt(e.target.value))
-  }
+    SetSelectedDuration(parseInt(e.target.value));
+  };
 
   const handleSubmit = async () => {
-    const space = spacesData[0]
+    const space = spacesData[0];
 
     const snapshot = await getBlockNumber(getProvider(space.network));
 
-    const dateNow = parseInt((Date.now() / 1e3).toFixed())
+    const dateNow = parseInt((Date.now() / 1e3).toFixed());
 
     const dateStart = space.voting?.delay
       ? dateNow + space.voting.delay
       : dateNow;
 
     const dateEnd = space.voting?.period
-    ? dateStart + space.voting.period
-    : dateStart + durationOptions[selectedDuration].value || 3600;
+      ? dateStart + space.voting.period
+      : dateStart + durationOptions[selectedDuration].value || 3600;
 
     const { title, body } = props;
 
@@ -65,23 +63,23 @@ function CreateProposalActions(props: CreateProposalActionsType) {
       choices: ["For", "Against", "Abstain"],
       strategies: [
         {
-          "name": "erc20-balance-of",
-          "params": {
-            "symbol": "BNG",
-            "address": "0x6010e1a66934c4d053e8866acac720c4a093d956",
-            "decimals": 18
-          }
+          name: "erc20-balance-of",
+          params: {
+            symbol: "BNG",
+            address: "0x6010e1a66934c4d053e8866acac720c4a093d956",
+            decimals: 18,
+          },
         },
       ],
       type: "single-choice",
       plugins: {},
       metadata: {
-        plugins:[]
+        plugins: [],
       },
       timestamp: 0,
       start: dateStart,
       end: 0,
-    }
+    };
 
     NewProposal.timestamp = dateNow;
 
@@ -89,10 +87,9 @@ function CreateProposalActions(props: CreateProposalActionsType) {
       ? NewProposal.start + space.voting.period
       : dateEnd;
 
-
-    const result = await send(space, 'proposal', NewProposal);
-    console.log('Result', result);
-  }
+    const result = await send(space, "proposal", NewProposal);
+    console.log("Result", result);
+  };
 
   return (
     <>
@@ -100,9 +97,16 @@ function CreateProposalActions(props: CreateProposalActionsType) {
         <div className="createActionsHeader">Actions</div>
         <div className="p-1">
           <div className="mb-1">
-            <DropDown handleChange={handleDurationChange} selectedDuration={selectedDuration} options={durationOptions} />
+            <DropDown
+              handleChange={handleDurationChange}
+              selectedDuration={selectedDuration}
+              options={durationOptions}
+            />
           </div>
-          <PublishProposalButton disable={selectedDuration === 0} onClick={handleSubmit} />
+          <PublishProposalButton
+            disable={selectedDuration === 0}
+            onClick={handleSubmit}
+          />
         </div>
       </div>
     </>
@@ -115,20 +119,27 @@ type DropDownProps = {
   options: {
     text: string;
     value: number;
-  }[]
-}
+  }[];
+};
 
 function DropDown(props: DropDownProps) {
-
   const { handleChange, options } = props;
 
   return (
-    <select className="actionDropdown textCenter" name='option' onChange={handleChange}>
+    <select
+      className="actionDropdown textCenter"
+      name="option"
+      onChange={handleChange}
+    >
       {options.map((option, i) => {
-        return <option key={i} value={i}>{option.text}</option>
+        return (
+          <option key={i} value={i}>
+            {option.text}
+          </option>
+        );
       })}
     </select>
-  )
+  );
 }
 
 export default CreateProposalActions;

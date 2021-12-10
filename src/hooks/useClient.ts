@@ -1,14 +1,13 @@
 import { useWeb3React } from "@web3-react/core";
-import { Web3Provider} from "@ethersproject/providers";
-import { useState } from 'react';
-import clientEIP712 from 'src/helpers/clientEIP712';
+import { Web3Provider } from "@ethersproject/providers";
+import { useState } from "react";
+import clientEIP712 from "src/helpers/clientEIP712";
 import { Space } from "./useSpaces";
 
-export type SentType = 'proposal' | 'vote' | 'delete-proposal' | 'settings'
+export type SentType = "proposal" | "vote" | "delete-proposal" | "settings";
 
 export function useClient() {
-
-  const { account = "", library, } = useWeb3React<Web3Provider>();
+  const { account = "", library } = useWeb3React<Web3Provider>();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,7 +16,7 @@ export function useClient() {
     try {
       return await sendEIP712(space, type, payload);
     } catch (e: any) {
-      console.error(e)
+      console.error(e);
       return e;
     } finally {
       setIsLoading(false);
@@ -28,10 +27,10 @@ export function useClient() {
     if (!library) throw new Error("Have not library");
     if (!account) throw new Error("Have not account");
 
-    if (type === 'proposal') {
+    if (type === "proposal") {
       let plugins = {};
       if (Object.keys(payload.metadata?.plugins).length !== 0)
-        plugins = payload.metadata.plugins
+        plugins = payload.metadata.plugins;
       return clientEIP712.proposal(library, account, {
         space: space.id,
         type: payload.type,
@@ -45,25 +44,25 @@ export function useClient() {
         // strategies: JSON.stringify([space.strategies[0]]),
         strategies: JSON.stringify(payload.strategies),
         plugins: JSON.stringify(plugins),
-        metadata: JSON.stringify({})
+        metadata: JSON.stringify({}),
       });
-    } else if (type === 'vote') {
+    } else if (type === "vote") {
       return clientEIP712.vote(library, account, {
         space: space.id,
         proposal: payload.proposal.id,
         type: payload.proposal.type,
         choice: payload.choice,
-        metadata: JSON.stringify({})
+        metadata: JSON.stringify({}),
       });
-    } else if (type === 'delete-proposal') {
+    } else if (type === "delete-proposal") {
       return clientEIP712.cancelProposal(library, account, {
         space: space.id,
-        proposal: payload.proposal.id
+        proposal: payload.proposal.id,
       });
-    } else if (type === 'settings') {
+    } else if (type === "settings") {
       return clientEIP712.space(library, account, {
         space: space.id,
-        settings: JSON.stringify(payload)
+        settings: JSON.stringify(payload),
       });
     }
   }

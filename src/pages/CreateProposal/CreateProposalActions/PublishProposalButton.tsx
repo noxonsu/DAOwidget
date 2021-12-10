@@ -14,7 +14,7 @@ function PublishProposalButton(props: PublishProposalButtonProps) {
 
   const onVoteClick = () => {
     console.log("click on publish");
-    onClick()
+    onClick();
   };
 
   return (

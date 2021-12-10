@@ -29,7 +29,7 @@ function CreateProposalBodyTextArea(props: CreateProposalBodyTextAreaProps) {
 
     e.target.style.height = `${height}px`;
 
-    onSetValue(e)
+    onSetValue(e);
   };
 
   return (
