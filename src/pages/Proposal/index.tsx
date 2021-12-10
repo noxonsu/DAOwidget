@@ -8,6 +8,8 @@ import ProposalResults from "./ProposalResults";
 import ProposalVotes from "./ProposalVotes";
 import ProposalVoting from "./ProposalVoting";
 
+import "./index.scss";
+
 type ParamsProps = {
   proposalId?: string;
 };
@@ -39,7 +41,7 @@ function ProposalDetail() {
   );
 
   return (
-    <div style={{ paddingBottom: "2rem" }}>
+    <div className="proposal" >
       {isLoading && <h3>Loading...</h3>}
       <ProposalBody title={title} description={body || ""} />
       {choices && state !== "close" && (
@@ -67,7 +69,7 @@ function ProposalVotesContent(props: ProposalVotesContentProps) {
       {isLoading ? (
         <h3>Loading votes...</h3>
       ) : (
-        votesData.length && (
+        !!votesData.length && (
           <>
             {resultData && (
               <ProposalResults

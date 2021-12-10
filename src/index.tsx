@@ -13,7 +13,7 @@ const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 
 const [ensSpace, colorTemplate] = document
   .getElementById("daofactory_app")
-  ?.classList.value.split(" ") || ["sushigov.eth", "dark_template"];
+  ?.classList.value.split(" ") || ["onout.eth", "dark_template"];
 
 window.ENS_DOMAIN = ensSpace;
 window.COLOR_TEMPLATE = colorTemplate;

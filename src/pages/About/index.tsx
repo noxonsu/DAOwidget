@@ -6,7 +6,7 @@ import ExternalLink from "src/components/ExternalLink";
 
 function About() {
   const { spacesData, isLoading } = useSpaceList([
-    window.ENS_DOMAIN || "sushigov.eth",
+    window.ENS_DOMAIN || "onout.eth",
   ]);
 
   const spaceData = spacesData[0];
