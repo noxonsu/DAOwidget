@@ -2,7 +2,9 @@ import { useState } from "react";
 import ExternalLink from "src/components/ExternalLink";
 import Modal from "src/components/Modal";
 import { NETWORK_EXPLORER_URLS, SupportedChainId } from "src/helpers/constants";
+import { useClient } from "src/hooks/useClient";
 import { ProposalType } from "src/hooks/useProposals";
+import { Space } from "src/hooks/useSpaces";
 import ChoiceButton from "./ChoiceButton";
 
 import "./index.scss";
@@ -71,11 +73,25 @@ type VotingModalContentProps = {
 };
 
 function VotingModalContent(props: VotingModalContentProps) {
+
+  const { send } = useClient();
   const { proposal, checkedChoice } = props;
   const { network, choices, snapshot, strategies } = proposal;
   const tokenSymbol = strategies[0].params.symbol;
 
   const networkId = +network as SupportedChainId;
+
+  const handleSubmit = async () => {
+
+    const vote = {
+      proposal,
+      choice: checkedChoice + 1,
+      metadata: {}
+    }
+
+    const result = await send(proposal.space as Space, "vote", vote);
+    console.log("Result", result);
+  };
 
   return (
     <>
@@ -105,8 +121,7 @@ function VotingModalContent(props: VotingModalContentProps) {
         </div>
       </div>
       <div className="textCenter p-1 border-t">
-        <button type="button" className="secondaryButton">Cancel</button>
-        <button type="button" className="primaryButton">Vote</button>
+        <button type="button" className="primaryButton" onClick={handleSubmit}>Vote</button>
       </div>
     </>
   );
