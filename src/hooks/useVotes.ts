@@ -83,13 +83,13 @@ export async function getResults(proposal: ProposalType, votes: Vote[]) {
     /* Get scores */
     if (state !== "pending") {
       console.time("getResults");
-      const scores = (await getScores(
+      const scores = await getScores(
         spaceId,
         strategies,
         network,
         voters,
         parseInt(snapshot)
-      )) as any[];
+      );
       console.timeEnd("getResults");
       console.log("Got scores");
 
@@ -156,7 +156,7 @@ export async function getScores(
       body: JSON.stringify({ params }),
     });
     const obj = await res.json();
-    return obj.result.scores;
+    return obj.result.scores as any[];
   } catch (e) {
     return Promise.reject(e);
   }

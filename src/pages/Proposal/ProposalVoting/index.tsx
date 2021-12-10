@@ -3,6 +3,7 @@ import ExternalLink from "src/components/ExternalLink";
 import Modal from "src/components/Modal";
 import { NETWORK_EXPLORER_URLS, SupportedChainId } from "src/helpers/constants";
 import { useClient } from "src/hooks/useClient";
+import { usePower } from "src/hooks/usePower";
 import { ProposalType } from "src/hooks/useProposals";
 import { Space } from "src/hooks/useSpaces";
 import ChoiceButton from "./ChoiceButton";
@@ -18,6 +19,7 @@ function ProposalVoting(props: ProposalVotesType) {
   const { proposal } = props;
 
   const { choices, network, snapshot } = proposal;
+  const { power, isPowerLoading } = usePower(proposal)
 
   const [checkedChoice, setCheckedChoice] = useState(-1);
   const [isVoteModalOpen, setIsVoteModalOpen] = useState(false);
@@ -43,6 +45,7 @@ function ProposalVoting(props: ProposalVotesType) {
             })}
           </div>
           <VoteButton
+            checkedChoice={checkedChoice}
             openModal={() => {
               setIsVoteModalOpen(true);
             }}
@@ -56,6 +59,7 @@ function ProposalVoting(props: ProposalVotesType) {
             <VotingModalContent
               proposal={proposal}
               checkedChoice={checkedChoice}
+              power={power}
             />
           }
           handleClose={() => {
@@ -70,12 +74,12 @@ function ProposalVoting(props: ProposalVotesType) {
 type VotingModalContentProps = {
   proposal: ProposalType;
   checkedChoice: number;
+  power: number;
 };
 
 function VotingModalContent(props: VotingModalContentProps) {
-
   const { send } = useClient();
-  const { proposal, checkedChoice } = props;
+  const { proposal, checkedChoice, power } = props;
   const { network, choices, snapshot, strategies } = proposal;
   const tokenSymbol = strategies[0].params.symbol;
 
@@ -116,12 +120,12 @@ function VotingModalContent(props: VotingModalContentProps) {
           </div>
           <div className="flex">
             <span className="flexAuto textColor">Your voting power</span>
-            <span className="textRight">0 {tokenSymbol}</span>
+            <span className="textRight">{power} {tokenSymbol}</span>
           </div>
         </div>
       </div>
       <div className="textCenter p-1 border-t">
-        <button type="button" className="primaryButton" onClick={handleSubmit}>Vote</button>
+        <button type="button" className="primaryButton" onClick={handleSubmit} disabled={power === 0}>Vote</button>
       </div>
     </>
   );

@@ -4,23 +4,23 @@ import "./index.scss";
 
 type VoteButtonProps = {
   openModal: () => void;
+  checkedChoice: number;
 };
 
 function VoteButton(props: VoteButtonProps) {
-  const { openModal } = props;
+  const { openModal, checkedChoice } = props;
 
   const [isActive, setIsActive] = useState(true);
 
   const onVoteClick = () => {
     console.log("click on vote");
-    setIsActive(!isActive);
     openModal();
   };
 
   return (
     <button
       className={`primaryButton ${isActive ? "active" : ""}`}
-      disabled={!isActive}
+      disabled={!isActive || checkedChoice === -1}
       onClick={onVoteClick}
     >
       <span>Vote</span>

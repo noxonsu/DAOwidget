@@ -44,7 +44,7 @@ function ProposalDetail() {
     <div className="proposal" >
       {isLoading && <h3>Loading...</h3>}
       <ProposalBody title={title} description={body || ""} />
-      {choices && state !== "close" && (
+      {choices && state !== "closed" && (
         <ProposalVoting proposal={proposalData} />
       )}
       <ProposalInfo proposalData={proposalData} />

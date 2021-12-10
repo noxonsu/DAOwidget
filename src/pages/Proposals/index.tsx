@@ -38,8 +38,18 @@ function Proposals() {
       <div className="proposals-header">
         <h1>Proposals</h1>
       </div>
-      {isLoading && <h3>Loading...</h3>}
-      {!!proposals.length && renderedProposalList}
+      {isLoading ? <h3>Loading...</h3>
+      : !!proposals.length
+        ? renderedProposalList
+        : <>
+          <h3>Let's create your first proposal</h3>
+          <Link to="proposal/create">
+            <button className="secondaryButton active">
+              Create proposal
+            </button>
+          </Link>
+        </>
+      }
     </div>
   );
 }
