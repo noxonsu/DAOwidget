@@ -1,5 +1,26 @@
 ## Enable trended feature for your ERC20 token - Governance and proposals 
-With a given value of tokens, anyone can create proposals. Another stakeholders can vote for proposals without spend money on gas. 
+With a given value of tokens, anyone can create proposals. Another stakeholders can vote for proposals without spend money on gas. You don't need ens domain registered, this is totally free and ready-to-go widget.
+
+
+# Installation
+
+Put the HTML code on your website 
+```
+<div
+      id="daofactory_app"
+      data-network="137"
+      data-token-address="0xd9b064e78199598e9435f9158be1f28b4db422a3"
+      data-token-symbol="XDCK"
+      data-token-decimals="18"
+      data-color-template="light_template"
+    ></div>
+
+<script src='https://noxonsu.github.io/daofactory/build/static/js/main.js'></script>
+<link href="https://noxonsu.github.io/daofactory/build/static/css/main.css" rel="stylesheet" />```
+```
+
+That's all, now open your page and create first proposal. 
+
 
 ## Elements
 - Metamask supported
@@ -30,27 +51,3 @@ With a given value of tokens, anyone can create proposals. Another stakeholders 
 - Media / Entertainment
 - Politics
 
-# Installation
-
-Put the code on your website 
-```<div
-      id="daofactory_app"
-      data-ens="onout.eth"
-      data-network="137"
-      data-token-address="0xd9b064e78199598e9435f9158be1f28b4db422a3"
-      data-token-symbol="XDCK"
-      data-token-decimals="18"
-      data-color-template="light_template"
-    ></div>
-
-<script src='https://noxonsu.github.io/daofactory/build/static/js/main.js'></script>
-<link href="https://noxonsu.github.io/daofactory/build/static/css/main.css" rel="stylesheet" />```
-```
-Or use shortcode ```[daofactory_app ens_space="ens.eth" template="light_template"]```
-
-if you have registered ens domain (https://ens.domains/), use this shortcode (firstly create your space at https://snapshot.org/#/setup)
-```
-[daofactory_app ens_space="yourdomain.eth"]
-```
-
-for dark theme use ```[daofactory_app ens_space="ens.eth" template="light_template"]```
