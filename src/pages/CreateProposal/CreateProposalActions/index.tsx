@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 
-import getProvider, { getBlockNumber } from "src/helpers/utils/web3";
+import { getBlockNumber, getProvider } from "src/helpers/utils/web3";
 import { useClient } from "src/hooks/useClient";
 import { useSpaceList } from "src/hooks/useSpaces";
 import PublishProposalButton from "./PublishProposalButton";
@@ -42,7 +42,15 @@ function CreateProposalActions(props: CreateProposalActionsType) {
   const handleSubmit = async () => {
     const space = spacesData[0];
 
-    const snapshot = await getBlockNumber(getProvider(space.network));
+    const network = window.NETWORK_ID || space.network;
+
+    const snapshot = await getBlockNumber(getProvider(network));
+
+    const strategyParams = {
+      symbol: window.TOKEN_SYMBOL || "BNG",
+      address: window.TOKEN_ADDRESS || "0x6010e1a66934c4d053e8866acac720c4a093d956",
+      decimals: parseInt(window.TOKEN_DECIMALS || 18),
+    }
 
     const dateNow = parseInt((Date.now() / 1e3).toFixed());
 
@@ -60,15 +68,12 @@ function CreateProposalActions(props: CreateProposalActionsType) {
       title,
       body,
       snapshot,
+      network,
       choices: ["For", "Against", "Abstain"],
       strategies: [
         {
           name: "erc20-balance-of",
-          params: {
-            symbol: "BNG",
-            address: "0x6010e1a66934c4d053e8866acac720c4a093d956",
-            decimals: 18,
-          },
+          params: strategyParams,
         },
       ],
       type: "single-choice",

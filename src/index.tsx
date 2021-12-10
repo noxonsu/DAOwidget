@@ -11,14 +11,14 @@ import { NetworkContextName } from "src/helpers/constants";
 
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 
-const [ensSpace = '', networkId = '', tokenAddress = '', colorTemplate = ''] = document
-  .getElementById("daofactory_app")
-  ?.classList?.value?.split(" ") as [];
+const appElement = document.getElementById("daofactory_app")
 
-window.ENS_DOMAIN = ensSpace || "onout.eth";
-window.NETWORK_ID = networkId || "56";
-window.TOKEN_ADDRESS = tokenAddress || "0x92648e4537cdfa1ee743a244465a31aa034b1ce8";
-window.COLOR_TEMPLATE = colorTemplate || "dark_template";
+window.ENS_DOMAIN = appElement?.getAttribute('data-ens') || "onout.eth";
+window.NETWORK_ID = appElement?.getAttribute('data-network') || "56";
+window.TOKEN_ADDRESS = appElement?.getAttribute('data-token-address') || "0x92648e4537cdfa1ee743a244465a31aa034b1ce8";
+window.TOKEN_SYMBOL = appElement?.getAttribute('data-token-symbol') || "SWAP";
+window.TOKEN_DECIMALS = appElement?.getAttribute('data-token-decimals') || "18";
+window.COLOR_TEMPLATE = appElement?.getAttribute('data-color-template') || "dark_template";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -28,7 +28,7 @@ ReactDOM.render(
       </Web3ProviderNetwork>
     </Web3ReactProvider>
   </React.StrictMode>,
-  document.getElementById("daofactory_app")
+  appElement
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import Account from "./Account";
 import Proposal from "./Proposal";
@@ -14,7 +14,7 @@ import "./App.scss";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Web3ReactManager>
         <div className="App">
           <Header />
@@ -32,7 +32,7 @@ function App() {
           </div>
         </div>
       </Web3ReactManager>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
