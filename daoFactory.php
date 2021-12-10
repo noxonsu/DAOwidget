@@ -6,7 +6,7 @@ Author: Vitaliy Shulik
 Requires PHP: 7.1
 Text Domain: daofactory
 Domain Path: /lang
-Version: 1.0.1
+Version: 0.1.1
  */
 
 
@@ -24,6 +24,8 @@ add_action( 'init', 'daofactory_app_init' );
 function daofactory_app( $atts ) {
   $a = shortcode_atts( array(
 		'ens_space' => 'onout.eth',
+    'network_id' => '56',
+    'token_address' => '0x92648e4537cdfa1ee743a244465a31aa034b1ce8',
 		'template' => 'dark_template',
 	), $atts );
 
@@ -33,7 +35,7 @@ function daofactory_app( $atts ) {
     js свой сюда вставляй
     йа креведко <script>alert('azaza')</script>
   <? */
-  return '<div id="daofactory_app" class="' . esc_attr($a['ens_space']) . ' ' . esc_attr($a['template']) . '" ></div>';
+  return '<div id="daofactory_app" class="' . esc_attr($a['ens_space']) . ' ' . esc_attr($a['network_id']) . ' ' . esc_attr($a['token_address']) . ' ' . esc_attr($a['template']) . '" ></div>';
 }
 
 add_shortcode('daofactory_app', 'daofactory_app');

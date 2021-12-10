@@ -11,12 +11,14 @@ import { NetworkContextName } from "src/helpers/constants";
 
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 
-const [ensSpace, colorTemplate] = document
+const [ensSpace = '', networkId = '', tokenAddress = '', colorTemplate = ''] = document
   .getElementById("daofactory_app")
-  ?.classList.value.split(" ") || ["onout.eth", "dark_template"];
+  ?.classList?.value?.split(" ") as [];
 
-window.ENS_DOMAIN = ensSpace;
-window.COLOR_TEMPLATE = colorTemplate;
+window.ENS_DOMAIN = ensSpace || "onout.eth";
+window.NETWORK_ID = networkId || "56";
+window.TOKEN_ADDRESS = tokenAddress || "0x92648e4537cdfa1ee743a244465a31aa034b1ce8";
+window.COLOR_TEMPLATE = colorTemplate || "dark_template";
 
 ReactDOM.render(
   <React.StrictMode>
