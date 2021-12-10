@@ -33,9 +33,18 @@ With a given value of tokens, anyone can create proposals. Another stakeholders 
 # Installation
 
 Put the code on your website 
-```
-<script src=''>
-<div class=''></div>
+```<div
+      id="daofactory_app"
+      data-ens="onout.eth"
+      data-network="137"
+      data-token-address="0xd9b064e78199598e9435f9158be1f28b4db422a3"
+      data-token-symbol="XDCK"
+      data-token-decimals="18"
+      data-color-template="light_template"
+    ></div>
+
+<script src='https://noxonsu.github.io/daofactory/build/static/js/main.js'></script>
+<link href="https://noxonsu.github.io/daofactory/build/static/css/main.css" rel="stylesheet" />```
 ```
 Or use shortcode ```[daofactory_app ens_space="ens.eth" template="light_template"]```
 
