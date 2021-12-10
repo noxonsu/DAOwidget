@@ -79,6 +79,10 @@ export const PROPOSALS_QUERY = gql`
         members
         avatar
       }
+      strategies {
+        name
+        params
+      }
     }
   }
 `;

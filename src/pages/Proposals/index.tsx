@@ -9,6 +9,7 @@ import "./index.scss";
 function Proposals() {
   const { offChainProposalList: proposals, isLoading } = useProposalList({
     space_in: [window.ENS_DOMAIN || "onout.eth"],
+    tokenAddress: window.TOKEN_ADDRESS
   });
 
   const renderedProposalList = proposals.map(

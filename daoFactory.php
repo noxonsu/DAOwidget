@@ -37,13 +37,13 @@ function daofactory_app( $atts ) {
   $html = '
     <div
       id="daofactory_app"
-      data-ens="' . esc_attr($a['ens_space']) . '
+      data-ens="' . esc_attr($a['ens_space']) . '"
       data-network="' . esc_attr($a['network_id']) . '"
       data-token-address="' . esc_attr($a['token_address']) . '"
       data-token-symbol="' . esc_attr($a['token_symbol']) . '"
       data-token-decimals="' . esc_attr($a['token_decimals']) . '"
       data-color-template="' . esc_attr($a['template']) . '"
-    "></div>
+    ></div>
   ';
 
   return $html;
