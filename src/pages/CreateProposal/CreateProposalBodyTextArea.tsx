@@ -5,10 +5,12 @@ import "./index.scss";
 type CreateProposalBodyTextAreaProps = {
   className?: string;
   placeholder?: string;
+  onSetValue: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  value: string;
 };
 
 function CreateProposalBodyTextArea(props: CreateProposalBodyTextAreaProps) {
-  const { className = "", placeholder = "" } = props;
+  const { className = "", placeholder = "", onSetValue } = props;
 
   const handleKeyDown = (e: ChangeEvent<HTMLTextAreaElement>) => {
     // Reset field height
@@ -26,6 +28,8 @@ function CreateProposalBodyTextArea(props: CreateProposalBodyTextAreaProps) {
       parseInt(computed.getPropertyValue("border-bottom-width"), 10);
 
     e.target.style.height = `${height}px`;
+
+    onSetValue(e)
   };
 
   return (

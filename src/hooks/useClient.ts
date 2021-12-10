@@ -43,17 +43,7 @@ export function useClient() {
         snapshot: payload.snapshot,
         network: space.network,
         // strategies: JSON.stringify([space.strategies[0]]),
-        strategies: JSON.stringify([
-            {
-              "name": "erc20-balance-of",
-              "params": {
-                "symbol": "BNG",
-                "address": "0x6010e1a66934c4d053e8866acac720c4a093d956",
-                "decimals": 18
-              }
-            },
-          ],
-        ),
+        strategies: JSON.stringify(payload.strategies),
         plugins: JSON.stringify(plugins),
         metadata: JSON.stringify({})
       });

@@ -1,6 +1,7 @@
 
 import { ChangeEvent, useState } from "react";
 
+import getProvider, { getBlockNumber } from "src/helpers/utils/web3";
 import { useClient } from "src/hooks/useClient";
 import { useSpaceList } from "src/hooks/useSpaces";
 import PublishProposalButton from "./PublishProposalButton";
@@ -8,11 +9,11 @@ import PublishProposalButton from "./PublishProposalButton";
 import "./index.scss";
 
 type CreateProposalActionsType = {
-
+  title: string;
+  body: string;
 };
 
 function CreateProposalActions(props: CreateProposalActionsType) {
-  const { } = props;
 
   const { spacesData, isLoading: isSpaceLoading } = useSpaceList([
     window.ENS_DOMAIN || "onout.eth",
@@ -28,12 +29,12 @@ function CreateProposalActions(props: CreateProposalActionsType) {
 
   const durationOptions = [
     {value: 0, text: "Duration:"},
-    {value: 1, text: "1d"},
-    {value: 3, text: "3d"},
-    {value: 5, text: "5d"},
-    {value: 7, text: "1w"},
-    {value: 14, text: "2w"},
-    {value: 28, text: "1m"},
+    {value: 86400, text: "1d"},
+    {value: 259200, text: "3d"},
+    {value: 432000, text: "5d"},
+    {value: 604800, text: "1w"},
+    {value: 1209600, text: "2w"},
+    {value: 2419200, text: "1m"},
   ]
 
   const handleDurationChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -41,53 +42,55 @@ function CreateProposalActions(props: CreateProposalActionsType) {
   }
 
   const handleSubmit = async () => {
-
-    const dateStart = 1639116000
-    const dateEnd = 1639152000
     const space = spacesData[0]
 
+    const snapshot = await getBlockNumber(getProvider(space.network));
+
+    const dateNow = parseInt((Date.now() / 1e3).toFixed())
+
+    const dateStart = space.voting?.delay
+      ? dateNow + space.voting.delay
+      : dateNow;
+
+    const dateEnd = space.voting?.period
+    ? dateStart + space.voting.period
+    : dateStart + durationOptions[selectedDuration].value || 3600;
+
+    const { title, body } = props;
+
     const NewProposal = {
-      from: "0x01f69aefdb0ade89bc8f8dd9712c4cc4899621e2",
-      space: "onout.eth",
-      timestamp: 0,
-      type: "single-choice",
-      title: "test2",
-      body: "test2",
+      title,
+      body,
+      snapshot,
       choices: ["For", "Against", "Abstain"],
-      start: 0,
-      end: 0,
-      snapshot: 13321027,
-      network: "56",
       strategies: [
         {
           "name": "erc20-balance-of",
           "params": {
-            "symbol": "SWAP",
-            "address": "0x92648e4537cdfa1ee743a244465a31aa034b1ce8",
+            "symbol": "BNG",
+            "address": "0x6010e1a66934c4d053e8866acac720c4a093d956",
             "decimals": 18
           }
         },
       ],
+      type: "single-choice",
       plugins: {},
       metadata: {
         plugins:[]
       },
+      timestamp: 0,
+      start: dateStart,
+      end: 0,
     }
 
-    const dateNow = parseInt((Date.now() / 1e3).toFixed())
-
     NewProposal.timestamp = dateNow;
-
-    NewProposal.start = space.voting?.delay
-      ? dateNow + space.voting.delay
-      : dateStart;
 
     NewProposal.end = space.voting?.period
       ? NewProposal.start + space.voting.period
       : dateEnd;
 
 
-    const result = await send(spacesData[0], 'proposal', NewProposal);
+    const result = await send(space, 'proposal', NewProposal);
     console.log('Result', result);
   }
 

@@ -30,10 +30,10 @@ type Providers = {
 const networks = networksSettings as NetworksSettings;
 const providers = {} as Providers;
 
-export async function getBlockNumber(provider: Web3Provider) {
+export async function getBlockNumber(provider: StaticJsonRpcProvider) {
     try {
-        const blockNumber: any = await provider.getBlockNumber();
-        return parseInt(blockNumber);
+        const blockNumber = await provider.getBlockNumber();
+        return blockNumber;
     } catch (e) {
         return Promise.reject();
     }
