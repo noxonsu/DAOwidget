@@ -104,7 +104,10 @@ function VotingModalContent(props: VotingModalContentProps) {
           </div>
         </div>
       </div>
-      <div className="modalFooter"></div>
+      <div className="textCenter p-1 border-t">
+        <button type="button" className="secondaryButton">Cancel</button>
+        <button type="button" className="primaryButton">Vote</button>
+      </div>
     </>
   );
 }

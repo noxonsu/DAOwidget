@@ -13,7 +13,7 @@
   border-bottom: solid 1px gray;
 }
 
-.choiseButton {
+.secondaryButton {
   display: flex;
   justify-content: center;
   background-color: transparent;
@@ -32,7 +32,7 @@
   }
 }
 
-.voteButton {
+.primaryButton {
   display: flex;
   justify-content: center;
   background-color: #384aff;
@@ -62,4 +62,10 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding: 1rem;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
 }

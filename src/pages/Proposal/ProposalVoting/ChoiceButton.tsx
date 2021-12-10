@@ -14,7 +14,7 @@ function ChoiceButton(props: ChoiceButtonsType) {
     <button
       id={id}
       onClick={onClick}
-      className={`choiseButton ${isActive ? "active" : ""}`}
+      className={`secondaryButton ${isActive ? "active" : ""}`}
     >
       <span>{text}</span>
     </button>

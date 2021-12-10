@@ -19,7 +19,7 @@ function VoteButton(props: VoteButtonProps) {
 
   return (
     <button
-      className={`voteButton ${isActive ? "active" : ""}`}
+      className={`primaryButton ${isActive ? "active" : ""}`}
       disabled={!isActive}
       onClick={onVoteClick}
     >

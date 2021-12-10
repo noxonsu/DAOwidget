@@ -26,6 +26,14 @@ body {
   float: right;
 }
 
+.floatLeft {
+  float: left;
+}
+
+.w-2\/4 {
+  width: 50%;
+}
+
 .textColor {
   color: #8b949e;
 }
@@ -54,6 +62,11 @@ body {
   border: solid 1px gray;
 }
 
+.border-t {
+  border-top: solid 1px gray;
+}
+
 .rounded-md {
   border-radius: 0.5rem;
 }
+
