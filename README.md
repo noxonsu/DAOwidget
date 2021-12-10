@@ -24,8 +24,8 @@ With a given value of tokens, anyone can create proposals. Another stakeholders 
       data-color-template="light_template"
     ></div>
 
-<script src='https://noxonsu.github.io/daofactory/build/static/js/main.js'></script>
-<link href="https://noxonsu.github.io/daofactory/build/static/css/main.css" rel="stylesheet" />
+<script src='https://noxonsu.github.io/DAOwidget/build/static/js/main.js'></script>
+<link href="https://noxonsu.github.io/DAOwidget/build/static/css/main.css" rel="stylesheet" />
 ```
 
 That's all, now open your page and create first proposal. 
