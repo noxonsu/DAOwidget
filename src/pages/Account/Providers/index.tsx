@@ -52,7 +52,7 @@ function getErrorMessage(error: Error) {
 
 function ConnectProviders() {
   const context = useWeb3React<Web3Provider>();
-  const { connector, activate, error } = context;
+  const { connector, activate, error, deactivate } = context;
 
   // handle logic to recognize the connector currently being activated
   const [activatingConnector, setActivatingConnector] = useState<Connectors>();
@@ -106,6 +106,14 @@ function ConnectProviders() {
           </button>
         );
       })}
+      {connector && (
+        <button
+          className={`connect-button`}
+          onClick={() => deactivate()}
+        >
+          Disconnect
+        </button>
+      )}
     </>
   );
 }
