@@ -48,8 +48,7 @@ function CreateProposalActions(props: CreateProposalActionsType) {
 
     const strategyParams = {
       symbol: window.TOKEN_SYMBOL,
-      address:
-        window.TOKEN_ADDRESS,
+      address: window.TOKEN_ADDRESS,
       decimals: parseInt(window.TOKEN_DECIMALS),
     };
 

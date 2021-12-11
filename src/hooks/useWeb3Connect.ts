@@ -41,8 +41,8 @@ export function useEagerConnect() {
 export function useInactiveListener(suppress: boolean = false) {
   const { active, error, activate } = useWeb3React();
 
-  useEffect((): any => {
-    const { ethereum } = window as any;
+  useEffect(() => {
+    const { ethereum } = window;
     if (ethereum && ethereum.on && !active && !error && !suppress) {
       const handleConnect = () => {
         console.log("Handling 'connect' event");

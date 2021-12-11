@@ -107,10 +107,7 @@ function ConnectProviders() {
         );
       })}
       {connector && (
-        <button
-          className={`connect-button`}
-          onClick={() => deactivate()}
-        >
+        <button className={`connect-button`} onClick={() => deactivate()}>
           Disconnect
         </button>
       )}
