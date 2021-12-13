@@ -5,7 +5,7 @@
     - Target audience: newbies who just issued the erc20 token
     - Solution: use shared ens space on snapshot.org, create usefull HTML widget  
 
-- Recorded video demo of the project and small pitch (max 5 mins): 
+- Recorded video demo of the project and small pitch (max 5 mins): https://drive.google.com/file/d/1R1ddQRevR7-gbe-87BMr0hKjbwf3zny-/view
 - Date when team began working on the project (for fair assessment of projects): 3rd November 2021
 - Wallet(s) to send payment if the project wins: 0x873351e707257C28eC6fAB1ADbc850480f6e0633
 - Person of contact for the judges in case there are any questions
