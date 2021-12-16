@@ -7,7 +7,6 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 .content-wrapper {
@@ -49,7 +48,10 @@ ul {
   padding: 0;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   color: var(--heading-color);
   font-weight: 600;
   margin: 1rem 0;
