@@ -10,7 +10,7 @@
 .proposal-row {
   display: flex;
   flex-direction: column;
-  border: 1px solid #424242;
+  border: 1px solid var(--border-color);
   border-radius: 1rem;
   margin-bottom: 1rem;
   padding: 1.5rem;
@@ -18,7 +18,7 @@
   .proposal-header {
     display: flex;
     justify-content: space-between;
-    color: #8b949e;
+    color: var(--text-color);
   }
 
   .proposal-body {
@@ -26,22 +26,22 @@
     flex-direction: column;
 
     .body-description {
-      color: #8b949e;
+      color: var(--text-color);
       font-size: 1.25rem;
     }
   }
 }
 
 .proposal-row:hover {
-  border-color: white;
+  border-color: var(--link-color);
 
   .proposal-header {
-    color: white;
+    color: var(--link-color);
   }
 
   .proposal-body {
     .body-description {
-      color: white;
+      color: var(--link-color);
     }
   }
 }

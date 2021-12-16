@@ -4,14 +4,14 @@
 
 .connect-wallet__button {
   background-color: transparent;
-  border: 1px solid #424242;
+  border: 1px solid var(--border-color);
   border-radius: 1.5rem;
   font-size: 1.125rem;
-  color: white;
+  color: var(--link-color);
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
 .connect-wallet__button:hover {
-  border-color: white;
+  border-color: var(--link-color);
 }

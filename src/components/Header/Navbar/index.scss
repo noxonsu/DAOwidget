@@ -10,4 +10,8 @@
   color: inherit;
   text-decoration: inherit;
   outline: none;
+
+  &.active {
+    color: var(--link-color);
+  }
 }

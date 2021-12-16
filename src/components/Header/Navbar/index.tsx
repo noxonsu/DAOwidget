@@ -3,27 +3,26 @@ import { NavLink } from "react-router-dom";
 import "./index.scss";
 
 function Navbar() {
+  const getClassNames = ({ isActive }: {isActive: boolean}) => `navbar-item ${isActive ? "active" : ""}`
+
   return (
     <div className="navbar">
       <NavLink
-        style={({ isActive }) => ({ color: isActive ? "white" : "#8b949e" })}
-        className="navbar-item"
+        className={getClassNames}
         id={`proposals-nav-link`}
         to={"/"}
       >
         Proposals
       </NavLink>
       <NavLink
-        style={({ isActive }) => ({ color: isActive ? "white" : "#8b949e" })}
-        className="navbar-item"
+        className={getClassNames}
         id={`about-nav-link`}
         to={"/about"}
       >
         About
       </NavLink>
       <NavLink
-        style={({ isActive }) => ({ color: isActive ? "white" : "#8b949e" })}
-        className="navbar-item"
+        className={getClassNames}
         id={`create-proposal-nav-link`}
         to={"/proposal/create"}
       >

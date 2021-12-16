@@ -13,10 +13,11 @@ import Header from "../components/Header";
 import "./App.scss";
 
 function App() {
+  const colorTemplate = window.COLOR_TEMPLATE === "dark_template" ? 'dark' : 'light'
   return (
     <HashRouter>
       <Web3ReactManager>
-        <div className="App">
+        <div className="App" data-color-theme={colorTemplate}>
           <Header />
           <div className="content-wrapper">
             <Routes>
