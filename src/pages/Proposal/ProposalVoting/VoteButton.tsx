@@ -18,11 +18,8 @@ function VoteButton(props: VoteButtonProps) {
   };
 
   useEffect(() => {
-    console.log('on')
-    setIsActive(checkedChoice !== -1)
-  }, [checkedChoice])
-
-  console.log('isActive', isActive)
+    setIsActive(checkedChoice !== -1);
+  }, [checkedChoice]);
 
   return (
     <button

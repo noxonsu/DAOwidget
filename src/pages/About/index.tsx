@@ -3,7 +3,7 @@ import { shortenText } from "src/helpers/utils";
 
 import ExternalLink from "src/components/ExternalLink";
 
-import "./index.scss"
+import "./index.scss";
 import FollowButton from "./FollowButton";
 
 function About() {
@@ -55,7 +55,6 @@ function About() {
   } = spaceData;
 
   return (
-
     <div className="about">
       <h1 style={{ textAlign: "center" }}>About Page</h1>
       <FollowButton spaceObj={spaceData} />
