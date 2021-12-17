@@ -2,13 +2,14 @@ import { useParams } from "react-router-dom";
 
 import { ProposalType, useProposal } from "src/hooks/useProposals";
 import { useVotes } from "src/hooks/useVotes";
+
+import "./index.scss";
+
 import ProposalBody from "./ProposalBody";
 import ProposalInfo from "./ProposalInfo";
 import ProposalResults from "./ProposalResults";
 import ProposalVotes from "./ProposalVotes";
 import ProposalVoting from "./ProposalVoting";
-
-import "./index.scss";
 
 type ParamsProps = {
   proposalId?: string;
@@ -42,7 +43,7 @@ function ProposalDetail() {
 
   return (
     <div className="proposal">
-      {isLoading && <h3>Loading...</h3>}
+      {isLoading && <h1 className="textCenter">Loading...</h1>}
       <ProposalBody title={title} description={body || ""} />
       {choices && state !== "closed" && (
         <ProposalVoting proposal={proposalData} />

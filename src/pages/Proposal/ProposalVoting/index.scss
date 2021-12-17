@@ -1,5 +1,5 @@
 .voting {
-  border: solid 1px gray;
+  border: solid 1px var(--border-color);
   border-radius: 1rem;
   width: 80%;
   margin: auto;
@@ -10,7 +10,7 @@
   padding: 1rem;
   font-size: 1.5rem;
   font-weight: bold;
-  border-bottom: solid 1px gray;
+  border-bottom: solid 1px var(--border-color);
 }
 
 .modalBody {

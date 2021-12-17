@@ -1,14 +1,12 @@
-.proposal {
-  padding-bottom: 2rem;
-  width: 80%;
+.notFound {
+
+  display: flex;
+  flex-direction: column;
 
   a {
+    margin-bottom: 1rem;
     color: inherit; /* blue colors for links too */
     text-decoration: inherit; /* no underline */
-  }
-
-  .proposalTitle {
-    font-size: 36px;
   }
 
   h1,

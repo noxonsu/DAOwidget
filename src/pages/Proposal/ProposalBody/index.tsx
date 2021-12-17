@@ -14,7 +14,7 @@ function ProposalBody(props: ProposalBodyProps) {
         marginBottom: "1rem",
       }}
     >
-      {title && <h1>{title}</h1>}
+      {title && <h1 className="proposalTitle">{title}</h1>}
       <MarkdownElement text={description} />
     </div>
   );

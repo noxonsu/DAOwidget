@@ -1,8 +1,10 @@
 import { useSpaceList } from "src/hooks/useSpaces";
 import { shortenText } from "src/helpers/utils";
 
-import FollowButton from "./FollowButton";
 import ExternalLink from "src/components/ExternalLink";
+
+import "./index.scss"
+import FollowButton from "./FollowButton";
 
 function About() {
   const { spacesData, isLoading } = useSpaceList([
@@ -17,15 +19,27 @@ function About() {
   console.groupEnd();
 
   if (isLoading && !spaceData) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="about">
+        <h1>Loading...</h1>
+      </div>
+    );
   }
 
   if (!isLoading && spacesData.length === 0) {
-    return <h1>Have not any space data.</h1>;
+    return (
+      <div className="about">
+        <h1>Have not any space data.</h1>
+      </div>
+    );
   }
 
   if (!spaceData) {
-    return <h1>Please, try use another space or try reloar.</h1>;
+    return (
+      <div className="about">
+        <h1>Please, try use another space or try reloar.</h1>
+      </div>
+    );
   }
 
   const {
@@ -41,7 +55,8 @@ function About() {
   } = spaceData;
 
   return (
-    <div>
+
+    <div className="about">
       <h1 style={{ textAlign: "center" }}>About Page</h1>
       <FollowButton spaceObj={spaceData} />
       <div>

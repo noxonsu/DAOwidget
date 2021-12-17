@@ -12,7 +12,7 @@
 [data-color-theme="dark"] {
   --primary-color: #384aff;
   --bg-color: #282c34;
-  --text-color: #586069;
+  --text-color: #a0a9b4;
   --link-color: white;
   --heading-color: white;
   --border-color: #353d45;
@@ -110,12 +110,17 @@ body {
     border-color: var(--link-color);
     color: var(--link-color);
   }
+
+  &:hover {
+    border-color: var(--link-color);
+    color: var(--link-color);
+  }
 }
 
 .primaryButton {
   display: flex;
   justify-content: center;
-  background-color: var(--primary-color);
+  background-color: var(--border-color);
   border: 0px;
   border-radius: 1rem;
   padding: 1rem;
@@ -126,11 +131,11 @@ body {
   cursor: pointer;
 
   &.active {
-    color: var(--link-color);
+    color: white;
+    background-color: var(--primary-color);
   }
 
   &:disabled {
-    background-color: var(--text-color);
     cursor: not-allowed;
   }
 }

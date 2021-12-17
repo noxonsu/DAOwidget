@@ -22,7 +22,7 @@
 
 .modal {
   z-index: 100;
-  background: #282c34;
+  background: var(--bg-color);
   position: absolute;
   float: left;
   left: 50%;
@@ -38,7 +38,7 @@
 .modalHeader {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px gray solid;
+  border-bottom: 1px solid var(--border-color);
   padding: 1rem;
 }
 
@@ -57,7 +57,7 @@
   font-size: 1.4rem;
   font-weight: 700;
   line-height: 1;
-  color: white;
+  color: var(--link-color);
   background-color: transparent;
   cursor: pointer;
   border: none;

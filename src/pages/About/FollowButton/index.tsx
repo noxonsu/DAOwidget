@@ -36,10 +36,7 @@ function FollowButton(props: FollowButtonProps) {
 
   return (
     <button
-      style={{
-        border: "1px solid white",
-        padding: "0.5rem",
-      }}
+      className="secondaryButton"
       onClick={() => clickFollow()}
     >
       <div ref={hoverRef}>{buttonText}</div>

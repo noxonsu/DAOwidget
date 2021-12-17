@@ -84,8 +84,8 @@
   h4,
   h5,
   h6 {
-    margin-top: 24px;
-    margin-bottom: 16px;
+    color: var(--heading-color);
+    margin: 1.5rem 0 1rem 0;
     font-weight: 600;
     line-height: 1.4 !important;
   }
@@ -245,6 +245,10 @@
 
   del code {
     text-decoration: inherit;
+  }
+
+  a {
+    color: var(--link-color) !important;
   }
 
   pre {

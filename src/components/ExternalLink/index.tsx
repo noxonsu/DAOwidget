@@ -10,6 +10,9 @@ type ExternalLinkProps = {
 function ExternalLink(props: ExternalLinkProps) {
   const { link, children, className, styles = {} } = props;
 
+  const fillColor =
+    window.COLOR_TEMPLATE === "dark_template" ? "white" : "dark";
+
   return (
     <a
       className={className || ""}
@@ -20,7 +23,7 @@ function ExternalLink(props: ExternalLinkProps) {
     >
       {children}{" "}
       <ExternalLinkSvg
-        fill="white"
+        fill={fillColor}
         style={{ position: "absolute", width: "1.2rem", height: "1rem" }}
       />
     </a>

@@ -30,11 +30,6 @@ input {
   transition-duration: 0.15s;
 }
 
-a {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
-}
-
 table {
   text-indent: 0;
   border-color: inherit;
@@ -48,11 +43,3 @@ ul {
   padding: 0;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  color: var(--heading-color);
-  font-weight: 600;
-  margin: 1rem 0;
-}
