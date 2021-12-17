@@ -42,7 +42,7 @@ function ProposalDetail() {
   );
 
   return (
-    <div className="proposal">
+    <div className="app-page proposal">
       {isLoading && <h1 className="textCenter">Loading...</h1>}
       <ProposalBody title={title} description={body || ""} />
       {choices && state !== "closed" && (

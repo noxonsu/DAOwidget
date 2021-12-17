@@ -3,7 +3,7 @@ import "./index.scss";
 
 function NotFound() {
   return (
-    <div className="notFound">
+    <div className="app-page notFound">
       <h1>Not page found</h1>
       <Link to={"/"}>Go home page</Link>
     </div>

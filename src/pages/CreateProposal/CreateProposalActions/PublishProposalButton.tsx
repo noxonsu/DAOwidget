@@ -19,7 +19,7 @@ function PublishProposalButton(props: PublishProposalButtonProps) {
 
   return (
     <button
-      className={`publishProposalButton ${disable ? "active" : ""}`}
+      className={`primaryButton ${!disable ? "active" : ""}`}
       disabled={disable}
       onClick={onVoteClick}
     >

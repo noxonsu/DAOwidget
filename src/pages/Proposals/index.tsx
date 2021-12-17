@@ -34,7 +34,7 @@ function Proposals() {
   );
 
   return (
-    <div className="proposals">
+    <div className="app-page proposals">
       <div className="proposals-header">
         <h1>Proposals</h1>
       </div>

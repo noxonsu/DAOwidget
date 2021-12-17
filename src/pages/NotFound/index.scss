@@ -1,22 +1,4 @@
 .notFound {
   display: flex;
   flex-direction: column;
-
-  a {
-    margin-bottom: 1rem;
-    color: inherit; /* blue colors for links too */
-    text-decoration: inherit; /* no underline */
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--heading-color);
-    margin: 1rem 0;
-    font-weight: 600;
-    line-height: 1.4 !important;
-  }
 }

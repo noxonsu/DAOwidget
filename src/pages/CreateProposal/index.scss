@@ -7,7 +7,7 @@
 
 @mixin reset-input {
   outline: none;
-  color: white;
+  color: var(--link-color);
   background-color: transparent;
   border: none;
 }

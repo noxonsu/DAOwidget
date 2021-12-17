@@ -20,7 +20,7 @@ function About() {
 
   if (isLoading && !spaceData) {
     return (
-      <div className="about">
+      <div className="app-page about">
         <h1>Loading...</h1>
       </div>
     );
@@ -28,7 +28,7 @@ function About() {
 
   if (!isLoading && spacesData.length === 0) {
     return (
-      <div className="about">
+      <div className="app-page about">
         <h1>Have not any space data.</h1>
       </div>
     );
@@ -36,7 +36,7 @@ function About() {
 
   if (!spaceData) {
     return (
-      <div className="about">
+      <div className="app-page about">
         <h1>Please, try use another space or try reloar.</h1>
       </div>
     );
@@ -55,7 +55,7 @@ function About() {
   } = spaceData;
 
   return (
-    <div className="about">
+    <div className="app-page about">
       <h1 style={{ textAlign: "center" }}>About Page</h1>
       <FollowButton spaceObj={spaceData} />
       <div>
@@ -100,7 +100,7 @@ function About() {
           </>
         )}
       </div>
-      {admins.length && (
+      {!!admins.length && (
         <div>
           <h3>Admins</h3>
           {admins.map((admin, index) => (
@@ -109,7 +109,7 @@ function About() {
         </div>
       )}
 
-      {members.length && (
+      {!!members.length && (
         <div>
           <h3>Authors</h3>
           {members.map((members, index) => (

@@ -35,12 +35,14 @@ function FollowButton(props: FollowButtonProps) {
   }, []);
 
   return (
-    <button
-      className="secondaryButton"
-      onClick={() => clickFollow()}
-    >
-      <div ref={hoverRef}>{buttonText}</div>
-    </button>
+    <div ref={hoverRef}>
+      <button
+        className="secondaryButton"
+        onClick={() => clickFollow()}
+      >
+        {buttonText}
+      </button>
+    </div>
   );
 }
 
