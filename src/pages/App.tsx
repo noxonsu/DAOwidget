@@ -2,7 +2,6 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 
 import WithModal from "src/components/WithModal";
 
-import Account from "./Account";
 import Proposal from "./Proposal";
 import Proposals from "./Proposals";
 import About from "./About";
@@ -26,7 +25,6 @@ function App() {
             <div className="content-wrapper">
               <Routes>
                 <Route path="/" element={<Proposals />} />
-                <Route path="account" element={<Account />} />
                 <Route path="about" element={<About />} />
                 <Route path="proposal">
                   <Route path="create" element={<CreateProposal />} />

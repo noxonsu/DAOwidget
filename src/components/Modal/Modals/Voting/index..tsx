@@ -44,7 +44,7 @@ function VotingModalButton(props: VotingModalButtonProps) {
   };
 
   const bodyContent = (
-    <div className="modalBody">
+    <div className="voteBody">
       <div className="textCenter boldText">
         Are you sure you want to vote "{choices[checkedChoice]}"?
         <br />

@@ -50,15 +50,22 @@ function getErrorMessage(error: Error) {
   }
 }
 
-function ConnectProviders() {
+type ConnectProvidersProps = {
+  closeModal?: () => void;
+};
+
+function ConnectProviders(props: ConnectProvidersProps) {
+  const { closeModal } = props;
+
   const context = useWeb3React<Web3Provider>();
-  const { connector, activate, error, deactivate } = context;
+  const { connector, activate, error } = context;
 
   // handle logic to recognize the connector currently being activated
   const [activatingConnector, setActivatingConnector] = useState<Connectors>();
   useEffect(() => {
     if (activatingConnector && activatingConnector === connector) {
       setActivatingConnector(undefined);
+      closeModal && closeModal();
     }
   }, [activatingConnector, connector]);
 
@@ -69,7 +76,7 @@ function ConnectProviders() {
   useInactiveListener(!triedEager || !!activatingConnector);
 
   return (
-    <>
+    <div className="connectorsButtons">
       {!!error && <h4 className="error">{getErrorMessage(error)}</h4>}
       {Object.keys(connectorsByName).map((name) => {
         const connectorName = name as ConnectorNames;
@@ -81,10 +88,7 @@ function ConnectProviders() {
 
         return (
           <button
-            className={`connect-button
-              ${disabled ? "connect-button__disable" : ""}
-              ${activating ? "connect-button__activating" : ""}
-              ${connected ? "connect-button__connected" : ""}`}
+            className="secondaryButton"
             disabled={disabled}
             key={name}
             onClick={() => {
@@ -92,26 +96,26 @@ function ConnectProviders() {
               activate(connectorsByName[connectorName]);
             }}
           >
-            <div className="connect-button__icon">
-              {activating && (
-                <Spinner color={"white"} style={{ height: "25%" }} />
-              )}
-              {connected && (
-                <span role="img" aria-label="check">
-                  ✅
-                </span>
-              )}
-            </div>
+            {activating && (
+              <Spinner
+                color={"white"}
+                style={{ height: "1rem", marginRight: "0.5rem" }}
+              />
+            )}
+            {connected && (
+              <span
+                role="img"
+                aria-label="check"
+                style={{ marginRight: "0.5rem" }}
+              >
+                ✅
+              </span>
+            )}
             {name}
           </button>
         );
       })}
-      {connector && (
-        <button className={`connect-button`} onClick={() => deactivate()}>
-          Disconnect
-        </button>
-      )}
-    </>
+    </div>
   );
 }
 

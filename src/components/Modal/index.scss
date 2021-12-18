@@ -33,6 +33,11 @@
   max-width: 440px;
   width: 100%;
   margin: 1.75rem auto;
+
+  a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit !important; /* no underline */
+  }
 }
 
 .modalHeader {
