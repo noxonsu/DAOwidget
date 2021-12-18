@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ModalStateContext } from "..";
+import { ModalStateContext } from "../WithModal";
 import "./index.scss";
 
 function Modal() {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import VotingModalButton from "src/components/WithModal/Modals/Voting/index.";
+import VotingModalButton from "src/components/Modal/Modals/Voting/index.";
 import { ProposalType } from "src/hooks/useProposals";
 import ChoiceButton from "./ChoiceButton";
 
