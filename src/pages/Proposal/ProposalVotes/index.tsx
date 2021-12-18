@@ -30,10 +30,10 @@ function ProposalVotes(props: ProposalVotesType) {
       </div>
       {votes.map((voute, i) => {
         return (
-          <div className="row" key={i}>
-            <div className="col">{shortEVMAddress(voute.voter)}</div>
-            <div className="col">{choices[voute.choice - 1]}</div>
-            <div className="col">
+          <div className="voteRow" key={i}>
+            <div className="voteCol">{shortEVMAddress(voute.voter)}</div>
+            <div className="voteCol">{choices[voute.choice - 1]}</div>
+            <div className="voteCol">
               {`${voute.balance.toFixed(4)} ${tokenSymbol}`}
             </div>
           </div>

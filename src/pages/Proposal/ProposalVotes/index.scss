@@ -1,5 +1,4 @@
-.header,
-.row {
+.voteRow {
   display: flex;
   border-top: solid 1px gray;
   padding: 1rem;
@@ -10,6 +9,6 @@
   }
 }
 
-.col {
+.voteCol {
   flex: 1;
 }
