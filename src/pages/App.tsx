@@ -1,5 +1,7 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 
+import WithModal from "src/components/WithModal";
+
 import Account from "./Account";
 import Proposal from "./Proposal";
 import Proposals from "./Proposals";
@@ -19,19 +21,21 @@ function App() {
     <HashRouter>
       <Web3ReactManager>
         <div className="App" data-color-theme={colorTemplate}>
-          <Header />
-          <div className="content-wrapper">
-            <Routes>
-              <Route path="/" element={<Proposals />} />
-              <Route path="account" element={<Account />} />
-              <Route path="about" element={<About />} />
-              <Route path="proposal">
-                <Route path="create" element={<CreateProposal />} />
-                <Route path=":proposalId" element={<Proposal />} />
-              </Route>
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </div>
+          <WithModal>
+            <Header />
+            <div className="content-wrapper">
+              <Routes>
+                <Route path="/" element={<Proposals />} />
+                <Route path="account" element={<Account />} />
+                <Route path="about" element={<About />} />
+                <Route path="proposal">
+                  <Route path="create" element={<CreateProposal />} />
+                  <Route path=":proposalId" element={<Proposal />} />
+                </Route>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
+          </WithModal>
         </div>
       </Web3ReactManager>
     </HashRouter>

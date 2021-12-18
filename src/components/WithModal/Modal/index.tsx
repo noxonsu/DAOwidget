@@ -1,15 +1,13 @@
+import { useContext } from "react";
+import { ModalStateContext } from "..";
 import "./index.scss";
 
-type ModalProps = {
-  headerContent: any;
-  bodyContent: any;
-  handleClose: () => void;
-};
+function Modal() {
+  const { isOpen, modalProps = {} } = useContext(ModalStateContext);
 
-function Modal(props: ModalProps) {
-  const { headerContent, bodyContent, handleClose } = props;
+  const { headerContent, bodyContent, footerContent, onCancel } = modalProps;
 
-  return (
+  return isOpen ? (
     <div className="modalOverlay">
       <div
         className="modalWrapper"
@@ -20,22 +18,25 @@ function Modal(props: ModalProps) {
       >
         <div className="modal">
           <div className="modalHeader">
-            <div className="headerContent">{headerContent}</div>
+            {headerContent && (
+              <div className="headerContent">{headerContent}</div>
+            )}
             <button
               type="button"
               className="modalCloseButton"
               data-dismiss="modal"
               aria-label="Close"
-              onClick={handleClose}
+              onClick={(e) => onCancel(e)}
             >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div className="bodyContent">{bodyContent}</div>
+          {bodyContent && <div className="modalBody">{bodyContent}</div>}
+          {footerContent && <div className="modalFooter">{footerContent}</div>}
         </div>
       </div>
     </div>
-  );
+  ) : null;
 }
 
 export default Modal;

@@ -38,19 +38,23 @@
 .modalHeader {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid var(--border-color);
   padding: 1rem;
 }
 
 .headerContent {
+  color: var(--link-color);
   font-size: x-large;
   font-weight: 600;
 }
 
-.bodyContent {
+.modalBody {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  &.haveContentAbove {
+    border-top: 1px solid var(--border-color);
+  }
 }
 
 .modalCloseButton {
@@ -61,4 +65,8 @@
   background-color: transparent;
   cursor: pointer;
   border: none;
+
+  &.haveContentAbove {
+    border-top: 1px solid var(--border-color);
+  }
 }
