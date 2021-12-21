@@ -1,18 +1,8 @@
-- Project name: DAO_Widget
-- Submission link: https://github.com/noxonsu/DAOwidget#add-this-html-widget-to-your-site-to-enable-trended-feature-for-your-erc20-token---governance-and-proposals
-
-    - Pain: snapshot.org requires ens domain (200$ gas🥶)
-    - Target audience: newbies who just issued the erc20 token
-    - Solution: use shared ens space on snapshot.org, create usefull HTML widget  
-
-- Recorded video demo of the project and small pitch (max 5 mins): https://drive.google.com/file/d/1R1ddQRevR7-gbe-87BMr0hKjbwf3zny-/view
-- Date when team began working on the project (for fair assessment of projects): 3rd November 2021
-- Wallet(s) to send payment if the project wins: 0x873351e707257C28eC6fAB1ADbc850480f6e0633
-- Person of contact for the judges in case there are any questions
-    - Full Name: Aleksandr Ruin
-    - Email: i448539@gmail.com
-
 ## Add this HTML widget to your site to enable trended feature for your ERC20 token - Governance and proposals 
+
+See the video:  https://drive.google.com/file/d/1R1ddQRevR7-gbe-87BMr0hKjbwf3zny-/view
+
+
 With a given value of tokens, anyone can create proposals. Another stakeholders can vote for proposals without spend money on gas. Put the HTML code on your website 
 ```
 <div
@@ -24,10 +14,11 @@ With a given value of tokens, anyone can create proposals. Another stakeholders 
       data-color-template="dark_template"
     ></div>
 
-<script src='https://noxonsu.github.io/DAOwidget/build/static/js/main.js'></script>
-<link href="https://noxonsu.github.io/DAOwidget/build/static/css/main.css" rel="stylesheet" />
+<script src='./build/static/js/main.js'></script> 
+<link href="./build/static/css/main.css" rel="stylesheet" /> 
 ```
 
+Where data-network is chainID from this list: https://chainlist.org/ 
 That's all, now open your page and create first proposal. 
 
 
