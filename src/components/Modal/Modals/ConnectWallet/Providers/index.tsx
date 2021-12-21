@@ -58,7 +58,7 @@ function ConnectProviders(props: ConnectProvidersProps) {
   useEffect(() => {
     if (activatingConnector && activatingConnector === connector) {
       setActivatingConnector(undefined);
-      closeModal && closeModal();
+      !error && closeModal && closeModal();
     }
   }, [activatingConnector, connector]);
 
