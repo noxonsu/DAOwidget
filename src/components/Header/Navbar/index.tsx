@@ -11,9 +11,9 @@ function Navbar() {
       <NavLink className={getClassNames} id={`proposals-nav-link`} to={"/"}>
         Proposals
       </NavLink>
-      <NavLink className={getClassNames} id={`about-nav-link`} to={"/about"}>
+      {/* <NavLink className={getClassNames} id={`about-nav-link`} to={"/about"}>
         About
-      </NavLink>
+      </NavLink> */}
       <NavLink
         className={getClassNames}
         id={`create-proposal-nav-link`}
