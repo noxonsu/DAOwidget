@@ -1,7 +1,10 @@
 .voteRow {
   display: flex;
   border-top: solid 1px gray;
-  padding: 1rem;
+
+  &:first-child {
+    border-top: none;
+  }
 
   :last-child {
     text-align: right;

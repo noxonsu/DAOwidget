@@ -98,8 +98,8 @@ function CreateProposalActions(props: CreateProposalActionsType) {
 
   return (
     <>
-      <div className="createActions">
-        <div className="createActionsHeader">Actions</div>
+      <div className="app-widget">
+        <div className="app-widget-header">Actions</div>
         <div className="p-1">
           <div className="mb-1">
             <DropDown

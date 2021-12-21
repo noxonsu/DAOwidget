@@ -2,7 +2,7 @@
   "name": "daofactory",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/app/plugins/daofactory_app/build/",
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

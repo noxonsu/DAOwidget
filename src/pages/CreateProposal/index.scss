@@ -1,9 +1,4 @@
-.createProposal {
-  display: flex;
-  flex-direction: column;
-  max-width: 700px;
-  width: 100%;
-}
+.createProposal {}
 
 @mixin reset-input {
   outline: none;

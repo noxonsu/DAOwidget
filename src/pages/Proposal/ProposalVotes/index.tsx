@@ -16,29 +16,22 @@ function ProposalVotes(props: ProposalVotesType) {
   const tokenSymbol = strategies[0].params.symbol;
 
   return (
-    <div
-      style={{
-        border: "solid 1px gray",
-        borderRadius: "1rem",
-        width: "80%",
-        margin: "auto",
-        marginBottom: "1rem",
-      }}
-    >
-      <div style={{ padding: "1rem", fontSize: "1.5em", fontWeight: "bold" }}>
-        Top {votes.length} of {totalVotes} votes
-      </div>
-      {votes.map((voute, i) => {
-        return (
-          <div className="voteRow" key={i}>
-            <div className="voteCol">{shortEVMAddress(voute.voter)}</div>
-            <div className="voteCol">{choices[voute.choice - 1]}</div>
-            <div className="voteCol">
-              {`${voute.balance.toFixed(4)} ${tokenSymbol}`}
+
+    <div className="app-widget">
+      <div className="app-widget-header">Top {votes.length} of {totalVotes} votes</div>
+      <div className="p-1">
+        {votes.map((voute, i) => {
+          return (
+            <div className="voteRow" key={i}>
+              <div className="voteCol">{shortEVMAddress(voute.voter)}</div>
+              <div className="voteCol">{choices[voute.choice - 1]}</div>
+              <div className="voteCol">
+                {`${voute.balance.toFixed(4)} ${tokenSymbol}`}
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

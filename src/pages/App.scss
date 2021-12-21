@@ -15,9 +15,24 @@
   max-width: 880px;
   margin: auto;
   padding: 0 10px;
+
+  @media (max-width: 600px) {
+    justify-content: initial;
+    max-width: 100%;
+  }
 }
 
 .app-page {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+  width: 80%;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+
+
   h1,
   h2,
   h3,
@@ -32,6 +47,34 @@
   a {
     color: inherit; /* blue colors for links too */
     text-decoration: inherit !important; /* no underline */
+  }
+}
+
+.app-widget {
+  border: solid 1px var(--border-color);
+  border-radius: 1rem;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.app-widget-header {
+  color: var(--link-color);
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-bottom: solid 1px var(--border-color);
+}
+
+.app-widget-item {
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 

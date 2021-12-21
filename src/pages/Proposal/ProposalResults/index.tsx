@@ -13,25 +13,16 @@ function ProposalResults(props: ProposalResultsProps) {
   const tokenSymbol = strategies[0].params.symbol;
 
   return (
-    <div
-      style={{
-        padding: "0 1rem",
-        border: "solid 1px gray",
-        borderRadius: "1rem",
-        width: "50%",
-        margin: "auto",
-        marginBottom: "1rem",
-      }}
-    >
-      <h2>Results</h2>
-      {choices.map((choice, i) => {
-        const resultByVoteBalance = results.resultsByVoteBalance[i];
-        const persentsOfChoice =
-          (resultByVoteBalance / results.sumOfResultsBalance) * 100;
+    <div className="app-widget">
+      <div className="app-widget-header">Results</div>
+      <div className="p-1">
+        {choices.map((choice, i) => {
+          const resultByVoteBalance = results.resultsByVoteBalance[i];
+          const persentsOfChoice =
+            (resultByVoteBalance / results.sumOfResultsBalance) * 100;
 
-        return (
-          <div key={i}>
-            <p>
+          return (
+            <div className="app-widget-item" key={i}>
               {`${choice} - ${resultByVoteBalance.toFixed(
                 4
               )} ${tokenSymbol} (${persentsOfChoice.toFixed(2)} %)`}
@@ -40,10 +31,10 @@ function ProposalResults(props: ProposalResultsProps) {
                 value={persentsOfChoice}
                 style={{ width: "100%" }}
               ></progress>
-            </p>
-          </div>
-        );
-      })}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

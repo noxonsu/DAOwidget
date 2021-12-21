@@ -3,8 +3,6 @@ import VotingModalButton from "src/components/Modal/Modals/Voting/index.";
 import { ProposalType } from "src/hooks/useProposals";
 import ChoiceButton from "./ChoiceButton";
 
-import "./index.scss";
-
 type ProposalVotesType = {
   proposal: ProposalType;
 };
@@ -18,8 +16,8 @@ function ProposalVoting(props: ProposalVotesType) {
 
   return (
     <>
-      <div className="voting">
-        <div className="votingHeader">Cast your vote</div>
+      <div className="app-widget">
+        <div className="app-widget-header">Cast your vote</div>
         <div className="p-1">
           <div className="mb-1">
             {choices.map((choice, i) => {
