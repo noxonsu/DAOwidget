@@ -34,8 +34,6 @@ Where
 - Your tokenholders can create proposals and vote for free (without paying for gas)
 - All proposals have Voting Period (specified and adjusted by creator or tokenHolders) it could be specified by creator or by token holders through proposal.
 - We use snapshot.org API
-- you required ENS domain (100-200$ costs). but you can use shared domain by default (don't worry, only your proposals will showed in the list).  
-- MetaMask supported
 - ERC20, BEP20, and other EVM blochains are supported
 
 ## For whom: 
