@@ -21,7 +21,9 @@ With a given value of tokens, anyone can create proposals. Another stakeholders 
 
 Where 
 `data-network` is chainID from this list https://chainlist.org/ 
-`data-token-address`, 'data-token-symbol', 'data-token-decimals': address and variables of your erc20 contract
+
+`data-token-address`, `data-token-symbol`, `data-token-decimals`: address and variables of your erc20 contract
+
 `data-color-template`: dark_template or light_template
 
 ## Features
