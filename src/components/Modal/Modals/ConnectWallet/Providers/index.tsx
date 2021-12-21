@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
-import {
-  injected,
-  walletconnect,
-  Connectors,
-} from "src/connectors";
+import { injected, walletconnect, Connectors } from "src/connectors";
 
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
 import {
   NoEthereumProviderError,
   UserRejectedRequestError as UserRejectedRequestErrorInjected,
 } from "@web3-react/injected-connector";
-import { UserRejectedRequestError as UserRejectedRequestErrorWalletConnect } from '@web3-react/walletconnect-connector';
+import { UserRejectedRequestError as UserRejectedRequestErrorWalletConnect } from "@web3-react/walletconnect-connector";
 import { Web3Provider } from "@ethersproject/providers";
 
 import { useEagerConnect, useInactiveListener } from "src/hooks/useWeb3Connect";
@@ -19,11 +15,11 @@ import Spinner from "src/components/Spinner";
 
 import "./index.scss";
 
-type ConnectorNames = "Injected" | 'WalletConnect';
+type ConnectorNames = "Injected" | "WalletConnect";
 
 enum EConnectorNames {
   Injected = "Injected",
-  WalletConnect = 'WalletConnect',
+  WalletConnect = "WalletConnect",
 }
 
 const connectorsByName: { [connectorName in EConnectorNames]: Connectors } = {
@@ -37,8 +33,8 @@ function getErrorMessage(error: Error) {
   } else if (error instanceof UnsupportedChainIdError) {
     return "You're connected to an unsupported network.";
   } else if (
-    error instanceof UserRejectedRequestErrorInjected
-    || error instanceof UserRejectedRequestErrorWalletConnect
+    error instanceof UserRejectedRequestErrorInjected ||
+    error instanceof UserRejectedRequestErrorWalletConnect
   ) {
     return "Please authorize this website to access your Ethereum account.";
   } else {
@@ -108,7 +104,7 @@ function ConnectProviders(props: ConnectProvidersProps) {
                 ✅
               </span>
             )}
-            {`${name}${name === 'Injected' ? " (Metamask)" : ""}`}
+            {`${name}${name === "Injected" ? " (Metamask)" : ""}`}
           </button>
         );
       })}
