@@ -29,7 +29,7 @@ const connectorsByName: { [connectorName in EConnectorNames]: Connectors } = {
 
 function getErrorMessage(error: Error) {
   if (error instanceof NoEthereumProviderError) {
-    return "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile.";
+    return "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile. (Use http(s) to wallet connect)";
   } else if (error instanceof UnsupportedChainIdError) {
     return "You're connected to an unsupported network.";
   } else if (
@@ -39,7 +39,7 @@ function getErrorMessage(error: Error) {
     return "Please authorize this website to access your Ethereum account.";
   } else {
     console.error(error);
-    return "An unknown error occurred. Check the console for more details.";
+    return "An unknown error occurred. Check the console for more details. (Use http(s) to wallet connect)";
   }
 }
 
