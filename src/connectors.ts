@@ -1,6 +1,6 @@
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { NetworkConnector } from "@web3-react/network-connector";
-// import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
+import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 
 import {
   ALL_SUPPORTED_CHAIN_IDS,
@@ -8,7 +8,7 @@ import {
   SupportedChainId,
 } from "src/helpers/constants";
 
-export type Connectors = InjectedConnector | NetworkConnector; // | WalletConnectConnector
+export type Connectors = InjectedConnector | NetworkConnector | WalletConnectConnector;
 
 export const injected = new InjectedConnector({
   supportedChainIds: ALL_SUPPORTED_CHAIN_IDS,
@@ -19,8 +19,8 @@ export const network = new NetworkConnector({
   defaultChainId: SupportedChainId.MAINNET,
 });
 
-// export const walletconnect = new WalletConnectConnector({
-//   supportedChainIds: ALL_SUPPORTED_CHAIN_IDS,
-//   rpc: NETWORK_URLS,
-//   qrcode: true,
-// })
+export const walletconnect = new WalletConnectConnector({
+  supportedChainIds: ALL_SUPPORTED_CHAIN_IDS,
+  rpc: NETWORK_RPC_URLS,
+  qrcode: true,
+});
