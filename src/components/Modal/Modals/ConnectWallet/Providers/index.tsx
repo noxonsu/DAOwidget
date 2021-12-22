@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { injected, walletconnect, Connectors } from "src/connectors";
 
+import { ReactComponent as MetamaskSvg } from "src/assets/svg/metamask.svg";
+import { ReactComponent as WalletconnectSvg } from "src/assets/svg/walletconnect.svg";
+
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
 import {
   NoEthereumProviderError,
@@ -81,7 +84,7 @@ function ConnectProviders(props: ConnectProvidersProps) {
 
         return (
           <button
-            className="secondaryButton"
+            className="secondaryButton alingItemsCenter"
             disabled={disabled}
             key={name}
             onClick={() => {
@@ -91,20 +94,35 @@ function ConnectProviders(props: ConnectProvidersProps) {
           >
             {activating && (
               <Spinner
-                color={"white"}
+                color={"grey"}
                 style={{ height: "1rem", marginRight: "0.5rem" }}
               />
             )}
-            {connected && (
+            {connected && !error && (
               <span
                 role="img"
                 aria-label="check"
-                style={{ marginRight: "0.5rem" }}
+                style={{ marginRight: "0.5rem", alignItems: 'center' }}
               >
                 ✅
               </span>
             )}
-            {`${name}${name === "Injected" ? " (Metamask)" : ""}`}
+            {name === "Injected" ?
+              (
+                <>
+                  <MetamaskSvg
+                    style={{ width: "1.5rem", height: "1.5rem", marginRight: "0.5rem" }}
+                  />
+                </>
+              ) : name === "WalletConnect" ?
+              (
+                <>
+                  <WalletconnectSvg
+                    style={{ width: "1.5rem", height: "1.5rem", marginRight: "0.5rem" }}
+                  />
+                </>
+              ) : ''}
+            {`${name}`}
           </button>
         );
       })}

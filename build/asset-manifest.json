@@ -11,7 +11,9 @@
     "static/css/main.css.map": "./static/css/main.css.map",
     "static/js/1.a5026660.chunk.js.LICENSE.txt": "./static/js/1.a5026660.chunk.js.LICENSE.txt",
     "static/js/main.js.LICENSE.txt": "./static/js/main.js.LICENSE.txt",
-    "static/media/external-link.54c826b3.svg": "./static/media/external-link.54c826b3.svg"
+    "static/media/external-link.54c826b3.svg": "./static/media/external-link.54c826b3.svg",
+    "static/media/metamask.09e5f554.svg": "./static/media/metamask.09e5f554.svg",
+    "static/media/walletconnect.00e3b589.svg": "./static/media/walletconnect.00e3b589.svg"
   },
   "entrypoints": [
     "static/css/main.css",
