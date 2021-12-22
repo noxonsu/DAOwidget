@@ -21,7 +21,7 @@ function Proposals() {
           <Link to={`/proposal/${id}`}>
             <div className="proposal-header">
               <span>{`Created by ${shortEVMAddress(author)}`}</span>
-              <span>{state}</span>
+              <span className="proposal-state">{state}</span>
             </div>
             <div className="proposal-body">
               <h2>{title}</h2>

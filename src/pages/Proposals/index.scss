@@ -21,11 +21,21 @@
     display: flex;
     justify-content: space-between;
     color: var(--text-color);
+
+    .proposal-state {
+      padding: 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 2rem;
+    }
   }
 
   .proposal-body {
     display: flex;
     flex-direction: column;
+
+    h2 {
+      margin-top: 0;
+    }
 
     .body-description {
       color: var(--text-color);

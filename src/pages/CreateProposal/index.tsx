@@ -14,7 +14,7 @@ function CreateProposal() {
       <input
         maxLength={128}
         className="createTitleInput mb-1"
-        placeholder="Ask a question..."
+        placeholder="Title (proposal in one sentence)"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
       />
