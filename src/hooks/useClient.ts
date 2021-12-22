@@ -16,8 +16,7 @@ export function useClient() {
     try {
       return await sendEIP712(space, type, payload);
     } catch (e: any) {
-      console.error(e);
-      return e;
+      throw e;
     } finally {
       setIsLoading(false);
     }
