@@ -102,10 +102,10 @@ function CreateProposalActions(props: CreateProposalActionsType) {
 
       const result = await send(space, "proposal", NewProposal) as any;
       console.log("Result", result);
+      setIsWaitResponse(false);
       navigate(`/proposal/${result.id}`)
     } catch (error: any) {
       console.error(`Can't submit proposal. Error: ${error.message || error}`)
-    } finally {
       setIsWaitResponse(false);
     };
   };

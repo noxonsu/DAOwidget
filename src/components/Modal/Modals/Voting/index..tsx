@@ -1,12 +1,16 @@
 import { useContext, useState, useEffect } from "react";
-import { ModalUpdaterContext } from "src/components/WithModal";
+import { useNavigate } from "react-router-dom";
 
-import ExternalLink from "src/components/ExternalLink";
 import { NETWORK_EXPLORER_URLS, SupportedChainId } from "src/helpers/constants";
 import { useClient } from "src/hooks/useClient";
 import { ProposalType } from "src/hooks/useProposals";
 import { Space } from "src/hooks/useSpaces";
 import { usePower } from "src/hooks/usePower";
+
+import { ModalUpdaterContext } from "src/components/WithModal";
+import ExternalLink from "src/components/ExternalLink";
+import Spinner from "src/components/Spinner";
+
 
 type VotingModalButtonProps = {
   proposal: ProposalType;
@@ -20,77 +24,16 @@ function VotingModalButton(props: VotingModalButtonProps) {
 
   const setModalOptions = useContext(ModalUpdaterContext);
 
-  const { send } = useClient();
-
-  const { power } = usePower(proposal);
-  const { network, choices, snapshot, strategies } = proposal;
-  const tokenSymbol = strategies[0].params.symbol;
-
-  const networkId = +network as SupportedChainId;
+  const closeModal = () => setModalOptions({ isOpen: false })
 
   useEffect(() => {
     setIsActive(checkedChoice !== -1);
   }, [checkedChoice]);
 
-  const handleSubmit = async () => {
-    const vote = {
-      proposal,
-      choice: checkedChoice + 1,
-      metadata: {},
-    };
-
-    const result = await send(proposal.space as Space, "vote", vote);
-    console.log("Result", result);
-  };
-
-  const bodyContent = (
-    <div className="voteBody">
-      <div className="textCenter boldText">
-        Are you sure you want to vote "{choices[checkedChoice]}"?
-        <br />
-        This action cannot be undone.
-      </div>
-      <div className="border rounded-md m-1 p-1">
-        <div className="flex">
-          <span className="flexAuto textColor">Option(s)</span>
-          <span className="textRight">{choices[checkedChoice]}</span>
-        </div>
-        <div className="flex">
-          <span className="flexAuto textColor">Snapshot</span>
-          <ExternalLink
-            className="mr-1"
-            link={`${NETWORK_EXPLORER_URLS[networkId]}block/${snapshot}`}
-            children={snapshot}
-          />
-        </div>
-        <div className="flex">
-          <span className="flexAuto textColor">Your voting power</span>
-          <span className="textRight">
-            {power} {tokenSymbol}
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-
-  const footerContent = (
-    <div className="textCenter p-1 border-t">
-      <button
-        type="button"
-        className={`primaryButton ${!!power ? "active" : ""}`}
-        onClick={handleSubmit}
-        disabled={power === 0}
-      >
-        Vote
-      </button>
-    </div>
-  );
-
   const modalProps = {
     headerContent: "Confirm vote",
-    bodyContent,
-    footerContent,
-    onCancel: () => setModalOptions({ isOpen: false }),
+    bodyContent: <VoteModalContent proposal={proposal} checkedChoice={checkedChoice} closeModal={closeModal} />,
+    onCancel: () => closeModal(),
   };
 
   const onVoteClick = () => {
@@ -107,6 +50,95 @@ function VotingModalButton(props: VotingModalButtonProps) {
       <span>Vote</span>
     </button>
   );
-}
+};
+
+type VotingModalContentProps = {
+  proposal: ProposalType;
+  checkedChoice: number;
+  closeModal: () => void;
+};
+
+const VoteModalContent = (props: VotingModalContentProps) => {
+  const navigate = useNavigate();
+
+  const { proposal, checkedChoice, closeModal } = props;
+  const { network, choices, snapshot, strategies } = proposal;
+
+  const { send, clientLoading } = useClient();
+  const { power } = usePower(proposal);
+
+  const tokenSymbol = strategies[0].params.symbol;
+  const networkId = +network as SupportedChainId;
+
+  const isFooterButtonActive = !!power && !clientLoading
+
+  const handleSubmit = async () => {
+    const vote = {
+      proposal,
+      choice: checkedChoice + 1,
+      metadata: {},
+    };
+
+    try {
+      const result = await send(proposal.space as Space, "vote", vote);
+      console.log("Result", result);
+      closeModal()
+
+      navigate(`/proposals}`)
+      navigate(`/proposal/${proposal.id}`)
+
+    } catch (error: any) {
+      console.error(`Can't set vote. Error: ${error.message || error}`)
+    }
+  };
+
+  return (
+    <>
+      <div className="voteBody">
+        <div className="textCenter boldText">
+          Are you sure you want to vote "{choices[checkedChoice]}"?
+          <br />
+          This action cannot be undone.
+        </div>
+        <div className="border rounded-md m-1 p-1">
+          <div className="flex">
+            <span className="flexAuto textColor">Option(s)</span>
+            <span className="textRight">{choices[checkedChoice]}</span>
+          </div>
+          <div className="flex">
+            <span className="flexAuto textColor">Snapshot</span>
+            <ExternalLink
+              className="mr-1"
+              link={`${NETWORK_EXPLORER_URLS[networkId]}block/${snapshot}`}
+              children={snapshot}
+            />
+          </div>
+          <div className="flex">
+            <span className="flexAuto textColor">Your voting power</span>
+            <span className="textRight">
+              {power} {tokenSymbol}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="textCenter p-1 border-t">
+        <button
+          type="button"
+          className={`primaryButton ${isFooterButtonActive ? "active" : ""}`}
+          onClick={handleSubmit}
+          disabled={!isFooterButtonActive}
+        >
+          {!isFooterButtonActive
+            ? <Spinner
+                color={"white"}
+                style={{ height: "1rem", marginRight: "0.5rem" }}
+              />
+            : 'Vote'
+          }
+        </button>
+      </div>
+    </>
+  );
+};
 
 export default VotingModalButton;

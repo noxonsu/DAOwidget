@@ -19,7 +19,7 @@ function ProposalVotes(props: ProposalVotesType) {
 
     <div className="app-widget">
       <div className="app-widget-header">Top {votes.length} of {totalVotes} votes</div>
-      <div className="p-1">
+      <div>
         {votes.map((voute, i) => {
           return (
             <div className="voteRow" key={i}>
