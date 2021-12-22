@@ -1,4 +1,4 @@
-## Add this HTML widget to your site to enable trended feature for your ERC20 token - Governance and proposals 
+## Dao widget -  Governance and proposals for your crypto token
 
 See the video:  https://drive.google.com/file/d/1R1ddQRevR7-gbe-87BMr0hKjbwf3zny-/view
 
