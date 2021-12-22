@@ -11,7 +11,6 @@ import { ModalUpdaterContext } from "src/components/WithModal";
 import ExternalLink from "src/components/ExternalLink";
 import Spinner from "src/components/Spinner";
 
-
 type VotingModalButtonProps = {
   proposal: ProposalType;
   checkedChoice: number;
@@ -24,7 +23,7 @@ function VotingModalButton(props: VotingModalButtonProps) {
 
   const setModalOptions = useContext(ModalUpdaterContext);
 
-  const closeModal = () => setModalOptions({ isOpen: false })
+  const closeModal = () => setModalOptions({ isOpen: false });
 
   useEffect(() => {
     setIsActive(checkedChoice !== -1);
@@ -32,7 +31,13 @@ function VotingModalButton(props: VotingModalButtonProps) {
 
   const modalProps = {
     headerContent: "Confirm vote",
-    bodyContent: <VoteModalContent proposal={proposal} checkedChoice={checkedChoice} closeModal={closeModal} />,
+    bodyContent: (
+      <VoteModalContent
+        proposal={proposal}
+        checkedChoice={checkedChoice}
+        closeModal={closeModal}
+      />
+    ),
     onCancel: () => closeModal(),
   };
 
@@ -50,7 +55,7 @@ function VotingModalButton(props: VotingModalButtonProps) {
       <span>Vote</span>
     </button>
   );
-};
+}
 
 type VotingModalContentProps = {
   proposal: ProposalType;
@@ -70,7 +75,7 @@ const VoteModalContent = (props: VotingModalContentProps) => {
   const tokenSymbol = strategies[0].params.symbol;
   const networkId = +network as SupportedChainId;
 
-  const isFooterButtonActive = !!power && !clientLoading
+  const isFooterButtonActive = !!power && !clientLoading;
 
   const handleSubmit = async () => {
     const vote = {
@@ -82,13 +87,12 @@ const VoteModalContent = (props: VotingModalContentProps) => {
     try {
       const result = await send(proposal.space as Space, "vote", vote);
       console.log("Result", result);
-      closeModal()
+      closeModal();
 
-      navigate(`/proposals}`)
-      navigate(`/proposal/${proposal.id}`)
-
+      navigate(`/proposals}`);
+      navigate(`/proposal/${proposal.id}`);
     } catch (error: any) {
-      console.error(`Can't set vote. Error: ${error.message || error}`)
+      console.error(`Can't set vote. Error: ${error.message || error}`);
     }
   };
 
@@ -128,13 +132,14 @@ const VoteModalContent = (props: VotingModalContentProps) => {
           onClick={handleSubmit}
           disabled={!isFooterButtonActive}
         >
-          {!isFooterButtonActive
-            ? <Spinner
-                color={"white"}
-                style={{ height: "1rem", marginRight: "0.5rem" }}
-              />
-            : 'Vote'
-          }
+          {!isFooterButtonActive ? (
+            <Spinner
+              color={"white"}
+              style={{ height: "1rem", marginRight: "0.5rem" }}
+            />
+          ) : (
+            "Vote"
+          )}
         </button>
       </div>
     </>

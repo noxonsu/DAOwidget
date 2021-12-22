@@ -100,14 +100,16 @@ function CreateProposalActions(props: CreateProposalActionsType) {
         ? NewProposal.start + space.voting.period
         : dateEnd;
 
-      const result = await send(space, "proposal", NewProposal) as any;
+      const result = (await send(space, "proposal", NewProposal)) as any;
       console.log("Result", result);
+
       setIsWaitResponse(false);
-      navigate(`/proposal/${result.id}`)
+      navigate(`/proposal/${result.id}`);
+
     } catch (error: any) {
-      console.error(`Can't submit proposal. Error: ${error.message || error}`)
+      console.error(`Can't submit proposal. Error: ${error.message || error}`);
       setIsWaitResponse(false);
-    };
+    }
   };
 
   return (

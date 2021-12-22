@@ -21,8 +21,8 @@ function PublishProposalButton(props: PublishProposalButtonProps) {
   };
 
   useEffect(() => {
-    setIsActive(!disable && !isLoading)
-  }, [disable, isLoading])
+    setIsActive(!disable && !isLoading);
+  }, [disable, isLoading]);
 
   return (
     <button
@@ -31,12 +31,14 @@ function PublishProposalButton(props: PublishProposalButtonProps) {
       onClick={onVoteClick}
     >
       <span>
-        {isLoading
-        ? <Spinner
+        {isLoading ? (
+          <Spinner
             color={"white"}
             style={{ height: "1rem", marginRight: "0.5rem" }}
           />
-        : 'Publish'}
+        ) : (
+          "Publish"
+        )}
       </span>
     </button>
   );
