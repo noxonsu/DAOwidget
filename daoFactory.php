@@ -6,16 +6,20 @@ Author: Vitaliy Shulik
 Requires PHP: 7.1
 Text Domain: daofactory
 Domain Path: /lang
-Version: 0.1.1
+Version: 0.1.2
  */
+
+/* Define Plugin Constants */
+defined( 'ABSPATH' ) || exit;
+define( 'DAOFACTORY_URL', plugin_dir_url( __FILE__ ) );
+define( 'DAOFACTORY_VER', '0.1.2');
 
 
 // First register resources with init
 function daofactory_app_init() {
-  $path = "/build/static";
 
-  wp_register_script("daofactory_app_js", plugins_url($path."/js/main.js", __FILE__), array(), "1.0", false);
-  wp_register_style("daofactory_app_css", plugins_url($path."/css/main.css", __FILE__), array(), "1.0", "all");
+  wp_register_script( 'daofactory_app_js', DAOFACTORY_URL . 'build/static/js/main.js', array(), DAOFACTORY_VER, false );
+	wp_register_style( 'daofactory_app_css', DAOFACTORY_URL . 'build/static/css/main.css', false, DAOFACTORY_VER, "all");
 }
 
 add_action( 'init', 'daofactory_app_init' );
@@ -31,7 +35,7 @@ function daofactory_app( $atts ) {
     'token_decimals' => '18',
 	), $atts );
 
-  wp_enqueue_script("daofactory_app_js", '1.0', true);
+  wp_enqueue_script("daofactory_app_js", DAOFACTORY_VER, true);
   wp_enqueue_style("daofactory_app_css");
 
   $html = '
