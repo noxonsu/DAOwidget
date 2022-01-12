@@ -1,7 +1,7 @@
 <?php
 /**
 Plugin Name: Dao Factory
-Description: Go to Pages -> Add new, enter title "DAO" and put "[daofactory_app]" in the textarea. Open this page in new window and enjoy
+Description: Go to Pages -> Add new, enter title "DAO", create the shortcode block and put this code in there: <code>[daofactory_app template="light_template" token_address="0x92648e4537cdfa1ee743a244465a31aa034b1ce8" token_symbol="SWAP" token_decimals="18" network_id="56"]</code>. Replace all properties with your token data. Open this page in new window and enjoy. You can set dark theme - just enter <code>template="dark_template"</code>.
 Author: Vitaliy Shulik
 Requires PHP: 7.1
 Text Domain: daofactory
@@ -29,7 +29,7 @@ function daofactory_app( $atts ) {
   $a = shortcode_atts( array(
 		'ens_space' => 'onout.eth',
     'network_id' => '56',
-		'template' => 'dark_template',
+		'template' => 'light_template',
     'token_address' => '0x92648e4537cdfa1ee743a244465a31aa034b1ce8',
     'token_symbol' => 'SWAP',
     'token_decimals' => '18',
