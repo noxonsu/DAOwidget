@@ -18,8 +18,8 @@ define( 'DAOFACTORY_VER', '0.1.2');
 // First register resources with init
 function daofactory_app_init() {
 
-  wp_register_script( 'daofactory_app_js', DAOFACTORY_URL . 'build/static/js/main.js', array(), DAOFACTORY_VER, false );
-	wp_register_style( 'daofactory_app_css', DAOFACTORY_URL . 'build/static/css/main.css', false, DAOFACTORY_VER, "all");
+  wp_register_script( 'daofactory-app', DAOFACTORY_URL . 'build/static/js/main.js', array(), DAOFACTORY_VER, false );
+	wp_register_style( 'daofactory-app', DAOFACTORY_URL . 'build/static/css/main.css', false, DAOFACTORY_VER, "all");
 }
 
 add_action( 'init', 'daofactory_app_init' );
@@ -35,8 +35,8 @@ function daofactory_app( $atts ) {
     'token_decimals' => '18',
 	), $atts );
 
-  wp_enqueue_script("daofactory_app_js", DAOFACTORY_VER, true);
-  wp_enqueue_style("daofactory_app_css");
+  wp_enqueue_script("daofactory-app", DAOFACTORY_VER, true);
+  wp_enqueue_style("daofactory-app");
 
   $html = '
     <div
