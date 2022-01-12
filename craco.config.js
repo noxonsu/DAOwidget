@@ -5,6 +5,7 @@ module.exports = {
         filename: "static/js/[name].js",
       },
       optimization: {
+        minimize: false,
         runtimeChunk: false,
         splitChunks: {
           chunks(chunk) {
