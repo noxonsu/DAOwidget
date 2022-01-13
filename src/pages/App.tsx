@@ -1,6 +1,7 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 
-import Account from "./Account";
+import WithModal from "src/components/WithModal";
+
 import Proposal from "./Proposal";
 import Proposals from "./Proposals";
 import About from "./About";
@@ -13,23 +14,26 @@ import Header from "../components/Header";
 import "./App.scss";
 
 function App() {
+  const colorTemplate =
+    window.COLOR_TEMPLATE === "dark_template" ? "dark" : "light";
   return (
     <HashRouter>
       <Web3ReactManager>
-        <div className="App">
-          <Header />
-          <div className="content-wrapper">
-            <Routes>
-              <Route path="/" element={<Proposals />} />
-              <Route path="account" element={<Account />} />
-              <Route path="about" element={<About />} />
-              <Route path="proposal">
-                <Route path="create" element={<CreateProposal />} />
-                <Route path=":proposalId" element={<Proposal />} />
-              </Route>
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </div>
+        <div className="App" data-color-theme={colorTemplate}>
+          <WithModal>
+            <Header />
+            <div className="content-wrapper">
+              <Routes>
+                <Route path="/" element={<Proposals />} />
+                <Route path="about" element={<About />} />
+                <Route path="proposal">
+                  <Route path="create" element={<CreateProposal />} />
+                  <Route path=":proposalId" element={<Proposal />} />
+                </Route>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
+          </WithModal>
         </div>
       </Web3ReactManager>
     </HashRouter>

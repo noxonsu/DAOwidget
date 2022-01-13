@@ -2,7 +2,7 @@ import { useProposalList } from "src/hooks/useProposals";
 import { Link } from "react-router-dom";
 import removeMD from "remove-markdown";
 
-import { shortenText } from "src/helpers/utils";
+import { shortenText, shortEVMAddress } from "src/helpers/utils";
 
 import "./index.scss";
 
@@ -20,8 +20,8 @@ function Proposals() {
         <div key={index} className="proposal-row">
           <Link to={`/proposal/${id}`}>
             <div className="proposal-header">
-              <span>{`Created by ${author}`}</span>
-              <span>{state}</span>
+              <span>{`Created by ${shortEVMAddress(author)}`}</span>
+              <span className="proposal-state">{state}</span>
             </div>
             <div className="proposal-body">
               <h2>{title}</h2>
@@ -34,7 +34,7 @@ function Proposals() {
   );
 
   return (
-    <div className="proposals">
+    <div className="app-page proposals">
       <div className="proposals-header">
         <h1>Proposals</h1>
       </div>

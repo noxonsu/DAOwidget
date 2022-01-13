@@ -1,5 +1,3 @@
-import "./index.scss";
-
 type ChoiceButtonsType = {
   text: string;
   id?: string;

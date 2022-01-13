@@ -29,83 +29,76 @@ function ProposalInfo(props: ProposalInfoProps) {
   return (
     <>
       {haveContent && (
-        <div
-          style={{
-            padding: "0 1rem",
-            border: "solid 1px gray",
-            borderRadius: "1rem",
-            width: "50%",
-            margin: "auto",
-            marginBottom: "1rem",
-          }}
-        >
-          <h2>Proposal Info</h2>
-          {tokenSymbol && (
-            <p>
-              <b>Token symbol: </b>
-              {`${tokenSymbol}`}
-            </p>
-          )}
-          {tokenAddress && (
-            <p>
-              <b>Token address: </b>
-              {network ? (
+        <div className="app-widget">
+          <div className="app-widget-header">Proposal Info</div>
+          <div className="p-1">
+            {tokenSymbol && (
+              <div className="app-widget-item">
+                <b>Token symbol: </b>
+                {`${tokenSymbol}`}
+              </div>
+            )}
+            {tokenAddress && (
+              <div className="app-widget-item">
+                <b>Token address: </b>
+                {network ? (
+                  <ExternalLink
+                    link={`${NETWORK_EXPLORER_URLS[networkId]}address/${tokenAddress}`}
+                    children={shortEVMAddress(tokenAddress)}
+                  />
+                ) : (
+                  tokenAddress
+                )}
+              </div>
+            )}
+            {author && (
+              <div className="app-widget-item">
+                <b>Author: </b>
+                {network ? (
+                  <ExternalLink
+                    link={`${NETWORK_EXPLORER_URLS[networkId]}address/${author}`}
+                    children={shortEVMAddress(author)}
+                  />
+                ) : (
+                  author
+                )}
+              </div>
+            )}
+            {ipfs && (
+              <div className="app-widget-item">
+                <b>IPFS: </b>
                 <ExternalLink
-                  link={`${NETWORK_EXPLORER_URLS[networkId]}address/${tokenAddress}`}
-                  children={shortEVMAddress(tokenAddress)}
+                  link={`https://cloudflare-ipfs.com/ipfs/${ipfs}`}
+                  children={shortIPFS(ipfs)}
                 />
-              ) : (
-                tokenAddress
-              )}
-            </p>
-          )}
-          {author && (
-            <p>
-              <b>Author: </b>
-              {network ? (
-                <ExternalLink
-                  link={`${NETWORK_EXPLORER_URLS[networkId]}address/${author}`}
-                  children={shortEVMAddress(author)}
-                />
-              ) : (
-                author
-              )}
-            </p>
-          )}
-          {ipfs && (
-            <p>
-              <b>IPFS: </b>
-              <ExternalLink
-                link={`https://cloudflare-ipfs.com/ipfs/${ipfs}`}
-                children={shortIPFS(ipfs)}
-              />
-            </p>
-          )}
-          {start && (
-            <p>
-              <b>Start date: </b>
-              {`${new Date(start * 10 ** 3).toUTCString()}`}
-            </p>
-          )}
-          {end && (
-            <p>
-              <b>End date: </b>
-              {`${new Date(end * 10 ** 3).toUTCString()}`}
-            </p>
-          )}
-          {snapshot && (
-            <p>
-              <b>Snapshot: </b>
-              {network ? (
-                <ExternalLink
-                  link={`${NETWORK_EXPLORER_URLS[networkId]}block/${snapshot}`}
-                  children={snapshot}
-                />
-              ) : (
-                snapshot
-              )}
-            </p>
-          )}
+              </div>
+            )}
+            {start && (
+              <div className="app-widget-item">
+                <b>Start date: </b>
+                {`${new Date(start * 10 ** 3).toUTCString()}`}
+              </div>
+            )}
+            {end && (
+              <div className="app-widget-item">
+                <b>End date: </b>
+                {`${new Date(end * 10 ** 3).toUTCString()}`}
+              </div>
+            )}
+            {snapshot && (
+              <div className="app-widget-item">
+                <b>Snapshot: </b>
+                {network ? (
+                  <ExternalLink
+                    link={`${NETWORK_EXPLORER_URLS[networkId]}block/${snapshot}`}
+                    children={snapshot}
+                  />
+                ) : (
+                  snapshot
+                )}
+              </div>
+            )}
+          </div>
         </div>
       )}
     </>

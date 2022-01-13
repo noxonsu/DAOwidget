@@ -21,7 +21,7 @@ window.TOKEN_ADDRESS =
 window.TOKEN_SYMBOL = appElement?.getAttribute("data-token-symbol") || "SWAP";
 window.TOKEN_DECIMALS = appElement?.getAttribute("data-token-decimals") || "18";
 window.COLOR_TEMPLATE =
-  appElement?.getAttribute("data-color-template") || "dark_template";
+  appElement?.getAttribute("data-color-template") || "light_template";
 
 ReactDOM.render(
   <React.StrictMode>

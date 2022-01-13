@@ -1,15 +1,17 @@
-.header,
-.row {
+.voteRow {
   display: flex;
-  border-top: solid 1px gray;
+  border-top: solid 1px var(--border-color);
   padding: 1rem;
+
+  &:first-child {
+    border-top: none;
+  }
 
   :last-child {
     text-align: right;
-    border-bottom: 0px;
   }
 }
 
-.col {
+.voteCol {
   flex: 1;
 }

@@ -1,0 +1,31 @@
+# Copyright (C) 2022 Dao Factory
+# This file is distributed under the same license as the Dao Factory package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Dao Factory 0.1.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/dao-votes\n"
+"POT-Creation-Date: 2022-01-12 09:38:08+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#. Plugin Name of the plugin/theme
+msgid "Dao Factory"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Go to Pages -> Add new, enter title \"DAO\", create the shortcode block and "
+"put this code in there: <code>[daofactory_app template=\"light_template\" "
+"token_address=\"0x92648e4537cdfa1ee743a244465a31aa034b1ce8\" token_symbol="
+"\"SWAP\" token_decimals=\"18\" network_id=\"56\"]</code>. Replace all "
+"properties with your token data. Open this page in new window and enjoy. You "
+"can set dark theme - just enter <code>template=\"dark_template\"</code>."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Vitaliy Shulik"
+msgstr ""

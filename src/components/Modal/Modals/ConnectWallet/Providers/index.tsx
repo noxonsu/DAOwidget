@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
-import {
-  injected,
-  network,
-  // walletconnect,
-  Connectors,
-} from "src/connectors";
+import { injected, walletconnect, Connectors } from "src/connectors";
+
+import { ReactComponent as MetamaskSvg } from "src/assets/svg/metamask.svg";
+import { ReactComponent as WalletconnectSvg } from "src/assets/svg/walletconnect.svg";
 
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
 import {
   NoEthereumProviderError,
   UserRejectedRequestError as UserRejectedRequestErrorInjected,
 } from "@web3-react/injected-connector";
-// import { UserRejectedRequestError as UserRejectedRequestErrorWalletConnect } from '@web3-react/walletconnect-connector'
+import { UserRejectedRequestError as UserRejectedRequestErrorWalletConnect } from "@web3-react/walletconnect-connector";
 import { Web3Provider } from "@ethersproject/providers";
 
 import { useEagerConnect, useInactiveListener } from "src/hooks/useWeb3Connect";
@@ -20,37 +18,41 @@ import Spinner from "src/components/Spinner";
 
 import "./index.scss";
 
-type ConnectorNames = "Injected" | "Network"; // | 'WalletConnect'
+type ConnectorNames = "Injected" | "WalletConnect";
 
 enum EConnectorNames {
   Injected = "Injected",
-  Network = "Network",
-  // WalletConnect = 'WalletConnect',
+  WalletConnect = "WalletConnect",
 }
 
 const connectorsByName: { [connectorName in EConnectorNames]: Connectors } = {
   [EConnectorNames.Injected]: injected,
-  [EConnectorNames.Network]: network,
-  // [EConnectorNames.WalletConnect]: walletconnect,
+  [EConnectorNames.WalletConnect]: walletconnect,
 };
 
 function getErrorMessage(error: Error) {
   if (error instanceof NoEthereumProviderError) {
-    return "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile.";
+    return "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile. (Use http(s) to wallet connect)";
   } else if (error instanceof UnsupportedChainIdError) {
     return "You're connected to an unsupported network.";
   } else if (
-    error instanceof UserRejectedRequestErrorInjected
-    // || error instanceof UserRejectedRequestErrorWalletConnect
+    error instanceof UserRejectedRequestErrorInjected ||
+    error instanceof UserRejectedRequestErrorWalletConnect
   ) {
     return "Please authorize this website to access your Ethereum account.";
   } else {
     console.error(error);
-    return "An unknown error occurred. Check the console for more details.";
+    return "An unknown error occurred. Check the console for more details. (Use http(s) to wallet connect)";
   }
 }
 
-function ConnectProviders() {
+type ConnectProvidersProps = {
+  closeModal?: () => void;
+};
+
+function ConnectProviders(props: ConnectProvidersProps) {
+  const { closeModal } = props;
+
   const context = useWeb3React<Web3Provider>();
   const { connector, activate, error } = context;
 
@@ -59,6 +61,7 @@ function ConnectProviders() {
   useEffect(() => {
     if (activatingConnector && activatingConnector === connector) {
       setActivatingConnector(undefined);
+      !error && closeModal && closeModal();
     }
   }, [activatingConnector, connector]);
 
@@ -69,7 +72,7 @@ function ConnectProviders() {
   useInactiveListener(!triedEager || !!activatingConnector);
 
   return (
-    <>
+    <div className="connectorsButtons">
       {!!error && <h4 className="error">{getErrorMessage(error)}</h4>}
       {Object.keys(connectorsByName).map((name) => {
         const connectorName = name as ConnectorNames;
@@ -81,10 +84,7 @@ function ConnectProviders() {
 
         return (
           <button
-            className={`connect-button
-              ${disabled ? "connect-button__disable" : ""}
-              ${activating ? "connect-button__activating" : ""}
-              ${connected ? "connect-button__connected" : ""}`}
+            className="secondaryButton alingItemsCenter"
             disabled={disabled}
             key={name}
             onClick={() => {
@@ -92,21 +92,41 @@ function ConnectProviders() {
               activate(connectorsByName[connectorName]);
             }}
           >
-            <div className="connect-button__icon">
-              {activating && (
-                <Spinner color={"white"} style={{ height: "25%" }} />
-              )}
-              {connected && (
-                <span role="img" aria-label="check">
-                  ✅
-                </span>
-              )}
-            </div>
-            {name}
+            {activating && (
+              <Spinner
+                color={"grey"}
+                style={{ height: "1rem", marginRight: "0.5rem" }}
+              />
+            )}
+            {connected && !error && (
+              <span
+                role="img"
+                aria-label="check"
+                style={{ marginRight: "0.5rem", alignItems: 'center' }}
+              >
+                ✅
+              </span>
+            )}
+            {name === "Injected" ?
+              (
+                <>
+                  <MetamaskSvg
+                    style={{ width: "1.5rem", height: "1.5rem", marginRight: "0.5rem" }}
+                  />
+                </>
+              ) : name === "WalletConnect" ?
+              (
+                <>
+                  <WalletconnectSvg
+                    style={{ width: "1.5rem", height: "1.5rem", marginRight: "0.5rem" }}
+                  />
+                </>
+              ) : ''}
+            {`${name}`}
           </button>
         );
       })}
-    </>
+    </div>
   );
 }
 

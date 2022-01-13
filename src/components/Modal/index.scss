@@ -22,7 +22,7 @@
 
 .modal {
   z-index: 100;
-  background: #282c34;
+  background: var(--bg-color);
   position: absolute;
   float: left;
   left: 50%;
@@ -33,32 +33,45 @@
   max-width: 440px;
   width: 100%;
   margin: 1.75rem auto;
+
+  a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit !important; /* no underline */
+  }
 }
 
 .modalHeader {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px gray solid;
   padding: 1rem;
 }
 
 .headerContent {
+  color: var(--link-color);
   font-size: x-large;
   font-weight: 600;
 }
 
-.bodyContent {
+.modalBody {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  &.haveContentAbove {
+    border-top: 1px solid var(--border-color);
+  }
 }
 
 .modalCloseButton {
   font-size: 1.4rem;
   font-weight: 700;
   line-height: 1;
-  color: white;
+  color: var(--link-color);
   background-color: transparent;
   cursor: pointer;
   border: none;
+
+  &.haveContentAbove {
+    border-top: 1px solid var(--border-color);
+  }
 }
