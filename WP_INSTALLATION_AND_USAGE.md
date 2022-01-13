@@ -9,9 +9,9 @@ create the shortcode block and put this code in there:
 
 Where:
 
-1) `token-address`, `token-symbol`, `token-decimals`: address and variables of your erc20 contract;
+1) `token-address`, `token-symbol`, `token-decimals`: address and variables of your erc20 contract, you can find this data in explorer (Ethereum - etherscan.io, BSC - bscscan.com);
 
-2) `network_id`  is chainID from this list www.chainlist.org;
+2) `network_id`  is chainID from this list www.chainlist.org (Ethereum - "1", BSC - "56");
 3) `template` : you can set "dark_template" or use "light_template" by default.
 
 ## Usage
