@@ -5,7 +5,7 @@ module.exports = {
         filename: "static/js/[name].js",
       },
       optimization: {
-        minimize: false,
+        minimize: process.env.UNMINIFIED ? false : true,
         runtimeChunk: false,
         splitChunks: {
           chunks(chunk) {
