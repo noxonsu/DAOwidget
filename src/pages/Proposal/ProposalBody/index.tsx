@@ -17,31 +17,32 @@ function ProposalBody(props: ProposalBodyProps) {
   const navigate = useNavigate();
   const { send } = useClient();
   const { spacesData } = useSpaceList([space.id]);
-  const { active, account = '' } = useWeb3React();
+  const { active, account = "" } = useWeb3React();
 
   const spaceData = spacesData[0];
 
   const isAdmin = useMemo(() => {
-    const admins = (spaceData?.admins || []).map(admin => admin.toLowerCase());
-    return (account !== null) && admins.includes(account.toLowerCase());
+    const admins = (spaceData?.admins || []).map((admin) =>
+      admin.toLowerCase()
+    );
+    return account !== null && admins.includes(account.toLowerCase());
   }, [spaceData?.admins, account]);
 
   const isCreator = useMemo(() => {
-    return (account !== null) && (proposal?.author === account)
+    return account !== null && proposal?.author === account;
   }, [proposal.author, account]);
 
-  const showDeleteButton = active && (isAdmin || isCreator)
+  const showDeleteButton = active && (isAdmin || isCreator);
 
   const haveHeader = !!state;
 
   const deleteProposal = async () => {
-    const result = (await send(space as Space, 'delete-proposal', {
-      proposal
+    const result = (await send(space as Space, "delete-proposal", {
+      proposal,
     })) as any;
-    console.log('Result', result);
     if (result.id) {
-      console.log('Succesfyly delete proposal with id:', proposal)
-      navigate('/')
+      console.log("Succesfyly delete proposal with id:", proposal);
+      navigate("/");
     }
   };
 
@@ -51,7 +52,14 @@ function ProposalBody(props: ProposalBodyProps) {
       {haveHeader && (
         <div className="proposalHeader">
           {state && <span className="proposalState floatLeft">{state}</span>}
-          {showDeleteButton && <button className="deleteButton floatRight" onClick={deleteProposal}>delete</button>}
+          {showDeleteButton && (
+            <button
+              className="deleteButton floatRight"
+              onClick={deleteProposal}
+            >
+              delete
+            </button>
+          )}
         </div>
       )}
       {body && <MarkdownElement text={body} />}

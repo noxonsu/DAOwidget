@@ -102,26 +102,34 @@ function ConnectProviders(props: ConnectProvidersProps) {
               <span
                 role="img"
                 aria-label="check"
-                style={{ marginRight: "0.5rem", alignItems: 'center' }}
+                style={{ marginRight: "0.5rem", alignItems: "center" }}
               >
                 ✅
               </span>
             )}
-            {name === "Injected" ?
-              (
-                <>
-                  <MetamaskSvg
-                    style={{ width: "1.5rem", height: "1.5rem", marginRight: "0.5rem" }}
-                  />
-                </>
-              ) : name === "WalletConnect" ?
-              (
-                <>
-                  <WalletconnectSvg
-                    style={{ width: "1.5rem", height: "1.5rem", marginRight: "0.5rem" }}
-                  />
-                </>
-              ) : ''}
+            {name === "Injected" ? (
+              <>
+                <MetamaskSvg
+                  style={{
+                    width: "1.5rem",
+                    height: "1.5rem",
+                    marginRight: "0.5rem",
+                  }}
+                />
+              </>
+            ) : name === "WalletConnect" ? (
+              <>
+                <WalletconnectSvg
+                  style={{
+                    width: "1.5rem",
+                    height: "1.5rem",
+                    marginRight: "0.5rem",
+                  }}
+                />
+              </>
+            ) : (
+              ""
+            )}
             {`${name}`}
           </button>
         );

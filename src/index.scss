@@ -152,12 +152,12 @@ body {
   font-weight: 600;
   cursor: pointer;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     color: #e2435c;
   }
 
   &:active {
     opacity: 0.5;
   }
-
 }

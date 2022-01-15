@@ -1132,7 +1132,7 @@ var regenerator = __webpack_require__(2);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__(10);
+var asyncToGenerator = __webpack_require__(9);
 
 // CONCATENATED MODULE: ./node_modules/@walletconnect/utils/dist/esm/payload.js
 
@@ -3877,7 +3877,7 @@ module.exports = _unsupportedIterableToArray;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return browserSha512; });
 /* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
 /* harmony import */ var _walletconnect_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(95);
 /* harmony import */ var _walletconnect_environment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_walletconnect_environment__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(113);
@@ -5393,7 +5393,7 @@ function aesCbcDecrypt(iv, key, data) {
 /* unused harmony export hmacSha512Verify */
 /* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
 /* harmony import */ var _lib_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(108);
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(109);
 
@@ -5587,7 +5587,7 @@ function isConstantTime(arr1, arr2) {
 /* unused harmony export ripemd160 */
 /* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
 /* harmony import */ var _lib_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(108);
 
 
@@ -10733,7 +10733,7 @@ module.exports = function (string, separator) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
 /* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
 /* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7);
 /* harmony import */ var _walletconnect_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(99);
@@ -15298,7 +15298,7 @@ var regenerator = __webpack_require__(2);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__(10);
+var asyncToGenerator = __webpack_require__(9);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/classCallCheck.js
 var classCallCheck = __webpack_require__(6);
@@ -18800,4 +18800,4 @@ var esm_WalletConnectProvider = /*#__PURE__*/function () {
 
 /***/ })
 ])]);
-//# sourceMappingURL=1.91996233.chunk.js.map
+//# sourceMappingURL=1.6a738965.chunk.js.map

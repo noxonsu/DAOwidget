@@ -6,13 +6,13 @@ Author: Vitaliy Shulik
 Requires PHP: 7.1
 Text Domain: daofactory
 Domain Path: /lang
-Version: 0.1.2
+Version: 0.1.3
  */
 
 /* Define Plugin Constants */
 defined( 'ABSPATH' ) || exit;
 define( 'DAOFACTORY_URL', plugin_dir_url( __FILE__ ) );
-define( 'DAOFACTORY_VER', '0.1.2');
+define( 'DAOFACTORY_VER', '0.1.3');
 
 
 // First register resources with init

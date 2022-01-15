@@ -20,15 +20,8 @@ function ProposalDetail() {
 
   const { proposalData, isLoading } = useProposal(proposalId);
 
-  const {
-    id,
-    space,
-    snapshot,
-    network,
-    strategies,
-    state,
-    choices,
-  } = proposalData;
+  const { id, space, snapshot, network, strategies, state, choices } =
+    proposalData;
 
   const haveDataForRenderOtherElements = !!(
     id &&
@@ -42,7 +35,9 @@ function ProposalDetail() {
   return (
     <div className="app-page proposal">
       {isLoading && <h1 className="textCenter">Loading...</h1>}
-      {haveDataForRenderOtherElements && <ProposalBody proposal={proposalData} />}
+      {haveDataForRenderOtherElements && (
+        <ProposalBody proposal={proposalData} />
+      )}
       {choices && state !== "closed" && (
         <ProposalVoting proposal={proposalData} />
       )}

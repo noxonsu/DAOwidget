@@ -105,7 +105,6 @@ function CreateProposalActions(props: CreateProposalActionsType) {
 
       setIsWaitResponse(false);
       navigate(`/proposal/${result.id}`);
-
     } catch (error: any) {
       console.error(`Can't submit proposal. Error: ${error.message || error}`);
       setIsWaitResponse(false);

@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "static/js/" + ({}[chunkId]||chunkId) + "." + {"1":"91996233","2":"dcf4eeac"}[chunkId] + ".chunk.js"
+/******/ 		return __webpack_require__.p + "static/js/" + ({}[chunkId]||chunkId) + "." + {"1":"6a738965","2":"dcf4eeac"}[chunkId] + ".chunk.js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -1275,6 +1275,48 @@ function _defineProperty(obj, key, value) {
 
 /***/ }),
 /* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _asyncToGenerator; });
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {(function (module, exports) {
@@ -1332,7 +1374,7 @@ function _defineProperty(obj, key, value) {
     if (typeof window !== 'undefined' && typeof window.Buffer !== 'undefined') {
       Buffer = window.Buffer;
     } else {
-      Buffer = __webpack_require__(73).Buffer;
+      Buffer = __webpack_require__(72).Buffer;
     }
   } catch (e) {}
 
@@ -4760,48 +4802,6 @@ function _defineProperty(obj, key, value) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(55)(module)))
 
 /***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _asyncToGenerator; });
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-        args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-
-      _next(undefined);
-    });
-  };
-}
-
-/***/ }),
 /* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5746,9 +5746,9 @@ function HeadersInstanceToPlainObject(headers) {
 var hash = exports;
 hash.utils = __webpack_require__(17);
 hash.common = __webpack_require__(25);
-hash.sha = __webpack_require__(75);
-hash.ripemd = __webpack_require__(79);
-hash.hmac = __webpack_require__(80); // Proxy hash functions to the main object
+hash.sha = __webpack_require__(74);
+hash.ripemd = __webpack_require__(78);
+hash.hmac = __webpack_require__(79); // Proxy hash functions to the main object
 
 hash.sha1 = hash.sha.sha1;
 hash.sha256 = hash.sha.sha256;
@@ -6534,7 +6534,7 @@ hash.ripemd160 = hash.ripemd.ripemd160;
 
 var assert = __webpack_require__(24);
 
-var inherits = __webpack_require__(74);
+var inherits = __webpack_require__(73);
 
 exports.inherits = inherits;
 
@@ -7072,12 +7072,6 @@ function _arrayLikeToArray(arr, len) {
 
 /***/ }),
 /* 27 */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"name\":\"daofactory\",\"version\":\"0.1.2\",\"private\":true,\"homepage\":\".\",\"scripts\":{\"start\":\"react-scripts start\",\"build\":\"react-scripts build\",\"test\":\"react-scripts test\",\"eject\":\"react-scripts eject\",\"prettier\":\"npx prettier src/* --write\",\"build:plugin\":\"craco build\",\"unminified-build:plugin\":\"UNMINIFIED=true BUILD_PATH='./unminified-build' craco build\"},\"dependencies\":{\"@craco/craco\":\"^6.4.2\",\"@ethersproject/providers\":\"^5.5.0\",\"@ethersproject/units\":\"^5.5.0\",\"@ethersproject/wallet\":\"^5.5.0\",\"@web3-react/core\":\"^6.1.9\",\"@web3-react/injected-connector\":\"^6.0.7\",\"@web3-react/network-connector\":\"^6.1.9\",\"@web3-react/walletconnect-connector\":\"^6.2.8\",\"graphql\":\"^16.0.1\",\"graphql-request\":\"^3.6.1\",\"react\":\"^17.0.2\",\"react-dom\":\"^17.0.2\",\"react-router-dom\":\"^6.0.2\",\"remarkable\":\"^2.0.1\",\"remove-markdown\":\"^0.3.0\",\"web-vitals\":\"^1.1.2\"},\"eslintConfig\":{\"extends\":[\"react-app\",\"react-app/jest\"]},\"browserslist\":{\"production\":[\">0.2%\",\"not dead\",\"not op_mini all\"],\"development\":[\"last 1 chrome version\",\"last 1 firefox version\",\"last 1 safari version\"]},\"devDependencies\":{\"@testing-library/jest-dom\":\"^5.15.0\",\"@testing-library/react\":\"^11.2.7\",\"@testing-library/user-event\":\"^12.8.3\",\"@types/jest\":\"^26.0.24\",\"@types/node\":\"^12.20.36\",\"@types/react\":\"^17.0.33\",\"@types/react-dom\":\"^17.0.10\",\"@types/remarkable\":\"^2.0.3\",\"@types/remove-markdown\":\"^0.3.1\",\"node-sass\":\"npm:sass@^1.48.0\",\"react-scripts\":\"4.0.3\",\"typescript\":\"^4.4.4\"}}");
-
-/***/ }),
-/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7597,7 +7591,13 @@ module.exports = JSON.parse("{\"name\":\"daofactory\",\"version\":\"0.1.2\",\"pr
     // https://github.com/amdjs/amdjs-api/wiki/AMD
   } else {}
 })(this);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(81).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(80).setImmediate))
+
+/***/ }),
+/* 28 */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"daofactory\",\"version\":\"0.1.3\",\"private\":true,\"homepage\":\".\",\"scripts\":{\"start\":\"react-scripts start\",\"build\":\"react-scripts build\",\"test\":\"react-scripts test\",\"eject\":\"react-scripts eject\",\"prettier\":\"npx prettier src/* --write\",\"build:plugin\":\"craco build\",\"unminified-build:plugin\":\"UNMINIFIED=true BUILD_PATH='./unminified-build' craco build\"},\"dependencies\":{\"@craco/craco\":\"^6.4.2\",\"@ethersproject/providers\":\"^5.5.0\",\"@ethersproject/units\":\"^5.5.0\",\"@ethersproject/wallet\":\"^5.5.0\",\"@web3-react/core\":\"^6.1.9\",\"@web3-react/injected-connector\":\"^6.0.7\",\"@web3-react/network-connector\":\"^6.1.9\",\"@web3-react/walletconnect-connector\":\"^6.2.8\",\"graphql\":\"^16.0.1\",\"graphql-request\":\"^3.6.1\",\"react\":\"^17.0.2\",\"react-dom\":\"^17.0.2\",\"react-router-dom\":\"^6.0.2\",\"remarkable\":\"^2.0.1\",\"remove-markdown\":\"^0.3.0\",\"web-vitals\":\"^1.1.2\"},\"eslintConfig\":{\"extends\":[\"react-app\",\"react-app/jest\"]},\"browserslist\":{\"production\":[\">0.2%\",\"not dead\",\"not op_mini all\"],\"development\":[\"last 1 chrome version\",\"last 1 firefox version\",\"last 1 safari version\"]},\"devDependencies\":{\"@testing-library/jest-dom\":\"^5.15.0\",\"@testing-library/react\":\"^11.2.7\",\"@testing-library/user-event\":\"^12.8.3\",\"@types/jest\":\"^26.0.24\",\"@types/node\":\"^12.20.36\",\"@types/react\":\"^17.0.33\",\"@types/react-dom\":\"^17.0.10\",\"@types/remarkable\":\"^2.0.3\",\"@types/remove-markdown\":\"^0.3.1\",\"node-sass\":\"npm:sass@^1.48.0\",\"react-scripts\":\"4.0.3\",\"typescript\":\"^4.4.4\"}}");
 
 /***/ }),
 /* 29 */,
@@ -9354,7 +9354,7 @@ exports.ClientError = ClientError;
   }
 
   var COMMON_JS = !root.JS_SHA3_NO_COMMON_JS && typeof module === 'object' && module.exports;
-  var AMD =  true && __webpack_require__(72);
+  var AMD =  true && __webpack_require__(70);
   var ARRAY_BUFFER = !root.JS_SHA3_NO_ARRAY_BUFFER && typeof ArrayBuffer !== 'undefined';
   var HEX_CHARS = '0123456789abcdef'.split('');
   var SHAKE_PADDING = [31, 7936, 2031616, 520093696];
@@ -10562,7 +10562,7 @@ if (true) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EC$1; });
-/* harmony import */ var bn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
+/* harmony import */ var bn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
 /* harmony import */ var bn_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bn_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var hash_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15);
 /* harmony import */ var hash_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(hash_js__WEBPACK_IMPORTED_MODULE_1__);
@@ -22304,9 +22304,12 @@ module.exports = typeof self == 'object' ? self.FormData : window.FormData;
 
 /***/ }),
 /* 70 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-// extracted by mini-css-extract-plugin
+/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
+module.exports = __webpack_amd_options__;
+
+/* WEBPACK VAR INJECTION */}.call(this, {}))
 
 /***/ }),
 /* 71 */
@@ -22318,19 +22321,10 @@ module.exports = typeof self == 'object' ? self.FormData : window.FormData;
 /* 72 */
 /***/ (function(module, exports) {
 
-/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
-module.exports = __webpack_amd_options__;
-
-/* WEBPACK VAR INJECTION */}.call(this, {}))
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports) {
-
 /* (ignored) */
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports) {
 
 if (typeof Object.create === 'function') {
@@ -22364,20 +22358,20 @@ if (typeof Object.create === 'function') {
 }
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-exports.sha1 = __webpack_require__(76);
-exports.sha224 = __webpack_require__(77);
+exports.sha1 = __webpack_require__(75);
+exports.sha224 = __webpack_require__(76);
 exports.sha256 = __webpack_require__(45);
-exports.sha384 = __webpack_require__(78);
+exports.sha384 = __webpack_require__(77);
 exports.sha512 = __webpack_require__(46);
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22449,7 +22443,7 @@ SHA1.prototype._digest = function digest(enc) {
 };
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22478,7 +22472,7 @@ SHA224.prototype._digest = function digest(enc) {
 };
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22506,7 +22500,7 @@ SHA384.prototype._digest = function digest(enc) {
 };
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22593,7 +22587,7 @@ var s = [11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8, 7, 6, 8, 13, 11
 var sh = [8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6, 9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11, 9, 7, 15, 11, 8, 6, 6, 14, 12, 13, 5, 14, 13, 13, 7, 5, 15, 5, 8, 11, 14, 14, 6, 14, 6, 9, 12, 9, 12, 5, 15, 8, 8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11];
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22649,7 +22643,7 @@ Hmac.prototype.digest = function digest(enc) {
 };
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = typeof global !== "undefined" && global || typeof self !== "undefined" && self || window;
@@ -22703,7 +22697,7 @@ exports._unrefActive = exports.active = function (item) {
 }; // setimmediate attaches itself to the global object
 
 
-__webpack_require__(82); // On some exotic environments, it's not clear which object `setimmediate` was
+__webpack_require__(81); // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
 
@@ -22713,7 +22707,7 @@ exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || t
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(23)))
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -22918,6 +22912,12 @@ exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || t
   attachTo.clearImmediate = clearImmediate;
 })(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(23), __webpack_require__(35)))
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 /* 83 */
@@ -24933,7 +24933,7 @@ var regenerator = __webpack_require__(2);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__(10);
+var asyncToGenerator = __webpack_require__(9);
 
 // EXTERNAL MODULE: ./node_modules/graphql-request/dist/index.js
 var dist = __webpack_require__(14);
@@ -24978,6 +24978,644 @@ basic:singleChoice_SingleChoiceVoting};/* harmony default export */ var votings 
 var useVotes_useVotes=function useVotes(proposal){var _useState=Object(react["useState"])(false),_useState2=Object(slicedToArray["a" /* default */])(_useState,2),isLoading=_useState2[0],setIsLoading=_useState2[1];var _useState3=Object(react["useState"])([]),_useState4=Object(slicedToArray["a" /* default */])(_useState3,2),votesData=_useState4[0],setVotesData=_useState4[1];var _useState5=Object(react["useState"])(),_useState6=Object(slicedToArray["a" /* default */])(_useState5,2),resultData=_useState6[0],setResultData=_useState6[1];Object(react["useEffect"])(function(){var _fetchData=/*#__PURE__*/function(){var _ref=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var votes,_yield$getResults,votesWithScores,results;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.prev=0;setIsLoading(true);_context.next=4;return fetchVotes(proposal.id);case 4:votes=_context.sent;_context.next=7;return getResults(proposal,votes);case 7:_yield$getResults=_context.sent;votesWithScores=_yield$getResults.votesWithScores;results=_yield$getResults.results;setVotesData(votesWithScores);setResultData(results);_context.next=17;break;case 14:_context.prev=14;_context.t0=_context["catch"](0);console.error("Error: Can't fetch votes. Description: ".concat(_context.t0));case 17:_context.prev=17;setIsLoading(false);return _context.finish(17);case 20:case"end":return _context.stop();}}},_callee,null,[[0,14,17,20]]);}));return function _fetchData(){return _ref.apply(this,arguments);};}();_fetchData();},[]);return{votesData:votesData,isLoading:isLoading,resultData:resultData};};var fetchVotes=/*#__PURE__*/function(){var _ref2=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee2(id){var first,response,_args2=arguments;return regenerator_default.a.wrap(function _callee2$(_context2){while(1){switch(_context2.prev=_context2.next){case 0:first=_args2.length>1&&_args2[1]!==undefined?_args2[1]:20000;_context2.next=3;return Object(dist["request"])(OFFCHAIN_HUB_API,VOTES_QUERY,{id:id,orderBy:"vp",orderDirection:"desc",first:first});case 3:response=_context2.sent;return _context2.abrupt("return",response.votes);case 5:case"end":return _context2.stop();}}},_callee2);}));return function fetchVotes(_x){return _ref2.apply(this,arguments);};}();function getResults(_x2,_x3){return _getResults.apply(this,arguments);}function _getResults(){_getResults=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee3(proposal,votes){var voters,snapshot,network,strategies,spaceId,state,votesWithScores,scores,votingClass,results;return regenerator_default.a.wrap(function _callee3$(_context3){while(1){switch(_context3.prev=_context3.next){case 0:_context3.prev=0;voters=votes.map(function(vote){return vote.voter;});snapshot=proposal.snapshot,network=proposal.network,strategies=proposal.strategies,spaceId=proposal.space.id,state=proposal.state;votesWithScores=[];/* Get scores */if(!(state!=="pending")){_context3.next=12;break;}console.time("getResults");_context3.next=8;return getScores(spaceId,strategies,network,voters,parseInt(snapshot));case 8:scores=_context3.sent;console.timeEnd("getResults");console.log("Got scores");votesWithScores=votes.map(function(vote){var voteWithScores=_objectSpread2(_objectSpread2({},vote),{},{scores:[],balance:0});voteWithScores.scores=strategies.map(function(strategy,i){return scores[i][vote.voter]||0;});voteWithScores.balance=voteWithScores.scores.reduce(function(a,b){return a+b;},0);return voteWithScores;}).sort(function(a,b){return b.balance-a.balance;}).filter(function(vote){return vote.balance>0;});case 12:/* Get results */votingClass=new votings[proposal.type](proposal,votesWithScores,strategies);results={resultsByVoteBalance:votingClass.resultsByVoteBalance(),resultsByStrategyScore:votingClass.resultsByStrategyScore(),sumOfResultsBalance:votingClass.sumOfResultsBalance()};return _context3.abrupt("return",{votesWithScores:votesWithScores,results:results});case 17:_context3.prev=17;_context3.t0=_context3["catch"](0);console.log(_context3.t0);throw _context3.t0;case 21:case"end":return _context3.stop();}}},_callee3,null,[[0,17]]);}));return _getResults.apply(this,arguments);}function getScores(_x4,_x5,_x6,_x7){return _getScores.apply(this,arguments);}function _getScores(){_getScores=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee4(space,strategies,network,addresses){var snapshot,scoreApiUrl,params,res,obj,_args4=arguments;return regenerator_default.a.wrap(function _callee4$(_context4){while(1){switch(_context4.prev=_context4.next){case 0:snapshot=_args4.length>4&&_args4[4]!==undefined?_args4[4]:"latest";scoreApiUrl=_args4.length>5&&_args4[5]!==undefined?_args4[5]:"https://score.snapshot.org/api/scores";_context4.prev=2;params={space:space,network:network,snapshot:snapshot,strategies:strategies,addresses:addresses};_context4.next=6;return fetch(scoreApiUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({params:params})});case 6:res=_context4.sent;_context4.next=9;return res.json();case 9:obj=_context4.sent;return _context4.abrupt("return",obj.result.scores);case 13:_context4.prev=13;_context4.t0=_context4["catch"](2);return _context4.abrupt("return",Promise.reject(_context4.t0));case 16:case"end":return _context4.stop();}}},_callee4,null,[[2,13]]);}));return _getScores.apply(this,arguments);}
 // EXTERNAL MODULE: ./src/pages/Proposal/index.scss
 var Proposal = __webpack_require__(69);
+
+// CONCATENATED MODULE: ./node_modules/tiny-invariant/dist/tiny-invariant.esm.js
+var isProduction = "production" === 'production';
+var prefix = 'Invariant failed';
+
+function tiny_invariant_esm_invariant(condition, message) {
+  if (condition) {
+    return;
+  }
+
+  if (isProduction) {
+    throw new Error(prefix);
+  }
+
+  var provided = typeof message === 'function' ? message() : message;
+  var value = provided ? prefix + ": " + provided : prefix;
+  throw new Error(value);
+}
+
+
+// CONCATENATED MODULE: ./node_modules/@web3-react/types/dist/types.esm.js
+var ConnectorEvent;
+
+(function (ConnectorEvent) {
+  ConnectorEvent["Update"] = "Web3ReactUpdate";
+  ConnectorEvent["Error"] = "Web3ReactError";
+  ConnectorEvent["Deactivate"] = "Web3ReactDeactivate";
+})(ConnectorEvent || (ConnectorEvent = {}));
+
+
+// EXTERNAL MODULE: ./node_modules/@ethersproject/bytes/lib.esm/index.js + 1 modules
+var lib_esm = __webpack_require__(1);
+
+// EXTERNAL MODULE: ./node_modules/js-sha3/src/sha3.js
+var sha3 = __webpack_require__(43);
+var sha3_default = /*#__PURE__*/__webpack_require__.n(sha3);
+
+// CONCATENATED MODULE: ./node_modules/@ethersproject/keccak256/lib.esm/index.js
+
+
+
+
+function keccak256(data) {
+  return '0x' + sha3_default.a.keccak_256(Object(lib_esm["a" /* arrayify */])(data));
+}
+// CONCATENATED MODULE: ./node_modules/@web3-react/core/dist/core.esm.js
+
+
+
+
+
+
+
+function core_esm_extends() {
+  core_esm_extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return core_esm_extends.apply(this, arguments);
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+
+  _setPrototypeOf(subClass, superClass);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _construct(Parent, args, Class) {
+  if (_isNativeReflectConstruct()) {
+    _construct = Reflect.construct;
+  } else {
+    _construct = function _construct(Parent, args, Class) {
+      var a = [null];
+      a.push.apply(a, args);
+      var Constructor = Function.bind.apply(Parent, a);
+      var instance = new Constructor();
+      if (Class) _setPrototypeOf(instance, Class.prototype);
+      return instance;
+    };
+  }
+
+  return _construct.apply(null, arguments);
+}
+
+function _isNativeFunction(fn) {
+  return Function.toString.call(fn).indexOf("[native code]") !== -1;
+}
+
+function _wrapNativeSuper(Class) {
+  var _cache = typeof Map === "function" ? new Map() : undefined;
+
+  _wrapNativeSuper = function _wrapNativeSuper(Class) {
+    if (Class === null || !_isNativeFunction(Class)) return Class;
+
+    if (typeof Class !== "function") {
+      throw new TypeError("Super expression must either be null or a function");
+    }
+
+    if (typeof _cache !== "undefined") {
+      if (_cache.has(Class)) return _cache.get(Class);
+
+      _cache.set(Class, Wrapper);
+    }
+
+    function Wrapper() {
+      return _construct(Class, arguments, _getPrototypeOf(this).constructor);
+    }
+
+    Wrapper.prototype = Object.create(Class.prototype, {
+      constructor: {
+        value: Wrapper,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+    return _setPrototypeOf(Wrapper, Class);
+  };
+
+  return _wrapNativeSuper(Class);
+} // A type of promise-like that resolves synchronously and supports only one observer
+
+
+var _iteratorSymbol = /*#__PURE__*/typeof Symbol !== "undefined" ? Symbol.iterator || (Symbol.iterator = /*#__PURE__*/Symbol("Symbol.iterator")) : "@@iterator"; // Asynchronously iterate through an object's values
+
+
+var _asyncIteratorSymbol = /*#__PURE__*/typeof Symbol !== "undefined" ? Symbol.asyncIterator || (Symbol.asyncIterator = /*#__PURE__*/Symbol("Symbol.asyncIterator")) : "@@asyncIterator"; // Asynchronously iterate on a value using it's async iterator if present, or its synchronous iterator if missing
+
+
+function _catch(body, recover) {
+  try {
+    var result = body();
+  } catch (e) {
+    return recover(e);
+  }
+
+  if (result && result.then) {
+    return result.then(void 0, recover);
+  }
+
+  return result;
+} // Asynchronously await a promise and pass the result to a finally continuation
+
+
+function normalizeChainId(chainId) {
+  if (typeof chainId === 'string') {
+    // Temporary fix until the next version of Metamask Mobile gets released.
+    // In the current version (0.2.13), the chainId starts with “Ox” rather
+    // than “0x”. Fix: https://github.com/MetaMask/metamask-mobile/pull/1275
+    chainId = chainId.replace(/^Ox/, '0x');
+    var parsedChainId = Number.parseInt(chainId, chainId.trim().substring(0, 2) === '0x' ? 16 : 10);
+    !!Number.isNaN(parsedChainId) ?  false ? undefined : tiny_invariant_esm_invariant(false) : void 0;
+    return parsedChainId;
+  } else {
+    !Number.isInteger(chainId) ?  false ? undefined : tiny_invariant_esm_invariant(false) : void 0;
+    return chainId;
+  }
+} // https://github.com/ethers-io/ethers.js/blob/d9d438a119bb11f8516fc9cf02c534ab3816fcb3/packages/address/src.ts/index.ts
+
+
+function normalizeAccount(_address) {
+  !(typeof _address === 'string' && _address.match(/^(0x)?[0-9a-fA-F]{40}$/)) ?  false ? undefined : tiny_invariant_esm_invariant(false) : void 0;
+  var address = _address.substring(0, 2) === '0x' ? _address : "0x" + _address;
+  var chars = address.toLowerCase().substring(2).split('');
+  var charsArray = new Uint8Array(40);
+
+  for (var i = 0; i < 40; i++) {
+    charsArray[i] = chars[i].charCodeAt(0);
+  }
+
+  var hashed = Object(lib_esm["a" /* arrayify */])(keccak256(charsArray));
+
+  for (var _i = 0; _i < 40; _i += 2) {
+    if (hashed[_i >> 1] >> 4 >= 8) {
+      chars[_i] = chars[_i].toUpperCase();
+    }
+
+    if ((hashed[_i >> 1] & 0x0f) >= 8) {
+      chars[_i + 1] = chars[_i + 1].toUpperCase();
+    }
+  }
+
+  var addressChecksum = "0x" + chars.join('');
+  !!(address.match(/([A-F].*[a-f])|([a-f].*[A-F])/) && address !== addressChecksum) ?  false ? undefined : tiny_invariant_esm_invariant(false) : void 0;
+  return addressChecksum;
+}
+
+var augmentConnectorUpdate = function augmentConnectorUpdate(connector, update) {
+  try {
+    var _temp3 = function _temp3(provider) {
+      return Promise.resolve(Promise.all([update.chainId === undefined ? connector.getChainId() : update.chainId, update.account === undefined ? connector.getAccount() : update.account])).then(function (_ref2) {
+        var _chainId = _ref2[0],
+            _account = _ref2[1];
+        var chainId = normalizeChainId(_chainId);
+
+        if (!!connector.supportedChainIds && !connector.supportedChainIds.includes(chainId)) {
+          throw new UnsupportedChainIdError(chainId, connector.supportedChainIds);
+        }
+
+        var account = _account === null ? _account : normalizeAccount(_account);
+        return {
+          provider: provider,
+          chainId: chainId,
+          account: account
+        };
+      });
+    };
+
+    var _temp4 = update.provider === undefined;
+
+    return Promise.resolve(_temp4 ? Promise.resolve(connector.getProvider()).then(_temp3) : _temp3(update.provider));
+  } catch (e) {
+    return Promise.reject(e);
+  }
+};
+
+var StaleConnectorError = /*#__PURE__*/function (_Error) {
+  _inheritsLoose(StaleConnectorError, _Error);
+
+  function StaleConnectorError() {
+    var _this;
+
+    _this = _Error.call(this) || this;
+    _this.name = _this.constructor.name;
+    return _this;
+  }
+
+  return StaleConnectorError;
+}( /*#__PURE__*/_wrapNativeSuper(Error));
+
+var UnsupportedChainIdError = /*#__PURE__*/function (_Error2) {
+  _inheritsLoose(UnsupportedChainIdError, _Error2);
+
+  function UnsupportedChainIdError(unsupportedChainId, supportedChainIds) {
+    var _this2;
+
+    _this2 = _Error2.call(this) || this;
+    _this2.name = _this2.constructor.name;
+    _this2.message = "Unsupported chain id: " + unsupportedChainId + ". Supported chain ids are: " + supportedChainIds + ".";
+    return _this2;
+  }
+
+  return UnsupportedChainIdError;
+}( /*#__PURE__*/_wrapNativeSuper(Error));
+
+var ActionType;
+
+(function (ActionType) {
+  ActionType[ActionType["ACTIVATE_CONNECTOR"] = 0] = "ACTIVATE_CONNECTOR";
+  ActionType[ActionType["UPDATE"] = 1] = "UPDATE";
+  ActionType[ActionType["UPDATE_FROM_ERROR"] = 2] = "UPDATE_FROM_ERROR";
+  ActionType[ActionType["ERROR"] = 3] = "ERROR";
+  ActionType[ActionType["ERROR_FROM_ACTIVATION"] = 4] = "ERROR_FROM_ACTIVATION";
+  ActionType[ActionType["DEACTIVATE_CONNECTOR"] = 5] = "DEACTIVATE_CONNECTOR";
+})(ActionType || (ActionType = {}));
+
+function reducer(state, _ref) {
+  var type = _ref.type,
+      payload = _ref.payload;
+
+  switch (type) {
+    case ActionType.ACTIVATE_CONNECTOR:
+      {
+        var connector = payload.connector,
+            provider = payload.provider,
+            chainId = payload.chainId,
+            account = payload.account,
+            onError = payload.onError;
+        return {
+          connector: connector,
+          provider: provider,
+          chainId: chainId,
+          account: account,
+          onError: onError
+        };
+      }
+
+    case ActionType.UPDATE:
+      {
+        var _provider = payload.provider,
+            _chainId2 = payload.chainId,
+            _account2 = payload.account;
+        return core_esm_extends({}, state, _provider === undefined ? {} : {
+          provider: _provider
+        }, _chainId2 === undefined ? {} : {
+          chainId: _chainId2
+        }, _account2 === undefined ? {} : {
+          account: _account2
+        });
+      }
+
+    case ActionType.UPDATE_FROM_ERROR:
+      {
+        var _provider2 = payload.provider,
+            _chainId3 = payload.chainId,
+            _account3 = payload.account;
+        return core_esm_extends({}, state, _provider2 === undefined ? {} : {
+          provider: _provider2
+        }, _chainId3 === undefined ? {} : {
+          chainId: _chainId3
+        }, _account3 === undefined ? {} : {
+          account: _account3
+        }, {
+          error: undefined
+        });
+      }
+
+    case ActionType.ERROR:
+      {
+        var error = payload.error;
+        var _connector = state.connector,
+            _onError = state.onError;
+        return {
+          connector: _connector,
+          error: error,
+          onError: _onError
+        };
+      }
+
+    case ActionType.ERROR_FROM_ACTIVATION:
+      {
+        var _connector2 = payload.connector,
+            _error = payload.error;
+        return {
+          connector: _connector2,
+          error: _error
+        };
+      }
+
+    case ActionType.DEACTIVATE_CONNECTOR:
+      {
+        return {};
+      }
+  }
+}
+
+function useWeb3ReactManager() {
+  var _useReducer = Object(react["useReducer"])(reducer, {}),
+      state = _useReducer[0],
+      dispatch = _useReducer[1];
+
+  var connector = state.connector,
+      provider = state.provider,
+      chainId = state.chainId,
+      account = state.account,
+      onError = state.onError,
+      error = state.error;
+  var updateBusterRef = Object(react["useRef"])(-1);
+  updateBusterRef.current += 1;
+  var activate = Object(react["useCallback"])(function (connector, onError, throwErrors) {
+    if (throwErrors === void 0) {
+      throwErrors = false;
+    }
+
+    try {
+      var updateBusterInitial = updateBusterRef.current;
+      var activated = false;
+      return Promise.resolve(_catch(function () {
+        return Promise.resolve(connector.activate().then(function (update) {
+          activated = true;
+          return update;
+        })).then(function (update) {
+          return Promise.resolve(augmentConnectorUpdate(connector, update)).then(function (augmentedUpdate) {
+            if (updateBusterRef.current > updateBusterInitial) {
+              throw new StaleConnectorError();
+            }
+
+            dispatch({
+              type: ActionType.ACTIVATE_CONNECTOR,
+              payload: core_esm_extends({
+                connector: connector
+              }, augmentedUpdate, {
+                onError: onError
+              })
+            });
+          });
+        });
+      }, function (error) {
+        if (error instanceof StaleConnectorError) {
+          activated && connector.deactivate();
+           false ? undefined : void 0;
+        } else if (throwErrors) {
+          activated && connector.deactivate();
+          throw error;
+        } else if (onError) {
+          activated && connector.deactivate();
+          onError(error);
+        } else {
+          // we don't call activated && connector.deactivate() here because it'll be handled in the useEffect
+          dispatch({
+            type: ActionType.ERROR_FROM_ACTIVATION,
+            payload: {
+              connector: connector,
+              error: error
+            }
+          });
+        }
+      }));
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  }, []);
+  var setError = Object(react["useCallback"])(function (error) {
+    dispatch({
+      type: ActionType.ERROR,
+      payload: {
+        error: error
+      }
+    });
+  }, []);
+  var deactivate = Object(react["useCallback"])(function () {
+    dispatch({
+      type: ActionType.DEACTIVATE_CONNECTOR
+    });
+  }, []);
+  var handleUpdate = Object(react["useCallback"])(function (update) {
+    try {
+      if (!connector) {
+        throw Error("This should never happen, it's just so Typescript stops complaining");
+      }
+
+      var updateBusterInitial = updateBusterRef.current; // updates are handled differently depending on whether the connector is active vs in an error state
+
+      return Promise.resolve(function () {
+        if (!error) {
+          var _chainId4 = update.chainId === undefined ? undefined : normalizeChainId(update.chainId);
+
+          if (_chainId4 !== undefined && !!connector.supportedChainIds && !connector.supportedChainIds.includes(_chainId4)) {
+            var _error2 = new UnsupportedChainIdError(_chainId4, connector.supportedChainIds);
+
+            onError ? onError(_error2) : dispatch({
+              type: ActionType.ERROR,
+              payload: {
+                error: _error2
+              }
+            });
+          } else {
+            var _account4 = typeof update.account === 'string' ? normalizeAccount(update.account) : update.account;
+
+            dispatch({
+              type: ActionType.UPDATE,
+              payload: {
+                provider: update.provider,
+                chainId: _chainId4,
+                account: _account4
+              }
+            });
+          }
+        } else {
+          return _catch(function () {
+            return Promise.resolve(augmentConnectorUpdate(connector, update)).then(function (augmentedUpdate) {
+              if (updateBusterRef.current > updateBusterInitial) {
+                throw new StaleConnectorError();
+              }
+
+              dispatch({
+                type: ActionType.UPDATE_FROM_ERROR,
+                payload: augmentedUpdate
+              });
+            });
+          }, function (error) {
+            if (error instanceof StaleConnectorError) {
+               false ? undefined : void 0;
+            } else {
+              // though we don't have to, we're re-circulating the new error
+              onError ? onError(error) : dispatch({
+                type: ActionType.ERROR,
+                payload: {
+                  error: error
+                }
+              });
+            }
+          });
+        }
+      }());
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  }, [connector, error, onError]);
+  var handleError = Object(react["useCallback"])(function (error) {
+    onError ? onError(error) : dispatch({
+      type: ActionType.ERROR,
+      payload: {
+        error: error
+      }
+    });
+  }, [onError]);
+  var handleDeactivate = Object(react["useCallback"])(function () {
+    dispatch({
+      type: ActionType.DEACTIVATE_CONNECTOR
+    });
+  }, []); // ensure that connectors which were set are deactivated
+
+  Object(react["useEffect"])(function () {
+    return function () {
+      if (connector) {
+        connector.deactivate();
+      }
+    };
+  }, [connector]); // ensure that events emitted from the set connector are handled appropriately
+
+  Object(react["useEffect"])(function () {
+    if (connector) {
+      connector.on(ConnectorEvent.Update, handleUpdate).on(ConnectorEvent.Error, handleError).on(ConnectorEvent.Deactivate, handleDeactivate);
+    }
+
+    return function () {
+      if (connector) {
+        connector.off(ConnectorEvent.Update, handleUpdate).off(ConnectorEvent.Error, handleError).off(ConnectorEvent.Deactivate, handleDeactivate);
+      }
+    };
+  }, [connector, handleUpdate, handleError, handleDeactivate]);
+  return {
+    connector: connector,
+    provider: provider,
+    chainId: chainId,
+    account: account,
+    activate: activate,
+    setError: setError,
+    deactivate: deactivate,
+    error: error
+  };
+}
+
+var PRIMARY_KEY = 'primary';
+var CONTEXTS = {};
+
+function createWeb3ReactRoot(key) {
+  !!CONTEXTS[key] ?  false ? undefined : tiny_invariant_esm_invariant(false) : void 0;
+  CONTEXTS[key] = Object(react["createContext"])({
+    activate: function activate() {
+      try {
+         true ?  false ? undefined : tiny_invariant_esm_invariant(false) : undefined;
+        return Promise.resolve();
+      } catch (e) {
+        return Promise.reject(e);
+      }
+    },
+    setError: function setError() {
+       false ? undefined : tiny_invariant_esm_invariant(false);
+    },
+    deactivate: function deactivate() {
+       false ? undefined : tiny_invariant_esm_invariant(false);
+    },
+    active: false
+  });
+  CONTEXTS[key].displayName = "Web3ReactContext - " + key;
+  var Provider = CONTEXTS[key].Provider;
+  return function Web3ReactProvider(_ref) {
+    var getLibrary = _ref.getLibrary,
+        children = _ref.children;
+
+    var _useWeb3ReactManager = useWeb3ReactManager(),
+        connector = _useWeb3ReactManager.connector,
+        provider = _useWeb3ReactManager.provider,
+        chainId = _useWeb3ReactManager.chainId,
+        account = _useWeb3ReactManager.account,
+        activate = _useWeb3ReactManager.activate,
+        setError = _useWeb3ReactManager.setError,
+        deactivate = _useWeb3ReactManager.deactivate,
+        error = _useWeb3ReactManager.error;
+
+    var active = connector !== undefined && chainId !== undefined && account !== undefined && !!!error;
+    var library = Object(react["useMemo"])(function () {
+      return active && chainId !== undefined && Number.isInteger(chainId) && !!connector ? getLibrary(provider, connector) : undefined;
+    }, [active, getLibrary, provider, connector, chainId]);
+    var web3ReactContext = {
+      connector: connector,
+      library: library,
+      chainId: chainId,
+      account: account,
+      activate: activate,
+      setError: setError,
+      deactivate: deactivate,
+      active: active,
+      error: error
+    };
+    return react_default.a.createElement(Provider, {
+      value: web3ReactContext
+    }, children);
+  };
+}
+
+var core_esm_Web3ReactProvider = /*#__PURE__*/createWeb3ReactRoot(PRIMARY_KEY);
+
+function getWeb3ReactContext(key) {
+  if (key === void 0) {
+    key = PRIMARY_KEY;
+  }
+
+  !Object.keys(CONTEXTS).includes(key) ?  false ? undefined : tiny_invariant_esm_invariant(false) : void 0;
+  return CONTEXTS[key];
+}
+
+function useWeb3React(key) {
+  return Object(react["useContext"])(getWeb3ReactContext(key));
+}
+
 
 // CONCATENATED MODULE: ./node_modules/remarkable/dist/esm/index.browser.js
 var index_browser_textarea;
@@ -36823,702 +37461,10 @@ function linkify(md) {
 
 
 // EXTERNAL MODULE: ./src/components/MarkdownElement/index.scss
-var MarkdownElement = __webpack_require__(70);
+var MarkdownElement = __webpack_require__(71);
 
 // CONCATENATED MODULE: ./src/components/MarkdownElement/index.tsx
 var remarkable=new Remarkable("full",{html:true,breaks:true,typographer:true}).use(linkify);function MarkdownElement_MarkdownElement(props){var _props$text=props.text,text=_props$text===void 0?"":_props$text;var html=remarkable.render(text);return/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"markdown-body",dangerouslySetInnerHTML:{__html:html}});}
-// CONCATENATED MODULE: ./src/pages/Proposal/ProposalBody/index.tsx
-function ProposalBody(props){var description=props.description,title=props.title;return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{style:{marginBottom:"2rem"},children:[title&&/*#__PURE__*/Object(jsx_runtime["jsx"])("h1",{className:"proposalTitle",children:title}),/*#__PURE__*/Object(jsx_runtime["jsx"])(MarkdownElement_MarkdownElement,{text:description})]});}/* harmony default export */ var Proposal_ProposalBody = (ProposalBody);
-// EXTERNAL MODULE: ./package.json
-var package_0 = __webpack_require__(27);
-
-// CONCATENATED MODULE: ./src/helpers/utils.ts
-var shortenText=function shortenText(){var str=arguments.length>0&&arguments[0]!==undefined?arguments[0]:"";var numberOfLetters=arguments.length>1&&arguments[1]!==undefined?arguments[1]:7;return(str===null||str===void 0?void 0:str.length)>numberOfLetters+3?str.substring(0,numberOfLetters).trim()+"...":str;};function lsSet(key,value){return localStorage.setItem("".concat(package_0.name,".").concat(key),JSON.stringify(value));}function lsGet(key,fallback){var item=localStorage.getItem("".concat(package_0.name,".").concat(key));return jsonParse(item,fallback);}function lsRemove(key){return localStorage.removeItem("".concat(package_0.name,".").concat(key));}function jsonParse(input,fallback){if(typeof input!=="string"){return fallback||{};}try{return JSON.parse(input);}catch(err){return fallback||{};}}function shortEVMAddress(account){return"".concat(account.substring(0,6),"...").concat(account.substring(account.length-4));}function shortIPFS(account){return"#".concat(account.substring(0,6));}var defaultObj={shortenText:shortenText,lsSet:lsSet,lsGet:lsGet,lsRemove:lsRemove,shortEVMAddress:shortEVMAddress,shortIPFS:shortIPFS};/* harmony default export */ var helpers_utils = (defaultObj);
-// CONCATENATED MODULE: ./node_modules/@svgr/webpack/lib?-svgo,+titleProp,+ref!./src/assets/svg/external-link.svg
-var _path;
-
-var external_link_excluded = ["title", "titleId"];
-
-function external_link_extends() { external_link_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return external_link_extends.apply(this, arguments); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = external_link_objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function external_link_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-function SvgExternalLink(_ref, svgRef) {
-  var title = _ref.title,
-      titleId = _ref.titleId,
-      props = _objectWithoutProperties(_ref, external_link_excluded);
-
-  return /*#__PURE__*/react["createElement"]("svg", external_link_extends({
-    fill: "#000000",
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 24 24",
-    width: "24px",
-    height: "24px",
-    ref: svgRef,
-    "aria-labelledby": titleId
-  }, props), title ? /*#__PURE__*/react["createElement"]("title", {
-    id: titleId
-  }, title) : null, _path || (_path = /*#__PURE__*/react["createElement"]("path", {
-    d: "M 5 3 C 3.9069372 3 3 3.9069372 3 5 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 12 L 19 12 L 19 19 L 5 19 L 5 5 L 12 5 L 12 3 L 5 3 z M 14 3 L 14 5 L 17.585938 5 L 8.2929688 14.292969 L 9.7070312 15.707031 L 19 6.4140625 L 19 10 L 21 10 L 21 3 L 14 3 z"
-  })));
-}
-
-var ForwardRef = /*#__PURE__*/react["forwardRef"](SvgExternalLink);
-/* harmony default export */ var external_link = (__webpack_require__.p + "static/media/external-link.54c826b3.svg");
-
-// CONCATENATED MODULE: ./src/components/ExternalLink/index.tsx
-function ExternalLink(props){var link=props.link,children=props.children,className=props.className,_props$styles=props.styles,styles=_props$styles===void 0?{}:_props$styles;var fillColor=window.COLOR_TEMPLATE==="dark_template"?"white":"dark";return/*#__PURE__*/Object(jsx_runtime["jsxs"])("a",{className:className||"",href:link,target:"_blank",rel:"noreferrer",style:styles,children:[children," ",/*#__PURE__*/Object(jsx_runtime["jsx"])(ForwardRef,{fill:fillColor,style:{position:"absolute",width:"1.2rem",height:"1rem"}})]});}/* harmony default export */ var components_ExternalLink = (ExternalLink);
-// CONCATENATED MODULE: ./src/pages/Proposal/ProposalInfo/index.tsx
-function ProposalInfo(props){var proposalData=props.proposalData;var strategies=proposalData.strategies,author=proposalData.author,ipfs=proposalData.ipfs,start=proposalData.start,end=proposalData.end,snapshot=proposalData.snapshot,network=proposalData.network;var networkId=+network;var tokenSymbol="",tokenAddress="";if(strategies===null||strategies===void 0?void 0:strategies.length){tokenSymbol=strategies[0].params.symbol;tokenAddress=strategies[0].params.address;}var haveContent=(strategies===null||strategies===void 0?void 0:strategies.length)||author||ipfs;return/*#__PURE__*/Object(jsx_runtime["jsx"])(jsx_runtime["Fragment"],{children:haveContent&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"app-widget-header",children:"Proposal Info"}),/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"p-1",children:[tokenSymbol&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"Token symbol: "}),"".concat(tokenSymbol)]}),tokenAddress&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"Token address: "}),network?/*#__PURE__*/Object(jsx_runtime["jsx"])(components_ExternalLink,{link:"".concat(NETWORK_EXPLORER_URLS[networkId],"address/").concat(tokenAddress),children:shortEVMAddress(tokenAddress)}):tokenAddress]}),author&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"Author: "}),network?/*#__PURE__*/Object(jsx_runtime["jsx"])(components_ExternalLink,{link:"".concat(NETWORK_EXPLORER_URLS[networkId],"address/").concat(author),children:shortEVMAddress(author)}):author]}),ipfs&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"IPFS: "}),/*#__PURE__*/Object(jsx_runtime["jsx"])(components_ExternalLink,{link:"https://cloudflare-ipfs.com/ipfs/".concat(ipfs),children:shortIPFS(ipfs)})]}),start&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"Start date: "}),"".concat(new Date(start*Math.pow(10,3)).toUTCString())]}),end&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"End date: "}),"".concat(new Date(end*Math.pow(10,3)).toUTCString())]}),snapshot&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"Snapshot: "}),network?/*#__PURE__*/Object(jsx_runtime["jsx"])(components_ExternalLink,{link:"".concat(NETWORK_EXPLORER_URLS[networkId],"block/").concat(snapshot),children:snapshot}):snapshot]})]})]})});}/* harmony default export */ var Proposal_ProposalInfo = (ProposalInfo);
-// CONCATENATED MODULE: ./src/pages/Proposal/ProposalResults/index.tsx
-function ProposalResults(props){var choices=props.choices,results=props.results,strategies=props.strategies;var tokenSymbol=strategies[0].params.symbol;return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"app-widget-header",children:"Results"}),/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"p-1",children:choices.map(function(choice,i){var resultByVoteBalance=results.resultsByVoteBalance[i];var persentsOfChoice=resultByVoteBalance/results.sumOfResultsBalance*100;return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:["".concat(choice," - ").concat(resultByVoteBalance.toFixed(4)," ").concat(tokenSymbol," (").concat(persentsOfChoice.toFixed(2)," %)"),/*#__PURE__*/Object(jsx_runtime["jsx"])("progress",{max:"100",value:persentsOfChoice,style:{width:"100%"}})]},i);})})]});}/* harmony default export */ var Proposal_ProposalResults = (ProposalResults);
-// EXTERNAL MODULE: ./src/pages/Proposal/ProposalVotes/index.scss
-var ProposalVotes = __webpack_require__(71);
-
-// CONCATENATED MODULE: ./src/pages/Proposal/ProposalVotes/index.tsx
-function ProposalVotes_ProposalVotes(props){var votes=props.votes,choices=props.choices,strategies=props.strategies,totalVotes=props.totalVotes;var tokenSymbol=strategies[0].params.symbol;return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget",children:[/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-header",children:["Top ",votes.length," of ",totalVotes," votes"]}),/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{children:votes.map(function(voute,i){return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"voteRow",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"voteCol",children:shortEVMAddress(voute.voter)}),/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"voteCol",children:choices[voute.choice-1]}),/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"voteCol",children:"".concat(voute.balance.toFixed(4)," ").concat(tokenSymbol)})]},i);})})]});}/* harmony default export */ var Proposal_ProposalVotes = (ProposalVotes_ProposalVotes);
-// CONCATENATED MODULE: ./node_modules/tiny-invariant/dist/tiny-invariant.esm.js
-var isProduction = "production" === 'production';
-var prefix = 'Invariant failed';
-
-function tiny_invariant_esm_invariant(condition, message) {
-  if (condition) {
-    return;
-  }
-
-  if (isProduction) {
-    throw new Error(prefix);
-  }
-
-  var provided = typeof message === 'function' ? message() : message;
-  var value = provided ? prefix + ": " + provided : prefix;
-  throw new Error(value);
-}
-
-
-// CONCATENATED MODULE: ./node_modules/@web3-react/types/dist/types.esm.js
-var ConnectorEvent;
-
-(function (ConnectorEvent) {
-  ConnectorEvent["Update"] = "Web3ReactUpdate";
-  ConnectorEvent["Error"] = "Web3ReactError";
-  ConnectorEvent["Deactivate"] = "Web3ReactDeactivate";
-})(ConnectorEvent || (ConnectorEvent = {}));
-
-
-// EXTERNAL MODULE: ./node_modules/@ethersproject/bytes/lib.esm/index.js + 1 modules
-var lib_esm = __webpack_require__(1);
-
-// EXTERNAL MODULE: ./node_modules/js-sha3/src/sha3.js
-var sha3 = __webpack_require__(43);
-var sha3_default = /*#__PURE__*/__webpack_require__.n(sha3);
-
-// CONCATENATED MODULE: ./node_modules/@ethersproject/keccak256/lib.esm/index.js
-
-
-
-
-function keccak256(data) {
-  return '0x' + sha3_default.a.keccak_256(Object(lib_esm["a" /* arrayify */])(data));
-}
-// CONCATENATED MODULE: ./node_modules/@web3-react/core/dist/core.esm.js
-
-
-
-
-
-
-
-function core_esm_extends() {
-  core_esm_extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return core_esm_extends.apply(this, arguments);
-}
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-
-  _setPrototypeOf(subClass, superClass);
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _construct(Parent, args, Class) {
-  if (_isNativeReflectConstruct()) {
-    _construct = Reflect.construct;
-  } else {
-    _construct = function _construct(Parent, args, Class) {
-      var a = [null];
-      a.push.apply(a, args);
-      var Constructor = Function.bind.apply(Parent, a);
-      var instance = new Constructor();
-      if (Class) _setPrototypeOf(instance, Class.prototype);
-      return instance;
-    };
-  }
-
-  return _construct.apply(null, arguments);
-}
-
-function _isNativeFunction(fn) {
-  return Function.toString.call(fn).indexOf("[native code]") !== -1;
-}
-
-function _wrapNativeSuper(Class) {
-  var _cache = typeof Map === "function" ? new Map() : undefined;
-
-  _wrapNativeSuper = function _wrapNativeSuper(Class) {
-    if (Class === null || !_isNativeFunction(Class)) return Class;
-
-    if (typeof Class !== "function") {
-      throw new TypeError("Super expression must either be null or a function");
-    }
-
-    if (typeof _cache !== "undefined") {
-      if (_cache.has(Class)) return _cache.get(Class);
-
-      _cache.set(Class, Wrapper);
-    }
-
-    function Wrapper() {
-      return _construct(Class, arguments, _getPrototypeOf(this).constructor);
-    }
-
-    Wrapper.prototype = Object.create(Class.prototype, {
-      constructor: {
-        value: Wrapper,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    return _setPrototypeOf(Wrapper, Class);
-  };
-
-  return _wrapNativeSuper(Class);
-} // A type of promise-like that resolves synchronously and supports only one observer
-
-
-var _iteratorSymbol = /*#__PURE__*/typeof Symbol !== "undefined" ? Symbol.iterator || (Symbol.iterator = /*#__PURE__*/Symbol("Symbol.iterator")) : "@@iterator"; // Asynchronously iterate through an object's values
-
-
-var _asyncIteratorSymbol = /*#__PURE__*/typeof Symbol !== "undefined" ? Symbol.asyncIterator || (Symbol.asyncIterator = /*#__PURE__*/Symbol("Symbol.asyncIterator")) : "@@asyncIterator"; // Asynchronously iterate on a value using it's async iterator if present, or its synchronous iterator if missing
-
-
-function _catch(body, recover) {
-  try {
-    var result = body();
-  } catch (e) {
-    return recover(e);
-  }
-
-  if (result && result.then) {
-    return result.then(void 0, recover);
-  }
-
-  return result;
-} // Asynchronously await a promise and pass the result to a finally continuation
-
-
-function normalizeChainId(chainId) {
-  if (typeof chainId === 'string') {
-    // Temporary fix until the next version of Metamask Mobile gets released.
-    // In the current version (0.2.13), the chainId starts with “Ox” rather
-    // than “0x”. Fix: https://github.com/MetaMask/metamask-mobile/pull/1275
-    chainId = chainId.replace(/^Ox/, '0x');
-    var parsedChainId = Number.parseInt(chainId, chainId.trim().substring(0, 2) === '0x' ? 16 : 10);
-    !!Number.isNaN(parsedChainId) ?  false ? undefined : tiny_invariant_esm_invariant(false) : void 0;
-    return parsedChainId;
-  } else {
-    !Number.isInteger(chainId) ?  false ? undefined : tiny_invariant_esm_invariant(false) : void 0;
-    return chainId;
-  }
-} // https://github.com/ethers-io/ethers.js/blob/d9d438a119bb11f8516fc9cf02c534ab3816fcb3/packages/address/src.ts/index.ts
-
-
-function normalizeAccount(_address) {
-  !(typeof _address === 'string' && _address.match(/^(0x)?[0-9a-fA-F]{40}$/)) ?  false ? undefined : tiny_invariant_esm_invariant(false) : void 0;
-  var address = _address.substring(0, 2) === '0x' ? _address : "0x" + _address;
-  var chars = address.toLowerCase().substring(2).split('');
-  var charsArray = new Uint8Array(40);
-
-  for (var i = 0; i < 40; i++) {
-    charsArray[i] = chars[i].charCodeAt(0);
-  }
-
-  var hashed = Object(lib_esm["a" /* arrayify */])(keccak256(charsArray));
-
-  for (var _i = 0; _i < 40; _i += 2) {
-    if (hashed[_i >> 1] >> 4 >= 8) {
-      chars[_i] = chars[_i].toUpperCase();
-    }
-
-    if ((hashed[_i >> 1] & 0x0f) >= 8) {
-      chars[_i + 1] = chars[_i + 1].toUpperCase();
-    }
-  }
-
-  var addressChecksum = "0x" + chars.join('');
-  !!(address.match(/([A-F].*[a-f])|([a-f].*[A-F])/) && address !== addressChecksum) ?  false ? undefined : tiny_invariant_esm_invariant(false) : void 0;
-  return addressChecksum;
-}
-
-var augmentConnectorUpdate = function augmentConnectorUpdate(connector, update) {
-  try {
-    var _temp3 = function _temp3(provider) {
-      return Promise.resolve(Promise.all([update.chainId === undefined ? connector.getChainId() : update.chainId, update.account === undefined ? connector.getAccount() : update.account])).then(function (_ref2) {
-        var _chainId = _ref2[0],
-            _account = _ref2[1];
-        var chainId = normalizeChainId(_chainId);
-
-        if (!!connector.supportedChainIds && !connector.supportedChainIds.includes(chainId)) {
-          throw new UnsupportedChainIdError(chainId, connector.supportedChainIds);
-        }
-
-        var account = _account === null ? _account : normalizeAccount(_account);
-        return {
-          provider: provider,
-          chainId: chainId,
-          account: account
-        };
-      });
-    };
-
-    var _temp4 = update.provider === undefined;
-
-    return Promise.resolve(_temp4 ? Promise.resolve(connector.getProvider()).then(_temp3) : _temp3(update.provider));
-  } catch (e) {
-    return Promise.reject(e);
-  }
-};
-
-var StaleConnectorError = /*#__PURE__*/function (_Error) {
-  _inheritsLoose(StaleConnectorError, _Error);
-
-  function StaleConnectorError() {
-    var _this;
-
-    _this = _Error.call(this) || this;
-    _this.name = _this.constructor.name;
-    return _this;
-  }
-
-  return StaleConnectorError;
-}( /*#__PURE__*/_wrapNativeSuper(Error));
-
-var UnsupportedChainIdError = /*#__PURE__*/function (_Error2) {
-  _inheritsLoose(UnsupportedChainIdError, _Error2);
-
-  function UnsupportedChainIdError(unsupportedChainId, supportedChainIds) {
-    var _this2;
-
-    _this2 = _Error2.call(this) || this;
-    _this2.name = _this2.constructor.name;
-    _this2.message = "Unsupported chain id: " + unsupportedChainId + ". Supported chain ids are: " + supportedChainIds + ".";
-    return _this2;
-  }
-
-  return UnsupportedChainIdError;
-}( /*#__PURE__*/_wrapNativeSuper(Error));
-
-var ActionType;
-
-(function (ActionType) {
-  ActionType[ActionType["ACTIVATE_CONNECTOR"] = 0] = "ACTIVATE_CONNECTOR";
-  ActionType[ActionType["UPDATE"] = 1] = "UPDATE";
-  ActionType[ActionType["UPDATE_FROM_ERROR"] = 2] = "UPDATE_FROM_ERROR";
-  ActionType[ActionType["ERROR"] = 3] = "ERROR";
-  ActionType[ActionType["ERROR_FROM_ACTIVATION"] = 4] = "ERROR_FROM_ACTIVATION";
-  ActionType[ActionType["DEACTIVATE_CONNECTOR"] = 5] = "DEACTIVATE_CONNECTOR";
-})(ActionType || (ActionType = {}));
-
-function reducer(state, _ref) {
-  var type = _ref.type,
-      payload = _ref.payload;
-
-  switch (type) {
-    case ActionType.ACTIVATE_CONNECTOR:
-      {
-        var connector = payload.connector,
-            provider = payload.provider,
-            chainId = payload.chainId,
-            account = payload.account,
-            onError = payload.onError;
-        return {
-          connector: connector,
-          provider: provider,
-          chainId: chainId,
-          account: account,
-          onError: onError
-        };
-      }
-
-    case ActionType.UPDATE:
-      {
-        var _provider = payload.provider,
-            _chainId2 = payload.chainId,
-            _account2 = payload.account;
-        return core_esm_extends({}, state, _provider === undefined ? {} : {
-          provider: _provider
-        }, _chainId2 === undefined ? {} : {
-          chainId: _chainId2
-        }, _account2 === undefined ? {} : {
-          account: _account2
-        });
-      }
-
-    case ActionType.UPDATE_FROM_ERROR:
-      {
-        var _provider2 = payload.provider,
-            _chainId3 = payload.chainId,
-            _account3 = payload.account;
-        return core_esm_extends({}, state, _provider2 === undefined ? {} : {
-          provider: _provider2
-        }, _chainId3 === undefined ? {} : {
-          chainId: _chainId3
-        }, _account3 === undefined ? {} : {
-          account: _account3
-        }, {
-          error: undefined
-        });
-      }
-
-    case ActionType.ERROR:
-      {
-        var error = payload.error;
-        var _connector = state.connector,
-            _onError = state.onError;
-        return {
-          connector: _connector,
-          error: error,
-          onError: _onError
-        };
-      }
-
-    case ActionType.ERROR_FROM_ACTIVATION:
-      {
-        var _connector2 = payload.connector,
-            _error = payload.error;
-        return {
-          connector: _connector2,
-          error: _error
-        };
-      }
-
-    case ActionType.DEACTIVATE_CONNECTOR:
-      {
-        return {};
-      }
-  }
-}
-
-function useWeb3ReactManager() {
-  var _useReducer = Object(react["useReducer"])(reducer, {}),
-      state = _useReducer[0],
-      dispatch = _useReducer[1];
-
-  var connector = state.connector,
-      provider = state.provider,
-      chainId = state.chainId,
-      account = state.account,
-      onError = state.onError,
-      error = state.error;
-  var updateBusterRef = Object(react["useRef"])(-1);
-  updateBusterRef.current += 1;
-  var activate = Object(react["useCallback"])(function (connector, onError, throwErrors) {
-    if (throwErrors === void 0) {
-      throwErrors = false;
-    }
-
-    try {
-      var updateBusterInitial = updateBusterRef.current;
-      var activated = false;
-      return Promise.resolve(_catch(function () {
-        return Promise.resolve(connector.activate().then(function (update) {
-          activated = true;
-          return update;
-        })).then(function (update) {
-          return Promise.resolve(augmentConnectorUpdate(connector, update)).then(function (augmentedUpdate) {
-            if (updateBusterRef.current > updateBusterInitial) {
-              throw new StaleConnectorError();
-            }
-
-            dispatch({
-              type: ActionType.ACTIVATE_CONNECTOR,
-              payload: core_esm_extends({
-                connector: connector
-              }, augmentedUpdate, {
-                onError: onError
-              })
-            });
-          });
-        });
-      }, function (error) {
-        if (error instanceof StaleConnectorError) {
-          activated && connector.deactivate();
-           false ? undefined : void 0;
-        } else if (throwErrors) {
-          activated && connector.deactivate();
-          throw error;
-        } else if (onError) {
-          activated && connector.deactivate();
-          onError(error);
-        } else {
-          // we don't call activated && connector.deactivate() here because it'll be handled in the useEffect
-          dispatch({
-            type: ActionType.ERROR_FROM_ACTIVATION,
-            payload: {
-              connector: connector,
-              error: error
-            }
-          });
-        }
-      }));
-    } catch (e) {
-      return Promise.reject(e);
-    }
-  }, []);
-  var setError = Object(react["useCallback"])(function (error) {
-    dispatch({
-      type: ActionType.ERROR,
-      payload: {
-        error: error
-      }
-    });
-  }, []);
-  var deactivate = Object(react["useCallback"])(function () {
-    dispatch({
-      type: ActionType.DEACTIVATE_CONNECTOR
-    });
-  }, []);
-  var handleUpdate = Object(react["useCallback"])(function (update) {
-    try {
-      if (!connector) {
-        throw Error("This should never happen, it's just so Typescript stops complaining");
-      }
-
-      var updateBusterInitial = updateBusterRef.current; // updates are handled differently depending on whether the connector is active vs in an error state
-
-      return Promise.resolve(function () {
-        if (!error) {
-          var _chainId4 = update.chainId === undefined ? undefined : normalizeChainId(update.chainId);
-
-          if (_chainId4 !== undefined && !!connector.supportedChainIds && !connector.supportedChainIds.includes(_chainId4)) {
-            var _error2 = new UnsupportedChainIdError(_chainId4, connector.supportedChainIds);
-
-            onError ? onError(_error2) : dispatch({
-              type: ActionType.ERROR,
-              payload: {
-                error: _error2
-              }
-            });
-          } else {
-            var _account4 = typeof update.account === 'string' ? normalizeAccount(update.account) : update.account;
-
-            dispatch({
-              type: ActionType.UPDATE,
-              payload: {
-                provider: update.provider,
-                chainId: _chainId4,
-                account: _account4
-              }
-            });
-          }
-        } else {
-          return _catch(function () {
-            return Promise.resolve(augmentConnectorUpdate(connector, update)).then(function (augmentedUpdate) {
-              if (updateBusterRef.current > updateBusterInitial) {
-                throw new StaleConnectorError();
-              }
-
-              dispatch({
-                type: ActionType.UPDATE_FROM_ERROR,
-                payload: augmentedUpdate
-              });
-            });
-          }, function (error) {
-            if (error instanceof StaleConnectorError) {
-               false ? undefined : void 0;
-            } else {
-              // though we don't have to, we're re-circulating the new error
-              onError ? onError(error) : dispatch({
-                type: ActionType.ERROR,
-                payload: {
-                  error: error
-                }
-              });
-            }
-          });
-        }
-      }());
-    } catch (e) {
-      return Promise.reject(e);
-    }
-  }, [connector, error, onError]);
-  var handleError = Object(react["useCallback"])(function (error) {
-    onError ? onError(error) : dispatch({
-      type: ActionType.ERROR,
-      payload: {
-        error: error
-      }
-    });
-  }, [onError]);
-  var handleDeactivate = Object(react["useCallback"])(function () {
-    dispatch({
-      type: ActionType.DEACTIVATE_CONNECTOR
-    });
-  }, []); // ensure that connectors which were set are deactivated
-
-  Object(react["useEffect"])(function () {
-    return function () {
-      if (connector) {
-        connector.deactivate();
-      }
-    };
-  }, [connector]); // ensure that events emitted from the set connector are handled appropriately
-
-  Object(react["useEffect"])(function () {
-    if (connector) {
-      connector.on(ConnectorEvent.Update, handleUpdate).on(ConnectorEvent.Error, handleError).on(ConnectorEvent.Deactivate, handleDeactivate);
-    }
-
-    return function () {
-      if (connector) {
-        connector.off(ConnectorEvent.Update, handleUpdate).off(ConnectorEvent.Error, handleError).off(ConnectorEvent.Deactivate, handleDeactivate);
-      }
-    };
-  }, [connector, handleUpdate, handleError, handleDeactivate]);
-  return {
-    connector: connector,
-    provider: provider,
-    chainId: chainId,
-    account: account,
-    activate: activate,
-    setError: setError,
-    deactivate: deactivate,
-    error: error
-  };
-}
-
-var PRIMARY_KEY = 'primary';
-var CONTEXTS = {};
-
-function createWeb3ReactRoot(key) {
-  !!CONTEXTS[key] ?  false ? undefined : tiny_invariant_esm_invariant(false) : void 0;
-  CONTEXTS[key] = Object(react["createContext"])({
-    activate: function activate() {
-      try {
-         true ?  false ? undefined : tiny_invariant_esm_invariant(false) : undefined;
-        return Promise.resolve();
-      } catch (e) {
-        return Promise.reject(e);
-      }
-    },
-    setError: function setError() {
-       false ? undefined : tiny_invariant_esm_invariant(false);
-    },
-    deactivate: function deactivate() {
-       false ? undefined : tiny_invariant_esm_invariant(false);
-    },
-    active: false
-  });
-  CONTEXTS[key].displayName = "Web3ReactContext - " + key;
-  var Provider = CONTEXTS[key].Provider;
-  return function Web3ReactProvider(_ref) {
-    var getLibrary = _ref.getLibrary,
-        children = _ref.children;
-
-    var _useWeb3ReactManager = useWeb3ReactManager(),
-        connector = _useWeb3ReactManager.connector,
-        provider = _useWeb3ReactManager.provider,
-        chainId = _useWeb3ReactManager.chainId,
-        account = _useWeb3ReactManager.account,
-        activate = _useWeb3ReactManager.activate,
-        setError = _useWeb3ReactManager.setError,
-        deactivate = _useWeb3ReactManager.deactivate,
-        error = _useWeb3ReactManager.error;
-
-    var active = connector !== undefined && chainId !== undefined && account !== undefined && !!!error;
-    var library = Object(react["useMemo"])(function () {
-      return active && chainId !== undefined && Number.isInteger(chainId) && !!connector ? getLibrary(provider, connector) : undefined;
-    }, [active, getLibrary, provider, connector, chainId]);
-    var web3ReactContext = {
-      connector: connector,
-      library: library,
-      chainId: chainId,
-      account: account,
-      activate: activate,
-      setError: setError,
-      deactivate: deactivate,
-      active: active,
-      error: error
-    };
-    return react_default.a.createElement(Provider, {
-      value: web3ReactContext
-    }, children);
-  };
-}
-
-var core_esm_Web3ReactProvider = /*#__PURE__*/createWeb3ReactRoot(PRIMARY_KEY);
-
-function getWeb3ReactContext(key) {
-  if (key === void 0) {
-    key = PRIMARY_KEY;
-  }
-
-  !Object.keys(CONTEXTS).includes(key) ?  false ? undefined : tiny_invariant_esm_invariant(false) : void 0;
-  return CONTEXTS[key];
-}
-
-function useWeb3React(key) {
-  return Object(react["useContext"])(getWeb3ReactContext(key));
-}
-
-
 // EXTERNAL MODULE: ./node_modules/cross-fetch/dist/browser-ponyfill.js
 var browser_ponyfill = __webpack_require__(31);
 var browser_ponyfill_default = /*#__PURE__*/__webpack_require__.n(browser_ponyfill);
@@ -38403,7 +38349,7 @@ var lib_esm_VoidSigner = /*#__PURE__*/function (_Signer) {
   return VoidSigner;
 }(lib_esm_Signer);
 // EXTERNAL MODULE: ./node_modules/bn.js/lib/bn.js
-var bn = __webpack_require__(9);
+var bn = __webpack_require__(10);
 var bn_default = /*#__PURE__*/__webpack_require__.n(bn);
 
 // CONCATENATED MODULE: ./node_modules/@ethersproject/bignumber/lib.esm/_version.js
@@ -48495,7 +48441,7 @@ var aes_js = __webpack_require__(16);
 var aes_js_default = /*#__PURE__*/__webpack_require__.n(aes_js);
 
 // EXTERNAL MODULE: ./node_modules/scrypt-js/scrypt.js
-var scrypt = __webpack_require__(28);
+var scrypt = __webpack_require__(27);
 var scrypt_default = /*#__PURE__*/__webpack_require__.n(scrypt);
 
 // CONCATENATED MODULE: ./node_modules/@ethersproject/json-wallets/lib.esm/utils.js
@@ -49488,6 +49434,62 @@ var clientEIP712_client=new clientEIP712_Client();/* harmony default export */ v
 // CONCATENATED MODULE: ./src/hooks/useClient.ts
 function useClient(){var _useWeb3React=useWeb3React(),_useWeb3React$account=_useWeb3React.account,account=_useWeb3React$account===void 0?"":_useWeb3React$account,library=_useWeb3React.library;var _useState=Object(react["useState"])(false),_useState2=Object(slicedToArray["a" /* default */])(_useState,2),isLoading=_useState2[0],setIsLoading=_useState2[1];function send(_x,_x2,_x3){return _send.apply(this,arguments);}function _send(){_send=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee(space,type,payload){return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:setIsLoading(true);_context.prev=1;_context.next=4;return sendEIP712(space,type,payload);case 4:return _context.abrupt("return",_context.sent);case 7:_context.prev=7;_context.t0=_context["catch"](1);throw _context.t0;case 10:_context.prev=10;setIsLoading(false);return _context.finish(10);case 13:case"end":return _context.stop();}}},_callee,null,[[1,7,10,13]]);}));return _send.apply(this,arguments);}function sendEIP712(_x4,_x5,_x6){return _sendEIP.apply(this,arguments);}function _sendEIP(){_sendEIP=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee2(space,type,payload){var _payload$metadata,plugins;return regenerator_default.a.wrap(function _callee2$(_context2){while(1){switch(_context2.prev=_context2.next){case 0:if(library){_context2.next=2;break;}throw new Error("Have not library");case 2:if(account){_context2.next=4;break;}throw new Error("Have not account");case 4:if(!(type==="proposal")){_context2.next=10;break;}plugins={};if(Object.keys((_payload$metadata=payload.metadata)===null||_payload$metadata===void 0?void 0:_payload$metadata.plugins).length!==0)plugins=payload.metadata.plugins;return _context2.abrupt("return",clientEIP712.proposal(library,account,{space:space.id,type:payload.type,title:payload.title,body:payload.body,choices:payload.choices,start:payload.start,end:payload.end,snapshot:payload.snapshot,network:payload.network,// strategies: JSON.stringify([space.strategies[0]]),
 strategies:JSON.stringify(payload.strategies),plugins:JSON.stringify(plugins),metadata:JSON.stringify({})}));case 10:if(!(type==="vote")){_context2.next=14;break;}return _context2.abrupt("return",clientEIP712.vote(library,account,{space:space.id,proposal:payload.proposal.id,type:payload.proposal.type,choice:payload.choice,metadata:JSON.stringify({})}));case 14:if(!(type==="delete-proposal")){_context2.next=18;break;}return _context2.abrupt("return",clientEIP712.cancelProposal(library,account,{space:space.id,proposal:payload.proposal.id}));case 18:if(!(type==="settings")){_context2.next=20;break;}return _context2.abrupt("return",clientEIP712.space(library,account,{space:space.id,settings:JSON.stringify(payload)}));case 20:case"end":return _context2.stop();}}},_callee2);}));return _sendEIP.apply(this,arguments);}return{send:send,clientLoading:isLoading};}
+// CONCATENATED MODULE: ./src/hooks/useSpaces.ts
+var useSpaces_useSpaceList=function useSpaceList(id_in){var _useState=Object(react["useState"])(false),_useState2=Object(slicedToArray["a" /* default */])(_useState,2),isLoading=_useState2[0],setIsLoading=_useState2[1];var _useState3=Object(react["useState"])([]),_useState4=Object(slicedToArray["a" /* default */])(_useState3,2),spacesData=_useState4[0],setSpacesData=_useState4[1];Object(react["useEffect"])(function(){var _fetchData=/*#__PURE__*/function(){var _ref=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var spaces;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.prev=0;setIsLoading(true);_context.next=4;return fetchSpaces(id_in);case 4:spaces=_context.sent;setSpacesData(spaces);_context.next=11;break;case 8:_context.prev=8;_context.t0=_context["catch"](0);console.error("Error: Can't fetch space list. Description: ".concat(_context.t0));case 11:_context.prev=11;setIsLoading(false);return _context.finish(11);case 14:case"end":return _context.stop();}}},_callee,null,[[0,8,11,14]]);}));return function _fetchData(){return _ref.apply(this,arguments);};}();_fetchData();},[]);return{spacesData:spacesData,isLoading:isLoading};};var fetchSpaces=/*#__PURE__*/function(){var _ref2=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee2(id_in){var spacesData;return regenerator_default.a.wrap(function _callee2$(_context2){while(1){switch(_context2.prev=_context2.next){case 0:_context2.next=2;return Object(dist["request"])(OFFCHAIN_HUB_API,SPACES_QUERY,{id_in:id_in});case 2:spacesData=_context2.sent;return _context2.abrupt("return",spacesData.spaces);case 4:case"end":return _context2.stop();}}},_callee2);}));return function fetchSpaces(_x){return _ref2.apply(this,arguments);};}();
+// CONCATENATED MODULE: ./src/pages/Proposal/ProposalBody/index.tsx
+function ProposalBody(props){var proposal=props.proposal;var title=proposal.title,body=proposal.body,state=proposal.state,space=proposal.space;var navigate=useNavigate();var _useClient=useClient(),send=_useClient.send;var _useSpaceList=useSpaces_useSpaceList([space.id]),spacesData=_useSpaceList.spacesData;var _useWeb3React=useWeb3React(),active=_useWeb3React.active,_useWeb3React$account=_useWeb3React.account,account=_useWeb3React$account===void 0?"":_useWeb3React$account;var spaceData=spacesData[0];var isAdmin=Object(react["useMemo"])(function(){var admins=((spaceData===null||spaceData===void 0?void 0:spaceData.admins)||[]).map(function(admin){return admin.toLowerCase();});return account!==null&&admins.includes(account.toLowerCase());},[spaceData===null||spaceData===void 0?void 0:spaceData.admins,account]);var isCreator=Object(react["useMemo"])(function(){return account!==null&&(proposal===null||proposal===void 0?void 0:proposal.author)===account;},[proposal.author,account]);var showDeleteButton=active&&(isAdmin||isCreator);var haveHeader=!!state;var deleteProposal=/*#__PURE__*/function(){var _ref=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var result;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.next=2;return send(space,"delete-proposal",{proposal:proposal});case 2:result=_context.sent;if(result.id){console.log("Succesfyly delete proposal with id:",proposal);navigate("/");}case 4:case"end":return _context.stop();}}},_callee);}));return function deleteProposal(){return _ref.apply(this,arguments);};}();return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{children:[title&&/*#__PURE__*/Object(jsx_runtime["jsx"])("h1",{className:"proposalTitle",children:title}),haveHeader&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"proposalHeader",children:[state&&/*#__PURE__*/Object(jsx_runtime["jsx"])("span",{className:"proposalState floatLeft",children:state}),showDeleteButton&&/*#__PURE__*/Object(jsx_runtime["jsx"])("button",{className:"deleteButton floatRight",onClick:deleteProposal,children:"delete"})]}),body&&/*#__PURE__*/Object(jsx_runtime["jsx"])(MarkdownElement_MarkdownElement,{text:body})]});}/* harmony default export */ var Proposal_ProposalBody = (ProposalBody);
+// EXTERNAL MODULE: ./package.json
+var package_0 = __webpack_require__(28);
+
+// CONCATENATED MODULE: ./src/helpers/utils.ts
+var shortenText=function shortenText(){var str=arguments.length>0&&arguments[0]!==undefined?arguments[0]:"";var numberOfLetters=arguments.length>1&&arguments[1]!==undefined?arguments[1]:7;return(str===null||str===void 0?void 0:str.length)>numberOfLetters+3?str.substring(0,numberOfLetters).trim()+"...":str;};function lsSet(key,value){return localStorage.setItem("".concat(package_0.name,".").concat(key),JSON.stringify(value));}function lsGet(key,fallback){var item=localStorage.getItem("".concat(package_0.name,".").concat(key));return jsonParse(item,fallback);}function lsRemove(key){return localStorage.removeItem("".concat(package_0.name,".").concat(key));}function jsonParse(input,fallback){if(typeof input!=="string"){return fallback||{};}try{return JSON.parse(input);}catch(err){return fallback||{};}}function shortEVMAddress(account){return"".concat(account.substring(0,6),"...").concat(account.substring(account.length-4));}function shortIPFS(account){return"#".concat(account.substring(0,6));}var defaultObj={shortenText:shortenText,lsSet:lsSet,lsGet:lsGet,lsRemove:lsRemove,shortEVMAddress:shortEVMAddress,shortIPFS:shortIPFS};/* harmony default export */ var helpers_utils = (defaultObj);
+// CONCATENATED MODULE: ./node_modules/@svgr/webpack/lib?-svgo,+titleProp,+ref!./src/assets/svg/external-link.svg
+var _path;
+
+var external_link_excluded = ["title", "titleId"];
+
+function external_link_extends() { external_link_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return external_link_extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = external_link_objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function external_link_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+function SvgExternalLink(_ref, svgRef) {
+  var title = _ref.title,
+      titleId = _ref.titleId,
+      props = _objectWithoutProperties(_ref, external_link_excluded);
+
+  return /*#__PURE__*/react["createElement"]("svg", external_link_extends({
+    fill: "#000000",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    width: "24px",
+    height: "24px",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/react["createElement"]("title", {
+    id: titleId
+  }, title) : null, _path || (_path = /*#__PURE__*/react["createElement"]("path", {
+    d: "M 5 3 C 3.9069372 3 3 3.9069372 3 5 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 12 L 19 12 L 19 19 L 5 19 L 5 5 L 12 5 L 12 3 L 5 3 z M 14 3 L 14 5 L 17.585938 5 L 8.2929688 14.292969 L 9.7070312 15.707031 L 19 6.4140625 L 19 10 L 21 10 L 21 3 L 14 3 z"
+  })));
+}
+
+var ForwardRef = /*#__PURE__*/react["forwardRef"](SvgExternalLink);
+/* harmony default export */ var external_link = (__webpack_require__.p + "static/media/external-link.54c826b3.svg");
+
+// CONCATENATED MODULE: ./src/components/ExternalLink/index.tsx
+function ExternalLink(props){var link=props.link,children=props.children,className=props.className,_props$styles=props.styles,styles=_props$styles===void 0?{}:_props$styles;var fillColor=window.COLOR_TEMPLATE==="dark_template"?"white":"dark";return/*#__PURE__*/Object(jsx_runtime["jsxs"])("a",{className:className||"",href:link,target:"_blank",rel:"noreferrer",style:styles,children:[children," ",/*#__PURE__*/Object(jsx_runtime["jsx"])(ForwardRef,{fill:fillColor,style:{position:"absolute",width:"1.2rem",height:"1rem"}})]});}/* harmony default export */ var components_ExternalLink = (ExternalLink);
+// CONCATENATED MODULE: ./src/pages/Proposal/ProposalInfo/index.tsx
+function ProposalInfo(props){var proposalData=props.proposalData;var strategies=proposalData.strategies,author=proposalData.author,ipfs=proposalData.ipfs,start=proposalData.start,end=proposalData.end,snapshot=proposalData.snapshot,network=proposalData.network;var networkId=+network;var tokenSymbol="",tokenAddress="";if(strategies===null||strategies===void 0?void 0:strategies.length){tokenSymbol=strategies[0].params.symbol;tokenAddress=strategies[0].params.address;}var haveContent=(strategies===null||strategies===void 0?void 0:strategies.length)||author||ipfs;return/*#__PURE__*/Object(jsx_runtime["jsx"])(jsx_runtime["Fragment"],{children:haveContent&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"app-widget-header",children:"Proposal Info"}),/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"p-1",children:[tokenSymbol&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"Token symbol: "}),"".concat(tokenSymbol)]}),tokenAddress&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"Token address: "}),network?/*#__PURE__*/Object(jsx_runtime["jsx"])(components_ExternalLink,{link:"".concat(NETWORK_EXPLORER_URLS[networkId],"address/").concat(tokenAddress),children:shortEVMAddress(tokenAddress)}):tokenAddress]}),author&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"Author: "}),network?/*#__PURE__*/Object(jsx_runtime["jsx"])(components_ExternalLink,{link:"".concat(NETWORK_EXPLORER_URLS[networkId],"address/").concat(author),children:shortEVMAddress(author)}):author]}),ipfs&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"IPFS: "}),/*#__PURE__*/Object(jsx_runtime["jsx"])(components_ExternalLink,{link:"https://cloudflare-ipfs.com/ipfs/".concat(ipfs),children:shortIPFS(ipfs)})]}),start&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"Start date: "}),"".concat(new Date(start*Math.pow(10,3)).toUTCString())]}),end&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"End date: "}),"".concat(new Date(end*Math.pow(10,3)).toUTCString())]}),snapshot&&/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("b",{children:"Snapshot: "}),network?/*#__PURE__*/Object(jsx_runtime["jsx"])(components_ExternalLink,{link:"".concat(NETWORK_EXPLORER_URLS[networkId],"block/").concat(snapshot),children:snapshot}):snapshot]})]})]})});}/* harmony default export */ var Proposal_ProposalInfo = (ProposalInfo);
+// CONCATENATED MODULE: ./src/pages/Proposal/ProposalResults/index.tsx
+function ProposalResults(props){var choices=props.choices,results=props.results,strategies=props.strategies;var tokenSymbol=strategies[0].params.symbol;return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"app-widget-header",children:"Results"}),/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"p-1",children:choices.map(function(choice,i){var resultByVoteBalance=results.resultsByVoteBalance[i];var persentsOfChoice=resultByVoteBalance/results.sumOfResultsBalance*100;return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-item",children:["".concat(choice," - ").concat(resultByVoteBalance.toFixed(4)," ").concat(tokenSymbol," (").concat(persentsOfChoice.toFixed(2)," %)"),/*#__PURE__*/Object(jsx_runtime["jsx"])("progress",{max:"100",value:persentsOfChoice,style:{width:"100%"}})]},i);})})]});}/* harmony default export */ var Proposal_ProposalResults = (ProposalResults);
+// EXTERNAL MODULE: ./src/pages/Proposal/ProposalVotes/index.scss
+var ProposalVotes = __webpack_require__(82);
+
+// CONCATENATED MODULE: ./src/pages/Proposal/ProposalVotes/index.tsx
+function ProposalVotes_ProposalVotes(props){var votes=props.votes,choices=props.choices,strategies=props.strategies,totalVotes=props.totalVotes;var tokenSymbol=strategies[0].params.symbol;return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget",children:[/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget-header",children:["Top ",votes.length," of ",totalVotes," votes"]}),/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{children:votes.map(function(voute,i){return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"voteRow",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"voteCol",children:shortEVMAddress(voute.voter)}),/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"voteCol",children:choices[voute.choice-1]}),/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"voteCol",children:"".concat(voute.balance.toFixed(4)," ").concat(tokenSymbol)})]},i);})})]});}/* harmony default export */ var Proposal_ProposalVotes = (ProposalVotes_ProposalVotes);
 // CONCATENATED MODULE: ./src/hooks/usePower.ts
 var usePower_usePower=function usePower(proposal){var _useState=Object(react["useState"])(false),_useState2=Object(slicedToArray["a" /* default */])(_useState,2),isLoading=_useState2[0],setIsLoading=_useState2[1];var _useState3=Object(react["useState"])([{}]),_useState4=Object(slicedToArray["a" /* default */])(_useState3,2),scores=_useState4[0],setScores=_useState4[1];var _useState5=Object(react["useState"])(0),_useState6=Object(slicedToArray["a" /* default */])(_useState5,2),totalScore=_useState6[0],setTotalScore=_useState6[1];var _useWeb3React=useWeb3React(),_useWeb3React$account=_useWeb3React.account,account=_useWeb3React$account===void 0?"":_useWeb3React$account;Object(react["useEffect"])(function(){var _fetchData=/*#__PURE__*/function(){var _ref=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var strategies,network,space,snapshot,_scores;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.prev=0;setIsLoading(true);if(account){_context.next=4;break;}throw new Error("Please, connect to wallet");case 4:strategies=proposal.strategies,network=proposal.network,space=proposal.space,snapshot=proposal.snapshot;_context.next=7;return getScores(space.id,strategies,network,[account],parseInt(snapshot));case 7:_scores=_context.sent;_scores=_scores.map(function(score){return Object.values(score).reduce(function(a,b){return a+b;},0);});setScores(_scores);setTotalScore(_scores.reduce(function(a,b){return a+b;},0));_context.next=16;break;case 13:_context.prev=13;_context.t0=_context["catch"](0);console.error("Error: Can't fetch user power. Description: ".concat(_context.t0));case 16:_context.prev=16;setIsLoading(false);return _context.finish(16);case 19:case"end":return _context.stop();}}},_callee,null,[[0,13,16,19]]);}));return function _fetchData(){return _ref.apply(this,arguments);};}();_fetchData();},[]);return{isPowerLoading:isLoading,scores:scores,power:totalScore};};
 // CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
@@ -49535,7 +49537,7 @@ function ChoiceButton(props){var isActive=props.isActive,id=props.id,text=props.
 // CONCATENATED MODULE: ./src/pages/Proposal/ProposalVoting/index.tsx
 function ProposalVoting(props){var proposal=props.proposal;var choices=proposal.choices;var _useState=Object(react["useState"])(-1),_useState2=Object(slicedToArray["a" /* default */])(_useState,2),checkedChoice=_useState2[0],setCheckedChoice=_useState2[1];return/*#__PURE__*/Object(jsx_runtime["jsx"])(jsx_runtime["Fragment"],{children:/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-widget",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"app-widget-header",children:"Cast your vote"}),/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"p-1",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"mb-1",children:choices.map(function(choice,i){return/*#__PURE__*/Object(jsx_runtime["jsx"])(ProposalVoting_ChoiceButton,{id:"choice-".concat(i),text:choice,isActive:checkedChoice===i,onClick:function onClick(){setCheckedChoice(i);}},i);})}),/*#__PURE__*/Object(jsx_runtime["jsx"])(index_,{checkedChoice:checkedChoice,proposal:proposal})]})]})});}/* harmony default export */ var Proposal_ProposalVoting = (ProposalVoting);
 // CONCATENATED MODULE: ./src/pages/Proposal/index.tsx
-function ProposalDetail(){var _ref=useParams(),_ref$proposalId=_ref.proposalId,proposalId=_ref$proposalId===void 0?"":_ref$proposalId;var _useProposal=useProposals_useProposal(proposalId),proposalData=_useProposal.proposalData,isLoading=_useProposal.isLoading;var title=proposalData.title,body=proposalData.body,id=proposalData.id,space=proposalData.space,snapshot=proposalData.snapshot,network=proposalData.network,strategies=proposalData.strategies,state=proposalData.state,choices=proposalData.choices;var haveDataForFetchVotes=!!(id&&(space===null||space===void 0?void 0:space.id)&&snapshot&&network&&(strategies===null||strategies===void 0?void 0:strategies.length)&&state);return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-page proposal",children:[isLoading&&/*#__PURE__*/Object(jsx_runtime["jsx"])("h1",{className:"textCenter",children:"Loading..."}),/*#__PURE__*/Object(jsx_runtime["jsx"])(Proposal_ProposalBody,{title:title,description:body||""}),choices&&state!=="closed"&&/*#__PURE__*/Object(jsx_runtime["jsx"])(Proposal_ProposalVoting,{proposal:proposalData}),/*#__PURE__*/Object(jsx_runtime["jsx"])(Proposal_ProposalInfo,{proposalData:proposalData}),haveDataForFetchVotes&&/*#__PURE__*/Object(jsx_runtime["jsx"])(ProposalVotesContent,{proposalData:proposalData})]});}function ProposalVotesContent(props){var proposalData=props.proposalData;var _useVotes=useVotes_useVotes(proposalData),votesData=_useVotes.votesData,resultData=_useVotes.resultData,isLoading=_useVotes.isLoading;return/*#__PURE__*/Object(jsx_runtime["jsx"])(jsx_runtime["Fragment"],{children:isLoading?/*#__PURE__*/Object(jsx_runtime["jsx"])("h3",{children:"Loading votes..."}):!!votesData.length&&/*#__PURE__*/Object(jsx_runtime["jsxs"])(jsx_runtime["Fragment"],{children:[resultData&&/*#__PURE__*/Object(jsx_runtime["jsx"])(Proposal_ProposalResults,{strategies:proposalData.strategies,choices:proposalData.choices,results:resultData}),/*#__PURE__*/Object(jsx_runtime["jsx"])(Proposal_ProposalVotes,{choices:proposalData.choices,votes:votesData.slice(0,10),strategies:proposalData.strategies,totalVotes:votesData.length})]})});}/* harmony default export */ var pages_Proposal = (ProposalDetail);
+function ProposalDetail(){var _ref=useParams(),_ref$proposalId=_ref.proposalId,proposalId=_ref$proposalId===void 0?"":_ref$proposalId;var _useProposal=useProposals_useProposal(proposalId),proposalData=_useProposal.proposalData,isLoading=_useProposal.isLoading;var id=proposalData.id,space=proposalData.space,snapshot=proposalData.snapshot,network=proposalData.network,strategies=proposalData.strategies,state=proposalData.state,choices=proposalData.choices;var haveDataForRenderOtherElements=!!(id&&(space===null||space===void 0?void 0:space.id)&&snapshot&&network&&(strategies===null||strategies===void 0?void 0:strategies.length)&&state);return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-page proposal",children:[isLoading&&/*#__PURE__*/Object(jsx_runtime["jsx"])("h1",{className:"textCenter",children:"Loading..."}),haveDataForRenderOtherElements&&/*#__PURE__*/Object(jsx_runtime["jsx"])(Proposal_ProposalBody,{proposal:proposalData}),choices&&state!=="closed"&&/*#__PURE__*/Object(jsx_runtime["jsx"])(Proposal_ProposalVoting,{proposal:proposalData}),/*#__PURE__*/Object(jsx_runtime["jsx"])(Proposal_ProposalInfo,{proposalData:proposalData}),haveDataForRenderOtherElements&&/*#__PURE__*/Object(jsx_runtime["jsx"])(ProposalVotesContent,{proposalData:proposalData})]});}function ProposalVotesContent(props){var proposalData=props.proposalData;var _useVotes=useVotes_useVotes(proposalData),votesData=_useVotes.votesData,resultData=_useVotes.resultData,isLoading=_useVotes.isLoading;return/*#__PURE__*/Object(jsx_runtime["jsx"])(jsx_runtime["Fragment"],{children:isLoading?/*#__PURE__*/Object(jsx_runtime["jsx"])("h3",{children:"Loading votes..."}):!!votesData.length&&/*#__PURE__*/Object(jsx_runtime["jsxs"])(jsx_runtime["Fragment"],{children:[resultData&&/*#__PURE__*/Object(jsx_runtime["jsx"])(Proposal_ProposalResults,{strategies:proposalData.strategies,choices:proposalData.choices,results:resultData}),/*#__PURE__*/Object(jsx_runtime["jsx"])(Proposal_ProposalVotes,{choices:proposalData.choices,votes:votesData.slice(0,10),strategies:proposalData.strategies,totalVotes:votesData.length})]})});}/* harmony default export */ var pages_Proposal = (ProposalDetail);
 // EXTERNAL MODULE: ./node_modules/remove-markdown/index.js
 var remove_markdown = __webpack_require__(53);
 var remove_markdown_default = /*#__PURE__*/__webpack_require__.n(remove_markdown);
@@ -49545,8 +49547,6 @@ var Proposals = __webpack_require__(83);
 
 // CONCATENATED MODULE: ./src/pages/Proposals/index.tsx
 function Proposals_Proposals(){var _useProposalList=useProposals_useProposalList({space_in:[window.ENS_DOMAIN||"onout.eth"],tokenAddress:window.TOKEN_ADDRESS}),proposals=_useProposalList.offChainProposalList,isLoading=_useProposalList.isLoading;var renderedProposalList=proposals.map(function(_ref,index){var author=_ref.author,body=_ref.body,title=_ref.title,state=_ref.state,id=_ref.id;var preparedBody=shortenText(remove_markdown_default()(body),140);return/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"proposal-row",children:/*#__PURE__*/Object(jsx_runtime["jsxs"])(Link,{to:"/proposal/".concat(id),children:[/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"proposal-header",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("span",{children:"Created by ".concat(shortEVMAddress(author))}),/*#__PURE__*/Object(jsx_runtime["jsx"])("span",{className:"proposal-state",children:state})]}),/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"proposal-body",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("h2",{children:title}),/*#__PURE__*/Object(jsx_runtime["jsx"])("p",{className:"body-description",children:preparedBody})]})]})},index);});return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"app-page proposals",children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{className:"proposals-header",children:/*#__PURE__*/Object(jsx_runtime["jsx"])("h1",{children:"Proposals"})}),isLoading?/*#__PURE__*/Object(jsx_runtime["jsx"])("h3",{children:"Loading..."}):!!proposals.length?renderedProposalList:/*#__PURE__*/Object(jsx_runtime["jsxs"])(jsx_runtime["Fragment"],{children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("h3",{children:"Let's create your first proposal"}),/*#__PURE__*/Object(jsx_runtime["jsx"])(Link,{to:"proposal/create",children:/*#__PURE__*/Object(jsx_runtime["jsx"])("button",{className:"secondaryButton active",children:"Create proposal"})})]})]});}/* harmony default export */ var pages_Proposals = (Proposals_Proposals);
-// CONCATENATED MODULE: ./src/hooks/useSpaces.ts
-var useSpaces_useSpaceList=function useSpaceList(id_in){var _useState=Object(react["useState"])(false),_useState2=Object(slicedToArray["a" /* default */])(_useState,2),isLoading=_useState2[0],setIsLoading=_useState2[1];var _useState3=Object(react["useState"])([]),_useState4=Object(slicedToArray["a" /* default */])(_useState3,2),spacesData=_useState4[0],setSpacesData=_useState4[1];Object(react["useEffect"])(function(){var _fetchData=/*#__PURE__*/function(){var _ref=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var spaces;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.prev=0;setIsLoading(true);_context.next=4;return fetchSpaces(id_in);case 4:spaces=_context.sent;setSpacesData(spaces);_context.next=11;break;case 8:_context.prev=8;_context.t0=_context["catch"](0);console.error("Error: Can't fetch space list. Description: ".concat(_context.t0));case 11:_context.prev=11;setIsLoading(false);return _context.finish(11);case 14:case"end":return _context.stop();}}},_callee,null,[[0,8,11,14]]);}));return function _fetchData(){return _ref.apply(this,arguments);};}();_fetchData();},[]);return{spacesData:spacesData,isLoading:isLoading};};var fetchSpaces=/*#__PURE__*/function(){var _ref2=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee2(id_in){var spacesData;return regenerator_default.a.wrap(function _callee2$(_context2){while(1){switch(_context2.prev=_context2.next){case 0:_context2.next=2;return Object(dist["request"])(OFFCHAIN_HUB_API,SPACES_QUERY,{id_in:id_in});case 2:spacesData=_context2.sent;return _context2.abrupt("return",spacesData.spaces);case 4:case"end":return _context2.stop();}}},_callee2);}));return function fetchSpaces(_x){return _ref2.apply(this,arguments);};}();
 // EXTERNAL MODULE: ./src/pages/About/index.scss
 var About = __webpack_require__(84);
 
@@ -51047,7 +51047,7 @@ var Providers = __webpack_require__(87);
 var _connectorsByName;var EConnectorNames;(function(EConnectorNames){EConnectorNames["Injected"]="Injected";EConnectorNames["WalletConnect"]="WalletConnect";})(EConnectorNames||(EConnectorNames={}));var connectorsByName=(_connectorsByName={},Object(defineProperty["a" /* default */])(_connectorsByName,EConnectorNames.Injected,injected),Object(defineProperty["a" /* default */])(_connectorsByName,EConnectorNames.WalletConnect,walletconnect),_connectorsByName);function getErrorMessage(error){if(error instanceof NoEthereumProviderError){return"No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile. (Use http(s) to wallet connect)";}else if(error instanceof UnsupportedChainIdError){return"You're connected to an unsupported network.";}else if(error instanceof UserRejectedRequestError||error instanceof walletconnect_connector_esm_UserRejectedRequestError){return"Please authorize this website to access your Ethereum account.";}else{console.error(error);return"An unknown error occurred. Check the console for more details. (Use http(s) to wallet connect)";}}function ConnectProviders(props){var closeModal=props.closeModal;var context=useWeb3React();var connector=context.connector,activate=context.activate,error=context.error;// handle logic to recognize the connector currently being activated
 var _useState=Object(react["useState"])(),_useState2=Object(slicedToArray["a" /* default */])(_useState,2),activatingConnector=_useState2[0],setActivatingConnector=_useState2[1];Object(react["useEffect"])(function(){if(activatingConnector&&activatingConnector===connector){setActivatingConnector(undefined);!error&&closeModal&&closeModal();}},[activatingConnector,connector]);// handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
 var triedEager=useEagerConnect();// handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
-useInactiveListener(!triedEager||!!activatingConnector);return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"connectorsButtons",children:[!!error&&/*#__PURE__*/Object(jsx_runtime["jsx"])("h4",{className:"error",children:getErrorMessage(error)}),Object.keys(connectorsByName).map(function(name){var connectorName=name;var currentConnector=connectorsByName[connectorName];var activating=currentConnector===activatingConnector;var connected=currentConnector===connector;var disabled=!triedEager||!!activatingConnector||connected||!!error;return/*#__PURE__*/Object(jsx_runtime["jsxs"])("button",{className:"secondaryButton alingItemsCenter",disabled:disabled,onClick:function onClick(){setActivatingConnector(currentConnector);activate(connectorsByName[connectorName]);},children:[activating&&/*#__PURE__*/Object(jsx_runtime["jsx"])(Spinner,{color:"grey",style:{height:"1rem",marginRight:"0.5rem"}}),connected&&!error&&/*#__PURE__*/Object(jsx_runtime["jsx"])("span",{role:"img","aria-label":"check",style:{marginRight:"0.5rem",alignItems:'center'},children:"\u2705"}),name==="Injected"?/*#__PURE__*/Object(jsx_runtime["jsx"])(jsx_runtime["Fragment"],{children:/*#__PURE__*/Object(jsx_runtime["jsx"])(metamask_ForwardRef,{style:{width:"1.5rem",height:"1.5rem",marginRight:"0.5rem"}})}):name==="WalletConnect"?/*#__PURE__*/Object(jsx_runtime["jsx"])(jsx_runtime["Fragment"],{children:/*#__PURE__*/Object(jsx_runtime["jsx"])(walletconnect_ForwardRef,{style:{width:"1.5rem",height:"1.5rem",marginRight:"0.5rem"}})}):'',"".concat(name)]},name);})]});}/* harmony default export */ var ConnectWallet_Providers = (ConnectProviders);
+useInactiveListener(!triedEager||!!activatingConnector);return/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{className:"connectorsButtons",children:[!!error&&/*#__PURE__*/Object(jsx_runtime["jsx"])("h4",{className:"error",children:getErrorMessage(error)}),Object.keys(connectorsByName).map(function(name){var connectorName=name;var currentConnector=connectorsByName[connectorName];var activating=currentConnector===activatingConnector;var connected=currentConnector===connector;var disabled=!triedEager||!!activatingConnector||connected||!!error;return/*#__PURE__*/Object(jsx_runtime["jsxs"])("button",{className:"secondaryButton alingItemsCenter",disabled:disabled,onClick:function onClick(){setActivatingConnector(currentConnector);activate(connectorsByName[connectorName]);},children:[activating&&/*#__PURE__*/Object(jsx_runtime["jsx"])(Spinner,{color:"grey",style:{height:"1rem",marginRight:"0.5rem"}}),connected&&!error&&/*#__PURE__*/Object(jsx_runtime["jsx"])("span",{role:"img","aria-label":"check",style:{marginRight:"0.5rem",alignItems:"center"},children:"\u2705"}),name==="Injected"?/*#__PURE__*/Object(jsx_runtime["jsx"])(jsx_runtime["Fragment"],{children:/*#__PURE__*/Object(jsx_runtime["jsx"])(metamask_ForwardRef,{style:{width:"1.5rem",height:"1.5rem",marginRight:"0.5rem"}})}):name==="WalletConnect"?/*#__PURE__*/Object(jsx_runtime["jsx"])(jsx_runtime["Fragment"],{children:/*#__PURE__*/Object(jsx_runtime["jsx"])(walletconnect_ForwardRef,{style:{width:"1.5rem",height:"1.5rem",marginRight:"0.5rem"}})}):"","".concat(name)]},name);})]});}/* harmony default export */ var ConnectWallet_Providers = (ConnectProviders);
 // CONCATENATED MODULE: ./src/components/Modal/Modals/ConnectWallet/index.tsx
 function ConnectWallet(){var _useActiveWeb3React=useActiveWeb3React(),account=_useActiveWeb3React.account,deactivate=_useActiveWeb3React.deactivate,chainId=_useActiveWeb3React.chainId;var setModalOptions=Object(react["useContext"])(ModalUpdaterContext);var connectWalletModalProps={headerContent:"Connect wallet",bodyContent:/*#__PURE__*/Object(jsx_runtime["jsx"])(ConnectWallet_Providers,{closeModal:function closeModal(){return setModalOptions({isOpen:false});}}),footerContent:"",onCancel:function onCancel(){return setModalOptions({isOpen:false});}};var disconectButton=/*#__PURE__*/Object(jsx_runtime["jsx"])("div",{style:{display:"flex",padding:"1rem"},children:/*#__PURE__*/Object(jsx_runtime["jsx"])("button",{className:"secondaryButton",onClick:function onClick(){deactivate();setModalOptions({isOpen:false});},children:"Disconnect"})});var networkId=chainId||1;var accountContent=/*#__PURE__*/Object(jsx_runtime["jsxs"])("div",{style:{display:"flex",padding:"1rem"},children:[/*#__PURE__*/Object(jsx_runtime["jsx"])("span",{style:{marginRight:"0.5rem"},children:"Account"}),/*#__PURE__*/Object(jsx_runtime["jsx"])(components_ExternalLink,{link:"".concat(NETWORK_EXPLORER_URLS[networkId],"address/").concat(account),children:shortEVMAddress(account||"")})]});var accountModalProps={headerContent:"Account",bodyContent:accountContent,footerContent:disconectButton,onCancel:function onCancel(){return setModalOptions({isOpen:false});}};return/*#__PURE__*/Object(jsx_runtime["jsx"])("button",{className:"secondaryButton",onClick:function onClick(){return setModalOptions({isOpen:true,modalProps:account?accountModalProps:connectWalletModalProps});},style:{width:"auto"},children:account?shortEVMAddress(account):"Connect Wallet"});}/* harmony default export */ var Modals_ConnectWallet = (ConnectWallet);
 // EXTERNAL MODULE: ./src/components/Header/index.scss
