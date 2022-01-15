@@ -143,3 +143,21 @@ body {
     cursor: not-allowed;
   }
 }
+
+.deleteButton {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+  color: var(--border-color);
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover, &:active {
+    color: #e2435c;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+
+}
