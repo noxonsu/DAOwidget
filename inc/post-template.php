@@ -18,7 +18,7 @@
       data-token-address="' . esc_attr($daoinfo['token']) . '"
       data-token-symbol="' . esc_attr($daoinfo['token_symbol']) . '"
       data-token-decimals="' . esc_attr($daoinfo['token_decimals']) . '"
-      data-color-template="' . esc_attr($daoinfo['theme']) . '"
+      data-color-template="' . esc_attr($daoinfo['theme']) . '_template"
     ></div>
   ';
   echo $html;

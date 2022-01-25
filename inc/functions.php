@@ -102,7 +102,8 @@ function daofactory_admin_scripts( $hook ) {
 	if ( 'post-new.php' === $hook || 'post.php' === $hook || 'toplevel_page_DAOFACTORY' === $hook ) {
 		if ( 'toplevel_page_DAOFACTORY' === $hook || 'daofactory' === $typenow ) {
 
-			wp_enqueue_style( 'lotteryfactory-admin', DAOFACTORY_URL . 'assets/css/daofactory-admin.css', false, DAOFACTORY_VER );
+			wp_enqueue_style( 'daofactory-admin', DAOFACTORY_URL . 'assets/css/daofactory-admin.css', false, DAOFACTORY_VER );
+      wp_enqueue_script( 'daofactory-tokeninfo', DAOFACTORY_URL . 'assets/js/tokenInfo.js', array(), DAOFACTORY_VER );
 
 			$ver = wp_rand( 1, 2222222 );
 
