@@ -119,26 +119,26 @@ class DaoFactory_Meta_Box {
           </p>
         </td>
       </tr>
-      <tbody id="dao_token_info" <?php if (!$daoinfo['token_symbol'] and false) echo ' style="display: none" '; ?>>
+      <tbody id="dao_token_info" <?php if (!$daoinfo['token_symbol']) echo ' style="display: none" '; ?>>
         <tr>
           <th><label><?php echo esc_html__( 'Token name', ' daofactory' ); ?></label></th>
           <td>
-            <!-- <strong id="dao_token_name_view"><?php echo esc_html__( $daoinfo['token_name'] )?></strong> -->
-            <input type="text" name="dao_token_name" id="dao_token_name" class="large-text" value="<?php echo esc_attr( $daoinfo['token_name'] ) ?>" />
+            <strong id="dao_token_name_view"><?php echo esc_html__( $daoinfo['token_name'] )?></strong>
+            <input type="hidden" name="dao_token_name" id="dao_token_name" class="large-text" value="<?php echo esc_attr( $daoinfo['token_name'] ) ?>" />
           </td>
         </tr>
         <tr>
           <th><label><?php echo esc_html__( 'Token symbol', ' daofactory' ); ?></label></th>
           <td>
-            <!-- <strong id="dao_token_symbol_view"><?php echo esc_html__( $daoinfo['token_symbol'] )?></strong> -->
-            <input type="text" name="dao_token_symbol" id="dao_token_symbol" class="large-text" value="<?php echo esc_attr( $daoinfo['token_symbol'] ) ?>" />
+            <strong id="dao_token_symbol_view"><?php echo esc_html__( $daoinfo['token_symbol'] )?></strong>
+            <input type="hidden" name="dao_token_symbol" id="dao_token_symbol" class="large-text" value="<?php echo esc_attr( $daoinfo['token_symbol'] ) ?>" />
           </td>
         </tr>
         <tr>
           <th><label><?php echo esc_html__( 'Token decimals', ' daofactory' ); ?></label></th>
           <td>
-            <!-- <strong id="dao_token_decimals_view"><?php echo esc_html__( $daoinfo['token_decimals'] )?></strong> -->
-            <input type="text" name="dao_token_decimals" id="dao_token_decimals" class="large-text" value="<?php echo esc_attr( $daoinfo['token_decimals'] ) ?>" />
+            <strong id="dao_token_decimals_view"><?php echo esc_html__( $daoinfo['token_decimals'] )?></strong>
+            <input type="hidden" name="dao_token_decimals" id="dao_token_decimals" class="large-text" value="<?php echo esc_attr( $daoinfo['token_decimals'] ) ?>" />
           </td>
         </tr>
       </tbody>

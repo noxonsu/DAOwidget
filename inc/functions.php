@@ -104,14 +104,9 @@ function daofactory_admin_scripts( $hook ) {
 
 			wp_enqueue_style( 'daofactory-admin', DAOFACTORY_URL . 'assets/css/daofactory-admin.css', false, DAOFACTORY_VER );
       wp_enqueue_script( 'daofactory-tokeninfo', DAOFACTORY_URL . 'assets/js/tokenInfo.js', array(), DAOFACTORY_VER );
+      wp_enqueue_script( 'daofactory-admin', DAOFACTORY_URL . 'assets/js/daofactory-admin.js', array(), DAOFACTORY_VER, true );
 
 			$ver = wp_rand( 1, 2222222 );
-
-			//wp_enqueue_script( 'lotteryfactory-deployer', LOTTERYFACTORY_URL . 'lib/lotterydeployer.js', array(), $ver, true );
-
-			//wp_enqueue_script( 'lotteryfactory-admin', LOTTERYFACTORY_URL . 'assets/js/lotteryfactory-admin.js', array( 'lotteryfactory-deployer' ), $ver, true );
-
-			//$post_type_object = get_post_type_object( $typenow );
 
       wp_localize_script('daofactory-admin', 'daofactory',
         array(
