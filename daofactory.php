@@ -12,7 +12,12 @@ Version: 0.1.3
 /* Define Plugin Constants */
 defined( 'ABSPATH' ) || exit;
 define( 'DAOFACTORY_URL', plugin_dir_url( __FILE__ ) );
+define( 'DAOFACTORY_BASE_DIR', __DIR__ );
 define( 'DAOFACTORY_VER', '0.1.3');
+
+require 'inc/functions.php';
+require 'inc/post-type.php';
+require 'inc/metabox.php';
 
 
 // First register resources with init
