@@ -1,7 +1,7 @@
 <?php
 /**
 Plugin Name: Dao Factory
-Description: Proposals Dao factory.
+Description: Governance and proposals for your crypto token.
 Author: Vitaliy Shulik
 Requires PHP: 7.1
 Text Domain: daofactory
