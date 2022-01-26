@@ -52,15 +52,7 @@ function daofactory_custom_template($single) {
     if ( $post->post_type == 'daofactory' ) {
       return DAOFACTORY_BASE_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'post-template.php';
     }
-    /*
-    if (is_front_page()) {
-      $dao_at_homepage = get_option( 'daofactory_id_at_homepage', 'false');
 
-      if (($dao_at_homepage !== 'false') and is_numeric($dao_at_homepage)) {
-        return DAOFACTORY_BASE_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'homepage.php';
-      }
-    }
-    */
     return $single;
 }
 
