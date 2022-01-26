@@ -1,18 +1,23 @@
 <?php
 /**
 Plugin Name: Dao Factory
-Description: Go to Pages -> Add new, enter title "DAO", create the shortcode block and put this code in there: <code>[daofactory_app template="light_template" token_address="0x92648e4537cdfa1ee743a244465a31aa034b1ce8" token_symbol="SWAP" token_decimals="18" network_id="56"]</code>. Replace all properties with your token data. Open this page in new window and enjoy. You can set dark theme - just enter <code>template="dark_template"</code>.
+Description: Governance and proposals for your crypto token.
 Author: Vitaliy Shulik
 Requires PHP: 7.1
 Text Domain: daofactory
 Domain Path: /lang
-Version: 0.1.3
+Version: 0.1.4
  */
 
 /* Define Plugin Constants */
 defined( 'ABSPATH' ) || exit;
 define( 'DAOFACTORY_URL', plugin_dir_url( __FILE__ ) );
-define( 'DAOFACTORY_VER', '0.1.3');
+define( 'DAOFACTORY_BASE_DIR', __DIR__ );
+define( 'DAOFACTORY_VER', '0.1.4');
+
+require 'inc/functions.php';
+require 'inc/post-type.php';
+require 'inc/metabox.php';
 
 
 // First register resources with init
