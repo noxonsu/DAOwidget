@@ -56,11 +56,19 @@ class DaoFactory_Meta_Box {
 		wp_nonce_field( 'daofactory_meta_action', 'daofactory_meta_nonce' );
 
     $daoinfo = daofactory_get_data($post->ID);
-    //$daoinfo_at_homepage = get_option( 'daofactory_id_at_homepage', 'false');
+    $daoinfo_at_homepage = get_option( 'daofactory_id_at_homepage', 'false');
+    
 		// Form fields.
     ?>
     <input type="hidden" id="daofactory_post_id" value="<?php echo $post->ID?>" />
     <table class="form-table">
+      <tr>
+        <th><label><?php echo esc_html__( 'As home page', 'daofactory' ); ?></label></th>
+        <td>
+          <input type="checkbox" name="dao_at_homepage" id="dao_at_homepage" <?php echo ($daoinfo_at_homepage == $post->ID) ? 'checked' : ''?>/>
+          <label for="dao_at_homepage"><?php echo esc_html__( 'Show this DAO at home page' ); ?></label>
+        </td>
+      </tr>
       <tr>
         <th><label><?php echo esc_html__( 'Design', 'daofactory' );?></label></th>
         <td>
@@ -77,16 +85,6 @@ class DaoFactory_Meta_Box {
           </select>
         </td>
       </tr>
-      <?php
-      /*
-      <tr>
-        <th><label><?php echo esc_html__( 'As home page', 'daofactory' ); ?></label></th>
-        <td>
-          <input type="checkbox" name="dao_at_homepage" id="dao_at_homepage" <?php echo ($daoinfo_at_homepage == $post->ID) ? 'checked' : ''?>/>
-          <label for="dao_at_homepage"><?php echo esc_html__( 'Show this lottery at home page' ); ?></label>
-        </td>
-      </tr>
-      */?>
       <tr>
         <th><label><?php echo esc_html__( 'Blockchain', 'daofactory' ); ?></label></th>
         <td>
