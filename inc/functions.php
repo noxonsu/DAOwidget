@@ -2,7 +2,7 @@
 function daofactory_get_data($dao_id) {
   $daoinfo = array();
   foreach( array(
-    'blockchain'        => 'matic_testnet',
+    'blockchain'        => 'bsc_mainnet',
     'token'             => '',
     'token_name'        => '',
     'token_symbol'      => '',
