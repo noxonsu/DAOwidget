@@ -92,7 +92,7 @@ class DaoFactory_Meta_Box {
             <?php
             foreach ( daofactory_blockchains() as $key => $value) {
               ?>
-              <option data-chain="<?php echo $value['chainId']?>" data-prc="<?php echo esc_attr($value['rpc'])?>" value="<?php echo $key?>" <?php echo ($key === $daoinfo['blockchain']) ? 'selected' : ''?>>
+              <option data-chain="<?php echo $value['chainId']?>" data-rpc="<?php echo esc_attr($value['rpc'])?>" value="<?php echo $key?>" <?php echo ($key === $daoinfo['blockchain']) ? 'selected' : ''?>>
                 <?php echo esc_html__($value['title'], 'daofactory');?>
               </option>
               <?php
