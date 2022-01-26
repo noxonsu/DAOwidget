@@ -15,7 +15,7 @@ function daofactory_post_type() {
 		'singular_name'         => esc_html__( 'Dao Factory', 'daofactory' ),
 		'menu_name'             => esc_html__( 'Dao Factory', 'daofactory' ),
 		'name_admin_bar'        => esc_html__( 'Dao Factory', 'daofactory' ),
-		'all_items'             => esc_html__( 'All Dao Factories', 'daofactory' ),
+		'all_items'             => esc_html__( 'All DAOs', 'daofactory' ),
 		'add_new_item'          => esc_html__( 'Add New Dao Factory', 'daofactory' ),
 		'add_new'               => esc_html__( 'Add New', 'daofactory' ),
 		'new_item'              => esc_html__( 'New Dao Factory', 'daofactory' ),
