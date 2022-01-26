@@ -1,5 +1,5 @@
 <?php
-  $daoinfo = daofactory_get_data(get_the_ID());
+  $daoinfo = daofactory_get_data(get_option( 'daofactory_id_at_homepage', 'false'));
 
   if ($daoinfo['hide_footer_header'] === 'true') {
     daofactory_default_header($daoinfo);

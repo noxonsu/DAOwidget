@@ -110,7 +110,7 @@ function daofactory_admin_scripts( $hook ) {
 add_action( 'admin_enqueue_scripts', 'daofactory_admin_scripts' );
 
 
-function daofactory_default_header() {
+function daofactory_default_header($daoinfo) {
   ?>
   <!DOCTYPE html>
   <html class="no-js" <?php language_attributes(); ?>>
@@ -130,6 +130,9 @@ function daofactory_default_header() {
         HTML, BODY {
           margin: 0;
           padding: 0;
+          <?php if ($daoinfo['theme'] === 'dark' ) { ?>
+          background: #282c34;
+          <?php } ?>
         }
       </style>
     </head>
@@ -137,7 +140,7 @@ function daofactory_default_header() {
   <?php
 }
 
-function daofactory_default_footer() {
+function daofactory_default_footer($daoinfo) {
   ?>
       <link media="all" rel="stylesheet" href="<?php echo DAOFACTORY_URL ?>build/static/css/main.css?ver=<?php echo DAOFACTORY_VER?>" />
       <script src="<?php echo DAOFACTORY_URL ?>build/static/js/main.js?ver=<?php echo DAOFACTORY_VER?>"></script>

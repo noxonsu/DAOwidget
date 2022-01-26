@@ -56,35 +56,58 @@
   ]
 
   const setupWeb3 = (networkInfo) => new Promise((resolve, reject) => {
-    const web3 = new window.Web3(window.ethereum || window.Web3.givenProvider || new window.Web3.providers.HttpProvider(networkInfo.rpc))
+    const {
+      chainId,
+      rpc
+    } = networkInfo
 
-    if (web3) {
-      resolve(web3)
+    if (chainId
+        && parseInt(chainId, 10) !== parseInt(window.ethereum.networkVersion, 10)
+    ) {
+      reject('wrong network')
+    } else {
+      const web3 = new window.Web3(window.ethereum || window.Web3.givenProvider || new window.Web3.providers.HttpProvider(rpc))
+
+      if (web3) {
+        resolve(web3)
+      }
+      else {
+        reject()
+      }
     }
-    else {
-      reject()
+  })
+
+  const connectWeb3 = () => new Promise((resolve, reject) => {
+    if (window.ethereum.isConnected()) {
+      resolve()
+    } else {
+      window.ethereum.enable()
+        .then(() => { resolve() })
+        .catch((err) => { reject(err) })
     }
   })
 
   const fetchTokenInfo = (networkInfo, tokenAddress) => {
     return new Promise((resolve, reject) => {
-      setupWeb3(networkInfo).then( async (web3) => {
-        const contract = new web3.eth.Contract(
-          baseTokenAbi,
-          tokenAddress
-        )
-        const decimals = await contract.methods.decimals().call()
-        const name = await contract.methods.name().call()
-        const symbol = await contract.methods.symbol().call()
-        resolve({
-          tokenAddress,
-          name,
-          decimals,
-          symbol,
+      connectWeb3().then( () => {
+        setupWeb3(networkInfo).then( async (web3) => {
+          const contract = new web3.eth.Contract(
+            baseTokenAbi,
+            tokenAddress
+          )
+          const decimals = await contract.methods.decimals().call()
+          const name = await contract.methods.name().call()
+          const symbol = await contract.methods.symbol().call()
+          resolve({
+            tokenAddress,
+            name,
+            decimals,
+            symbol,
+          })
+        }).catch((err) => {
+          reject(err)
         })
-      }).catch((err) => {
-        reject(err)
-      })
+      } ).catch( (err) => { reject(err) } )
     })
   }
   window.daoFactory_fetchTokenInfo = fetchTokenInfo

@@ -57,7 +57,10 @@
     setLoaderStatus( langMsg( 'Fetching token info' ) )
     fetchTokenButton.disabled = true
     hideBlock('dao_token_info')
-    daoFactory_fetchTokenInfo( {}, tokenAddress )
+    const networkOption = $('#dao_blockchain OPTION:selected')
+    const rpc = networkOption.data('rpc')
+    const chainId = networkOption.data('chain')
+    daoFactory_fetchTokenInfo( { rpc, chainId }, tokenAddress )
       .then((tokenInfo) => {
         setHtml('dao_token_name_view', tokenInfo.name)
         setValue('dao_token_name', tokenInfo.name)
@@ -71,7 +74,11 @@
       })
       .catch((err) => {
         unlockButton()
-        errMessage(err.message)
+        if (err === 'wrong network') {
+          errMessage( 'Select correct network: ' + networkOption.text() )
+        } else {
+          errMessage(err.message)
+        }
       })
   })
 })( jQuery );
