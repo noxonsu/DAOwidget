@@ -18,17 +18,6 @@ function daofactory_get_data($dao_id) {
 }
 
 
-function daofactory_custom_template($single) {
-    global $post;
-
-
-    if ( $post->post_type == 'daofactory' ) {
-      return DAOFACTORY_BASE_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'post-template.php';
-    }
-    return $single;
-}
-
-add_filter('single_template', 'daofactory_custom_template');
 
 function daofactory_blockchains() {
   return array(

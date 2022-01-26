@@ -16,7 +16,7 @@ function daofactory_post_type() {
 		'menu_name'             => esc_html__( 'Dao Factory', 'daofactory' ),
 		'name_admin_bar'        => esc_html__( 'Dao Factory', 'daofactory' ),
 		'all_items'             => esc_html__( 'All DAOs', 'daofactory' ),
-		'add_new_item'          => esc_html__( 'Add New Dao Factory', 'daofactory' ),
+		'add_new_item'          => esc_html__( 'Add New Dao', 'daofactory' ),
 		'add_new'               => esc_html__( 'Add New', 'daofactory' ),
 		'new_item'              => esc_html__( 'New Dao Factory', 'daofactory' ),
 		'edit_item'             => esc_html__( 'Edit Dao Factory', 'daofactory' ),
@@ -44,20 +44,18 @@ function daofactory_post_type() {
   flush_rewrite_rules( false );
 }
 add_action( 'init', 'daofactory_post_type' );
-/*
-function lottery_custom_template($single) {
+
+function daofactory_custom_template($single) {
     global $post;
+
+
     if ( $post->post_type == 'daofactory' ) {
-      return daofactory_PATH . 'templates' . DIRECTORY_SEPARATOR . 'singlepage.php';
-      //die('this');
+      return DAOFACTORY_BASE_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'post-template.php';
     }
-
     return $single;
-
 }
 
-add_filter('single_template', 'lottery_custom_template');
-*/
+add_filter('single_template', 'daofactory_custom_template');
 
 /**
  * Remove date from posts column
