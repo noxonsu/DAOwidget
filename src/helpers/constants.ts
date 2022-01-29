@@ -16,6 +16,7 @@ export enum SupportedChainId {
   KOVAN = 42,
   BINANCE_SMART_CHAIN = 56,
   BINANCE_SMART_CHAIN_TESTNET = 97,
+  XDAI = 100,
 
   POLYGON = 137,
   POLYGON_MUMBAI = 80001,
@@ -23,6 +24,7 @@ export enum SupportedChainId {
   ARBITRUM_RINKEBY = 421611,
   OPTIMISM = 10,
   OPTIMISTIC_KOVAN = 69,
+  XDAI_POA_SOKOL = 77,
 }
 
 export const ALL_SUPPORTED_CHAIN_IDS: SupportedChainId[] = [
@@ -40,6 +42,8 @@ export const ALL_SUPPORTED_CHAIN_IDS: SupportedChainId[] = [
   SupportedChainId.ARBITRUM_RINKEBY,
   SupportedChainId.OPTIMISM,
   SupportedChainId.OPTIMISTIC_KOVAN,
+  SupportedChainId.XDAI,
+  SupportedChainId.XDAI_POA_SOKOL,
 ];
 
 export const L1_CHAIN_IDS = [
@@ -50,6 +54,8 @@ export const L1_CHAIN_IDS = [
   SupportedChainId.KOVAN,
   SupportedChainId.BINANCE_SMART_CHAIN,
   SupportedChainId.BINANCE_SMART_CHAIN_TESTNET,
+  SupportedChainId.XDAI,
+  SupportedChainId.XDAI_POA_SOKOL,
 ] as const;
 
 export type SupportedL1ChainId = typeof L1_CHAIN_IDS[number];
@@ -81,6 +87,9 @@ export const NETWORK_RPC_URLS: { [key in SupportedChainId]: string } = {
   [SupportedChainId.OPTIMISTIC_KOVAN]: `https://optimism-kovan.infura.io/v3/${INFURA_KEY}`,
   [SupportedChainId.ARBITRUM_ONE]: `https://arbitrum-mainnet.infura.io/v3/${INFURA_KEY}`,
   [SupportedChainId.ARBITRUM_RINKEBY]: `https://arbitrum-rinkeby.infura.io/v3/${INFURA_KEY}`,
+
+  [SupportedChainId.XDAI]: `https://rpc.xdaichain.com/`,
+  [SupportedChainId.XDAI_POA_SOKOL]: `https://sokol.poa.network/`,
 };
 
 export const NETWORK_EXPLORER_URLS: { [key in SupportedChainId]: string } = {
@@ -99,6 +108,9 @@ export const NETWORK_EXPLORER_URLS: { [key in SupportedChainId]: string } = {
   [SupportedChainId.OPTIMISTIC_KOVAN]: `https://kovan-optimistic.etherscan.io/`,
   [SupportedChainId.ARBITRUM_ONE]: `https://arbiscan.io/`,
   [SupportedChainId.ARBITRUM_RINKEBY]: `https://testnet.arbiscan.io/`,
+
+  [SupportedChainId.XDAI]: `https://blockscout.com/xdai/mainnet/`,
+  [SupportedChainId.XDAI_POA_SOKOL]: `https://blockscout.com/poa/sokol/`,
 };
 
 export const NETWORK_EXPLORER_API_URLS: { [key in SupportedChainId]: string } =
@@ -118,4 +130,7 @@ export const NETWORK_EXPLORER_API_URLS: { [key in SupportedChainId]: string } =
     [SupportedChainId.OPTIMISTIC_KOVAN]: `https://api-kovan-optimistic.etherscan.io/api`,
     [SupportedChainId.ARBITRUM_ONE]: `https://api.arbiscan.io/api`,
     [SupportedChainId.ARBITRUM_RINKEBY]: `https://api-testnet.arbiscan.io/api`,
+
+    [SupportedChainId.XDAI]: `https://blockscout.com/xdai/mainnet/api`,
+    [SupportedChainId.XDAI_POA_SOKOL]: `https://blockscout.com/poa/sokol/api`,
   };
