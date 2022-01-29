@@ -1820,7 +1820,7 @@ function padString(str, length, left) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RESERVED_ERROR_CODES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return SERVER_ERROR_CODE_RANGE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return STANDARD_ERROR_MAP; });
-/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
 
 
 var _STANDARD_ERROR_MAP;
@@ -10735,7 +10735,7 @@ module.exports = function (string, separator) {
 /* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
 /* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
-/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7);
+/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8);
 /* harmony import */ var _walletconnect_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(99);
 /* harmony import */ var _network__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(164);
 
@@ -11049,7 +11049,7 @@ function getWebSocketUrl(_url, protocol, version) {
 
 "use strict";
 /* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
-/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _Users_vitaliyshulik_Programming_Work_dao_votes_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8);
 
 
 
@@ -15304,7 +15304,7 @@ var asyncToGenerator = __webpack_require__(9);
 var classCallCheck = __webpack_require__(6);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/createClass.js
-var createClass = __webpack_require__(7);
+var createClass = __webpack_require__(8);
 
 // EXTERNAL MODULE: ./node_modules/eventemitter3/index.js
 var eventemitter3 = __webpack_require__(114);
@@ -18800,4 +18800,4 @@ var esm_WalletConnectProvider = /*#__PURE__*/function () {
 
 /***/ })
 ])]);
-//# sourceMappingURL=1.6a738965.chunk.js.map
+//# sourceMappingURL=1.b0643e59.chunk.js.map
