@@ -19,15 +19,15 @@ type VotingModalButtonProps = {
 function VotingModalButton(props: VotingModalButtonProps) {
   const { proposal, checkedChoice } = props;
 
-  const [isActive, setIsActive] = useState(checkedChoice !== -1);
+  const [isActive, setIsActive] = useState(checkedChoice !== -1 && proposal.state !== "pending");
 
   const setModalOptions = useContext(ModalUpdaterContext);
 
   const closeModal = () => setModalOptions({ isOpen: false });
 
   useEffect(() => {
-    setIsActive(checkedChoice !== -1);
-  }, [checkedChoice]);
+    setIsActive(checkedChoice !== -1 && proposal.state !== "pending");
+  }, [checkedChoice, proposal.state]);
 
   const modalProps = {
     headerContent: "Confirm vote",
