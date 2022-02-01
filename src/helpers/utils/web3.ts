@@ -1,6 +1,23 @@
 import { StaticJsonRpcProvider, Web3Provider } from "@ethersproject/providers";
+import { injected, walletconnect, Connectors } from "src/connectors";
+
+import { ReactComponent as iconMetamask } from "src/assets/svg/metamask.svg";
+import { ReactComponent as iconWalletConnect } from "src/assets/svg/walletconnect.svg";
+import { ReactComponent as iconTrustWallet } from "src/assets/svg/trust.svg";
+import { ReactComponent as iconOpera } from "src/assets/svg/opera.svg";
+import { ReactComponent as iconDefault } from "src/assets/svg/unknown.svg";
 
 import networksSettings from "src/assets/json/networksSettings.json";
+
+const INJECTED_TYPE = {
+  NONE: 'NONE',
+  UNKNOWN: 'UNKNOWN',
+  OPERA: 'OPERA',
+  METAMASK: 'METAMASK',
+  TRUST: 'TRUST',
+};
+
+type INJECTED_STRING = 'NONE' | 'UNKNOWN' | 'OPERA' | 'METAMASK' | 'TRUST';
 
 type NetworkSettings = {
   key: string;
@@ -42,7 +59,62 @@ export function getProvider(network: string) {
   return providers[network];
 }
 
+export function getInjectedType() {
+  if (window?.ethereum) {
+    if (window.ethereum.isTrust) return INJECTED_TYPE.TRUST
+    if (window.ethereum.isMetaMask) return INJECTED_TYPE.METAMASK
+    if (!!window.opr?.addons || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) return INJECTED_TYPE.OPERA
+
+    return INJECTED_TYPE.UNKNOWN
+  }
+  return INJECTED_TYPE.NONE
+
+}
+
+export function getInjectedTitle() {
+  switch (getInjectedType()) {
+    case INJECTED_TYPE.NONE: return 'Not installed'
+    case INJECTED_TYPE.UNKNOWN: return 'Injected Web3'
+    case INJECTED_TYPE.OPERA: return 'Opera Crypto Wallet'
+    case INJECTED_TYPE.METAMASK: return 'MetaMask'
+    case INJECTED_TYPE.TRUST: return 'Trust Wallet'
+    default: return 'Not installed'
+  }
+}
+
+const web3Icons = {
+  METAMASK: iconMetamask,
+  TRUST: iconTrustWallet,
+  OPERA: iconOpera,
+  NONE: iconDefault,
+  UNKNOWN: iconDefault,
+  WALLETCONNECT: iconWalletConnect,
+}
+
+export type ConnectorNames = "Injected" | "WalletConnect";
+
+export enum EConnectorNames {
+  Injected = "Injected",
+  WalletConnect = "WalletConnect",
+}
+
+export const connectorsByName: { [connectorName in EConnectorNames]: Connectors } = {
+  [EConnectorNames.Injected]: injected,
+  [EConnectorNames.WalletConnect]: walletconnect,
+};
+
+export function getWeb3Icon(connectorName: ConnectorNames): typeof iconMetamask {
+  const web3Name =
+    connectorName === "WalletConnect"
+    ? "WALLETCONNECT"
+    : getInjectedType() as INJECTED_STRING
+
+  return web3Icons[web3Name];
+}
+
 export default {
   getBlockNumber,
   getProvider,
+  getInjectedType,
+  getInjectedTitle
 };

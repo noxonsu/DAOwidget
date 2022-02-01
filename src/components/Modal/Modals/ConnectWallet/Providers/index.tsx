@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { injected, walletconnect, Connectors } from "src/connectors";
+import { Connectors } from "src/connectors";
 
-import { ReactComponent as MetamaskSvg } from "src/assets/svg/metamask.svg";
-import { ReactComponent as WalletconnectSvg } from "src/assets/svg/walletconnect.svg";
+import { ConnectorNames, connectorsByName, getInjectedTitle, getWeb3Icon } from "src/helpers/utils/web3";
 
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
 import {
@@ -17,18 +16,6 @@ import { useEagerConnect, useInactiveListener } from "src/hooks/useWeb3Connect";
 import Spinner from "src/components/Spinner";
 
 import "./index.scss";
-
-type ConnectorNames = "Injected" | "WalletConnect";
-
-enum EConnectorNames {
-  Injected = "Injected",
-  WalletConnect = "WalletConnect",
-}
-
-const connectorsByName: { [connectorName in EConnectorNames]: Connectors } = {
-  [EConnectorNames.Injected]: injected,
-  [EConnectorNames.WalletConnect]: walletconnect,
-};
 
 function getErrorMessage(error: Error) {
   if (error instanceof NoEthereumProviderError) {
@@ -82,6 +69,10 @@ function ConnectProviders(props: ConnectProvidersProps) {
         const disabled =
           !triedEager || !!activatingConnector || connected || !!error;
 
+        const isInjected = name === "Injected";
+
+        const Web3Icon = getWeb3Icon(connectorName)
+
         return (
           <button
             className="secondaryButton alingItemsCenter"
@@ -107,30 +98,14 @@ function ConnectProviders(props: ConnectProvidersProps) {
                 ✅
               </span>
             )}
-            {name === "Injected" ? (
-              <>
-                <MetamaskSvg
-                  style={{
-                    width: "1.5rem",
-                    height: "1.5rem",
-                    marginRight: "0.5rem",
-                  }}
-                />
-              </>
-            ) : name === "WalletConnect" ? (
-              <>
-                <WalletconnectSvg
-                  style={{
-                    width: "1.5rem",
-                    height: "1.5rem",
-                    marginRight: "0.5rem",
-                  }}
-                />
-              </>
-            ) : (
-              ""
-            )}
-            {`${name}`}
+            <Web3Icon
+              style={{
+                width: "1.5rem",
+                height: "1.5rem",
+                marginRight: "0.5rem",
+              }}
+            />
+            {`${isInjected? getInjectedTitle() : name}`}
           </button>
         );
       })}
