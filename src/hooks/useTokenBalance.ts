@@ -1,25 +1,22 @@
 import { useWeb3React } from "@web3-react/core";
-import { Web3ReactContextInterface } from "@web3-react/core/dist/types";
 import { useState, useEffect } from "react";
+import { getERC20Contract } from "src/helpers/utils/web3";
 import { Library } from "src/utils/getLibrary";
 
-const getTokenBalance = async (provider: Web3ReactContextInterface) => {
-  if (!window.TOKEN_ADDRESS) throw new Error("Set token address");
-  console.log('provider', provider.library)
 
-  await setTimeout(()=> {}, 1000);
+const getTokenBalance = async (tokenAddress: string, decimals: string, account: string, provider: Library) => {
+  const contract = getERC20Contract(tokenAddress, account, provider.web3)
 
-  return 0;
+  const result = await contract?.methods.balanceOf(account).call();
 
-  // const result = await contract.methods.balanceOf(window.TOKEN_ADDRESS).call();
-  // const format = Web3Client.utils.fromWei(result);
+  const { toBN } = provider.web3.utils;
 
-  // console.log(format);
+  return toBN(result).toString();
 }
 
 export const useTokenBalance = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState("0");
 
   const provider = useWeb3React<Library>();
   const { account = "", library } = provider;
@@ -28,12 +25,15 @@ export const useTokenBalance = () => {
     const _fetchData = async () => {
       try {
         setIsLoading(true);
-        if (!account) throw new Error("Please, connect to wallet");
-        let balance = await getTokenBalance(provider);
+        if (!window.TOKEN_ADDRESS) throw new Error("Set token address");
+        if (!window.TOKEN_DECIMALS) throw new Error("Set token decimals");
+        if (!account || !library) throw new Error("Please, connect to wallet");
+        const balance = await getTokenBalance(window.TOKEN_ADDRESS, window.TOKEN_DECIMALS, account, library);
 
         setBalance(balance);
       } catch (err) {
-        console.error(`Error: Can't fetch user power. Description: ${err}`);
+        console.error(`Error: Can't fetch token balance. Description: ${err}`);
+        setBalance("0");
       } finally {
         setIsLoading(false);
       }

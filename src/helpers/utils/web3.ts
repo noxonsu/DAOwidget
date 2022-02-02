@@ -1,5 +1,8 @@
 import { StaticJsonRpcProvider } from "@ethersproject/providers";
+import { AbiItem } from "web3-utils";
 import { injected, walletconnect, Connectors } from "src/connectors";
+
+import { Library } from "src/utils/getLibrary";
 
 import { ReactComponent as iconMetamask } from "src/assets/svg/metamask.svg";
 import { ReactComponent as iconWalletConnect } from "src/assets/svg/walletconnect.svg";
@@ -8,6 +11,9 @@ import { ReactComponent as iconOpera } from "src/assets/svg/opera.svg";
 import { ReactComponent as iconDefault } from "src/assets/svg/unknown.svg";
 
 import networksSettings from "src/assets/json/networksSettings.json";
+import ABI_ERC20 from 'src/assets/json/abi-erc20.json';
+
+const ERC20ABI = ABI_ERC20 as AbiItem[];
 
 const INJECTED_TYPE = {
   NONE: 'NONE',
@@ -112,18 +118,18 @@ export function getWeb3Icon(connectorName: ConnectorNames): typeof iconMetamask 
   return web3Icons[web3Name];
 }
 
-// export function getERC20Contract(tokenAddress: string, web3: Library.web3) {
-//   return web3?.eth
-//     ? new web3.eth.Contract(ERC20ABI, tokenAddress, {
-//         from: web3.eth.defaultAccount,
-//       })
-//     : null
-// }
+export function getERC20Contract(tokenAddress: string, from: string, web3: Library["web3"]) {
+  return web3 && from
+    ? new web3.eth.Contract(ERC20ABI, tokenAddress, {
+        from,
+      })
+    : null
+}
 
 export default {
   getBlockNumber,
   getProvider,
   getInjectedType,
-  getInjectedTitle
-  // getERC20Contract,
+  getInjectedTitle,
+  getERC20Contract,
 };

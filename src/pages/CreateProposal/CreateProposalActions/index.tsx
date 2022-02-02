@@ -25,11 +25,6 @@ function CreateProposalActions(props: CreateProposalActionsType) {
 
   const [isWaitResponse, setIsWaitResponse] = useState(false);
 
-  console.groupCollapsed("CreateProposalActions");
-  console.log("clientLoading", clientLoading);
-  console.log("spacesData", spacesData, isSpaceLoading);
-  console.groupEnd();
-
   const durationOptions = [
     { value: 0, text: "Duration:" },
     { value: 86400, text: "1d" },
@@ -43,6 +38,8 @@ function CreateProposalActions(props: CreateProposalActionsType) {
   const handleDurationChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedDuration(parseInt(e.target.value));
   };
+
+  const { title } = props;
 
   const handleSubmit = async () => {
     const space = spacesData[0];
@@ -124,9 +121,10 @@ function CreateProposalActions(props: CreateProposalActionsType) {
             />
           </div>
           <PublishProposalButton
-            disable={selectedDuration === 0}
+            isTitleFilled={!!title}
+            isActionFilled={selectedDuration !== 0}
             onClick={handleSubmit}
-            isLoading={clientLoading || isWaitResponse}
+            isLoading={clientLoading || isWaitResponse || isSpaceLoading}
           />
         </div>
       </div>
