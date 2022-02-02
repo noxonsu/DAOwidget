@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import Spinner from "src/components/Spinner";
+import { useTokenBalance } from "src/hooks/useTokenBalance";
 
 import "./index.scss";
 
@@ -12,6 +13,8 @@ type PublishProposalButtonProps = {
 
 function PublishProposalButton(props: PublishProposalButtonProps) {
   const { disable, isLoading, onClick } = props;
+
+  const { balance, isTokenBalanceLoading } = useTokenBalance();
 
   const [isActive, setIsActive] = useState(!disable && !isLoading);
 

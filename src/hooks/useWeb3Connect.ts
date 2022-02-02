@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import { useWeb3React } from "@web3-react/core";
-import { Web3Provider } from "@ethersproject/providers";
 import { injected } from "src/connectors";
+import { Library } from "src/utils/getLibrary";
 
 const NetworkContextName = "NETWORK";
 
 export function useActiveWeb3React() {
-  const context = useWeb3React<Web3Provider>();
-  const contextNetwork = useWeb3React<Web3Provider>(NetworkContextName);
+  const context = useWeb3React<Library>();
+  const contextNetwork = useWeb3React<Library>(NetworkContextName);
   return context.active ? context : contextNetwork;
 }
 
 export function useEagerConnect() {
-  const { activate, active } = useWeb3React();
+  const { activate, active } = useWeb3React<Library>();
 
   const [tried, setTried] = useState(false);
 
@@ -39,11 +39,11 @@ export function useEagerConnect() {
 }
 
 export function useInactiveListener(suppress: boolean = false) {
-  const { active, error, activate } = useWeb3React();
+  const { active, error, activate } = useWeb3React<Library>();
 
   useEffect(() => {
     const { ethereum } = window;
-    if (ethereum && ethereum.on && !active && !error && !suppress) {
+    if (ethereum?.on && !active && !error && !suppress) {
       const handleConnect = () => {
         console.log("Handling 'connect' event");
         activate(injected);

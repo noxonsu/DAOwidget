@@ -28,7 +28,8 @@
     "react-router-dom": "^6.0.2",
     "remarkable": "^2.0.1",
     "remove-markdown": "^0.3.0",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "web3": "^1.7.0"
   },
   "eslintConfig": {
     "extends": [

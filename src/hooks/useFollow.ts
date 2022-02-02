@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { request } from "graphql-request";
 import { useWeb3React } from "@web3-react/core";
-import { Web3Provider } from "@ethersproject/providers";
 
 import { FOLLOWS_QUERY } from "src/helpers/queries";
 import { OFFCHAIN_HUB_API } from "src/helpers/constants";
 
 import { useAliasAction } from "src/hooks/useAliasAction";
 import client from "src/helpers/clientEIP712";
+import { Library } from "src/utils/getLibrary";
 
 export function useFollowSpace(spaceId: string = "") {
   const [following, setFollowing] = useState<IUniversalObj[]>([]);
@@ -15,7 +15,7 @@ export function useFollowSpace(spaceId: string = "") {
   const [isFollowing, setIsFolowing] = useState(false);
   const [isLoadingFollow, setIsLoadingFollow] = useState(false);
 
-  const web3 = useWeb3React<Web3Provider>();
+  const web3 = useWeb3React<Library>();
   const account = web3.account || "";
 
   const { setAlias, aliasWallet, isValidAlias, checkAlias } = useAliasAction();

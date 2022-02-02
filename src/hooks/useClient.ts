@@ -1,13 +1,13 @@
 import { useWeb3React } from "@web3-react/core";
-import { Web3Provider } from "@ethersproject/providers";
 import { useState } from "react";
 import clientEIP712 from "src/helpers/clientEIP712";
 import { Space } from "./useSpaces";
+import { Library } from "src/utils/getLibrary";
 
 export type SentType = "proposal" | "vote" | "delete-proposal" | "settings";
 
 export function useClient() {
-  const { account = "", library } = useWeb3React<Web3Provider>();
+  const { account = "", library } = useWeb3React<Library>();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,14 +23,14 @@ export function useClient() {
   }
 
   async function sendEIP712(space: Space, type: SentType, payload: any) {
-    if (!library) throw new Error("Have not library");
+    if (!library?.library) throw new Error("Have not library");
     if (!account) throw new Error("Have not account");
 
     if (type === "proposal") {
       let plugins = {};
       if (Object.keys(payload.metadata?.plugins).length !== 0)
         plugins = payload.metadata.plugins;
-      return clientEIP712.proposal(library, account, {
+      return clientEIP712.proposal(library.library, account, {
         space: space.id,
         type: payload.type,
         title: payload.title,
@@ -46,7 +46,7 @@ export function useClient() {
         metadata: JSON.stringify({}),
       });
     } else if (type === "vote") {
-      return clientEIP712.vote(library, account, {
+      return clientEIP712.vote(library.library, account, {
         space: space.id,
         proposal: payload.proposal.id,
         type: payload.proposal.type,
@@ -54,12 +54,12 @@ export function useClient() {
         metadata: JSON.stringify({}),
       });
     } else if (type === "delete-proposal") {
-      return clientEIP712.cancelProposal(library, account, {
+      return clientEIP712.cancelProposal(library.library, account, {
         space: space.id,
         proposal: payload.proposal.id,
       });
     } else if (type === "settings") {
-      return clientEIP712.space(library, account, {
+      return clientEIP712.space(library.library, account, {
         space: space.id,
         settings: JSON.stringify(payload),
       });

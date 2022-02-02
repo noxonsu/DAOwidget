@@ -1,4 +1,4 @@
-import { StaticJsonRpcProvider, Web3Provider } from "@ethersproject/providers";
+import { StaticJsonRpcProvider } from "@ethersproject/providers";
 import { injected, walletconnect, Connectors } from "src/connectors";
 
 import { ReactComponent as iconMetamask } from "src/assets/svg/metamask.svg";
@@ -112,9 +112,18 @@ export function getWeb3Icon(connectorName: ConnectorNames): typeof iconMetamask 
   return web3Icons[web3Name];
 }
 
+// export function getERC20Contract(tokenAddress: string, web3: Library.web3) {
+//   return web3?.eth
+//     ? new web3.eth.Contract(ERC20ABI, tokenAddress, {
+//         from: web3.eth.defaultAccount,
+//       })
+//     : null
+// }
+
 export default {
   getBlockNumber,
   getProvider,
   getInjectedType,
   getInjectedTitle
+  // getERC20Contract,
 };

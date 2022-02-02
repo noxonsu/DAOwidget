@@ -5,6 +5,7 @@ import MarkdownElement from "src/components/MarkdownElement";
 import { useClient } from "src/hooks/useClient";
 import { ProposalType } from "src/hooks/useProposals";
 import { Space, useSpaceList } from "src/hooks/useSpaces";
+import { Library } from "src/utils/getLibrary";
 
 type ProposalBodyProps = {
   proposal: ProposalType;
@@ -17,7 +18,7 @@ function ProposalBody(props: ProposalBodyProps) {
   const navigate = useNavigate();
   const { send } = useClient();
   const { spacesData } = useSpaceList([space.id]);
-  const { active, account = "" } = useWeb3React();
+  const { active, account = "" } = useWeb3React<Library>();
 
   const spaceData = spacesData[0];
 

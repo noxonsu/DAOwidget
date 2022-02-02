@@ -1,6 +1,6 @@
-import { Web3Provider } from "@ethersproject/providers";
 import { useWeb3React } from "@web3-react/core";
 import { useState, useEffect } from "react";
+import { Library } from "src/utils/getLibrary";
 import { ProposalType } from "./useProposals";
 import { getScores } from "./useVotes";
 
@@ -9,7 +9,7 @@ export const usePower = (proposal: ProposalType) => {
   const [scores, setScores] = useState([{}]);
   const [totalScore, setTotalScore] = useState(0);
 
-  const { account = "" } = useWeb3React<Web3Provider>();
+  const { account = "" } = useWeb3React<Library>();
 
   useEffect(() => {
     const _fetchData = async () => {

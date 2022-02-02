@@ -1,23 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { Wallet } from "@ethersproject/wallet";
-import {
-  getDefaultProvider,
-  Provider,
-  Web3Provider,
-} from "@ethersproject/providers";
 import { request } from "graphql-request";
 
 import { lsGet, lsSet } from "src/helpers/utils";
 import { OFFCHAIN_HUB_API } from "src/helpers/constants";
 import { ALIASES_QUERY } from "src/helpers/queries";
 import client from "src/helpers/clientEIP712";
+import { Library } from "src/utils/getLibrary";
 
 export function useAliasAction() {
   const aliases = useRef(lsGet("aliases") || {});
   const isValidAlias = useRef(false);
 
-  const { account = "", library } = useWeb3React<Web3Provider>();
+  const { account = "", library } = useWeb3React<Library>();
 
   const userAlias = useRef(aliases.current?.[account || ""] || "");
   const aliasWallet = useRef<Wallet | null>(null);
@@ -26,11 +22,11 @@ export function useAliasAction() {
     if (account) {
       userAlias.current = aliases.current?.[account];
       aliasWallet.current = userAlias.current
-        ? new Wallet(userAlias.current, library)
+        ? new Wallet(userAlias.current, library?.library)
         : null;
       checkAlias();
     }
-  }, [aliases.current, userAlias.current, account, library]);
+  }, [aliases.current, userAlias.current, account, library?.library]);
 
   async function checkAlias() {
     if (aliasWallet.current?.address && account) {
@@ -62,11 +58,11 @@ export function useAliasAction() {
       userAlias.current = aliases.current?.[account];
 
       aliasWallet.current = userAlias.current
-        ? new Wallet(userAlias.current, library)
+        ? new Wallet(userAlias.current, library.library)
         : null;
 
       if (aliasWallet.current?.address) {
-        await client.alias(library, account, {
+        await client.alias(library.library, account, {
           alias: aliasWallet.current.address,
         });
       }

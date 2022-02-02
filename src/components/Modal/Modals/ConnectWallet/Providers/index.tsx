@@ -9,13 +9,13 @@ import {
   UserRejectedRequestError as UserRejectedRequestErrorInjected,
 } from "@web3-react/injected-connector";
 import { UserRejectedRequestError as UserRejectedRequestErrorWalletConnect } from "@web3-react/walletconnect-connector";
-import { Web3Provider } from "@ethersproject/providers";
 
 import { useEagerConnect, useInactiveListener } from "src/hooks/useWeb3Connect";
 
 import Spinner from "src/components/Spinner";
 
 import "./index.scss";
+import { Library } from "src/utils/getLibrary";
 
 function getErrorMessage(error: Error) {
   if (error instanceof NoEthereumProviderError) {
@@ -40,7 +40,7 @@ type ConnectProvidersProps = {
 function ConnectProviders(props: ConnectProvidersProps) {
   const { closeModal } = props;
 
-  const context = useWeb3React<Web3Provider>();
+  const context = useWeb3React<Library>();
   const { connector, activate, error } = context;
 
   // handle logic to recognize the connector currently being activated
