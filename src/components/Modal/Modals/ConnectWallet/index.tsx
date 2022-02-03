@@ -1,13 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { shortEVMAddress } from "src/helpers/utils";
 import { useActiveWeb3React } from "src/hooks/useWeb3Connect";
 import { ModalUpdaterContext } from "src/components/WithModal";
 import Providers from "./Providers";
 import { NETWORK_EXPLORER_URLS, SupportedChainId } from "src/helpers/constants";
 import ExternalLink from "src/components/ExternalLink";
+import { switchNetworkByChainId } from "src/helpers/utils/web3";
 
 function ConnectWallet() {
-  const { account, deactivate, chainId } = useActiveWeb3React();
+  const { account, deactivate, chainId, library } = useActiveWeb3React();
 
   const setModalOptions = useContext(ModalUpdaterContext);
 
@@ -38,6 +39,18 @@ function ConnectWallet() {
       </button>
     </div>
   );
+
+  useEffect(() => {
+    const isMetamask = !!library?.library?.provider?.isMetaMask;
+    const windowChainId = window.NETWORK_ID && parseInt(window.NETWORK_ID)
+
+    console.log('chainId', chainId, account, isMetamask);
+    if (isMetamask && chainId !== windowChainId) {
+      switchNetworkByChainId(windowChainId);
+      console.log('needSwithch', chainId, window.NETWORK_ID)
+    }
+
+  }, [chainId, account, library])
 
   const networkId = (chainId || 1) as SupportedChainId;
 

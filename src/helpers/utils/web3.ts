@@ -126,10 +126,53 @@ export function getERC20Contract(tokenAddress: string, from: string, web3: Libra
     : null
 }
 
+export const switchNetworkByChainId = async (chainId: number) => {
+  const hexChainId = `0x${chainId.toString(16)}`;
+  try {
+    const result = await window?.ethereum?.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: hexChainId }],
+    })
+
+    // null is a successful result
+    return result === null
+  } catch (switchError) {
+    const tipAddNetwork = JSON.stringify(switchError).match(/(T|t)ry adding the chain/)
+
+    // @ts-ignore
+    if (switchError?.code === 4902 || tipAddNetwork) {
+      try {
+        const networkConfig = networks[chainId];
+        const networkParams = {
+          chainId: hexChainId,
+          chainName: networkConfig.name,
+          rpcUrls: networkConfig.rpc,
+          blockExplorerUrls: [networkConfig.explorer],
+        };
+        return await window?.ethereum?.request({
+          method: 'wallet_addEthereumChain',
+          params: [networkParams],
+        });
+      } catch (addError) {
+        console.group('%c add a new Metamask network', 'color: red;')
+        console.log(addError)
+        console.groupEnd()
+      }
+      // show the error if it's not a rejected request
+      // @ts-ignore
+    } else if (switchError.code !== 4001) {
+      console.group('%c switch the Metamask network', 'color: red;')
+      console.log(switchError)
+      console.groupEnd()
+    }
+  }
+}
+
 export default {
   getBlockNumber,
   getProvider,
   getInjectedType,
   getInjectedTitle,
   getERC20Contract,
+  switchNetworkByChainId
 };
