@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Connectors } from "src/connectors";
 
-import { ConnectorNames, connectorsByName, getInjectedTitle, getWeb3Icon } from "src/helpers/utils/web3";
+import { ConnectorNames, getConnectorsByName, getInjectedTitle, getWeb3Icon } from "src/helpers/utils/web3";
 
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
 import {
@@ -42,6 +42,10 @@ function ConnectProviders(props: ConnectProvidersProps) {
 
   const context = useWeb3React<Library>();
   const { connector, activate, error } = context;
+
+  const chainId = window.NETWORK_ID;
+
+  const connectorsByName = useMemo(() => getConnectorsByName(chainId && parseInt(chainId)), [chainId]);
 
   // handle logic to recognize the connector currently being activated
   const [activatingConnector, setActivatingConnector] = useState<Connectors>();

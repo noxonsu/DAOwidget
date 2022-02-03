@@ -9,8 +9,6 @@ import { getLibrary } from "./utils/getLibrary";
 
 import { NetworkContextName } from "src/helpers/constants";
 
-const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
-
 const appElement = document.getElementById("daofactory_app");
 
 window.ENS_DOMAIN = appElement?.getAttribute("data-ens") || "onout.eth";
@@ -22,6 +20,9 @@ window.TOKEN_SYMBOL = appElement?.getAttribute("data-token-symbol") || "XDCK";
 window.TOKEN_DECIMALS = appElement?.getAttribute("data-token-decimals") || "18";
 window.COLOR_TEMPLATE =
   appElement?.getAttribute("data-color-template") || "light_template";
+
+
+const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 
 ReactDOM.render(
   <React.StrictMode>

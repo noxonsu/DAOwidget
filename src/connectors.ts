@@ -17,13 +17,18 @@ export const injected = new InjectedConnector({
   supportedChainIds: ALL_SUPPORTED_CHAIN_IDS,
 });
 
-export const network = new NetworkConnector({
-  urls: NETWORK_RPC_URLS,
-  defaultChainId: SupportedChainId.MAINNET,
-});
+export const getNetworkConnector = (chainId?: number) => {
+  return new NetworkConnector({
+    urls: NETWORK_RPC_URLS,
+    defaultChainId: chainId || SupportedChainId.MAINNET,
+  });
+};
 
-export const walletconnect = new WalletConnectConnector({
-  supportedChainIds: ALL_SUPPORTED_CHAIN_IDS,
-  rpc: NETWORK_RPC_URLS,
-  qrcode: true,
-});
+export const getWalletconnectConnector = (chainId?: number) => {
+  return new WalletConnectConnector({
+    supportedChainIds: ALL_SUPPORTED_CHAIN_IDS,
+    rpc: NETWORK_RPC_URLS,
+    qrcode: true,
+    chainId: chainId || SupportedChainId.MAINNET
+  });
+};

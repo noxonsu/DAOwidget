@@ -1,6 +1,6 @@
 import { StaticJsonRpcProvider } from "@ethersproject/providers";
 import { AbiItem } from "web3-utils";
-import { injected, walletconnect, Connectors } from "src/connectors";
+import { injected, getWalletconnectConnector } from "src/connectors";
 
 import { Library } from "src/utils/getLibrary";
 
@@ -104,10 +104,10 @@ export enum EConnectorNames {
   WalletConnect = "WalletConnect",
 }
 
-export const connectorsByName: { [connectorName in EConnectorNames]: Connectors } = {
+export const getConnectorsByName = (chainId?: number) => ({
   [EConnectorNames.Injected]: injected,
-  [EConnectorNames.WalletConnect]: walletconnect,
-};
+  [EConnectorNames.WalletConnect]: getWalletconnectConnector(chainId),
+});
 
 export function getWeb3Icon(connectorName: ConnectorNames): typeof iconMetamask {
   const web3Name =
