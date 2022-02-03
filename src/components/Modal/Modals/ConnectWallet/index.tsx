@@ -44,10 +44,8 @@ function ConnectWallet() {
     const isMetamask = !!library?.library?.provider?.isMetaMask;
     const windowChainId = window.NETWORK_ID && parseInt(window.NETWORK_ID)
 
-    console.log('chainId', chainId, account, isMetamask);
     if (isMetamask && chainId !== windowChainId) {
       switchNetworkByChainId(windowChainId);
-      console.log('needSwithch', chainId, window.NETWORK_ID)
     }
 
   }, [chainId, account, library])

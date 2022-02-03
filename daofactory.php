@@ -6,14 +6,14 @@ Author: Vitaliy Shulik
 Requires PHP: 7.1
 Text Domain: daofactory
 Domain Path: /lang
-Version: 0.1.6
+Version: 0.1.7
  */
 
 /* Define Plugin Constants */
 defined( 'ABSPATH' ) || exit;
 define( 'DAOFACTORY_URL', plugin_dir_url( __FILE__ ) );
 define( 'DAOFACTORY_BASE_DIR', __DIR__ );
-define( 'DAOFACTORY_VER', '0.1.6');
+define( 'DAOFACTORY_VER', '0.1.7');
 
 require 'inc/functions.php';
 require 'inc/post-type.php';
