@@ -6,14 +6,14 @@ Author: Vitaliy Shulik
 Requires PHP: 7.1
 Text Domain: daofactory
 Domain Path: /lang
-Version: 0.1.7
+Version: 0.1.8
  */
 
 /* Define Plugin Constants */
 defined( 'ABSPATH' ) || exit;
 define( 'DAOFACTORY_URL', plugin_dir_url( __FILE__ ) );
 define( 'DAOFACTORY_BASE_DIR', __DIR__ );
-define( 'DAOFACTORY_VER', '0.1.7');
+define( 'DAOFACTORY_VER', '0.1.8');
 
 require 'inc/functions.php';
 require 'inc/post-type.php';
@@ -38,6 +38,7 @@ function daofactory_app( $atts ) {
     'token_address' => '0x92648e4537cdfa1ee743a244465a31aa034b1ce8',
     'token_symbol' => 'SWAP',
     'token_decimals' => '18',
+    'hide_service_link' => 'false',
 	), $atts );
 
   wp_enqueue_script("daofactory-app", DAOFACTORY_VER, true);
@@ -52,6 +53,7 @@ function daofactory_app( $atts ) {
       data-token-symbol="' . esc_attr($a['token_symbol']) . '"
       data-token-decimals="' . esc_attr($a['token_decimals']) . '"
       data-color-template="' . esc_attr($a['template']) . '"
+      data-hide-service-link="' . esc_attr($a['hide_service_link']) . '"
     ></div>
   ';
 
