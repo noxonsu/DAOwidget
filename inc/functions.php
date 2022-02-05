@@ -8,6 +8,7 @@ function daofactory_get_data($dao_id) {
     'token_symbol'      => '',
     'token_decimals'    => '',
     'hide_footer_header'=> 'true',
+    'hide_service_link' => 'false',
     'theme'             => 'light'
   ) as $key => $default) {
     $data = get_post_meta( $dao_id, $key, true);

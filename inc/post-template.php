@@ -19,6 +19,7 @@
       data-token-symbol="' . esc_attr($daoinfo['token_symbol']) . '"
       data-token-decimals="' . esc_attr($daoinfo['token_decimals']) . '"
       data-color-template="' . esc_attr($daoinfo['theme']) . '_template"
+      data-hide-service-link="' . esc_attr($daoinfo['hide_service_link']) . '"
     ></div>
   ';
   echo $html;

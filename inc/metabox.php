@@ -77,6 +77,13 @@ class DaoFactory_Meta_Box {
         </td>
       </tr>
       <tr>
+        <th><label><?php echo esc_html__( 'Hide service link', 'daofactory' ); ?></label></th>
+        <td>
+          <input type="checkbox" name="dao_hide_service_link" id="dao_hide_service_link" <?php echo ($daoinfo['hide_service_link'] === 'true') ? 'checked' : ''?>/>
+          <label for="dao_hide_service_link"><?php echo esc_html__( 'Hide service link on DAO page', 'daofactory' ); ?></label>
+        </td>
+      </tr>
+      <tr>
         <th><label><?php echo esc_html__( 'Theme', 'daofactory' );?></label></th>
         <td>
           <select name="dao_theme" id="dao_theme" value="<?php echo $daoinfo['theme']?>">
@@ -179,7 +186,8 @@ class DaoFactory_Meta_Box {
       'theme'             => 'dao_theme'
     );
     $post_meta_checkboxs = array(
-      'hide_footer_header'=> 'dao_hide_footer_header'
+      'hide_footer_header'=> 'dao_hide_footer_header',
+      'hide_service_link'=> 'dao_hide_service_link'
     );
     $post_meta_values = array();
     foreach( $post_meta_keys as $metaKey => $postKey) {
@@ -190,7 +198,7 @@ class DaoFactory_Meta_Box {
       $postValue = (isset( $_POST[ $postKey ] ) && ( $_POST[ $postKey ] == 'on' )) ? 'true' : 'false';
       update_post_meta( $post_id, $metaKey, $postValue );
     }
-    // Lottery at home page
+    // DAO at home page
     $current_dao_at_homepage = get_option( 'daofactory_id_at_homepage', 'false');
     $set_this_at_homepage = ( isset( $_POST['dao_at_homepage'] ) and ($_POST[ 'dao_at_homepage' ] == 'on' )) ? true : false;
 

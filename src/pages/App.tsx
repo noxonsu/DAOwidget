@@ -9,11 +9,13 @@ import CreateProposal from "./CreateProposal";
 import NotFound from "./NotFound";
 
 import Web3ReactManager from "src/components/Web3ReactManager";
-import Header from "../components/Header";
+import ServiceLink from "src/components/ServiceLink";
+import Header from "src/components/Header";
 
 import "./App.scss";
 
 function App() {
+  const showServiceLink = !window?.HIDE_SERVICE_LINK;
   const colorTemplate =
     window.COLOR_TEMPLATE === "dark_template" ? "dark" : "light";
   return (
@@ -33,6 +35,7 @@ function App() {
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
+            {showServiceLink && <ServiceLink />}
           </WithModal>
         </div>
       </Web3ReactManager>

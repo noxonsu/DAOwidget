@@ -97,6 +97,18 @@ body {
   border-radius: 0.5rem;
 }
 
+a.link {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit !important; /* no underline */
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.15s;
+
+  &:hover {
+    color: var(--link-color);
+  }
+}
+
 .secondaryButton {
   display: flex;
   justify-content: center;

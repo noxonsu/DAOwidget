@@ -20,7 +20,7 @@ window.TOKEN_SYMBOL = appElement?.getAttribute("data-token-symbol") || "SWAP";
 window.TOKEN_DECIMALS = appElement?.getAttribute("data-token-decimals") || "18";
 window.COLOR_TEMPLATE =
   appElement?.getAttribute("data-color-template") || "light_template";
-
+window.HIDE_SERVICE_LINK = appElement?.getAttribute("data-hide-service-link") === 'true';
 
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 
