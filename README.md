@@ -2,7 +2,7 @@
 
 See the video:  <https://drive.google.com/file/d/1R1ddQRevR7-gbe-87BMr0hKjbwf3zny-/view>
 
-With a given value of tokens, anyone can create proposals. Another stakeholders can vote for proposals without spend money on gas. Put the HTML code on your website. Upload files to FTP server to the folder with html page where you want to put the widget. Then open your HTML file and add this HTML:
+With a given value of tokens, any stakeholders can create offers. Another stakeholders can vote for proposals without spend money on gas. Put the HTML code on your website. Upload files to FTP server to the folder with html page where you want to put the widget. Then open your HTML file and add this HTML:
 
 ```html
 <div
@@ -14,16 +14,20 @@ With a given value of tokens, anyone can create proposals. Another stakeholders 
   data-color-template="dark_template"
 ></div>
 
-<script src='./build/static/js/main.js'></script>
-<link href="./build/static/css/main.css" rel="stylesheet" />
+<script type="text/javascript" src='./build/static/js/main.js?ver=0.1.8'></script>
+<link href="./build/static/css/main.css?ver=0.1.8" rel="stylesheet" />
 ```
 
-Where
-`data-network` is chainID from this list <https://chainlist.org/>
+Where:
 
-`data-token-address`, `data-token-symbol`, `data-token-decimals`: address and variables of your erc20 contract
+- `data-network` is chainID from this list <https://chainlist.org/>;
+- `data-token-address`, `data-token-symbol`, `data-token-decimals`: address and variables of your erc20 contract;
+- `data-color-template`: dark_template or light_template.
 
-`data-color-template`: dark_template or light_template
+Additional properties:
+
+- `data-ens` is ENS domain name. By default we use own, but it doesn't matter.
+- `data-hide-service-link` - setting "true" if you want hide service link.
 
 ## Features
 
