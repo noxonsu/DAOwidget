@@ -76,6 +76,7 @@ function ConnectWallet() {
 
   return (
     <button
+      id="connect-button"
       className="secondaryButton"
       onClick={() =>
         setModalOptions({
