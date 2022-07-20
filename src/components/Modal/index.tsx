@@ -16,7 +16,7 @@ function Modal() {
         tabIndex={-1}
         role="dialog"
       >
-        <div className="modal">
+        <div className="daoModal">
           <div className="modalHeader">
             {headerContent && (
               <div className="headerContent">{headerContent}</div>
@@ -24,7 +24,7 @@ function Modal() {
             <button
               type="button"
               className="modalCloseButton"
-              data-dismiss="modal"
+              data-dismiss="daoModal"
               aria-label="Close"
               onClick={(e) => onCancel(e)}
             >
