@@ -28,6 +28,8 @@ Additional properties:
 
 - `data-ens` is ENS domain name. By default we use own, but it doesn't matter.
 - `data-hide-service-link` - setting "true" if you want hide service link.
+- `data-required-amount-to-publish` - required tokens amount to publish proposal.
+- `data-required-amount-to-vote` - required tokens amount to vote for proposal.
 
 ## Features
 
