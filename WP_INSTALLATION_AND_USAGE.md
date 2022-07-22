@@ -18,8 +18,8 @@ You have 2 way to add plugin on your WP app:
 
     - `ens_space` is ENS domain name. By default we use own, but it doesn't matter.
     - `hide_service_link` - setting "true" if you want hide service link.
-    - `required_amount_to_publish` is required tokens amount to publish proposal.
-    - `required_amount_to_vote` - required tokens amount to vote for proposal.
+    - `required_amount_to_publish` is required tokens amount to publish proposal, by default 5.
+    - `required_amount_to_vote` - required tokens amount to vote for proposal, by default 1.
 
 2) Simple way - with **Dao Factory option** in WP admin sidebar:
 
