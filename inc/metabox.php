@@ -147,6 +147,22 @@ class DaoFactory_Meta_Box {
           </td>
         </tr>
       </tbody>
+      <tr>
+        <th><label><?php echo esc_html__( 'Required tokens amount to Publish', 'daofactory' ); ?></label></th>
+        <td>
+          <div class="daofactory-form-inline">
+            <input type="text" name="dao_required_amount_to_vote" id="dao_required_amount_to_publish" class="small-text" value="<?php echo $daoinfo['required_amount_to_publish']?>">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th><label><?php echo esc_html__( 'Required tokens amount to Vote', 'daofactory' ); ?></label></th>
+        <td>
+          <div class="daofactory-form-inline">
+            <input type="text" name="dao_required_amount_to_vote" id="dao_required_amount_to_vote" class="small-text" value="<?php echo $daoinfo['required_amount_to_vote']?>">
+          </div>
+        </td>
+      </tr>
     </table>
     <div id="daofactory_loaderOverlay" class="daofactory-overlay">
 			<div class="daofactory-loader"></div>
@@ -183,7 +199,9 @@ class DaoFactory_Meta_Box {
       'token_name'        => 'dao_token_name',
       'token_symbol'      => 'dao_token_symbol',
       'token_decimals'    => 'dao_token_decimals',
-      'theme'             => 'dao_theme'
+      'theme'             => 'dao_theme',
+      'required_amount_to_publish' => 'dao_required_amount_to_publish',
+      'required_amount_to_vote' => 'dao_required_amount_to_vote',
     );
     $post_meta_checkboxs = array(
       'hide_footer_header'=> 'dao_hide_footer_header',

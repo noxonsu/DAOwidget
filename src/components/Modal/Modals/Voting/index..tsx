@@ -24,14 +24,14 @@ function VotingModalButton(props: VotingModalButtonProps) {
   const { balance, isTokenBalanceLoading } = useTokenBalance();
 
   const [isEnoughBalanceToPublish, setIsEnoughBalanceToPublish] = useState(balance >= requiredAmountToVote);
-  const [isActive, setIsActive] = useState( checkedChoice !== -1 && proposal.state !== "pending" && isTokenBalanceLoading && isEnoughBalanceToPublish);
+  const [isActive, setIsActive] = useState( checkedChoice !== -1 && proposal.state !== "pending" && !isTokenBalanceLoading && isEnoughBalanceToPublish);
 
   const setModalOptions = useContext(ModalUpdaterContext);
 
   const closeModal = () => setModalOptions({ isOpen: false });
 
   useEffect(() => {
-    setIsActive(checkedChoice !== -1 && proposal.state !== "pending" && isTokenBalanceLoading && isEnoughBalanceToPublish);
+    setIsActive(checkedChoice !== -1 && proposal.state !== "pending" && !isTokenBalanceLoading && isEnoughBalanceToPublish);
   }, [checkedChoice, proposal.state, isTokenBalanceLoading, isEnoughBalanceToPublish]);
 
   useEffect(() => {

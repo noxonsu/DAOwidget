@@ -39,6 +39,8 @@ function daofactory_app( $atts ) {
     'token_symbol' => 'SWAP',
     'token_decimals' => '18',
     'hide_service_link' => 'false',
+    'required-amount-to-publish' => '5',
+    'required-amount-to-vote' => '1',
 	), $atts );
 
   wp_enqueue_script("daofactory-app", DAOFACTORY_VER, true);
@@ -54,6 +56,8 @@ function daofactory_app( $atts ) {
       data-token-decimals="' . esc_attr($a['token_decimals']) . '"
       data-color-template="' . esc_attr($a['template']) . '"
       data-hide-service-link="' . esc_attr($a['hide_service_link']) . '"
+      data-required-amount-to-publish="' . esc_attr($a['required-amount-to-publish']) . '"
+      data-required-amount-to-vote="' . esc_attr($a['required-amount-to-vote']) . '"
     ></div>
   ';
 
