@@ -14,19 +14,25 @@ type PublishProposalButtonProps = {
 
 function PublishProposalButton(props: PublishProposalButtonProps) {
   const { isTitleFilled, isActionFilled, isLoading, onClick } = props;
+  const requiredAmountToPublish = parseFloat(window.REQUIRED_AMOUNT_TO_PUBLISH);
 
   const { balance, isTokenBalanceLoading } = useTokenBalance();
 
-  const [isActive, setIsActive] = useState(!isLoading && !isTokenBalanceLoading && !isActionFilled && !isTitleFilled && balance !== "0");
+  const [isEnoughBalanceToPublish, setIsEnoughBalanceToPublish] = useState(balance >= requiredAmountToPublish);
+
+  const [isActive, setIsActive] = useState(!isLoading && !isTokenBalanceLoading && !isActionFilled && !isTitleFilled && isEnoughBalanceToPublish);
 
   const onVoteClick = () => {
-    console.log("click on publish");
     onClick();
   };
 
   useEffect(() => {
-    setIsActive(!isLoading && !isTokenBalanceLoading && isTitleFilled && isActionFilled && balance !== "0");
-  }, [balance, isActionFilled, isTitleFilled, isLoading, isTokenBalanceLoading]);
+    setIsActive(!isLoading && !isTokenBalanceLoading && isTitleFilled && isActionFilled && isEnoughBalanceToPublish);
+  }, [isActionFilled, isTitleFilled, isLoading, isTokenBalanceLoading, isEnoughBalanceToPublish]);
+
+  useEffect(() => {
+    setIsEnoughBalanceToPublish(balance >= requiredAmountToPublish)
+  }, [balance]);
 
   return (
     <button
@@ -47,8 +53,8 @@ function PublishProposalButton(props: PublishProposalButtonProps) {
           ? "Please, fill title"
           : !isActionFilled
           ? "Please, set all actions"
-          : balance === "0"
-          ? `You haven't enough  ${window.TOKEN_SYMBOL} tokens`
+          : !isEnoughBalanceToPublish
+          ? `Minimum required amount to publish is ${requiredAmountToPublish} ${window.TOKEN_SYMBOL}`
           : "Publish"
         }
       </span>

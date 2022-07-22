@@ -1,5 +1,6 @@
 import { useWeb3React } from "@web3-react/core";
 import { useState, useEffect } from "react";
+import BigNumber from "bignumber.js";
 import { getERC20Contract } from "src/helpers/utils/web3";
 import { Library } from "src/utils/getLibrary";
 
@@ -7,16 +8,16 @@ import { Library } from "src/utils/getLibrary";
 const getTokenBalance = async (tokenAddress: string, decimals: string, account: string, provider: Library) => {
   const contract = getERC20Contract(tokenAddress, account, provider.web3)
 
+  const BIG_TEN = new BigNumber(10)
+
   const result = await contract?.methods.balanceOf(account).call();
 
-  const { toBN } = provider.web3.utils;
-
-  return toBN(result).toString();
+  return new BigNumber(result).dividedBy(BIG_TEN.pow(decimals)).toNumber();
 }
 
 export const useTokenBalance = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [balance, setBalance] = useState("0");
+  const [balance, setBalance] = useState(0);
 
   const provider = useWeb3React<Library>();
   const { account = "", library } = provider;
@@ -33,7 +34,7 @@ export const useTokenBalance = () => {
         setBalance(balance);
       } catch (err) {
         console.error(`Error: Can't fetch token balance. Description: ${err}`);
-        setBalance("0");
+        setBalance(0);
       } finally {
         setIsLoading(false);
       }
