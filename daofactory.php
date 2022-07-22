@@ -17,6 +17,7 @@ define( 'DAOFACTORY_VER', '0.1.11');
 
 require 'inc/functions.php';
 require 'inc/post-type.php';
+require 'inc/shortcode.php';
 require 'inc/metabox.php';
 
 
