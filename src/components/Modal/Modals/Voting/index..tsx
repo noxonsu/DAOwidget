@@ -10,6 +10,7 @@ import { usePower } from "src/hooks/usePower";
 import { ModalUpdaterContext } from "src/components/WithModal";
 import ExternalLink from "src/components/ExternalLink";
 import Spinner from "src/components/Spinner";
+import { useTokenBalance } from "src/hooks/useTokenBalance";
 
 type VotingModalButtonProps = {
   proposal: ProposalType;
@@ -18,16 +19,24 @@ type VotingModalButtonProps = {
 
 function VotingModalButton(props: VotingModalButtonProps) {
   const { proposal, checkedChoice } = props;
+  const requiredAmountToVote = parseFloat(window.REQUIRED_AMOUNT_TO_VOTE);
 
-  const [isActive, setIsActive] = useState(checkedChoice !== -1 && proposal.state !== "pending");
+  const { balance, isTokenBalanceLoading } = useTokenBalance();
+
+  const [isEnoughBalanceToPublish, setIsEnoughBalanceToPublish] = useState(balance >= requiredAmountToVote);
+  const [isActive, setIsActive] = useState( checkedChoice !== -1 && proposal.state !== "pending" && isTokenBalanceLoading && isEnoughBalanceToPublish);
 
   const setModalOptions = useContext(ModalUpdaterContext);
 
   const closeModal = () => setModalOptions({ isOpen: false });
 
   useEffect(() => {
-    setIsActive(checkedChoice !== -1 && proposal.state !== "pending");
-  }, [checkedChoice, proposal.state]);
+    setIsActive(checkedChoice !== -1 && proposal.state !== "pending" && isTokenBalanceLoading && isEnoughBalanceToPublish);
+  }, [checkedChoice, proposal.state, isTokenBalanceLoading, isEnoughBalanceToPublish]);
+
+  useEffect(() => {
+    setIsEnoughBalanceToPublish(balance >= requiredAmountToVote)
+  }, [balance]);
 
   const modalProps = {
     headerContent: "Confirm vote",
@@ -42,7 +51,6 @@ function VotingModalButton(props: VotingModalButtonProps) {
   };
 
   const onVoteClick = () => {
-    console.log("click on vote");
     setModalOptions({ isOpen: true, modalProps });
   };
 
@@ -52,7 +60,18 @@ function VotingModalButton(props: VotingModalButtonProps) {
       disabled={!isActive}
       onClick={onVoteClick}
     >
-      <span>Vote</span>
+      <span>
+        {
+          proposal.state === "pending"
+          ? "Wait for voting start"
+          : checkedChoice === -1
+          ? "Make your choice"
+          : isTokenBalanceLoading
+          ? "Checking balance..."
+          : !isEnoughBalanceToPublish
+          ? `Minimum required amount to Vote is ${requiredAmountToVote} ${window.TOKEN_SYMBOL}`
+          : "Vote"}
+      </span>
     </button>
   );
 }

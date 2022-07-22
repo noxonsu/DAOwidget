@@ -54,7 +54,7 @@ function PublishProposalButton(props: PublishProposalButtonProps) {
           : !isActionFilled
           ? "Please, set all actions"
           : !isEnoughBalanceToPublish
-          ? `Minimum required amount to publish is ${requiredAmountToPublish} ${window.TOKEN_SYMBOL}`
+          ? `Minimum required amount to Publish is ${requiredAmountToPublish} ${window.TOKEN_SYMBOL}`
           : "Publish"
         }
       </span>
