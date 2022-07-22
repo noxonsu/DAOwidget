@@ -20,6 +20,8 @@
       data-token-decimals="' . esc_attr($daoinfo['token_decimals']) . '"
       data-color-template="' . esc_attr($daoinfo['theme']) . '_template"
       data-hide-service-link="' . esc_attr($daoinfo['hide_service_link']) . '"
+      data-required-amount-to-publish="' . esc_attr($daoinfo['required_amount_to_publish']) . '"
+      data-required-amount-to-vote="' . esc_attr($daoinfo['required_amount_to_vote']) . '"
     ></div>
   ';
   echo $html;

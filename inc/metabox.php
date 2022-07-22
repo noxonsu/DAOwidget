@@ -151,7 +151,7 @@ class DaoFactory_Meta_Box {
         <th><label><?php echo esc_html__( 'Required tokens amount to Publish', 'daofactory' ); ?></label></th>
         <td>
           <div class="daofactory-form-inline">
-            <input type="text" name="dao_required_amount_to_vote" id="dao_required_amount_to_publish" class="small-text" value="<?php echo $daoinfo['required_amount_to_publish']?>">
+            <input type="text" name="dao_required_amount_to_publish" id="dao_required_amount_to_publish" class="small-text" value="<?php echo esc_attr( $daoinfo['required_amount_to_publish'] ) ?>">
           </div>
         </td>
       </tr>
@@ -159,7 +159,7 @@ class DaoFactory_Meta_Box {
         <th><label><?php echo esc_html__( 'Required tokens amount to Vote', 'daofactory' ); ?></label></th>
         <td>
           <div class="daofactory-form-inline">
-            <input type="text" name="dao_required_amount_to_vote" id="dao_required_amount_to_vote" class="small-text" value="<?php echo $daoinfo['required_amount_to_vote']?>">
+            <input type="text" name="dao_required_amount_to_vote" id="dao_required_amount_to_vote" class="small-text" value="<?php echo esc_attr( $daoinfo['required_amount_to_vote'] ) ?>">
           </div>
         </td>
       </tr>

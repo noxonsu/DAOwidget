@@ -10,8 +10,8 @@ function daofactory_get_data($dao_id) {
     'hide_footer_header'=> 'true',
     'hide_service_link' => 'false',
     'theme'             => 'light',
-    'required-amount-to-publish' => '5',
-    'required-amount-to-vote' => '1',
+    'required_amount_to_publish' => '5',
+    'required_amount_to_vote' => '1',
   ) as $key => $default) {
     $data = get_post_meta( $dao_id, $key, true);
     if ( empty( $data ) ) $data = $default;
