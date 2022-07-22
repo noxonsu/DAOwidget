@@ -21,6 +21,8 @@ window.TOKEN_DECIMALS = appElement?.getAttribute("data-token-decimals") || "18";
 window.COLOR_TEMPLATE =
   appElement?.getAttribute("data-color-template") || "light_template";
 window.HIDE_SERVICE_LINK = appElement?.getAttribute("data-hide-service-link") === 'true';
+window.REQUIRED_AMOUNT_TO_PUBLISH = appElement?.getAttribute("data-required-amount-to-publish") || 5;
+window.REQUIRED_AMOUNT_TO_VOTE = appElement?.getAttribute("data-required-amount-to-vote") || 1;
 
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 

@@ -88,7 +88,7 @@ export const NETWORK_RPC_URLS: { [key in SupportedChainId]: string } = {
   [SupportedChainId.ARBITRUM_ONE]: `https://arbitrum-mainnet.infura.io/v3/${INFURA_KEY}`,
   [SupportedChainId.ARBITRUM_RINKEBY]: `https://arbitrum-rinkeby.infura.io/v3/${INFURA_KEY}`,
 
-  [SupportedChainId.XDAI]: `https://rpc.xdaichain.com/`,
+  [SupportedChainId.XDAI]: `https://rpc.gnosischain.com`,
   [SupportedChainId.XDAI_POA_SOKOL]: `https://sokol.poa.network/`,
 };
 

@@ -10,14 +10,16 @@ You have 2 way to add plugin on your WP app:
 
     Where:
 
-    - `token-address`, `token-symbol`, `token-decimals`: address and variables of your erc20 contract, you can find this data in explorer (Ethereum - etherscan.io, BSC - bscscan.com);
+    - `token_address`, `token_symbol`, `token_decimals`: address and variables of your erc20 contract, you can find this data in explorer (Ethereum - etherscan.io, BSC - bscscan.com);
     - `network_id`  is chainID from this list www.chainlist.org (Ethereum - "1", BSC - "56");
     - `template` : you can set "dark_template" or use "light_template" by default.
 
     Additional properties:
 
     - `ens_space` is ENS domain name. By default we use own, but it doesn't matter.
-    - `hide-service-link` - setting "true" if you want hide service link.
+    - `hide_service_link` - setting "true" if you want hide service link.
+    - `required_amount_to_publish` is required tokens amount to publish proposal, by default 5.
+    - `required_amount_to_vote` - required tokens amount to vote for proposal, by default 1.
 
 2) Simple way - with **Dao Factory option** in WP admin sidebar:
 

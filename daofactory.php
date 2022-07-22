@@ -6,17 +6,18 @@ Author: Vitaliy Shulik
 Requires PHP: 7.1
 Text Domain: daofactory
 Domain Path: /lang
-Version: 0.1.10
+Version: 0.1.11
  */
 
 /* Define Plugin Constants */
 defined( 'ABSPATH' ) || exit;
 define( 'DAOFACTORY_URL', plugin_dir_url( __FILE__ ) );
 define( 'DAOFACTORY_BASE_DIR', __DIR__ );
-define( 'DAOFACTORY_VER', '0.1.10');
+define( 'DAOFACTORY_VER', '0.1.11');
 
 require 'inc/functions.php';
 require 'inc/post-type.php';
+require 'inc/shortcode.php';
 require 'inc/metabox.php';
 
 
@@ -39,6 +40,8 @@ function daofactory_app( $atts ) {
     'token_symbol' => 'SWAP',
     'token_decimals' => '18',
     'hide_service_link' => 'false',
+    'required_amount_to_publish' => '5',
+    'required_amount_to_vote' => '1',
 	), $atts );
 
   wp_enqueue_script("daofactory-app", DAOFACTORY_VER, true);
@@ -54,6 +57,8 @@ function daofactory_app( $atts ) {
       data-token-decimals="' . esc_attr($a['token_decimals']) . '"
       data-color-template="' . esc_attr($a['template']) . '"
       data-hide-service-link="' . esc_attr($a['hide_service_link']) . '"
+      data-required-amount-to-publish="' . esc_attr($a['required_amount_to_publish']) . '"
+      data-required-amount-to-vote="' . esc_attr($a['required_amount_to_vote']) . '"
     ></div>
   ';
 

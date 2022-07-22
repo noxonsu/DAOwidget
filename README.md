@@ -14,8 +14,8 @@ With a given value of tokens, any stakeholders can create offers. Another stakeh
   data-color-template="dark_template"
 ></div>
 
-<script type="text/javascript" src='./build/static/js/main.js?ver=0.1.8'></script>
-<link href="./build/static/css/main.css?ver=0.1.8" rel="stylesheet" />
+<script type="text/javascript" src='./build/static/js/main.js?ver=0.1.11'></script>
+<link href="./build/static/css/main.css?ver=0.1.11" rel="stylesheet" />
 ```
 
 Where:
@@ -28,6 +28,8 @@ Additional properties:
 
 - `data-ens` is ENS domain name. By default we use own, but it doesn't matter.
 - `data-hide-service-link` - setting "true" if you want hide service link.
+- `data-required-amount-to-publish` - required tokens amount to publish proposal, by default 5.
+- `data-required-amount-to-vote` - required tokens amount to vote for proposal, by default 1.
 
 ## Features
 

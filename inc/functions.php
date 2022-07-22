@@ -9,7 +9,9 @@ function daofactory_get_data($dao_id) {
     'token_decimals'    => '',
     'hide_footer_header'=> 'true',
     'hide_service_link' => 'false',
-    'theme'             => 'light'
+    'theme'             => 'light',
+    'required_amount_to_publish' => '5',
+    'required_amount_to_vote' => '1',
   ) as $key => $default) {
     $data = get_post_meta( $dao_id, $key, true);
     if ( empty( $data ) ) $data = $default;
@@ -25,13 +27,13 @@ function daofactory_blockchains() {
     'bsc_testnet' => array(
       'chainId'   => 97,
       'rpc'       => 'https://data-seed-prebsc-1-s1.binance.org:8545/',
-      'title'     => 'Binance Block Chain (ERC20) - Testnet',
+      'title'     => 'Binance Block Chain - Testnet',
       'etherscan' => 'https://testnet.bscscan.com'
     ),
     'bsc_mainnet' => array(
       'chainId'   => 56,
       'rpc'       => 'https://bsc-dataseed.binance.org/',
-      'title'     => 'Binance Smart Chain (ERC20)',
+      'title'     => 'Binance Smart Chain',
       'etherscan' => 'https://bscscan.com'
     ),
     'matic_testnet' => array(
@@ -78,8 +80,8 @@ function daofactory_blockchains() {
     ),
     'xdai_mainnet' => array(
       'chainId'   => 100,
-      'rpc'       => 'https://rpc.xdaichain.com/',
-      'title'     => 'DAI Mainnet (Gnosis)',
+      'rpc'       => 'https://rpc.gnosischain.com',
+      'title'     => 'Gnosis (xDai)',
       'etherscan' => 'https://blockscout.com/xdai/mainnet'
     )
   );
