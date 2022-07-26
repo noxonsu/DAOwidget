@@ -1,12 +1,15 @@
 // <!-- By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL -->
 export default function Spinner({ color, ...rest }: any) {
+  const strokeColor =
+    window.COLOR_TEMPLATE === "dark_template" ? "white" : "black";
+
   return (
     <svg
       width="38"
       height="38"
       viewBox="0 0 38 38"
       xmlns="http://www.w3.org/2000/svg"
-      stroke={color}
+      stroke={color || strokeColor}
       {...rest}
     >
       <g fill="none" fillRule="evenodd">

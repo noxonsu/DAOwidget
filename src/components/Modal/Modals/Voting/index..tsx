@@ -89,12 +89,14 @@ const VoteModalContent = (props: VotingModalContentProps) => {
   const { network, choices, snapshot, strategies } = proposal;
 
   const { send, clientLoading } = useClient();
-  const { power } = usePower(proposal);
+  const { power, isPowerLoading } = usePower(proposal);
 
   const tokenSymbol = strategies[0].params.symbol;
   const networkId = +network as SupportedChainId;
 
-  const isFooterButtonActive = !!power && !clientLoading;
+  const isLoading = clientLoading || isPowerLoading;
+
+  const isFooterButtonActive = !!power && !isLoading;
 
   const handleSubmit = async () => {
     const vote = {
@@ -114,6 +116,12 @@ const VoteModalContent = (props: VotingModalContentProps) => {
       console.error(`Can't set vote. Error: ${error.message || error}`);
     }
   };
+
+  const powerWithSymbol = (
+    <span className="textRight">
+      {power} {tokenSymbol}
+    </span>
+  );
 
   return (
     <>
@@ -138,9 +146,21 @@ const VoteModalContent = (props: VotingModalContentProps) => {
           </div>
           <div className="flex">
             <span className="flexAuto textColor">Your voting power</span>
-            <span className="textRight">
-              {power} {tokenSymbol}
-            </span>
+            {
+              isPowerLoading
+              ? <Spinner
+                  style={{ height: "1rem", marginRight: "0.5rem" }}
+                />
+              : !!power
+              ? powerWithSymbol
+              : <ExternalLink
+                className="mr-2"
+                link="https://github.com/snapshot-labs/snapshot/discussions/767#discussioncomment-1400614"
+                withIconInfo
+              >
+                { powerWithSymbol }
+              </ExternalLink>
+            }
           </div>
         </div>
       </div>
@@ -151,14 +171,16 @@ const VoteModalContent = (props: VotingModalContentProps) => {
           onClick={handleSubmit}
           disabled={!isFooterButtonActive}
         >
-          {!isFooterButtonActive ? (
-            <Spinner
-              color={"white"}
-              style={{ height: "1rem", marginRight: "0.5rem" }}
-            />
-          ) : (
-            "Vote"
-          )}
+          {
+            isLoading
+            ? <Spinner
+                color={"white"}
+                style={{ height: "1rem", marginRight: "0.5rem" }}
+              />
+            : !power
+            ? "You haven't voting power"
+            : "Vote"
+          }
         </button>
       </div>
     </>
