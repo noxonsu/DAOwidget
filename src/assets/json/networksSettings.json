@@ -7,12 +7,11 @@
     "multicall": "0xeefba1e63905ef1d7acba5a8513c70307c1ce441",
     "ensResolver": "0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41",
     "rpc": [
-      "https://rpc.ankr.com/eth",
+      "https://eth.llamarpc.com",
       "https://cloudflare-eth.com",
       "https://eth-mainnet.public.blastapi.io",
       "https://ethereumnodelight.app.runonflux.io",
       "https://rpc.flashbots.net"
-
     ],
     "ws": [
       "wss://eth-mainnet.ws.alchemyapi.io/v2/4bdDVB5QAaorY2UE-GBUbM2yQB3QJqzv",
