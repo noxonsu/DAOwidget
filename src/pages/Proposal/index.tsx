@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
-
+import { useState, useEffect } from "react";
 import { ProposalType, useProposal } from "src/hooks/useProposals";
 import { useVotes } from "src/hooks/useVotes";
+import { useActiveWeb3React } from "src/hooks/useWeb3Connect";
 
 import "./index.scss";
 
@@ -17,9 +18,15 @@ type ParamsProps = {
 
 function ProposalDetail() {
   const { proposalId = "" } = useParams() as ParamsProps;
+  
+  const { account } = useActiveWeb3React();
 
-  const { proposalData, isLoading } = useProposal(proposalId);
+  const { proposalData, isLoading, setNeedRefresh } = useProposal(proposalId, account);
 
+  useEffect(() => {
+    console.log('>>> DO REFRESH ON CHANGE ACCOUNT', account)
+    setNeedRefresh(account)
+  }, [ account ])
   const { id, space, snapshot, network, strategies, state, choices } =
     proposalData;
 

@@ -66,6 +66,7 @@ export class Client {
   }
 
   async send(envelop: Envelop) {
+    console.log('>>> envelop', envelop)
     const url = `${this.address}/api/msg`;
     const init = {
       method: "POST",
@@ -94,6 +95,7 @@ export class Client {
     address: string,
     message: Proposal
   ) {
+    console.log('>>> client proposal', message)
     return await this.sign(web3, address, message, proposalTypes);
   }
 

@@ -13,8 +13,14 @@ export const VOTES_QUERY = gql`
 `;
 
 export const PROPOSAL_QUERY = gql`
-  query Proposal($id: String!) {
-    proposal(id: $id) {
+  query Proposal(
+    $id: String!
+    $userWallet: String
+  ) {
+    proposal(
+      id: $id
+      userWallet: $userWallet
+    ) {
       id
       ipfs
       title
@@ -41,6 +47,8 @@ export const PROPOSAL_QUERY = gql`
         id
         name
       }
+      whitelisted
+      whitelist_allowed
     }
   }
 `;

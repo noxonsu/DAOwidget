@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { getBlockNumber, getProvider } from "src/helpers/utils/web3";
@@ -6,12 +6,26 @@ import { useClient } from "src/hooks/useClient";
 import { useSpaceList } from "src/hooks/useSpaces";
 import PublishProposalButton from "./PublishProposalButton";
 
+import { ReactComponent as ICON_ArrowUp } from 'src/assets/svg/icon-arrow-up.svg'
+import { ReactComponent as ICON_ArrowDown } from 'src/assets/svg/icon-arrow-down.svg'
+import { ReactComponent as ICON_Delete } from 'src/assets/svg/icon-delete.svg'
+import { ReactComponent as ICON_AddItem } from 'src/assets/svg/icon-add-item.svg'
+import { ReactComponent as ICON_SwitchOn } from 'src/assets/svg/icon-switch-on.svg'
+import { ReactComponent as ICON_SwitchOff } from 'src/assets/svg/icon-switch-off.svg'
+
+
 import "./index.scss";
 
 type CreateProposalActionsType = {
   title: string;
   body: string;
 };
+
+const prepareWhiteList = (whitelist: string): string[] => {
+  const items = whitelist.toLowerCase().split(/\r?\n| |\r|\n/g)
+  const itemsTrimed = items.map((item) => { return item.trim() })
+  return itemsTrimed.filter((item) => { return (item && item.length == 42) })
+}
 
 function CreateProposalActions(props: CreateProposalActionsType) {
   const navigate = useNavigate();
@@ -41,13 +55,19 @@ function CreateProposalActions(props: CreateProposalActionsType) {
 
   const { title } = props;
 
+  const [ choices, setChoices ] = useState(["For", "Against", "Abstain"])
+
+  const [ whitelist, setWhitelist ] = useState("")
+  const [ whitelistEnabled, setWhitelistEnabled ] = useState(false)
+
+  
   const handleSubmit = async () => {
     const space = spacesData[0];
 
     const network = window.NETWORK_ID || space.network;
-
     setIsWaitResponse(true);
 
+    const preparedWhitelist = (whitelistEnabled) ? prepareWhiteList(whitelist) : []
     try {
       const snapshot = await getBlockNumber(getProvider(network));
 
@@ -74,7 +94,7 @@ function CreateProposalActions(props: CreateProposalActionsType) {
         body,
         snapshot,
         network,
-        choices: ["For", "Against", "Abstain"],
+        choices,
         strategies: [
           {
             name: "erc20-balance-of",
@@ -83,6 +103,7 @@ function CreateProposalActions(props: CreateProposalActionsType) {
         ],
         type: "single-choice",
         plugins: {},
+        whitelist: preparedWhitelist,
         metadata: {
           plugins: [],
         },
@@ -115,11 +136,30 @@ function CreateProposalActions(props: CreateProposalActionsType) {
         <div className="app-widget-header">Actions</div>
         <div className="p-1">
           <div className="mb-1">
+            <h3>Duration</h3>
             <DropDown
               handleChange={handleDurationChange}
               selectedDuration={selectedDuration}
               options={durationOptions}
             />
+          </div>
+          <div className="mb-1">
+            <h3>Choises (minimum two options)</h3>
+            <ChoicesList 
+              choices={choices}
+              onChange={setChoices}
+            />
+          </div>
+          <div className="mb-1">
+            <Switcher
+              value={whitelistEnabled}
+              onChange={setWhitelistEnabled}
+            />
+            {whitelistEnabled && (
+              <div>
+                <textarea className="whitelist-textbox" onChange={(e) => { setWhitelist(e.target.value) }}>{whitelist}</textarea>
+              </div>
+            )}
           </div>
           <PublishProposalButton
             isTitleFilled={!!title}
@@ -133,6 +173,74 @@ function CreateProposalActions(props: CreateProposalActionsType) {
   );
 }
 
+function ChoicesList(props: any) {
+  const {
+    choices,
+    onChange
+  } = props
+  
+  const onAddNew = () => {
+    onChange([...choices,""])
+  }
+  const onDelOne = (indexForDel:number) => {
+    const newChoises = choices.filter((val: string, index: number) => {
+      return (indexForDel != index)
+    })
+    onChange([...newChoises])
+  }
+  const onChangeOne = (index:number, newValue:string) => {
+    choices[index] = newValue
+    onChange([...choices])
+  }
+  const onMoveUp = (index:number) => {
+    const t: string = choices[index-1]
+    choices[index-1] = choices[index]
+    choices[index] = t
+    onChange([...choices])
+  }
+  const onMoveDown = (index:number) => {
+    const t: string = choices[index+1]
+    choices[index+1] = choices[index]
+    choices[index] = t
+    onChange([...choices])
+  }
+  return (
+    <div className="choices-list">
+      {/* @ts-ignore */}
+      {choices.map((choise: string, index: number) => {
+        return (
+          <div className="choice-item">
+            <input type="text" value={choise} onChange={(e) => { onChangeOne(index, e.target.value) }}/>
+            {choices.length > 2 && (
+              <button onClick={() => { onDelOne(index) }}>
+                <ICON_Delete fill="currentColor" />
+              </button>
+            )}
+            {index > 0 && (
+              <button onClick={() => { onMoveUp(index) }}>
+                <ICON_ArrowUp fill="currentColor" />
+              </button>
+            )}
+            {index < (choices.length-1) && (
+              <button onClick={() => { onMoveDown(index) }}>
+                <ICON_ArrowDown fill="currentColor" />
+              </button>
+            )}
+          </div>
+        )
+      })}
+      <div className="add-holder">
+        <button onClick={onAddNew}>
+          <ICON_AddItem fill="currentColor" />
+          <span>
+            Add new choice
+          </span>
+        </button>
+      </div>
+    </div>
+  )
+}
+
 type DropDownProps = {
   handleChange: (e: ChangeEvent<HTMLSelectElement>) => void;
   selectedDuration: number;
@@ -142,6 +250,22 @@ type DropDownProps = {
   }[];
 };
 
+function Switcher(props: any) {
+  const {
+    value,
+    onChange
+  } = props
+  return (
+    <div className={`switcher ${value ? '-active' : ''}`} onClick={() => { onChange(!value) }}>
+      <h3>Whitelist enabled</h3>
+      {value ? (
+        <ICON_SwitchOn fill="currentColor" />
+      ) : (
+        <ICON_SwitchOff fill="currentColor" />
+      )}
+    </div>
+  )
+}
 function DropDown(props: DropDownProps) {
   const { handleChange, options } = props;
 

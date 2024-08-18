@@ -54,15 +54,18 @@ function VotingModalButton(props: VotingModalButtonProps) {
     setModalOptions({ isOpen: true, modalProps });
   };
 
+  const needWhitelist = (proposal && proposal.whitelisted && !proposal.whitelist_allowed)
   return (
     <button
       className={`primaryButton ${isActive ? "active" : ""}`}
-      disabled={!isActive}
+      disabled={!isActive || needWhitelist}
       onClick={onVoteClick}
     >
       <span>
         {
-          proposal.state === "pending"
+          needWhitelist
+          ? "You are not on the list of those allowed to vote."
+          : proposal.state === "pending"
           ? "Wait for voting start"
           : checkedChoice === -1
           ? "Make your choice"

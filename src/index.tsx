@@ -12,11 +12,11 @@ import { NetworkContextName } from "src/helpers/constants";
 const appElement = document.getElementById("daofactory_app");
 
 window.ENS_DOMAIN = appElement?.getAttribute("data-ens") || "onout.eth";
-window.NETWORK_ID = appElement?.getAttribute("data-network") || "56";
+window.NETWORK_ID = appElement?.getAttribute("data-network") || "11155111";
 window.TOKEN_ADDRESS =
   appElement?.getAttribute("data-token-address") ||
-  "0x92648e4537cdfa1ee743a244465a31aa034b1ce8";
-window.TOKEN_SYMBOL = appElement?.getAttribute("data-token-symbol") || "SWAP";
+  "0x2f87D23cd8d788bC9a32E540cdd8253F9b1F54CF";
+window.TOKEN_SYMBOL = appElement?.getAttribute("data-token-symbol") || "WEENUS";
 window.TOKEN_DECIMALS = appElement?.getAttribute("data-token-decimals") || "18";
 window.COLOR_TEMPLATE =
   appElement?.getAttribute("data-color-template") || "light_template";

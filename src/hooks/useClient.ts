@@ -40,6 +40,7 @@ export function useClient() {
         end: payload.end,
         snapshot: payload.snapshot,
         network: payload.network,
+        whitelist: JSON.stringify(payload?.whitelist),
         // strategies: JSON.stringify([space.strategies[0]]),
         strategies: JSON.stringify(payload.strategies),
         plugins: JSON.stringify(plugins),

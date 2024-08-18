@@ -54,6 +54,12 @@ function daofactory_blockchains() {
       'title'     => 'Ethereum - Testnet (Rinkeby)',
       'etherscan' => 'https://rinkeby.etherscan.io'
     ),
+    'eth_goerli'   => array(
+      'chainId'   => 5,
+      'rpc'       => 'https://goerli.infura.io/v3/5ffc47f65c4042ce847ef66a3fa70d4c',
+      'title'     => 'Ethereum - Testnet (goerli)',
+      'etherscan' => 'https://goerli.etherscan.io'
+    ),
     'eth_mainnet'   => array(
       'chainId'   => 1,
       'rpc'       => 'https://mainnet.infura.io/v3/5ffc47f65c4042ce847ef66a3fa70d4c',

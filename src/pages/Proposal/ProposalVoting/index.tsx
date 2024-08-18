@@ -14,6 +14,7 @@ function ProposalVoting(props: ProposalVotesType) {
 
   const [checkedChoice, setCheckedChoice] = useState(-1);
 
+  console.log('>>> vote block', proposal)
   return (
     <>
       <div className="app-widget">

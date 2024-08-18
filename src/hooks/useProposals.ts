@@ -31,6 +31,8 @@ export type ProposalType = {
     id: string;
     name: string;
   };
+  whitelisted?: boolean
+  whitelist_allowed?: boolean
 };
 
 export type ShortProposalType = {
@@ -80,35 +82,43 @@ type FetchOffChainProposalListParams = {
   tokenAddress: string;
 };
 
-export const useProposal = (id: string) => {
+export const useProposal = (id: string, userWallet?: string | null | undefined) => {
   const [isLoading, setIsLoading] = useState(false);
   const [proposalData, setProposalData] = useState<ProposalType>({} as any);
-
+  const [ needRefresh, setNeedRefresh ] = useState<any>(userWallet)
+  const [ account, setAccount ] = useState(userWallet)
   useEffect(() => {
-    const _fetchData = async () => {
-      try {
-        setIsLoading(true);
-
-        const proposal = (await fetchOffChainProposal(id)) as ProposalType;
-        setProposalData(proposal);
-      } catch (err) {
-        console.error(`Error: Can't fetch proposal. Description: ${err}`);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    _fetchData();
-  }, []);
+    if (needRefresh) {
+      console.log('>>> needRefresh', needRefresh, account)
+      setNeedRefresh(false)
+      const _fetchData = async () => {
+        try {
+          setIsLoading(true);
+  console.log('>>> fetch proposal', id, userWallet)
+          const proposal = (await fetchOffChainProposal(id, userWallet)) as ProposalType;
+          setProposalData(proposal);
+        } catch (err) {
+          console.error(`Error: Can't fetch proposal. Description: ${err}`);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      _fetchData();
+    }
+  }, [ needRefresh ]);
 
   return {
     isLoading,
     proposalData,
+    setNeedRefresh,
   };
 };
 
-export const fetchOffChainProposal = async (id: string) => {
+export const fetchOffChainProposal = async (id: string, userWallet?: string | null | undefined) => {
+console.log('>>> fetchOffChainProposal', id, userWallet)
   const offChainData = await request(OFFCHAIN_HUB_API, PROPOSAL_QUERY, {
     id,
+    userWallet,
   });
   return offChainData.proposal;
 };

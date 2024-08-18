@@ -19,3 +19,97 @@
     color: black;
   }
 }
+
+.choice-item {
+  display: flex;
+  justify-content: flex-start;
+  background-color: transparent;
+  border: solid 1px var(--border-color);
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--link-color);
+  font-weight: 600;
+  width: 100%;
+  
+  INPUT {
+    display: block;
+    width: 100%;
+    height: 2em;
+    line-height: 2em;
+    padding: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: 0;
+    background: none;
+  }
+  BUTTON {
+    display: block;
+    width: 2em;
+    height: 2em;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    margin-left: 0.2em;
+    background: none;
+    cursor: pointer;
+    &:hover SVG {
+      color: var(--primary-color);
+    }
+    SVG {
+      display: block;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.switcher {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  SVG {
+    width: 32px;
+    height: 32px;
+    display: block;
+    margin-left: 0.5em;
+  }
+  H3 {
+    display: block;
+    margin: 0;
+  }
+}
+.whitelist-textbox {
+  display: block;
+  width: 100%;
+  min-height: 10em;
+  border-radius: 0.5rem;
+}
+.add-holder {
+  display: flex;
+  justify-content: flex-end;
+  >BUTTON {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.25em;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    SVG {
+      width: 24px;
+      height: 24px;
+    }
+    SPAN {
+      display: block;
+      font-weight: bold;
+      padding-left: 1em;
+      padding-right: 0.25em;
+    }
+    &:hover {
+      background: var(--primary-color);
+      color: #FFF;
+    }
+  }
+}

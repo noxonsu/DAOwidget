@@ -63,6 +63,19 @@
     ],
     "explorer": "https://goerli.etherscan.io"
   },
+  "11155111": {
+    "key": "11155111",
+    "name": "Ethereum Testnet Sepolia",
+    "shortName": "Sepolia",
+    "chainId": 11155111,
+    "network": "goerli",
+    "testnet": true,
+    "multicall": "0x25Eef291876194AeFAd0D60Dff89e268b90754Bb",
+    "rpc": [
+      "https://eth-sepolia.g.alchemy.com/v2/eV40AoRwFdzusyW_9htirAoRXSMssQ0E"
+    ],
+    "explorer": "https://sepolia.etherscan.io/"
+  },
   "7": {
     "key": "7",
     "name": "ThaiChain",

@@ -20,6 +20,7 @@ export interface Proposal {
   strategies: string;
   plugins: string;
   metadata: string;
+  whitelist?: string;
 }
 
 export interface CancelProposal {
@@ -105,6 +106,7 @@ export const proposalTypes = {
     { name: "strategies", type: "string" },
     { name: "plugins", type: "string" },
     { name: "metadata", type: "string" },
+    { name: "whitelist", type: "string" },
   ],
 };
 

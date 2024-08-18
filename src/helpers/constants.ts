@@ -1,4 +1,4 @@
-export const OFFCHAIN_HUB_LINK = "https://snapshothub.onout.org";
+export const OFFCHAIN_HUB_LINK = "http://localhost:3500"; //"https://snapshothub.onout.org"; //  "http://localhost:3500"; // 
 export const OFFCHAIN_HUB_API = `${OFFCHAIN_HUB_LINK}/graphql`;
 export const NAME = "snapshot";
 export const VERSION = "0.1.4";
@@ -13,6 +13,7 @@ export enum SupportedChainId {
   ROPSTEN = 3,
   RINKEBY = 4,
   GOERLI = 5,
+  SEPOLIA = 11155111,
   KOVAN = 42,
   BINANCE_SMART_CHAIN = 56,
   BINANCE_SMART_CHAIN_TESTNET = 97,
@@ -32,6 +33,7 @@ export const ALL_SUPPORTED_CHAIN_IDS: SupportedChainId[] = [
   SupportedChainId.ROPSTEN,
   SupportedChainId.RINKEBY,
   SupportedChainId.GOERLI,
+  SupportedChainId.SEPOLIA,
   SupportedChainId.KOVAN,
   SupportedChainId.BINANCE_SMART_CHAIN,
   SupportedChainId.BINANCE_SMART_CHAIN_TESTNET,
@@ -51,6 +53,7 @@ export const L1_CHAIN_IDS = [
   SupportedChainId.ROPSTEN,
   SupportedChainId.RINKEBY,
   SupportedChainId.GOERLI,
+  SupportedChainId.SEPOLIA,
   SupportedChainId.KOVAN,
   SupportedChainId.BINANCE_SMART_CHAIN,
   SupportedChainId.BINANCE_SMART_CHAIN_TESTNET,
@@ -75,7 +78,8 @@ export const NETWORK_RPC_URLS: { [key in SupportedChainId]: string } = {
   [SupportedChainId.MAINNET]: `https://mainnet.infura.io/v3/${INFURA_KEY}`,
   [SupportedChainId.RINKEBY]: `https://rinkeby.infura.io/v3/${INFURA_KEY}`,
   [SupportedChainId.ROPSTEN]: `https://ropsten.infura.io/v3/${INFURA_KEY}`,
-  [SupportedChainId.GOERLI]: `https://goerli.infura.io/v3/${INFURA_KEY}`,
+  [SupportedChainId.GOERLI]: `https://eth-goerli.g.alchemy.com/v2/wNvkA78LYEG7fb5S5z4nJIfB22dAcvuH`, //`https://goerli.infura.io/v3/${INFURA_KEY}`,
+  [SupportedChainId.SEPOLIA]: `https://sepolia.infura.io/v3/${INFURA_KEY}`,
   [SupportedChainId.KOVAN]: `https://kovan.infura.io/v3/${INFURA_KEY}`,
   [SupportedChainId.BINANCE_SMART_CHAIN]: "https://bsc-dataseed.binance.org/",
   [SupportedChainId.BINANCE_SMART_CHAIN_TESTNET]:
@@ -97,6 +101,7 @@ export const NETWORK_EXPLORER_URLS: { [key in SupportedChainId]: string } = {
   [SupportedChainId.RINKEBY]: `https://rinkeby.etherscan.io/`,
   [SupportedChainId.ROPSTEN]: `https://ropsten.etherscan.io/`,
   [SupportedChainId.GOERLI]: `https://goerli.etherscan.io/`,
+  [SupportedChainId.SEPOLIA]: 'https://sepolia.etherscan.io/',
   [SupportedChainId.KOVAN]: `https://kovan.etherscan.io/`,
   [SupportedChainId.BINANCE_SMART_CHAIN]: "https://bscscan.com/",
   [SupportedChainId.BINANCE_SMART_CHAIN_TESTNET]:
@@ -119,6 +124,7 @@ export const NETWORK_EXPLORER_API_URLS: { [key in SupportedChainId]: string } =
     [SupportedChainId.RINKEBY]: `https://api-rinkeby.etherscan.io/api`,
     [SupportedChainId.ROPSTEN]: `https://api-ropsten.etherscan.io/api`,
     [SupportedChainId.GOERLI]: `https://api-goerli.etherscan.io/api`,
+    [SupportedChainId.SEPOLIA]: `https://api-sepolia.etherscan.io/api`,
     [SupportedChainId.KOVAN]: `https://api-kovan.etherscan.io/api`,
     [SupportedChainId.BINANCE_SMART_CHAIN]: "https://api.bscscan.com/api",
     [SupportedChainId.BINANCE_SMART_CHAIN_TESTNET]:
