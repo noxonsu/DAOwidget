@@ -10,7 +10,7 @@
     "eject": "react-scripts eject",
     "prettier": "npx prettier src/* --write",
     "build:plugin": "craco build",
-    "unminified-build:plugin": "UNMINIFIED=true BUILD_PATH='./unminified-build' craco build"
+    "unminified-build:plugin": "cross-env UNMINIFIED=true BUILD_PATH='./unminified-build' craco build"
   },
   "dependencies": {
     "@craco/craco": "^6.4.2",
@@ -22,6 +22,7 @@
     "@web3-react/network-connector": "^6.1.9",
     "@web3-react/walletconnect-connector": "^6.2.8",
     "bignumber.js": "^9.1.2",
+    "cross-env": "^7.0.3",
     "graphql": "^16.0.1",
     "graphql-request": "^3.6.1",
     "react": "^17.0.2",

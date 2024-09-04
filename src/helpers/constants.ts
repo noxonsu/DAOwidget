@@ -1,8 +1,8 @@
 const appElement = document.getElementById("daofactory_app");
 
-window.SNAPSHOTHUB = appElement?.getAttribute("data-snapshothub") || "https://snapshothub.onout.org";
+window.SNAPSHOTHUB = appElement?.getAttribute("data-snapshothub") || "http://localhost:3500"; //  "https://snapshothub.onout.org"; // "https://snapshothub.onout.org";
 
-export const OFFCHAIN_HUB_LINK = window.SNAPSHOTHUB || "http://localhost:3500"; //"https://snapshothub.onout.org"; //  "http://localhost:3500"; // 
+export const OFFCHAIN_HUB_LINK = window.SNAPSHOTHUB || "https://snapshothub.onout.org"; //  "http://localhost:3500"; // 
 console.log('>>>> OFFCHAIN_HUB_API', OFFCHAIN_HUB_LINK, window.SNAPSHOTHUB)
 export const OFFCHAIN_HUB_API = `${OFFCHAIN_HUB_LINK}/graphql`;
 export const NAME = "snapshot";

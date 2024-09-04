@@ -4,6 +4,9 @@ import { ProposalType } from "src/hooks/useProposals";
 import { shortEVMAddress, shortIPFS } from "src/helpers/utils";
 import ExternalLink from "src/components/ExternalLink";
 
+import { formatDate } from "src/utils/formatDate"
+import { translate } from 'src/utils/translate'
+
 type ProposalInfoProps = {
   proposalData: ProposalType;
 };
@@ -30,17 +33,19 @@ function ProposalInfo(props: ProposalInfoProps) {
     <>
       {haveContent && (
         <div className="app-widget">
-          <div className="app-widget-header">Proposal Info</div>
+          <div className="app-widget-header">
+            {translate('proposal_info', 'Proposal Info')}
+          </div>
           <div className="p-1">
             {tokenSymbol && (
               <div className="app-widget-item">
-                <b>Token symbol: </b>
+                <b>{translate('proposal_info_token_symbol', 'Token symbol:')} </b>
                 {`${tokenSymbol}`}
               </div>
             )}
             {tokenAddress && (
               <div className="app-widget-item">
-                <b>Token address: </b>
+                <b>{translate('proposal_info_token_address', 'Token address:')} </b>
                 {network ? (
                   <ExternalLink
                     link={`${NETWORK_EXPLORER_URLS[networkId]}address/${tokenAddress}`}
@@ -53,7 +58,7 @@ function ProposalInfo(props: ProposalInfoProps) {
             )}
             {author && (
               <div className="app-widget-item">
-                <b>Author: </b>
+                <b>{translate('proposal_info_autor','Author:')} </b>
                 {network ? (
                   <ExternalLink
                     link={`${NETWORK_EXPLORER_URLS[networkId]}address/${author}`}
@@ -66,7 +71,7 @@ function ProposalInfo(props: ProposalInfoProps) {
             )}
             {ipfs && (
               <div className="app-widget-item">
-                <b>IPFS: </b>
+                <b>{translate('proposal_info_ipfs', 'IPFS:')} </b>
                 <ExternalLink
                   link={`https://cloudflare-ipfs.com/ipfs/${ipfs}`}
                   children={shortIPFS(ipfs)}
@@ -75,19 +80,27 @@ function ProposalInfo(props: ProposalInfoProps) {
             )}
             {start && (
               <div className="app-widget-item">
-                <b>Start date: </b>
-                {`${new Date(start * 10 ** 3).toUTCString()}`}
+                <b>{translate('proposal_info_start_date', 'Start date:')} </b>
+                {window.TIME_ZONE_CUSTOM ? (
+                  <>{formatDate(start * 10 ** 3)}</>
+                ) : (
+                  <>{`${new Date(start * 10 ** 3).toUTCString()}`}</>
+                )}
               </div>
             )}
             {end && (
               <div className="app-widget-item">
-                <b>End date: </b>
-                {`${new Date(end * 10 ** 3).toUTCString()}`}
+                <b>{translate('proposal_info_end_date', 'End date:')} </b>
+                {window.TIME_ZONE_CUSTOM ? (
+                  <>{formatDate(end * 10 ** 3)}</>
+                ) : (
+                  <>{`${new Date(end * 10 ** 3).toUTCString()}`}</>
+                )}
               </div>
             )}
             {snapshot && (
               <div className="app-widget-item">
-                <b>Snapshot: </b>
+                <b>{translate('proposal_info_snapshot', 'Snapshot:')} </b>
                 {network ? (
                   <ExternalLink
                     link={`${NETWORK_EXPLORER_URLS[networkId]}block/${snapshot}`}

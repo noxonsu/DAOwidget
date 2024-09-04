@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 import "./index.scss";
+import { translate } from "src/utils/translate"
 
 function Navbar() {
   const getClassNames = ({ isActive }: { isActive: boolean }) =>
@@ -9,7 +10,7 @@ function Navbar() {
   return (
     <div className="navbar">
       <NavLink className={getClassNames} id={`proposals-nav-link`} to={"/"}>
-        Proposals
+        {translate('navbar_proposals', 'Proposals')}
       </NavLink>
       {/* <NavLink className={getClassNames} id={`about-nav-link`} to={"/about"}>
         About
@@ -19,7 +20,7 @@ function Navbar() {
         id={`create-proposal-nav-link`}
         to={"/proposal/create"}
       >
-        New proposal
+        {translate('navbar_newproposal', 'New proposal')}
       </NavLink>
     </div>
   );

@@ -12,6 +12,8 @@ import ExternalLink from "src/components/ExternalLink";
 import Spinner from "src/components/Spinner";
 import { useTokenBalance } from "src/hooks/useTokenBalance";
 
+import { translate } from "src/utils/translate"
+
 type VotingModalButtonProps = {
   proposal: ProposalType;
   checkedChoice: number;
@@ -39,7 +41,7 @@ function VotingModalButton(props: VotingModalButtonProps) {
   }, [balance]);
 
   const modalProps = {
-    headerContent: "Confirm vote",
+    headerContent: translate('vote_confirm_vote', "Confirm vote"),
     bodyContent: (
       <VoteModalContent
         proposal={proposal}
@@ -64,16 +66,16 @@ function VotingModalButton(props: VotingModalButtonProps) {
       <span>
         {
           needWhitelist
-          ? "You are not on the list of those allowed to vote."
+          ? translate('vote_you_are_not_allowed', "You are not on the list of those allowed to vote.")
           : proposal.state === "pending"
-          ? "Wait for voting start"
+          ? translate('vote_wait_for_start', "Wait for voting start")
           : checkedChoice === -1
-          ? "Make your choice"
+          ? translate('vote_make_your_choice', "Make your choice")
           : isTokenBalanceLoading
-          ? "Checking balance..."
+          ? translate('vote_checking_balance', "Checking balance...")
           : !isEnoughBalanceToPublish
-          ? `Minimum required amount to Vote is ${requiredAmountToVote} ${window.TOKEN_SYMBOL}`
-          : "Vote"}
+          ? translate('vote_minimum_req', `Minimum required amount to Vote is`) + `${requiredAmountToVote} ${window.TOKEN_SYMBOL}`
+          : translate('vote_make_vote', "Vote")}
       </span>
     </button>
   );
@@ -130,17 +132,22 @@ const VoteModalContent = (props: VotingModalContentProps) => {
     <>
       <div className="voteBody">
         <div className="textCenter boldText">
-          Are you sure you want to vote "{choices[checkedChoice]}"?
+          {translate('vote_are_you_sure_want', "Are you sure you want to vote ")}
+          "{choices[checkedChoice]}"?
           <br />
-          This action cannot be undone.
+          {translate('vote_action_cannot_be_undone', "This action cannot be undone.")}
         </div>
         <div className="border rounded-md m-1 p-1">
           <div className="flex">
-            <span className="flexAuto textColor">Option(s)</span>
+            <span className="flexAuto textColor">
+              {translate('vote_options', "Option(s)")}
+            </span>
             <span className="textRight">{choices[checkedChoice]}</span>
           </div>
           <div className="flex">
-            <span className="flexAuto textColor">Snapshot</span>
+            <span className="flexAuto textColor">
+              {translate('vote_snapshot', "Snapshot")}
+            </span>
             <ExternalLink
               className="mr-1"
               link={`${NETWORK_EXPLORER_URLS[networkId]}block/${snapshot}`}
@@ -148,7 +155,9 @@ const VoteModalContent = (props: VotingModalContentProps) => {
             />
           </div>
           <div className="flex">
-            <span className="flexAuto textColor">Your voting power</span>
+            <span className="flexAuto textColor">
+              {translate('vote_your_voting_power', "Your voting power")}
+            </span>
             {
               isPowerLoading
               ? <Spinner
@@ -181,8 +190,8 @@ const VoteModalContent = (props: VotingModalContentProps) => {
                 style={{ height: "1rem", marginRight: "0.5rem" }}
               />
             : !power
-            ? "You haven't voting power"
-            : "Vote"
+            ? translate('vote_nopower', "You haven't voting power")
+            : translate('vote_do_vote', "Vote")
           }
         </button>
       </div>

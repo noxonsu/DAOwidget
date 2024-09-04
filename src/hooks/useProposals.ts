@@ -89,12 +89,10 @@ export const useProposal = (id: string, userWallet?: string | null | undefined) 
   const [ account, setAccount ] = useState(userWallet)
   useEffect(() => {
     if (needRefresh) {
-      console.log('>>> needRefresh', needRefresh, account)
       setNeedRefresh(false)
       const _fetchData = async () => {
         try {
           setIsLoading(true);
-  console.log('>>> fetch proposal', id, userWallet)
           const proposal = (await fetchOffChainProposal(id, userWallet)) as ProposalType;
           setProposalData(proposal);
         } catch (err) {
@@ -115,7 +113,6 @@ export const useProposal = (id: string, userWallet?: string | null | undefined) 
 };
 
 export const fetchOffChainProposal = async (id: string, userWallet?: string | null | undefined) => {
-console.log('>>> fetchOffChainProposal', id, userWallet)
   const offChainData = await request(OFFCHAIN_HUB_API, PROPOSAL_QUERY, {
     id,
     userWallet,

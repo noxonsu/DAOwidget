@@ -4,6 +4,7 @@ import Spinner from "src/components/Spinner";
 import { useTokenBalance } from "src/hooks/useTokenBalance";
 
 import "./index.scss";
+import { translate } from 'src/utils/translate'
 
 type PublishProposalButtonProps = {
   isTitleFilled: boolean;
@@ -50,12 +51,12 @@ function PublishProposalButton(props: PublishProposalButtonProps) {
             />
           )
           : !isTitleFilled
-          ? "Please, fill title"
+          ? translate('new_props_error_fill_title', "Please, fill title")
           : !isActionFilled
-          ? "Please, set all actions"
+          ? translate('new_props_error_fill_actions', "Please, set all actions")
           : !isEnoughBalanceToPublish
-          ? `Minimum required amount to Publish is ${requiredAmountToPublish} ${window.TOKEN_SYMBOL}`
-          : "Publish"
+          ? translate('new_props_error_min_required', `Minimum required amount to Publish is`) + ` ${requiredAmountToPublish} ${window.TOKEN_SYMBOL}`
+          : translate('new_props_publish', "Publish")
         }
       </span>
     </button>

@@ -13,6 +13,7 @@ import { ReactComponent as ICON_AddItem } from 'src/assets/svg/icon-add-item.svg
 import { ReactComponent as ICON_SwitchOn } from 'src/assets/svg/icon-switch-on.svg'
 import { ReactComponent as ICON_SwitchOff } from 'src/assets/svg/icon-switch-off.svg'
 
+import { translate } from 'src/utils/translate'
 
 import "./index.scss";
 
@@ -40,13 +41,13 @@ function CreateProposalActions(props: CreateProposalActionsType) {
   const [isWaitResponse, setIsWaitResponse] = useState(false);
 
   const durationOptions = [
-    { value: 0, text: "Duration:" },
-    { value: 86400, text: "1d" },
-    { value: 259200, text: "3d" },
-    { value: 432000, text: "5d" },
-    { value: 604800, text: "1w" },
-    { value: 1209600, text: "2w" },
-    { value: 2419200, text: "1m" },
+    { value: 0, text: translate('new_props_duration', "Duration:") },
+    { value: 86400, text: translate('new_props_duration_1d', "1d") },
+    { value: 259200, text: translate('new_props_duration_3d', "3d") },
+    { value: 432000, text: translate('new_props_duration_5d', "5d") },
+    { value: 604800, text: translate('new_props_duration_1w', "1w") },
+    { value: 1209600, text: translate('new_props_duration_2w', "2w") },
+    { value: 2419200, text: translate('new_props_duration_1m', "1m") },
   ];
 
   const handleDurationChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -55,7 +56,11 @@ function CreateProposalActions(props: CreateProposalActionsType) {
 
   const { title } = props;
 
-  const [ choices, setChoices ] = useState(["For", "Against", "Abstain"])
+  const [ choices, setChoices ] = useState([
+    translate('new_props_def_opt_for', "For"),
+    translate('new_props_def_opt_against', "Against"),
+    translate('new_props_def_opt_abstain', "Abstain")
+  ])
 
   const [ whitelist, setWhitelist ] = useState("")
   const [ whitelistEnabled, setWhitelistEnabled ] = useState(false)
@@ -153,10 +158,14 @@ function CreateProposalActions(props: CreateProposalActionsType) {
   return (
     <>
       <div className="app-widget">
-        <div className="app-widget-header">Actions</div>
+        <div className="app-widget-header">
+          {translate('new_props_actions_title', "Actions")}
+        </div>
         <div className="p-1">
           <div className="mb-1">
-            <h3>Duration</h3>
+            <h3>
+              {translate('new_props_duration_title', "Duration")}
+            </h3>
             <DropDown
               handleChange={handleDurationChange}
               selectedDuration={selectedDuration}
@@ -164,7 +173,9 @@ function CreateProposalActions(props: CreateProposalActionsType) {
             />
           </div>
           <div className="mb-1">
-            <h3>Choises (minimum two options)</h3>
+            <h3>
+              {translate('new_props_choices_title', "Choises (minimum two options)")}
+            </h3>
             <ChoicesList 
               choices={choices}
               onChange={setChoices}
@@ -253,7 +264,7 @@ function ChoicesList(props: any) {
         <button onClick={onAddNew}>
           <ICON_AddItem fill="currentColor" />
           <span>
-            Add new choice
+            {translate('new_props_add_new_choice', "Add new choice")}
           </span>
         </button>
       </div>
@@ -277,7 +288,9 @@ function Switcher(props: any) {
   } = props
   return (
     <div className={`switcher ${value ? '-active' : ''}`} onClick={() => { onChange(!value) }}>
-      <h3>Whitelist enabled</h3>
+      <h3>
+        {translate('new_props_whitelist_enabled', "Whitelist enabled")}
+      </h3>
       {value ? (
         <ICON_SwitchOn fill="currentColor" />
       ) : (

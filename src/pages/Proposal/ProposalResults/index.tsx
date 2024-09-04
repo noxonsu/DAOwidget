@@ -1,5 +1,6 @@
 import { ProposalType } from "src/hooks/useProposals";
 import { ResultData } from "src/hooks/useVotes";
+import { translate } from 'src/utils/translate'
 
 type ProposalResultsProps = {
   choices: ProposalType["choices"];
@@ -14,7 +15,9 @@ function ProposalResults(props: ProposalResultsProps) {
 
   return (
     <div className="app-widget">
-      <div className="app-widget-header">Results</div>
+      <div className="app-widget-header">
+        {translate('proposal_result_title', 'Results')}
+      </div>
       <div className="p-1">
         {choices.map((choice, i) => {
           const resultByVoteBalance = results.resultsByVoteBalance[i];

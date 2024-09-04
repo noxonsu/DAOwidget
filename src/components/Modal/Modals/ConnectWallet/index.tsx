@@ -7,13 +7,15 @@ import { NETWORK_EXPLORER_URLS, SupportedChainId } from "src/helpers/constants";
 import ExternalLink from "src/components/ExternalLink";
 import { switchNetworkByChainId } from "src/helpers/utils/web3";
 
+import { translate } from "src/utils/translate"
+
 function ConnectWallet() {
   const { account, deactivate, chainId, library } = useActiveWeb3React();
 
   const setModalOptions = useContext(ModalUpdaterContext);
 
   const connectWalletModalProps = {
-    headerContent: "Connect wallet",
+    headerContent: translate("wallet_connect", "Connect wallet"),
     bodyContent: (
       <Providers closeModal={() => setModalOptions({ isOpen: false })} />
     ),
@@ -35,7 +37,7 @@ function ConnectWallet() {
           setModalOptions({ isOpen: false });
         }}
       >
-        Disconnect
+        {translate('wallet_disconnect', 'Disconnect')}
       </button>
     </div>
   );
@@ -59,7 +61,9 @@ function ConnectWallet() {
         padding: "1rem",
       }}
     >
-      <span style={{ marginRight: "0.5rem" }}>Account</span>
+      <span style={{ marginRight: "0.5rem" }}>
+        {translate('wallet_account', 'Account')}
+      </span>
       <ExternalLink
         link={`${NETWORK_EXPLORER_URLS[networkId]}address/${account}`}
         children={shortEVMAddress(account || "")}
@@ -68,7 +72,7 @@ function ConnectWallet() {
   );
 
   const accountModalProps = {
-    headerContent: "Account",
+    headerContent: translate("wallet_account", "Account"),
     bodyContent: accountContent,
     footerContent: disconectButton,
     onCancel: () => setModalOptions({ isOpen: false }),
@@ -86,7 +90,7 @@ function ConnectWallet() {
       }
       style={{ width: "auto" }}
     >
-      {account ? shortEVMAddress(account) : "Connect Wallet"}
+      {account ? shortEVMAddress(account) : translate('wallet_connect', "Connect Wallet")}
     </button>
   );
 }

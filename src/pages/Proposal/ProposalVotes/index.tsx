@@ -2,6 +2,7 @@ import { shortEVMAddress } from "src/helpers/utils";
 import { ProposalType } from "src/hooks/useProposals";
 import { VoteWithScores } from "src/hooks/useVotes";
 import "./index.scss";
+import { translate } from 'src/utils/translate'
 
 type ProposalVotesType = {
   votes: VoteWithScores[];
@@ -18,7 +19,7 @@ function ProposalVotes(props: ProposalVotesType) {
   return (
     <div className="app-widget">
       <div className="app-widget-header">
-        Top {votes.length} of {totalVotes} votes
+        {translate('proposal_top_votes', 'Top {votes} of {totalVotes} votes', { votes: votes.length, totalVotes })}
       </div>
       <div>
         {votes.map((voute, i) => {

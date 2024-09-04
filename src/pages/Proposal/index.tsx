@@ -12,6 +12,8 @@ import ProposalResults from "./ProposalResults";
 import ProposalVotes from "./ProposalVotes";
 import ProposalVoting from "./ProposalVoting";
 
+import { translate } from 'src/utils/translate'
+
 type ParamsProps = {
   proposalId?: string;
 };
@@ -41,7 +43,7 @@ function ProposalDetail() {
 
   return (
     <div className="app-page proposal">
-      {isLoading && <h1 className="textCenter">Loading...</h1>}
+      {isLoading && <h1 className="textCenter">{translate('proposal_loading', 'Loading...')}</h1>}
       {haveDataForRenderOtherElements && (
         <ProposalBody proposal={proposalData} />
       )}
@@ -68,7 +70,9 @@ function ProposalVotesContent(props: ProposalVotesContentProps) {
   return (
     <>
       {isLoading ? (
-        <h3>Loading votes...</h3>
+        <h3>
+          {translate('proposal_loading_votes', 'Loading votes...')}
+        </h3>
       ) : (
         !!votesData.length && (
           <>

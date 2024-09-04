@@ -6,6 +6,7 @@ import { useClient } from "src/hooks/useClient";
 import { ProposalType } from "src/hooks/useProposals";
 import { Space, useSpaceList } from "src/hooks/useSpaces";
 import { Library } from "src/utils/getLibrary";
+import { translate } from 'src/utils/translate'
 
 type ProposalBodyProps = {
   proposal: ProposalType;
@@ -58,7 +59,7 @@ function ProposalBody(props: ProposalBodyProps) {
               className="deleteButton floatRight"
               onClick={deleteProposal}
             >
-              delete
+              {translate('proposal_delete', 'delete')}
             </button>
           )}
         </div>
