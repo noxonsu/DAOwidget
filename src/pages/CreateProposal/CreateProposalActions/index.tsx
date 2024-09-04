@@ -89,18 +89,38 @@ function CreateProposalActions(props: CreateProposalActionsType) {
 
       const { title, body } = props;
 
+      const strategyWithPower = {
+        name: "erc20-balance-of",
+        params: {
+          symbol: window.TOKEN_SYMBOL,
+          address: window.TOKEN_ADDRESS,
+          decimals: parseInt(window.TOKEN_DECIMALS),
+        },
+      }
+      const strategyWithoutPower = {
+        name: "erc20-with-balance",
+        params: {
+          symbol: window.TOKEN_SYMBOL,
+          address: window.TOKEN_ADDRESS,
+          decimals: parseInt(window.TOKEN_DECIMALS),
+          minBalance: 1,
+        }
+      }
+      const whitelistStrategy = {
+        name: "whitelist",
+        params: {
+          symbol: window.TOKEN_SYMBOL,
+          addresses: preparedWhitelist
+        }
+      }
+      // erc20-with-balance
       const NewProposal = {
         title,
         body,
         snapshot,
         network,
         choices,
-        strategies: [
-          {
-            name: "erc20-balance-of",
-            params: strategyParams,
-          },
-        ],
+        strategies: [strategyWithoutPower],
         type: "single-choice",
         plugins: {},
         whitelist: preparedWhitelist,
@@ -209,7 +229,7 @@ function ChoicesList(props: any) {
       {/* @ts-ignore */}
       {choices.map((choise: string, index: number) => {
         return (
-          <div className="choice-item">
+          <div className="choice-item" key={index}>
             <input type="text" value={choise} onChange={(e) => { onChangeOne(index, e.target.value) }}/>
             {choices.length > 2 && (
               <button onClick={() => { onDelOne(index) }}>
