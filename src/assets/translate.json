@@ -57,7 +57,7 @@
   "proposal_info_ipfs": "IPFS:",
   "proposal_info_snapshot": "Snapshot:",
   "proposal_result_title": "Results",
-  "proposal_top_votes": "Top {votes} of {totalVotes} votes', { votes: votes.length, totalVotes }",
+  "proposal_top_votes": "Top {votes} of {totalVotes} votes",
   "proposal_vote_cast_your_vote": "Cast your vote",
   "proposal_created_by": "Created by {author}",
   "proposal_state_active": "Active",
