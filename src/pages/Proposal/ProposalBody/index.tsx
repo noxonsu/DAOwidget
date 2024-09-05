@@ -53,7 +53,7 @@ function ProposalBody(props: ProposalBodyProps) {
       {title && <h1 className="proposalTitle">{title}</h1>}
       {haveHeader && (
         <div className="proposalHeader">
-          {state && <span className="proposalState floatLeft">{state}</span>}
+          {state && <span className="proposalState floatLeft">{translate(`proposal_state_${state}`, state)}</span>}
           {showDeleteButton && (
             <button
               className="deleteButton floatRight"

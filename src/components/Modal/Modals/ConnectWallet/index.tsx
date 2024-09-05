@@ -62,7 +62,7 @@ function ConnectWallet() {
       }}
     >
       <span style={{ marginRight: "0.5rem" }}>
-        {translate('wallet_account', 'Account')}
+        {translate('wallet_account_text', 'Account')}
       </span>
       <ExternalLink
         link={`${NETWORK_EXPLORER_URLS[networkId]}address/${account}`}
