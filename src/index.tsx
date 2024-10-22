@@ -10,8 +10,19 @@ import { getLibrary } from "./utils/getLibrary";
 import { NetworkContextName } from "src/helpers/constants";
 
 const appElement = document.getElementById("daofactory_app");
+/*
+window.TRANSLATE = {
+  "navbar_proposals": "asdasdProposals",
+  "navbar_newproposal": "New proposal"
+}
+*/
 
-window.ENS_DOMAIN = appElement?.getAttribute("data-ens") || "onout.eth";
+window.TIME_ZONE_CUSTOM = appElement?.getAttribute("data-timezone-custom") || true;
+window.TIME_ZONE = appElement?.getAttribute("data-timezone") || "America/Bogota"; //Intl.DateTimeFormat().resolvedOptions().timeZone; //"America/Bogota";
+window.TIME_ZONE_ADD = appElement?.getAttribute("data-timezone-add") || ", GMT Bogotá, Colombia";
+window.TIME_ZONE_LOCALE = appElement?.getAttribute("data-timezone-locale") || "es";
+window.SNAPSHOTHUB = appElement?.getAttribute("data-snapshothub") || "https://snapshothub.onout.org";
+window.ENS_DOMAIN = appElement?.getAttribute("data-ens") || "eneeseene.test"; //"onout.eth";
 window.NETWORK_ID = appElement?.getAttribute("data-network") || "11155111";
 window.TOKEN_ADDRESS =
   appElement?.getAttribute("data-token-address") ||
