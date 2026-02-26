@@ -144,27 +144,6 @@ jobs:
             echo "⚠ Warning: Health check returned HTTP $HTTP_CODE (non-blocking)"
           fi
 
-      - name: Deploy to appsource/dao
-        continue-on-error: true
-        run: |
-          # Clone appsource/dao
-          git clone https://${{ secrets.APPSOURCE_TOKEN }}@github.com/appsource/dao.git appsource-dao
-
-          # Copy build files
-          rsync -av --delete build/ appsource-dao/ --exclude='.git' --exclude='README.md'
-
-          # Commit and push
-          cd appsource-dao
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add .
-          git commit -m "Auto-deploy from DAOwidget v${{ env.VERSION }}
-
-          Deployed: $(date '+%Y-%m-%d %H:%M:%S')
-
-          Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>" || echo "No changes"
-          git push
-
       - name: Notify completion
         if: success()
         run: |
@@ -175,7 +154,6 @@ jobs:
           echo "WordPress ZIP: daofactory-v${{ env.VERSION }}.zip"
           echo "Download: https://farm.wpmix.net/updates/daofactory-v${{ env.VERSION }}.zip"
           echo "Demo: https://farm.wpmix.net/daofactory/"
-          echo "Appsource: https://appsource.github.io/dao"
           echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
       - name: Notify failure
