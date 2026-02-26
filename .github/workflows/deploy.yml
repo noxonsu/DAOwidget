@@ -1,0 +1,61 @@
+name: Build and Deploy DAOwidget
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-standalone:
+    name: Build standalone widget
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build standalone
+        run: npm run build
+
+      - name: Commit build
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add build/
+          git commit -m "Auto-build standalone: $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes"
+          git push
+
+  deploy-to-appsource:
+    name: Deploy to appsource/dao
+    needs: build-standalone
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout DAOwidget
+        uses: actions/checkout@v3
+        path: DAOwidget
+
+      - name: Checkout appsource/dao
+        uses: actions/checkout@v3
+        with:
+          repository: appsource/dao
+          token: ${{ secrets.APPSOURCE_TOKEN }}
+          path: appsource-dao
+
+      - name: Copy build to appsource
+        run: |
+          rsync -av --delete DAOwidget/build/ appsource-dao/ --exclude='.git' --exclude='README.md'
+
+      - name: Commit and push to appsource
+        run: |
+          cd appsource-dao
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Auto-deploy from DAOwidget $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes"
+          git push
