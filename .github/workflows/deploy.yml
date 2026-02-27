@@ -29,6 +29,17 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Generated version: $VERSION"
 
+      - name: Update version in plugin files
+        run: |
+          # Update plugin header version
+          sed -i "s/^ \* Version: .*/ * Version: ${{ env.VERSION }}/" wordpress/daofactory-plugin.php
+
+          # Update version constant
+          sed -i "s/define( 'DAOFACTORY_VER', '.*'/define( 'DAOFACTORY_VER', '${{ env.VERSION }}'/" wordpress/daofactory-plugin.php
+
+          echo "Updated wordpress/daofactory-plugin.php:"
+          grep -E "Version:|DAOFACTORY_VER" wordpress/daofactory-plugin.php
+
       - name: Install dependencies
         run: npm install
 
