@@ -53,41 +53,62 @@ jobs:
         run: |
           cat > info.json << EOF
           {
+            "name": "DAO Factory",
             "version": "${{ env.VERSION }}",
-            "timestamp": $(date +%s),
-            "download_url": "https://farm.wpmix.net/updates/daofactory-v${{ env.VERSION }}.zip",
-            "changelog": "${{ github.event.head_commit.message }}",
-            "requires": "5.0",
             "tested": "6.4",
-            "package": "https://farm.wpmix.net/updates/daofactory-v${{ env.VERSION }}.zip"
+            "requires": "5.0",
+            "requires_php": "7.1",
+            "download_url": "https://farm.wpmix.net/updates/daofactory-v${{ env.VERSION }}.zip",
+            "last_updated": "$(date -u +"%Y-%m-%d %H:%M:%S")",
+            "sections": {
+              "description": "Governance and proposals plugin for cryptocurrency tokens - create DAOs and voting mechanisms",
+              "installation": "Upload the plugin files to /wp-content/plugins/daofactory/, then activate the plugin through the Plugins menu in WordPress",
+              "changelog": "<h4>${{ env.VERSION }}</h4><ul><li>$(echo '${{ github.event.head_commit.message }}' | head -1)</li></ul>"
+            }
           }
           EOF
-          cat info.json
+
+          echo "Generated info.json:"
+          cat info.json | jq . || cat info.json
+          echo "Validating JSON..."
+          cat info.json | jq . > /dev/null && echo "✓ Valid JSON" || (echo "✗ Invalid JSON" && exit 1)
 
       - name: Create WordPress plugin package
         run: |
-          # Create temporary directory for packaging
-          mkdir -p daofactory-package
+          echo "Creating WordPress plugin package..."
 
-          # Copy React build
-          cp -r build daofactory-package/
+          # Create package directory with plugin subdirectory (WordPress standard)
+          mkdir -p daofactory-package/daofactory
 
-          # Copy WordPress wrapper files
-          cp daofactory.php daofactory-package/
-          cp -r inc daofactory-package/
-          if [ -d "wordpress" ]; then
-            cp -r wordpress daofactory-package/
+          # Copy all WordPress plugin files from wordpress/ directory
+          echo "Copying WordPress plugin files..."
+          cp -r wordpress/* daofactory-package/daofactory/
+
+          # Copy React build to build directory
+          echo "Copying React build..."
+          cp -r build daofactory-package/daofactory/
+
+          # Copy lang directory if exists (translations)
+          if [ -d "lang" ]; then
+            echo "Copying lang directory..."
+            cp -r lang daofactory-package/daofactory/
           fi
 
-          # Copy metadata
-          cp info.json daofactory-package/
-          if [ -f "readme.txt" ]; then
-            cp readme.txt daofactory-package/
+          # Copy additional files if they exist
+          if [ -f "README.md" ]; then
+            cp README.md daofactory-package/daofactory/
+          fi
+          if [ -f "LICENSE" ]; then
+            cp LICENSE daofactory-package/daofactory/
           fi
 
-          # Create ZIP
+          # Verify structure
+          echo "Package structure:"
+          ls -la daofactory-package/daofactory/ | head -20
+
+          # Create ZIP (from package directory, so daofactory/ is the root in ZIP)
           cd daofactory-package
-          zip -r ../daofactory-v${{ env.VERSION }}.zip .
+          zip -r ../daofactory-v${{ env.VERSION }}.zip daofactory
           cd ..
 
           # Verify ZIP
@@ -98,6 +119,8 @@ jobs:
 
           echo "Package created: daofactory-v${{ env.VERSION }}.zip"
           ls -lh daofactory-v${{ env.VERSION }}.zip
+          echo "ZIP contents:"
+          unzip -l daofactory-v${{ env.VERSION }}.zip | head -30
 
       - name: Upload WordPress plugin to server
         uses: appleboy/scp-action@master
@@ -120,6 +143,26 @@ jobs:
             chmod 644 /var/www/html/daofactory/info.json
             echo "info.json updated"
             cat /var/www/html/daofactory/info.json
+
+      - name: Deploy WordPress plugin ZIP to updates directory
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Create updates directory if it doesn't exist
+            mkdir -p /home/farmFactory/web/farm.wpmix.net/public_html/updates
+
+            # Move ZIP file from incoming to updates
+            mv /home/farmFactory/incoming/daofactory-v${{ env.VERSION }}.zip \
+               /home/farmFactory/web/farm.wpmix.net/public_html/updates/
+
+            # Set permissions
+            chmod 644 /home/farmFactory/web/farm.wpmix.net/public_html/updates/daofactory-v${{ env.VERSION }}.zip
+
+            echo "WordPress plugin package deployed:"
+            ls -lh /home/farmFactory/web/farm.wpmix.net/public_html/updates/daofactory-v${{ env.VERSION }}.zip
 
       - name: Deploy static demo files
         uses: appleboy/scp-action@master
