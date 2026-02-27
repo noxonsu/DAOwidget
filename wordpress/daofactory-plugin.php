@@ -7,7 +7,7 @@ Author URI: https://onout.org
 Requires PHP: 7.4
 Text Domain: daofactory
 Domain Path: /lang
-Version: 0.1.8
+Version: 2.26.0227
 */
 
 /* Define Plugin Constants */
@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 define( 'DAOFACTORY_TEMPLATE_DIR', __DIR__ . '/templates' );
 define( 'DAOFACTORY_BASE_DIR', __DIR__ );
 define( 'DAOFACTORY_BASE_FILE', __FILE__ );
-define( 'DAOFACTORY_VER', '0.1.8' );
+define( 'DAOFACTORY_VER', '2.26.0227' );
 define( 'DAOFACTORY_URL', plugin_dir_url( __FILE__ ) );
 define( 'DAOFACTORY_PATH', plugin_dir_path( __FILE__ ) );
 
