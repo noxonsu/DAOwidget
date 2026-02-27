@@ -4,7 +4,7 @@ namespace DAOFactory\Controllers;
 
 class AutoUpdateController {
 
-	const INFO_URL = 'https://farm.wpmix.net/daofactory/info.json';
+	const INFO_URL = 'https://farm.wpmix.net/updates/daofactory-info.json';
 	const PLUGIN_SLUG = 'daofactory';
 	const TRANSIENT_SLUG = 'DAOWIDGET_upgrade_plugin';
 

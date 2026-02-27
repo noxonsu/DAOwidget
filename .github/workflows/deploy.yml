@@ -138,11 +138,11 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            mkdir -p /var/www/html/daofactory
-            cp /home/farmFactory/incoming/info.json /var/www/html/daofactory/info.json
-            chmod 644 /var/www/html/daofactory/info.json
-            echo "info.json updated"
-            cat /var/www/html/daofactory/info.json
+            mkdir -p /home/farmFactory/web/farm.wpmix.net/public_html/updates
+            cp /home/farmFactory/incoming/info.json /home/farmFactory/web/farm.wpmix.net/public_html/updates/daofactory-info.json
+            chmod 644 /home/farmFactory/web/farm.wpmix.net/public_html/updates/daofactory-info.json
+            echo "info.json updated as daofactory-info.json"
+            cat /home/farmFactory/web/farm.wpmix.net/public_html/updates/daofactory-info.json
 
       - name: Deploy WordPress plugin ZIP to updates directory
         uses: appleboy/ssh-action@master
