@@ -1,5 +1,7 @@
 # Dao widget -  Governance and proposals for your crypto token
 
+[![Deploy Status](https://github.com/noxonsu/DAOwidget/actions/workflows/deploy.yml/badge.svg)](https://github.com/noxonsu/DAOwidget/actions/workflows/deploy.yml)
+
 See the video:  <https://drive.google.com/file/d/1R1ddQRevR7-gbe-87BMr0hKjbwf3zny-/view>
 
 With a given value of tokens, any stakeholders can create offers. Another stakeholders can vote for proposals without spend money on gas. Put the HTML code on your website. Upload files to FTP server to the folder with html page where you want to put the widget. Then open your HTML file and add this HTML:
