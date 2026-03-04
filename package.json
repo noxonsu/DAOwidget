@@ -10,7 +10,8 @@
     "eject": "react-scripts eject",
     "prettier": "npx prettier src/* --write",
     "build:plugin": "craco build",
-    "unminified-build:plugin": "UNMINIFIED=true BUILD_PATH='./unminified-build' craco build"
+    "unminified-build:plugin": "UNMINIFIED=true BUILD_PATH='./unminified-build' craco build",
+    "prepare": "git config core.hooksPath .husky 2>/dev/null || true"
   },
   "dependencies": {
     "@craco/craco": "^6.4.2",
