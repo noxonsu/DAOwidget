@@ -60,6 +60,17 @@ jobs:
           fi
           echo "Build output verified"
 
+      - name: Deploy to appsource/dao
+        uses: peaceiris/actions-gh-pages@v3
+        continue-on-error: true
+        with:
+          personal_token: ${{ secrets.APPSOURCE_TOKEN }}
+          external_repository: appsource/dao
+          publish_branch: main
+          publish_dir: ./build
+          cname: dao.onout.org
+          force_orphan: true
+
       - name: Create info.json
         run: |
           cat > info.json << EOF
@@ -221,3 +232,4 @@ jobs:
           echo "Version: ${{ env.VERSION }}"
           echo "Check workflow logs for details"
           echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
