@@ -4,7 +4,7 @@ import { linkify } from "remarkable/linkify";
 import "./index.scss";
 
 const remarkable = new Remarkable("full", {
-  html: true,
+  html: false,
   breaks: true,
   typographer: true,
 }).use(linkify);

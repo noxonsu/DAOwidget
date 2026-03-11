@@ -11,6 +11,7 @@
   var getValue = (id) => { return document.getElementById(id).value }
   var setValue = (id, value) => { document.getElementById(id).value = value }
   var setHtml = (id, value) => { document.getElementById(id).innerHTML = value }
+  var setText = (id, value) => { document.getElementById(id).textContent = value }
   var showBlock = (id) => { document.getElementById(id).style.display = '' }
   var hideBlock = (id) => { document.getElementById(id).style.display = 'none' }
   var showLoader = () => {
@@ -62,11 +63,11 @@
     const chainId = networkOption.data('chain')
     daoFactory_fetchTokenInfo( { rpc, chainId }, tokenAddress )
       .then((tokenInfo) => {
-        setHtml('dao_token_name_view', tokenInfo.name)
+        setText('dao_token_name_view', tokenInfo.name)
         setValue('dao_token_name', tokenInfo.name)
-        setHtml('dao_token_symbol_view', tokenInfo.symbol)
+        setText('dao_token_symbol_view', tokenInfo.symbol)
         setValue('dao_token_symbol', tokenInfo.symbol)
-        setHtml('dao_token_decimals_view', tokenInfo.decimals)
+        setText('dao_token_decimals_view', tokenInfo.decimals)
         setValue('dao_token_decimals', tokenInfo.decimals)
         unlockButton()
         showBlock('dao_token_info')
